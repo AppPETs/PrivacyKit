@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		606011DB1D36381C0076A6AA /* PrivacyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 606011DA1D36381C0076A6AA /* PrivacyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		606011E21D36381C0076A6AA /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606011D71D36381C0076A6AA /* PrivacyKit.framework */; };
-		606011E71D36381C0076A6AA /* PrivacyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyKitTests.swift */; };
+		606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */; };
 		606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */; };
 		606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F41D36418D0076A6AA /* PrivacyService.swift */; };
+		606011F71D3644B30076A6AA /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F61D3644B30076A6AA /* SecurityManager.swift */; };
 		606012121D3664CE0076A6AA /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606012051D3663F60076A6AA /* Sodium.framework */; };
+		606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012151D3680B40076A6AA /* SecureRemoteStorage.swift */; };
+		606012221D36C6190076A6AA /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012211D36C6190076A6AA /* RegularExpression.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,11 +82,14 @@
 		606011DA1D36381C0076A6AA /* PrivacyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivacyKit.h; sourceTree = "<group>"; };
 		606011DC1D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606011E11D36381C0076A6AA /* PrivacyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		606011E61D36381C0076A6AA /* PrivacyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyKitTests.swift; sourceTree = "<group>"; };
+		606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyServiceTests.swift; sourceTree = "<group>"; };
 		606011E81D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousKeyValueStorage.swift; sourceTree = "<group>"; };
 		606011F41D36418D0076A6AA /* PrivacyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyService.swift; sourceTree = "<group>"; };
+		606011F61D3644B30076A6AA /* SecurityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
 		606011FA1D3663F60076A6AA /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = Sodium/Sodium.xcodeproj; sourceTree = "<group>"; };
+		606012151D3680B40076A6AA /* SecureRemoteStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureRemoteStorage.swift; sourceTree = "<group>"; };
+		606012211D36C6190076A6AA /* RegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +136,8 @@
 			children = (
 				606011DA1D36381C0076A6AA /* PrivacyKit.h */,
 				606011DC1D36381C0076A6AA /* Info.plist */,
-				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
-				606011F41D36418D0076A6AA /* PrivacyService.swift */,
+				6060121F1D36AF2A0076A6AA /* Public */,
+				606012201D36AF3F0076A6AA /* Internal */,
 			);
 			path = PrivacyKit;
 			sourceTree = "<group>";
@@ -139,7 +145,7 @@
 		606011E51D36381C0076A6AA /* PrivacyKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				606011E61D36381C0076A6AA /* PrivacyKitTests.swift */,
+				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
 				606011E81D36381C0076A6AA /* Info.plist */,
 			);
 			path = PrivacyKitTests;
@@ -157,6 +163,25 @@
 				606012111D3663F60076A6AA /* Example OSXTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6060121F1D36AF2A0076A6AA /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
+				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		606012201D36AF3F0076A6AA /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				606011F41D36418D0076A6AA /* PrivacyService.swift */,
+				606011F61D3644B30076A6AA /* SecurityManager.swift */,
+				606012211D36C6190076A6AA /* RegularExpression.swift */,
+			);
+			name = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +350,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */,
+				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
+				606011F71D3644B30076A6AA /* SecurityManager.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */,
 			);
@@ -334,7 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606011E71D36381C0076A6AA /* PrivacyKitTests.swift in Sources */,
+				606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

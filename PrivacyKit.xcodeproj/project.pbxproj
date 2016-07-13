@@ -11,6 +11,7 @@
 		606011E21D36381C0076A6AA /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606011D71D36381C0076A6AA /* PrivacyKit.framework */; };
 		606011E71D36381C0076A6AA /* PrivacyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyKitTests.swift */; };
 		606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */; };
+		606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F41D36418D0076A6AA /* PrivacyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		606011E61D36381C0076A6AA /* PrivacyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyKitTests.swift; sourceTree = "<group>"; };
 		606011E81D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousKeyValueStorage.swift; sourceTree = "<group>"; };
+		606011F41D36418D0076A6AA /* PrivacyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				606011DA1D36381C0076A6AA /* PrivacyKit.h */,
 				606011DC1D36381C0076A6AA /* Info.plist */,
 				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
+				606011F41D36418D0076A6AA /* PrivacyService.swift */,
 			);
 			path = PrivacyKit;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

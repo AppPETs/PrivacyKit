@@ -1,0 +1,3 @@
+[submodule "Sodium"]
+	path = Sodium
+	url = git@github.com:blochberger/swift-sodium.git

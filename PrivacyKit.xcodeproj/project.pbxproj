@@ -12,6 +12,7 @@
 		606011E71D36381C0076A6AA /* PrivacyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyKitTests.swift */; };
 		606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */; };
 		606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F41D36418D0076A6AA /* PrivacyService.swift */; };
+		606012121D3664CE0076A6AA /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606012051D3663F60076A6AA /* Sodium.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,6 +22,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = 606011D61D36381C0076A6AA;
 			remoteInfo = PrivacyKit;
+		};
+		606012041D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09A943C71A4EB5F500C8A04F;
+			remoteInfo = Sodium_iOS;
+		};
+		606012061D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09A943D21A4EB5F500C8A04F;
+			remoteInfo = SodiumTests;
+		};
+		606012081D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 90C75E941AE3571900F1E749;
+			remoteInfo = Sodium_OSX;
+		};
+		6060120A1D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 901644B61AE36EA700163E3E;
+			remoteInfo = "Example iOS";
+		};
+		6060120C1D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 901644CA1AE36EA800163E3E;
+			remoteInfo = "Example iOSTests";
+		};
+		6060120E1D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 901644DC1AE36F2D00163E3E;
+			remoteInfo = "Example OSX";
+		};
+		606012101D3663F60076A6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 901644EB1AE36F2E00163E3E;
+			remoteInfo = "Example OSXTests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -33,6 +83,7 @@
 		606011E81D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousKeyValueStorage.swift; sourceTree = "<group>"; };
 		606011F41D36418D0076A6AA /* PrivacyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyService.swift; sourceTree = "<group>"; };
+		606011FA1D3663F60076A6AA /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = Sodium/Sodium.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606012121D3664CE0076A6AA /* Sodium.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +112,7 @@
 				606011D91D36381C0076A6AA /* PrivacyKit */,
 				606011E51D36381C0076A6AA /* PrivacyKitTests */,
 				606011D81D36381C0076A6AA /* Products */,
+				606011FA1D3663F60076A6AA /* Sodium.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +143,20 @@
 				606011E81D36381C0076A6AA /* Info.plist */,
 			);
 			path = PrivacyKitTests;
+			sourceTree = "<group>";
+		};
+		606011FB1D3663F60076A6AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				606012051D3663F60076A6AA /* Sodium.framework */,
+				606012071D3663F60076A6AA /* SodiumTests.xctest */,
+				606012091D3663F60076A6AA /* Sodium.framework */,
+				6060120B1D3663F60076A6AA /* Example iOS.app */,
+				6060120D1D3663F60076A6AA /* Example iOSTests.xctest */,
+				6060120F1D3663F60076A6AA /* Example OSX.app */,
+				606012111D3663F60076A6AA /* Example OSXTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +237,12 @@
 			mainGroup = 606011CD1D36381C0076A6AA;
 			productRefGroup = 606011D81D36381C0076A6AA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 606011FB1D3663F60076A6AA /* Products */;
+					ProjectRef = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				606011D61D36381C0076A6AA /* PrivacyKit */,
@@ -177,6 +250,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		606012051D3663F60076A6AA /* Sodium.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sodium.framework;
+			remoteRef = 606012041D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		606012071D3663F60076A6AA /* SodiumTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SodiumTests.xctest;
+			remoteRef = 606012061D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		606012091D3663F60076A6AA /* Sodium.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sodium.framework;
+			remoteRef = 606012081D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6060120B1D3663F60076A6AA /* Example iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Example iOS.app";
+			remoteRef = 6060120A1D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6060120D1D3663F60076A6AA /* Example iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Example iOSTests.xctest";
+			remoteRef = 6060120C1D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6060120F1D3663F60076A6AA /* Example OSX.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Example OSX.app";
+			remoteRef = 6060120E1D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		606012111D3663F60076A6AA /* Example OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Example OSXTests.xctest";
+			remoteRef = 606012101D3663F60076A6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		606011D51D36381C0076A6AA /* Resources */ = {

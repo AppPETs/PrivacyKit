@@ -10,6 +10,7 @@
 		606011DB1D36381C0076A6AA /* PrivacyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 606011DA1D36381C0076A6AA /* PrivacyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		606011E21D36381C0076A6AA /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606011D71D36381C0076A6AA /* PrivacyKit.framework */; };
 		606011E71D36381C0076A6AA /* PrivacyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyKitTests.swift */; };
+		606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		606011E11D36381C0076A6AA /* PrivacyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		606011E61D36381C0076A6AA /* PrivacyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyKitTests.swift; sourceTree = "<group>"; };
 		606011E81D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousKeyValueStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				606011DA1D36381C0076A6AA /* PrivacyKit.h */,
 				606011DC1D36381C0076A6AA /* Info.plist */,
+				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
 			);
 			path = PrivacyKit;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +314,7 @@
 		606011EC1D36381C0076A6AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +325,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.uni-hamburg.informatik.PrivacyKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		606011ED1D36381C0076A6AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

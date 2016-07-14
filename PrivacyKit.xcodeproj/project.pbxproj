@@ -542,6 +542,7 @@
 				606011ED1D36381C0076A6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		606011EE1D36381C0076A6AA /* Build configuration list for PBXNativeTarget "PrivacyKitTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +551,7 @@
 				606011F01D36381C0076A6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

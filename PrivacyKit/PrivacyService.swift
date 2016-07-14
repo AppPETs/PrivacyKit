@@ -27,7 +27,7 @@ class PrivacyService {
 
 		init?(_ valueAsString: String) {
 
-			if !(valueAsString =~ "^[0-9a-fA-F]{\(PrivacyService.RecordId.lengthInBytes * 2)}$") {
+			if !(valueAsString =~ "^[[:xdigit:]]{\(PrivacyService.RecordId.lengthInBytes * 2)}$") {
 				return nil
 			}
 

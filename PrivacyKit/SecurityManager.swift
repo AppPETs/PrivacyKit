@@ -53,9 +53,8 @@ class SecurityManager {
 	// MARK: Methods
 
 	func hashOfKey(key: NSData, withOutputLengthInBytes outputLengthInBytes: Int) -> String? {
-		// <#FIXME#> Okay to use secretKey as salt?
 		// Uses Argon2i for hashing
-		guard let hashedKeyAsData = sodium.pwHash.hash(outputLengthInBytes, passwd: key, salt: self.secretKey, opsLimit: sodium.pwHash.OpsLimitInteractive, memLimit: sodium.pwHash.MemLimitInteractive) else {
+		guard let hashedKeyAsData = sodium.pwHash.hash(outputLengthInBytes, passwd: key, salt: self.secretSalt, opsLimit: sodium.pwHash.OpsLimitInteractive, memLimit: sodium.pwHash.MemLimitInteractive) else {
 				print("Failed to hash key \(key)")
 				return nil
 		}
@@ -83,12 +82,15 @@ class SecurityManager {
 
 	// MARK: Constants
 
-	private static let SecretKeyFileName = "secret.key"
+	private static let SecretKeyFileName  = "secret.key"
+	private static let SecretSaltFileName = "secret.salt"
 	private static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
 	private static let SecretKeyLocation  = DocumentsDirectory.URLByAppendingPathComponent(SecretKeyFileName)
+	private static let SecretSaltLocation = DocumentsDirectory.URLByAppendingPathComponent(SecretSaltFileName)
 
-	private let sodium:    Sodium
-	private let secretKey: Box.SecretKey
+	private let sodium:     Sodium
+	private let secretKey:  Box.SecretKey
+	private let secretSalt: NSData
 
 	// MARK: Initializers
 
@@ -101,10 +103,10 @@ class SecurityManager {
 		}
 		self.sodium = sodium
 
-		// Init key
 		let fileManager = NSFileManager.defaultManager()
-		let secretKeyExists = fileManager.fileExistsAtPath(SecurityManager.SecretKeyLocation.path!)
 
+		// Init key
+		let secretKeyExists = fileManager.fileExistsAtPath(SecurityManager.SecretKeyLocation.path!)
 		if secretKeyExists {
 			// Load existing key
 			guard let secretKey = NSData(contentsOfURL: SecurityManager.SecretKeyLocation) else {
@@ -121,16 +123,54 @@ class SecurityManager {
 			self.secretKey = secretKey
 			// <#TODO#> Password protect key
 			// <#TODO#> Store key in keychain
-			let writingOptions: NSDataWritingOptions = [
-				.DataWritingFileProtectionComplete,
-				.DataWritingWithoutOverwriting
-			]
-			do {
-				try secretKey.writeToURL(SecurityManager.SecretKeyLocation, options: writingOptions)
-			} catch let error as NSError {
-				print("Failed to store secret key: \(error)")
+			persistData(secretKey, toLocation: SecurityManager.SecretKeyLocation)
+		}
+
+		// Init salt
+		let secretSaltExists = fileManager.fileExistsAtPath(SecurityManager.SecretSaltLocation.path!)
+		if secretSaltExists {
+			// Load existing salt
+			guard let encryptedSecretSalt = NSData(contentsOfURL: SecurityManager.SecretSaltLocation) else {
+				print("Could not load secret salt from \(SecurityManager.SecretSaltLocation)")
 				return nil
 			}
+			// Unfortunately we can not use `decryptData()` here, as not all
+			// constants were initialized.
+			guard let secretSalt = sodium.secretBox.open(encryptedSecretSalt, secretKey: self.secretKey) else {
+				print("Failed to decrypt secret salt")
+				return nil
+			}
+			self.secretSalt = secretSalt
+			assert(self.secretSalt == decryptData(EncryptedData(blob: encryptedSecretSalt)), "Implementation of decryptData() has changed, please decrypt secret salt accordingly!")
+		} else {
+			// Create and persist new secret salt
+			guard let secretSalt = sodium.randomBytes.buf(sodium.pwHash.SaltBytes) else {
+				print("Could not generate secret salt")
+				return nil
+			}
+			self.secretSalt = secretSalt
+			guard let encryptedSalt = encryptData(secretSalt) else {
+				print("Failed to encrypt secret salt in order to persist it securely")
+				return nil
+			}
+			// <#TODO#> Store salt in keychain
+			persistData(encryptedSalt.blob, toLocation: SecurityManager.SecretSaltLocation)
 		}
 	}
+}
+
+// MARK: - Herlpers
+
+func persistData(data: NSData, toLocation location: NSURL) -> Bool {
+	let writingOptions: NSDataWritingOptions = [
+		.DataWritingFileProtectionComplete,
+		.DataWritingWithoutOverwriting
+	]
+	do {
+		try data.writeToURL(location, options: writingOptions)
+	} catch let error as NSError {
+		print("Failed to persist \(location): \(error)")
+		return false
+	}
+	return true
 }

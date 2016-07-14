@@ -8,6 +8,12 @@
 
 import Foundation
 
+// <#FIXME#> Data should first be updated in the cache. The configured server
+// might not be available and we don't want to loose data. The cached data
+// could then be uploaded afterwards (even in the background). We might want
+// to reduce traffic and upload data in certain intervals or at certain
+// check points such as the application quitting.
+
 public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	// MARK: Initializers

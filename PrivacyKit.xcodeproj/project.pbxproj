@@ -96,6 +96,7 @@
 		60DA8CB41D38CEEA009E2906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		60DA8CB61D38D592009E2906 /* CertificatePinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinner.swift; sourceTree = "<group>"; };
 		60DA8CB81D38F529009E2906 /* PrivacyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyKit.swift; sourceTree = "<group>"; };
+		60DA8CBA1D391250009E2906 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +122,7 @@
 		606011CD1D36381C0076A6AA = {
 			isa = PBXGroup;
 			children = (
+				60DA8CBA1D391250009E2906 /* README.md */,
 				606011D91D36381C0076A6AA /* PrivacyKit */,
 				606011E51D36381C0076A6AA /* PrivacyKitTests */,
 				606011D81D36381C0076A6AA /* Products */,

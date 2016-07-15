@@ -40,11 +40,17 @@ class PrivacyService {
 		let encryptedData: SecurityManager.EncryptedData
 	}
 
+	// MARK: Initializers
+
+	init() {
+		self.certificatePinner = CertificatePinner(forHost: baseUrl.host!)
+	}
+
 	// MARK: Methods
 
 	func storeRecord(record: Record, finishedWithOptionalError: (error: String?) -> Void) {
 		let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-		let session = NSURLSession(configuration: sessionConfiguration)
+		let session = NSURLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
 		let request = NSMutableURLRequest(URL: storageUrlForRecord(record.id))
 
 		request.HTTPMethod = PrivacyService.HttpMethods.HttpMethodForStore.rawValue
@@ -82,7 +88,7 @@ class PrivacyService {
 
 	func retrieveRecordWithId(recordId: RecordId, finishedWithRecord: (record: Record?, error: String?) -> Void) {
 		let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-		let session = NSURLSession(configuration: sessionConfiguration)
+		let session = NSURLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
 		let request = NSMutableURLRequest(URL: storageUrlForRecord(recordId))
 		request.HTTPMethod = PrivacyService.HttpMethods.HttpMethodForRetrieve.rawValue
 
@@ -146,12 +152,9 @@ class PrivacyService {
 
 	// MARK: Constants
 
-	// <#FIXME#> We should support HTTPS here, as HTTP is discouraged by Apple and
-	// the default policy is not to allow HTTP connections to be established.
-	// Exceptions can be added to the Info.plist file or directly within the
-	// Simulator.
-	// <#FIXME#> Do not use localhost here, works only when using the Simulator.
-	private let baseUrl = NSURL(string: "http://localhost:8080")!
+	// <#FIXME#> Use real URL.
+	private let baseUrl = NSURL(string: "https://privacyservice.test:8080")!
+	private let certificatePinner: CertificatePinner?
 
 	// MARK: Methods
 
@@ -193,4 +196,3 @@ func hideNetworkActivityIndicator() {
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 	}
 }
-

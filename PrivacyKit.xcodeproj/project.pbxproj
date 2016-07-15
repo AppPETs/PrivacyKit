@@ -16,6 +16,9 @@
 		606012121D3664CE0076A6AA /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606012051D3663F60076A6AA /* Sodium.framework */; };
 		606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012151D3680B40076A6AA /* SecureRemoteStorage.swift */; };
 		606012221D36C6190076A6AA /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012211D36C6190076A6AA /* RegularExpression.swift */; };
+		60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
+		60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
+		60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB81D38F529009E2906 /* PrivacyKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		606011FA1D3663F60076A6AA /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = Sodium/Sodium.xcodeproj; sourceTree = "<group>"; };
 		606012151D3680B40076A6AA /* SecureRemoteStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureRemoteStorage.swift; sourceTree = "<group>"; };
 		606012211D36C6190076A6AA /* RegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
+		60DA8CB41D38CEEA009E2906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		60DA8CB61D38D592009E2906 /* CertificatePinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinner.swift; sourceTree = "<group>"; };
+		60DA8CB81D38F529009E2906 /* PrivacyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 		606011D91D36381C0076A6AA /* PrivacyKit */ = {
 			isa = PBXGroup;
 			children = (
+				60DA8CB41D38CEEA009E2906 /* Assets.xcassets */,
 				606011DA1D36381C0076A6AA /* PrivacyKit.h */,
 				606011DC1D36381C0076A6AA /* Info.plist */,
 				6060121F1D36AF2A0076A6AA /* Public */,
@@ -180,6 +187,8 @@
 				606011F41D36418D0076A6AA /* PrivacyService.swift */,
 				606011F61D3644B30076A6AA /* SecurityManager.swift */,
 				606012211D36C6190076A6AA /* RegularExpression.swift */,
+				60DA8CB61D38D592009E2906 /* CertificatePinner.swift */,
+				60DA8CB81D38F529009E2906 /* PrivacyKit.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,8 +363,10 @@
 				606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */,
 				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
 				606011F71D3644B30076A6AA /* SecurityManager.swift in Sources */,
+				60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */,
+				60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

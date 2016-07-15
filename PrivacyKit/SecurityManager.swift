@@ -159,7 +159,7 @@ class SecurityManager {
 	}
 }
 
-// MARK: - Herlpers
+// MARK: - Helpers
 
 func persistData(data: NSData, toLocation location: NSURL) -> Bool {
 	let writingOptions: NSDataWritingOptions = [

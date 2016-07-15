@@ -51,7 +51,7 @@ storage.retrieveValueForKey(key) {
 	let retrievedValue = optionalValue!
 	
 	// Do something with the retrieved Value
-	print(retrievedValue) # Will print "1234"
+	print(retrievedValue) // Will print "1234"
 }
 ```
 

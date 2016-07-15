@@ -16,6 +16,10 @@ git submodule add https://gitlab.prae.me/blochberger/PrivacyKit.git
 git submodule update --init --recursive # This will also fetch Sodium
 ```
 
+Then open your applications Xcode project and drag and drop the
+`PrivacyKit.xcodeproj` into it. In the project and under Linked Frameworks and
+Libraries add the `PrivacyKit.framework`.
+
 Then you can use the `SecureRemoteStorage` as in the following snippet:
 
 ```swift

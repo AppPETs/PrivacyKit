@@ -49,7 +49,7 @@ storage.retrieveValueForKey(key) {
 	}
 
 	let retrievedValue = optionalValue!
-	
+
 	// Do something with the retrieved Value
 	print(retrievedValue) // Will print "1234"
 }
@@ -62,7 +62,7 @@ Also note that if you are using the [`PrivacyService`][P-Service] with a
 self-signed certificate, the certificate needs to be added to the trust store of
 your iOS device or simulator.
 Even though the certificate is pinned it is not trusted, i.e. signed by a
-trusted root Certificate Authority (CA). 
+trusted root Certificate Authority (CA).
 
 In order to mark a certificate as trusted, get the `privacyservice.test.crt`
 file onto the device or simulator and open it. The Settings application will

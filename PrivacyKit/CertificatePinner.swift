@@ -61,11 +61,7 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 			return
 		}
 
-		guard let serverCertificateDataRef = SecCertificateCopyData(serverCertificate) as? CFDataRef else {
-			pinningFailed(completionHandler)
-			return
-		}
-
+		let serverCertificateDataRef = SecCertificateCopyData(serverCertificate)
 		let serverCertificateData = NSData(bytes: CFDataGetBytePtr(serverCertificateDataRef), length: CFDataGetLength(serverCertificateDataRef))
 
 		if !serverCertificateData.isEqualToData(pinnedServerCertificate) {

@@ -17,8 +17,11 @@ git submodule update --init --recursive # This will also fetch Sodium
 ```
 
 Then open your applications Xcode project and drag and drop the
-`PrivacyKit.xcodeproj` into it. In the project and under Linked Frameworks and
-Libraries add the `PrivacyKit.framework`.
+`PrivacyKit.xcodeproj` into it. In the project and under Embedded Frameworks add
+the `PrivacyKit.framework`, the `Sodium.framework` (choose the one for iOS), and
+add another custom binary, located in `PrivacyKit/Sodium/Sodium/libsodium-ios.a`.
+Note that the last one will not show up in the Embedded Binaries section and the
+first two will also show up under Linked Libraries and Frameworks.
 
 Then you can use the `SecureRemoteStorage` as in the following snippet:
 

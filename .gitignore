@@ -1,2 +1,6 @@
+# Jazzy
+build/
+doc/
+
 # XCode
 **/xcuserdata/

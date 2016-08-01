@@ -109,4 +109,28 @@ let session = NSURLSession(
 )
 ```
 
+### Generation of HTML Documentation
+
+To generate the HTML documentation the [`jazzy`][jazzy] tool with the following
+options:
+
+```sh
+jazzy \
+	--clean \
+	--theme="fullwidth" \
+	--author="Maximilian Blochberger" \
+	--author_url="mailto:9blochbe@informatik.uni-hamburg.de" \
+	--abstract="README.md" \
+	--module="PrivacyKit" \
+	--module-version="0.0.1" \
+	--sdk="iphone" \
+	--min-acl="public" \
+	--output="doc"
+```
+
+Where `doc` is the output path and `doc/index.html` the entry point for the
+documentation.
+
+
+[jazzy]:     https://github.com/realm/jazzy
 [P-Service]: https://gitlab.prae.me/blochberger/PrivacyService-Qt

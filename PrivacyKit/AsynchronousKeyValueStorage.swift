@@ -16,7 +16,11 @@
 	    typealias KeyType   = String
 	    typealias ValueType = NSData
 	    typealias ErrorType = String
-	    func storeValue(value: ValueType, forKey key: KeyType, finishedWithError: (error: ErrorType?) -> Void) {
+	    func storeValue(
+	        value:             ValueType,
+	        forKey key:        KeyType,
+	        finishedWithError: (error: ErrorType?) -> Void
+	    ) {
 	        // TODO Store the value
 	        // If an error occurs, report and back out early
 	        finishedWithError(error: "Error description")
@@ -24,7 +28,10 @@
 	        // If everything goes smoothly, signal success
 	        finishedWithError(error: nil)
 	    }
-	    func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void) {
+	    func retrieveValueForKey(
+	        key:            KeyType,
+	        valueAvailable: (value: ValueType?, error: ErrorType?) -> Void
+	    ) {
 	        // TODO Retrieve the value
 	        // If an error occurs, report and back out early
 	        valueAvailable(value: nil, error: "Error description")

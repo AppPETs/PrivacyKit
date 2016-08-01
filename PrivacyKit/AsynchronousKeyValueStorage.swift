@@ -10,7 +10,7 @@
 	A key-value store that supports asynchronous requests. Two basic functions
 	are offered which can be used to store and retrieve values for a given key.
 
-	#### Example:
+	#### Example
 	```swift
 	class MyKeyValueStorage : AsynchronousKeyValueStorage {
 	    typealias KeyType   = String
@@ -55,7 +55,7 @@ public protocol AsynchronousKeyValueStorage {
 	/**
 		Stores an asset `value` for an identifier `forKey` asynchronously.
 
-		#### Example:
+		#### Example
 		```swift
 		storage.storeValue(value, forKey: key) {
 		    optionalError in
@@ -82,7 +82,7 @@ public protocol AsynchronousKeyValueStorage {
 	/**
 		Retrieves data for key `key` asynchronously.
 
-		#### Example:
+		#### Example
 		```swift
 		storage.retrieveValueForKey(key) {
 		    optionalValue, optionalError in

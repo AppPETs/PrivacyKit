@@ -65,15 +65,13 @@ public protocol AsynchronousKeyValueStorage {
 		}
 		```
 
-		- Parameters:
-
-		  - value:
+		- parameter value:
 		    The asset that should be stored.
 
-		  - forKey:
+		- parameter forKey:
 		    The key that identifies the `value` uniquely.
 
-		  - finishedWithError:
+		- parameter finishedWithError:
 		    A function that is called after the `value` is stored. Upon success
 		    `error` is **`nil`** and if the asset could not be stored, `error`
 		    then contains a desriptive error message explaining the reason.
@@ -106,12 +104,10 @@ public protocol AsynchronousKeyValueStorage {
 		assert((value == nil) != (error == nil))
 		````
 
-		- Parameters:
-
-		  - key:
+		- parameter key:
 		  The key that identifies the data value that should be retrieved.
 
-		  - valueAvailable:
+		- parameter valueAvailable:
 		  A function that is called when the asset for the identifier `key`
 		  was retrieved. The parameter `value` then contains the actual asset
 		  upon success and is **`nil`** if the asset could not be retrieved.

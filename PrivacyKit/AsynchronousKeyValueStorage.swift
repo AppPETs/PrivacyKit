@@ -80,7 +80,7 @@ public protocol AsynchronousKeyValueStorage {
 
 		- parameter finishedWithError:
 		    A function that is called after the `value` is stored. Upon success
-		    `error` is **`nil`** and if the asset could not be stored, `error`
+		    `error` is `nil` and if the asset could not be stored, `error`
 		    then contains a desriptive error message explaining the reason.
 	*/
 	func storeValue(value: ValueType, forKey key: KeyType, finishedWithError: (error: ErrorType?) -> Void)
@@ -105,8 +105,8 @@ public protocol AsynchronousKeyValueStorage {
 		```
 
 		- Postcondition:
-		In `valueAvailable` either `value` is **`nil`** or `error` is
-		**`nil`** but not both at the same time.
+		In `valueAvailable` either `value` is `nil` or `error` is
+		`nil` but not both at the same time.
 		````
 		assert((value == nil) != (error == nil))
 		````
@@ -117,9 +117,9 @@ public protocol AsynchronousKeyValueStorage {
 		- parameter valueAvailable:
 		  A function that is called when the asset for the identifier `key`
 		  was retrieved. The parameter `value` then contains the actual asset
-		  upon success and is **`nil`** if the asset could not be retrieved.
+		  upon success and is `nil` if the asset could not be retrieved.
 		  An explanatory reason is then provided through the parameter `error`
-		  which is **`nil`** upon success respectively.
+		  which is `nil` upon success respectively.
 	*/
 	func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void)
 

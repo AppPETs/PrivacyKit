@@ -8,16 +8,32 @@
 
 import Foundation
 
-// FIXME Data should first be updated in the cache. The configured server
-// might not be available and we don't want to loose data. The cached data
-// could then be uploaded afterwards (even in the background). We might want
-// to reduce traffic and upload data in certain intervals or at certain
-// check points such as the application quitting.
+/**
+	This class can be used to store files securely in the Cloud. The files are
+	encrypted on the device and then stored on a Privacy-Service.
 
+	The values are byte arrays (`NSData`), the keys are strings (`String`), and
+	the errors are strings (`String`) as well.
+
+	- Todo:
+		For performance/availability reasons data should be cached. The
+		Privacy-Service might not be available, the internet connection might be
+		slow, or data is changed more frequently than required to upload. The
+		cached data can be uploaded in background, i.e. if the user closes the
+		application. This can also be used to reduce traffic or limit uploads to
+		Wi-Fi availability.
+*/
 public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	// MARK: Initializers
 
+	/**
+		Initializes a SecureRemoteStorage.
+
+		- returns:
+			`nil` if the SecurityManager could not be initialized, i.e. if the
+			encryption keys could not be generated or read from disk.
+	*/
 	public init?() {
 		// Initialize security manager
 		guard let securityManager = SecurityManager.instance else {
@@ -33,6 +49,33 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 	public typealias ValueType = NSData
 	public typealias ErrorType = String
 
+	/**
+		Stores a value `value` for a given key `key` securely. Neither the key
+		nor the value will be known to the server.
+
+		#### Example
+		```swift
+		let key = "My PIN"
+		let value = "1234".dataUsingEncoding(NSUTF8StringEncoding)!
+		storage.storeValue(value, forKey: key) {
+		    optionalError in
+		    if let error = optionalError {
+		        print(error)
+		    }
+		}
+		```
+
+		- parameter value:
+			The value that should be stored, such as a file.
+	
+		- parameter key:
+			THe key that is used to identify the value.
+
+		- parameter finishedWithError:
+			This closure signals that storing has finished. If an error
+			occurred, `error` will contain a descriptive reason. Otherwise it
+			will be `nil`, which signals success.
+	*/
 	public func storeValue(value: ValueType, forKey key: KeyType, finishedWithError: (error: ErrorType?) -> Void) {
 		let privacyService = PrivacyService()
 
@@ -55,6 +98,45 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 		}
 	}
 
+	/**
+		Retrieves a value for a given key `key` securely.
+
+		#### Example
+		```swift
+		let key = "My PIN"
+		storage.retrieveValueForKey(key) {
+		    optionalValue, optionalError in
+		    // Assert postcondition
+		    assert((optionalValue == nil) != (optionalError == nil))
+		    if let error = optionalError {
+		        print(error)
+		        return
+		    }
+		    let retrievedValue = optionalValue!
+		    // Do something with the retrieved Value
+		    print(retrievedValue) // Will print "1234" if example from above was used
+		}
+		```
+
+		- warning:
+			The closure `valueAvailable` is called asynchronously. Therefore if
+			the `value` is used to change a UI element, it should be done in the
+			UI thread. Additionally if multiple calls to
+			`retrieveValueForKey(_:valueAvailable:)` are made, the callbacks
+			made to the closure might be performed in a different order.
+	
+		- parameter key:
+			Te key that is used to identify the value.
+
+		- parameter valueAvailable:
+			This closure signals that retrieving has finished. If an error
+			occurred, `error` will contain a descriptive reason and `value` will
+			be `nil`. Otherwise `error` will be `nil` and the `value` will
+			contain the retrieved data. Note that the closure might be called in
+			another thread and the retrieved data should be handled
+			appropriately, i.e. if the value is used to change a UI element, it
+			should be done in the UI thread.
+	*/
 	public func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void) {
 		let privacyService = PrivacyService()
 

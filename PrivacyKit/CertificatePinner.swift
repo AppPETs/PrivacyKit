@@ -12,8 +12,8 @@ import Foundation
 	This class is used to pin certificates to a specific hosts.
 
 	- Seealso:
-	  - [Certificate and Public Key Pinning / iOS [OWASP]](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#iOS)
-	  - [iOS certificate pinning with Swift and NSURLSession [stackoverflow]](http://stackoverflow.com/a/34223292/5082444)
+	  - [Certificate and Public Key Pinning / iOS](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#iOS)
+	  - [iOS certificate pinning with Swift and NSURLSession](http://stackoverflow.com/a/34223292/5082444)
 
 	- Todo:
 	  - Maybe consider [TrustKit](https://datatheorem.github.io/TrustKit/)?

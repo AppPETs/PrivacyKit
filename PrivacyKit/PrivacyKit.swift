@@ -9,10 +9,12 @@
 import Foundation
 
 class PrivacyKit {
-	// <#TODO#> Find bundle ID programmatically
+
+	// TODO Find bundle ID programmatically
 	static let bundleId = "de.uni-hamburg.informatik.PrivacyKit"
 	
 	static func bundle() -> NSBundle {
 		return NSBundle(identifier: PrivacyKit.bundleId)!
 	}
+
 }

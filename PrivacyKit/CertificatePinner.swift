@@ -87,4 +87,5 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 	private func pinningSucceededForServerTrust(serverTrust: SecTrust, _ completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
 		completionHandler(.UseCredential, NSURLCredential(forTrust: serverTrust))
 	}
+
 }

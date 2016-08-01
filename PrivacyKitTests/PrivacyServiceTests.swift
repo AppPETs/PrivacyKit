@@ -10,9 +10,8 @@ import XCTest
 @testable import PrivacyKit
 
 class PrivacyServiceTests: XCTestCase {
-    
-    
-    func testRecordId() {
+
+	func testRecordId() {
 		XCTAssertEqual(PrivacyService.RecordId.lengthInBytes, 512/8)
 
 		// sha512("deadbeef")
@@ -36,5 +35,6 @@ class PrivacyServiceTests: XCTestCase {
 		let nonHex512BitString = "X13a3bc783d851fc0373214b19ea7be9fa3de541ecb9fe026d52c603e8ea19c174cc0e9705f8b90d312212c0c3a6d8453ddfb3e3141409cf4bedc8ef033590b4"
 		let nonHexRecordId = PrivacyService.RecordId(nonHex512BitString)
 		XCTAssertNil(nonHexRecordId, "Non-hex record ID accepted unexpectedly")
-    }
+	}
+
 }

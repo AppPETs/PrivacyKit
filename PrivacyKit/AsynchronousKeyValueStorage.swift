@@ -119,4 +119,5 @@ public protocol AsynchronousKeyValueStorage {
 		  which is **`nil`** upon success respectively.
 	*/
 	func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void)
+
 }

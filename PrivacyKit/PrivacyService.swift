@@ -165,6 +165,7 @@ class PrivacyService {
 	private func storageUrlForRecord(recordId: RecordId) -> NSURL {
 		return storageUrl().URLByAppendingPathComponent(recordId.value, isDirectory: false)
 	}
+
 }
 
 // MARK: - Helpers

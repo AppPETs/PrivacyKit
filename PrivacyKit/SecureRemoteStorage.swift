@@ -8,7 +8,7 @@
 
 import Foundation
 
-// <#FIXME#> Data should first be updated in the cache. The configured server
+// FIXME Data should first be updated in the cache. The configured server
 // might not be available and we don't want to loose data. The cached data
 // could then be uploaded afterwards (even in the background). We might want
 // to reduce traffic and upload data in certain intervals or at certain
@@ -99,7 +99,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	// MARK: Methods
 
-	// <#TODO#> Cache record IDs for performance – the phone's memory is trusted.
+	// TODO Cache record IDs for performance – the phone's memory is trusted.
 	private func recordIdForKey(key: KeyType) -> PrivacyService.RecordId? {
 
 		guard let keyAsData = key.dataUsingEncoding(NSUTF8StringEncoding) else {
@@ -114,4 +114,5 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 		return recordId
 	}
+
 }

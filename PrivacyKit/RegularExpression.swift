@@ -17,6 +17,7 @@ func =~ (input: String, pattern: String) -> Bool {
 }
 
 class RegularExpression {
+
 	let internalExpression: NSRegularExpression
 	let pattern: String
 
@@ -33,4 +34,5 @@ class RegularExpression {
 		let matches = self.internalExpression.matchesInString(input, options: NSMatchingOptions.ReportCompletion, range:NSMakeRange(0, input.characters.count))
 		return matches.count > 0
 	}
+
 }

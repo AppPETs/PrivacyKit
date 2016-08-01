@@ -121,8 +121,8 @@ class SecurityManager {
 				return nil
 			}
 			self.secretKey = secretKey
-			// <#TODO#> Password protect key
-			// <#TODO#> Store key in keychain
+			// TODO Password protect key
+			// TODO Store key in keychain
 			persistData(secretKey, toLocation: SecurityManager.SecretKeyLocation)
 		}
 
@@ -153,7 +153,7 @@ class SecurityManager {
 				print("Failed to encrypt secret salt in order to persist it securely")
 				return nil
 			}
-			// <#TODO#> Store salt in keychain
+			// TODO Store salt in keychain
 			persistData(encryptedSalt.blob, toLocation: SecurityManager.SecretSaltLocation)
 		}
 	}

@@ -102,7 +102,11 @@ The `CertificatePinner` is an `NSURLSessionDelegate` and can be used like
 follows:
 
 ```swift
-let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: certificatePinner, delegateQueue: nil)
+let session = NSURLSession(
+	configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+	delegate:      certificatePinner,
+	delegateQueue: nil
+)
 ```
 
 [P-Service]: https://gitlab.prae.me/blochberger/PrivacyService-Qt

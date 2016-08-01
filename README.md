@@ -125,11 +125,17 @@ jazzy \
 	--module-version="0.0.1" \
 	--sdk="iphone" \
 	--min-acl="public" \
-	--output="doc"
+	--output="doc/public"
 ```
 
-Where `doc` is the output path and `doc/index.html` the entry point for the
-documentation.
+Where `doc/public` is the output path and `doc/public/index.html` the entry
+point for the API documentation.
+
+The API documentation generated as in the example above is for developers who
+want to use the `PrivacyKit` in their own projects, say the public API.
+Developers of the `PrivacyKit` itself, might be interested in a HTML
+documentation as well and can decrease the exported access level to `internal`
+or even `private` by replacing `public` above.
 
 
 [jazzy]:     https://github.com/realm/jazzy

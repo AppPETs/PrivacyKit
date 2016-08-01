@@ -11,35 +11,29 @@
 	are offered which can be used to store and retrieve values for a given key.
 
 	#### Example:
-	````
+	```swift
 	class MyKeyValueStorage : AsynchronousKeyValueStorage {
 	    typealias KeyType   = String
 	    typealias ValueType = NSData
 	    typealias ErrorType = String
-
 	    func storeValue(value: ValueType, forKey key: KeyType, finishedWithError: (error: ErrorType?) -> Void) {
 	        // TODO Store the value
-
 	        // If an error occurs, report and back out early
 	        finishedWithError(error: "Error description")
 	        return
-
 	        // If everything goes smoothly, signal success
 	        finishedWithError(error: nil)
 	    }
-
 	    func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void) {
 	        // TODO Retrieve the value
-
 	        // If an error occurs, report and back out early
 	        valueAvailable(value: nil, error: "Error description")
 	        return
-
 	        // If everything goes smoothly, return value and signal success
 	        valueAvailable(value: value: error: nil)
 	    }
 	}
-	````
+	```
 */
 public protocol AsynchronousKeyValueStorage {
 
@@ -62,15 +56,14 @@ public protocol AsynchronousKeyValueStorage {
 		Stores an asset `value` for an identifier `forKey` asynchronously.
 
 		#### Example:
-		````
+		```swift
 		storage.storeValue(value, forKey: key) {
 		    optionalError in
-
 		    if let error = optionalError {
 		        // TODO Handle error
 		    }
 		}
-		````
+		```
 
 		- Parameters:
 
@@ -92,23 +85,19 @@ public protocol AsynchronousKeyValueStorage {
 		Retrieves data for key `key` asynchronously.
 
 		#### Example:
-		````
+		```swift
 		storage.retrieveValueForKey(key) {
 		    optionalValue, optionalError in
-
 		    // Assert postcondition
 		    assert((optionalValue == nil) != (optionalError == nil))
-
 		    if let error = optionalError {
 		        // TODO Handle error
 		        return
 		    }
-
 		    let value = optionalValue!
-
 		    // Do something with the retrieved value
 		}
-		````
+		```
 
 		- Postcondition:
 		In `valueAvailable` either `value` is **`nil`** or `error` is

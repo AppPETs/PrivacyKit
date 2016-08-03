@@ -72,7 +72,7 @@ class PrivacyService {
 		Initializes a `PrivacyService` instance.
 	*/
 	init() {
-		self.certificatePinner = CertificatePinner(forHost: baseUrl.host!)
+		self.certificatePinner = CertificatePinner(forHost: baseUrl.host!)!
 	}
 
 	// MARK: Methods
@@ -259,7 +259,7 @@ class PrivacyService {
 	private let baseUrl = NSURL(string: "https://privacyservice.test:8080")!
 
 	/// The certificate pinner for the Privacy-Service in use.
-	private let certificatePinner: CertificatePinner?
+	private let certificatePinner: CertificatePinner
 
 	// MARK: Methods
 

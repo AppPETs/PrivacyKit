@@ -149,7 +149,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			optionalRecord, optionalError in
 
 			// Assert postcondition
-			assert((optionalRecord == nil) != (optionalError == nil), "Postcondition of PrivacyService failed")
+			assert((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
 
 			if let error = optionalError {
 				valueAvailable(value: nil, error: error)

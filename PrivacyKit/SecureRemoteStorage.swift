@@ -158,8 +158,6 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 			// Successfully downloaded encrypted asset
 
-			assert(optionalRecord != nil, "Data not correctly checked by the PrivacyService")
-
 			let record = optionalRecord!
 			let encryptedData = record.encryptedData
 

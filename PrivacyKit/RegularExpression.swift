@@ -44,7 +44,6 @@ class RegularExpression {
 
 	/// The internal representation of the regular expression
 	let internalExpression: NSRegularExpression
-	let pattern: String
 
 	/**
 		Compile a regular expression.
@@ -56,7 +55,6 @@ class RegularExpression {
 			`nil` if the expression cannot be compiled, i.e. if it is invalid.
 	*/
 	init?(_ pattern: String) {
-		self.pattern = pattern
 		do {
 			self.internalExpression = try NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
 		} catch {

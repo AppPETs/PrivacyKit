@@ -73,15 +73,15 @@ public protocol AsynchronousKeyValueStorage {
 		```
 
 		- parameter value:
-		    The asset that should be stored.
+			The asset that should be stored.
 
 		- parameter forKey:
-		    The key that identifies the `value` uniquely.
+			The key that identifies the `value` uniquely.
 
 		- parameter finishedWithError:
-		    A function that is called after the `value` is stored. Upon success
-		    `error` is `nil` and if the asset could not be stored, `error`
-		    then contains a desriptive error message explaining the reason.
+			A function that is called after the `value` is stored. Upon success
+			`error` is `nil` and if the asset could not be stored, `error`
+			then contains a desriptive error message explaining the reason.
 	*/
 	func storeValue(value: ValueType, forKey key: KeyType, finishedWithError: (error: ErrorType?) -> Void)
 
@@ -94,7 +94,7 @@ public protocol AsynchronousKeyValueStorage {
 		storage.retrieveValueForKey(key) {
 		    optionalValue, optionalError in
 		    // Assert postcondition
-		    assert((optionalValue == nil) != (optionalError == nil))
+		    assert((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
 		    if let error = optionalError {
 		        // TODO Handle error
 		        return
@@ -104,22 +104,23 @@ public protocol AsynchronousKeyValueStorage {
 		}
 		```
 
-		- Postcondition:
-		In `valueAvailable` either `value` is `nil` or `error` is
-		`nil` but not both at the same time.
-		````
-		assert((value == nil) != (error == nil))
-		````
+		- postcondition:
+			In `valueAvailable` either `value` is `nil` or `error` is `nil` but
+			not both at the same time.
+
+			```swift
+			assert((value == nil) != (error == nil), "Postcondition failed")
+			```
 
 		- parameter key:
-		  The key that identifies the data value that should be retrieved.
+			The key that identifies the data value that should be retrieved.
 
 		- parameter valueAvailable:
-		  A function that is called when the asset for the identifier `key`
-		  was retrieved. The parameter `value` then contains the actual asset
-		  upon success and is `nil` if the asset could not be retrieved.
-		  An explanatory reason is then provided through the parameter `error`
-		  which is `nil` upon success respectively.
+			A function that is called when the asset for the identifier `key`
+			was retrieved. The parameter `value` then contains the actual asset
+			upon success and is `nil` if the asset could not be retrieved.
+			An explanatory reason is then provided through the parameter `error`
+			which is `nil` upon success respectively.
 	*/
 	func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void)
 

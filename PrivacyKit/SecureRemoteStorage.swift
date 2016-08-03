@@ -15,7 +15,7 @@ import Foundation
 	The values are byte arrays (`NSData`), the keys are strings (`String`), and
 	the errors are strings (`String`) as well.
 
-	- Todo:
+	- todo:
 		For performance/availability reasons data should be cached. The
 		Privacy-Service might not be available, the internet connection might be
 		slow, or data is changed more frequently than required to upload. The
@@ -107,7 +107,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 		storage.retrieveValueForKey(key) {
 		    optionalValue, optionalError in
 		    // Assert postcondition
-		    assert((optionalValue == nil) != (optionalError == nil))
+		    assert((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
 		    if let error = optionalError {
 		        print(error)
 		        return
@@ -177,11 +177,36 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	// MARK: Constants
 
-	private let securityManager:          SecurityManager
+	/// The security manager that handles encryption and key derivation.
+	private let securityManager: SecurityManager
 
 	// MARK: Methods
 
-	// TODO Cache record IDs for performance – the phone's memory is trusted.
+	/**
+		Generate a record ID for a given `key`.
+
+		- warning:
+			The record ID is visible to the Privacy-Service, but should not be
+			used otherwise, as everyone who knows the record ID can access the
+			encrypted asset. They should not be able to decrypt the asset, but
+			they might upload another asset instead, which essentialy deletes
+			the previous asset on the remote side.
+
+		- parameter key:
+			The value that the application developer uses to identify an asset,
+			e.g. a file name.
+
+		- returns:
+			A valid record ID or `nil` if it could not be derived.
+
+		- todo:
+			Cache record IDs as they are generated deterministically and the
+			generation consumes energy and takes time. There is no need to
+			repeat it. The device's memory is trusted. Persisting the cache on
+			disk should be done with additional encryption and is should be
+			measued which operation has higher performance/energy impact before
+			taking action.
+	*/
 	private func recordIdForKey(key: KeyType) -> PrivacyService.RecordId? {
 
 		guard let keyAsData = key.dataUsingEncoding(NSUTF8StringEncoding) else {

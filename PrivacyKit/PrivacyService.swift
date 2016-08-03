@@ -12,19 +12,37 @@ import UIKit
 /**
 	Internal class that acts as an interface to the web service API.
 
-	- Requires:
-	  - `Foundation` for `NSURL`
+	- requires:
+		[`Foundation`][1] for [`NSURL`][2]
+
+	[1]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/ObjC_classic/index.html
+	[2]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/index.html
 */
 class PrivacyService {
 
 	// MARK: Types
 
+	/**
+		Struct that holds a valid record ID which is basically a 128 character
+		string containing only hexadecimal characters.
+	*/
 	struct RecordId {
 
+		/// Length of the record ID in bytes.
 		static let lengthInBytes = 512 / 8
 
+		/// The actual string representation of the record ID.
 		let value: String
 
+		/**
+			Initializer for a record ID.
+
+			- parameter valueAsString:
+				String representation of a record ID.
+
+			- returns:
+				`nil` if `valueAsString` is not a valid record ID.
+		*/
 		init?(_ valueAsString: String) {
 
 			if !(valueAsString =~ "^[[:xdigit:]]{\(PrivacyService.RecordId.lengthInBytes * 2)}$") {
@@ -35,19 +53,50 @@ class PrivacyService {
 		}
 	}
 
+	/**
+		Struct that represents a record – basically a key-value pair. A record
+		can only contain encrypted data.
+	*/
 	struct Record {
-		let id:            RecordId
+
+		/// The ID of the record, or key of the key-value pair.
+		let id: RecordId
+
+		/// The encrypted value
 		let encryptedData: SecurityManager.EncryptedData
 	}
 
 	// MARK: Initializers
 
+	/**
+		Initializes a `PrivacyService` instance.
+	*/
 	init() {
 		self.certificatePinner = CertificatePinner(forHost: baseUrl.host!)
 	}
 
 	// MARK: Methods
 
+	/**
+		Function to store a record or key-value pair asynchronously.
+
+		#### Example
+		```swift
+		privacyService.storeRecord(record) {
+		    optionalError in
+		    if let error = optionalError {
+		        // TODO Handle error
+		    }
+		}
+		```
+
+		- parameter record:
+			The record that should be stored.
+
+		- parameter finishedWithOptionalError:
+			Singals that storing is finished. If an error occurred than `error`
+			will contain a descriptive reason, otherwise it will be `nil`.
+	*/
 	func storeRecord(record: Record, finishedWithOptionalError: (error: String?) -> Void) {
 		let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
 		let session = NSURLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
@@ -86,6 +135,41 @@ class PrivacyService {
 		task.resume()
 	}
 
+	/**
+		Function to retrieve a record or key-value pair asynchronously.
+
+		#### Example
+		```swift
+		privacyService.retrieveRecordWithId(recordId) {
+		    optionalRecord, optionalError in
+		    // Assert postcondition
+		    assert((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
+		    if let error = optionalError {
+		        // Delegate error and back out
+		        valueAvailable(value: nil, error: error)
+		        return
+		    }
+		    // Successfully downloaded encrypted value
+		    let record = optionalRecord!
+		    // TODO Decrypt data and signal success
+		    valueAvailable(value: decryptedValue, error: nil)
+		}
+		```
+
+		- warning:
+			The closure `finishedWithRecord` is called asynchronously. Therefore
+			if multiple calls to `retrieveRecordWithId(_:finishedWithRecord:)`
+			are made, the callbacks made to the closure might be performed in a
+			different order.
+
+		- postcondition:
+			In `finishedWithRecord` either `record` is `nil` or `error` is `nil`
+			but not both at the same time.
+
+			```swift
+			 assert((record == nil) != (error == nil), "Postcondition failed")
+			```
+	*/
 	func retrieveRecordWithId(recordId: RecordId, finishedWithRecord: (record: Record?, error: String?) -> Void) {
 		let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
 		let session = NSURLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
@@ -133,35 +217,74 @@ class PrivacyService {
 
 	// MARK: Enums
 
+	/// This enum is used to avoid hard-coded HTTP headers.
 	private enum HttpHeaders: String {
+		/// The HTTP "Content-Type" header.
 		case ContentTypeHeader = "Content-Type"
 	}
 
+	/// This enum is used to avoid hard-coded HTTP methods.
 	private enum HttpMethods: String {
+		/// The HTTP method used to store records.
 		case HttpMethodForStore    = "POST"
+		/// The HTTP method used to retrieve records.
 		case HttpMethodForRetrieve = "GET"
 	}
 
+	/// This enum is used to avoid hard-coded HTTP status codes.
 	private enum HttpStatus: Int {
+		/// The HTTP status code that signals success.
 		case HttpStatusOk = 200
 	}
 
 	// MARK: Class constants
 
+	/**
+		The default content type of the encrypted value of an record. The value
+		is transmitted in binary form.
+
+		- todo:
+			The value should be compressed to save bandwith.
+	*/
 	private static let DefaultContentTypeHttpHeaderVaulue = "application/octet-stream"
 
 	// MARK: Constants
 
-	// <#FIXME#> Use real URL.
+	/**
+		The base URL for the Privacy-Service.
+
+		- todo:
+			Use real URL if a real Privacy-Service is established.
+	*/
 	private let baseUrl = NSURL(string: "https://privacyservice.test:8080")!
+
+	/// The certificate pinner for the Privacy-Service in use.
 	private let certificatePinner: CertificatePinner?
 
 	// MARK: Methods
 
+	/**
+		Returns a URL for the API entry point for storage operations.
+
+		- returns:
+			The URL which is used as entry point for storage operations.
+	*/
 	private func storageUrl() -> NSURL {
 		return baseUrl.URLByAppendingPathComponent("storage", isDirectory: true)
 	}
 
+	/**
+		Returns a URL for the API entry point for storage operations of a
+		specified `record`.
+
+		- parameter record:
+			The ID of the record, for which storage operations should be
+			performed.
+
+		- returns:
+			The url which is used as entry point for storage operations for a
+			specific record.
+	*/
 	private func storageUrlForRecord(recordId: RecordId) -> NSURL {
 		return storageUrl().URLByAppendingPathComponent(recordId.value, isDirectory: false)
 	}
@@ -175,8 +298,14 @@ class PrivacyService {
 
 	This function is thread safe.
 
-	- Requires:
-	  - `UIKit`
+	- requires:
+		[`UIKit`][1]
+
+	- todo:
+		Use a callback/delegate so that the security related functions can be
+		offered to command line utilities or on macOS as well.
+
+	[1]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html
 */
 func showNetworkActivityIndicator() {
 	dispatch_async(dispatch_get_main_queue()) {
@@ -190,7 +319,13 @@ func showNetworkActivityIndicator() {
 	This function is thread safe.
 
 	- Requires:
-	 - `UIKit`
+		[`UIKit`][1]
+
+	- todo:
+		Use a callback/delegate so that the security related functions can be
+		offered to command line utilities or on macOS as well.
+
+	[1]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html
 */
 func hideNetworkActivityIndicator() {
 	dispatch_async(dispatch_get_main_queue()) {

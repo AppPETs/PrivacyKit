@@ -43,7 +43,7 @@ func =~ (input: String, pattern: String) -> Bool {
 class RegularExpression {
 
 	/// The internal representation of the regular expression
-	let internalExpression: NSRegularExpression
+	private let internalExpression: NSRegularExpression
 
 	/**
 		Compile a regular expression.

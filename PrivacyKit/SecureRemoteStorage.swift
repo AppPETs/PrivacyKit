@@ -126,7 +126,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			made to the closure might be performed in a different order.
 	
 		- parameter key:
-			Te key that is used to identify the value.
+			The key that is used to identify the value.
 
 		- parameter valueAvailable:
 			This closure signals that retrieving has finished. If an error

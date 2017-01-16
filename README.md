@@ -103,7 +103,7 @@ follows:
 
 ```swift
 let session = URLSession(
-	configuration: URLSessionConfiguration(),
+	configuration: URLSessionConfiguration.default,
 	delegate:      certificatePinner,
 	delegateQueue: nil
 )

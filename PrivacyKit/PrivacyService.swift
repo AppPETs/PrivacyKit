@@ -92,7 +92,7 @@ class PrivacyService {
 			will contain a descriptive reason, otherwise it will be `nil`.
 	*/
 	func store(record: Record, finishedWithOptionalError: @escaping (_ error: String?) -> Void) {
-		let sessionConfiguration = URLSessionConfiguration()
+		let sessionConfiguration = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
 		var request = URLRequest(url: storageUrl(forRecord: record))
 
@@ -165,7 +165,7 @@ class PrivacyService {
 			```
 	*/
 	func retrieveRecord(withId recordId: RecordId, finishedWithRecord: @escaping (_ record: Record?, _ error: String?) -> Void) {
-		let sessionConfiguration = URLSessionConfiguration()
+		let sessionConfiguration = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
 		var request = URLRequest(url: storageUrl(forRecordId: recordId))
 

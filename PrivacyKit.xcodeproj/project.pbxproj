@@ -57,26 +57,12 @@
 			remoteGlobalIDString = 901644B61AE36EA700163E3E;
 			remoteInfo = "Example iOS";
 		};
-		6060120C1D3663F60076A6AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 901644CA1AE36EA800163E3E;
-			remoteInfo = "Example iOSTests";
-		};
 		6060120E1D3663F60076A6AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 901644DC1AE36F2D00163E3E;
 			remoteInfo = "Example OSX";
-		};
-		606012101D3663F60076A6AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 901644EB1AE36F2E00163E3E;
-			remoteInfo = "Example OSXTests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -167,9 +153,7 @@
 				606012071D3663F60076A6AA /* SodiumTests.xctest */,
 				606012091D3663F60076A6AA /* Sodium.framework */,
 				6060120B1D3663F60076A6AA /* Example iOS.app */,
-				6060120D1D3663F60076A6AA /* Example iOSTests.xctest */,
 				6060120F1D3663F60076A6AA /* Example OSX.app */,
-				606012111D3663F60076A6AA /* Example OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,7 +236,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Universität Hamburg";
 				TargetAttributes = {
 					606011D61D36381C0076A6AA = {
@@ -316,25 +300,11 @@
 			remoteRef = 6060120A1D3663F60076A6AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6060120D1D3663F60076A6AA /* Example iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Example iOSTests.xctest";
-			remoteRef = 6060120C1D3663F60076A6AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		6060120F1D3663F60076A6AA /* Example OSX.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = "Example OSX.app";
 			remoteRef = 6060120E1D3663F60076A6AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		606012111D3663F60076A6AA /* Example OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Example OSXTests.xctest";
-			remoteRef = 606012101D3663F60076A6AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -405,8 +375,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -456,8 +428,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -478,6 +452,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -30,8 +30,8 @@ let storage = SecureRemoteStorage()!
 
 // Store a key-value pair securely
 let key = "My PIN"
-let value = "1234".dataUsingEncoding(NSUTF8StringEncoding)!
-storage.storeValue(value, forKey: key) {
+let value = "1234".data(using: .utf8)!
+storage.store(value: value, forKey: key) {
 	optionalError in
 
 	if let error = optionalError {
@@ -40,7 +40,7 @@ storage.storeValue(value, forKey: key) {
 }
 
 // Retrieve a key-value pair securely
-storage.retrieveValueForKey(key) {
+storage.retrieveValue(forKey: key) {
 	optionalValue, optionalError in
 
 	// Assert postcondition
@@ -98,12 +98,12 @@ simply instantiating it like follows:
 let certificatePinner = CertificatePinner(forHost: "privacyservice.test")
 ```
 
-The `CertificatePinner` is an `NSURLSessionDelegate` and can be used like
+The `CertificatePinner` is an `URLSessionDelegate` and can be used like
 follows:
 
 ```swift
-let session = NSURLSession(
-	configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+let session = URLSession(
+	configuration: URLSessionConfiguration(),
 	delegate:      certificatePinner,
 	delegateQueue: nil
 )

@@ -20,7 +20,7 @@ class PrivacyServiceTests: XCTestCase {
 		let potentialRecordId = PrivacyService.RecordId(sha512_deadbeef)
 		XCTAssertNotNil(potentialRecordId, "Valid record ID rejected unexpectedly")
 
-		let upperCaseRecordId = PrivacyService.RecordId(sha512_deadbeef.uppercaseString)
+		let upperCaseRecordId = PrivacyService.RecordId(sha512_deadbeef.uppercased())
 		XCTAssertNotNil(upperCaseRecordId, "Valid record ID with upperase hex rejected unexpectedly")
 
 		let emptyRecordId = PrivacyService.RecordId("")

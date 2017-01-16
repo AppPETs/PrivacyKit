@@ -44,7 +44,7 @@ class SecurityManager {
 	*/
 	struct EncryptedData {
 		/// The encrypted data blob.
-		let blob: NSData
+		let blob: Data
 	}
 
 	// MARK: Class constants
@@ -62,7 +62,7 @@ class SecurityManager {
 		the [`Sodium`](https://github.com/jedisct1/swift-sodium) framework. It
 		is implemented by the **Argon2i** algorithm.
 
-		- parameter key:
+		- parameter ofKey:
 			The key that should be hashed.
 
 		- parameter outputLengthInBytes:
@@ -71,8 +71,8 @@ class SecurityManager {
 		- returns:
 			The hash as a hexadecimal string representation.
 	*/
-	func hashOfKey(key: NSData, withOutputLengthInBytes outputLengthInBytes: Int) -> String? {
-		guard let hashedKeyAsData = sodium.pwHash.hash(outputLengthInBytes, passwd: key, salt: self.secretSalt, opsLimit: sodium.pwHash.OpsLimitInteractive, memLimit: sodium.pwHash.MemLimitInteractive) else {
+	func hash(ofKey key: Data, withOutputLengthInBytes outputLengthInBytes: Int) -> String? {
+		guard let hashedKeyAsData = sodium.pwHash.hash(outputLength: outputLengthInBytes, passwd: key, salt: self.secretSalt, opsLimit: sodium.pwHash.OpsLimitInteractive, memLimit: sodium.pwHash.MemLimitInteractive) else {
 				print("Failed to hash key \(key)")
 				return nil
 		}
@@ -92,39 +92,38 @@ class SecurityManager {
 		ciphertext.
 
 		- see:
-			`decryptData(_:)`
+			`decrypt(ciphertext:)`
 
-		- parameter data:
+		- parameter plaintext:
 			The data that should be encrypted.
 
 		- returns:
 			An encrypted data object or `nil` if the encryption failed.
 	*/
-	func encryptData(data: NSData) -> EncryptedData? {
-		let optionalCiphertext: NSData? = sodium.secretBox.seal(data, secretKey: self.secretKey)
+	func encrypt(plaintext: Data) -> EncryptedData? {
+		let optionalCiphertext: Data? = sodium.secretBox.seal(message: plaintext, secretKey: self.secretKey)
 		guard let ciphertext = optionalCiphertext else {
 			return nil
 		}
-		let encryptedData = EncryptedData(blob: ciphertext)
-		return encryptedData
+		return EncryptedData(blob: ciphertext)
 	}
 
 	/**
 		Decrypts data and validates integrity.
 
 		- see:
-			`encryptData(_:)`
+			`encrypt(plaintext:)`
 
-		- parameter encryptedData:
+		- parameter ciphertext:
 			The encrypted data that should be decrypted.
 
 		- returns:
 			The decrypted data or `nil` if the decryption or integrity
 			validation failed.
 	*/
-	func decryptData(encryptedData: EncryptedData) -> NSData? {
-		let data = sodium.secretBox.open(encryptedData.blob, secretKey: self.secretKey)
-		return data
+	func decrypt(ciphertext: EncryptedData) -> Data? {
+		let plaintext = sodium.secretBox.open(nonceAndAuthenticatedCipherText: ciphertext.blob, secretKey: self.secretKey)
+		return plaintext
 	}
 
 	// MARK: - Private
@@ -141,19 +140,19 @@ class SecurityManager {
 	private static let SecretSaltFileName = "secret.salt"
 
 	/// The directory for storing documents
-	private static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+	private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
 
 	/**
 		The location of the file, which is used to persist the secret encryption
 		key.
 	*/
-	private static let SecretKeyLocation  = DocumentsDirectory.URLByAppendingPathComponent(SecretKeyFileName)
+	private static let SecretKeyLocation = DocumentsDirectory.appendingPathComponent(SecretKeyFileName, isDirectory: false)
 
 	/**
 		The location of the file, which is used to persist the secret salt,
 		which in turn is used for hashing asset keys.
 	*/
-	private static let SecretSaltLocation = DocumentsDirectory.URLByAppendingPathComponent(SecretSaltFileName)
+	private static let SecretSaltLocation = DocumentsDirectory.appendingPathComponent(SecretSaltFileName, isDirectory: false)
 
 	/**
 		An instance of [`Sodium`](https://github.com/jedisct1/swift-sodium),
@@ -165,7 +164,7 @@ class SecurityManager {
 	private let secretKey: Box.SecretKey
 
 	/// The secret salt, which is used for hashing asset keys.
-	private let secretSalt: NSData
+	private let secretSalt: Data
 
 	// MARK: Initializers
 
@@ -195,13 +194,13 @@ class SecurityManager {
 		}
 		self.sodium = sodium
 
-		let fileManager = NSFileManager.defaultManager()
+		let fileManager = FileManager()
 
 		// Init key
-		let secretKeyExists = fileManager.fileExistsAtPath(SecurityManager.SecretKeyLocation.path!)
+		let secretKeyExists = fileManager.fileExists(atPath: SecurityManager.SecretKeyLocation.path)
 		if secretKeyExists {
 			// Load existing key
-			guard let secretKey = NSData(contentsOfURL: SecurityManager.SecretKeyLocation) else {
+			guard let secretKey = try? Data(contentsOf: SecurityManager.SecretKeyLocation) else {
 				print("Could not load secret key from \(SecurityManager.SecretKeyLocation)")
 				return nil
 			}
@@ -213,37 +212,46 @@ class SecurityManager {
 				return nil
 			}
 			self.secretKey = secretKey
-			persistData(secretKey, toLocation: SecurityManager.SecretKeyLocation)
+			guard persist(data: secretKey, toLocation: SecurityManager.SecretKeyLocation) else {
+				print("Could not persist secret key")
+				return nil
+			}
 		}
 
 		// Init salt
-		let secretSaltExists = fileManager.fileExistsAtPath(SecurityManager.SecretSaltLocation.path!)
+		let secretSaltExists = fileManager.fileExists(atPath: SecurityManager.SecretSaltLocation.path)
 		if secretSaltExists {
 			// Load existing salt
-			guard let encryptedSecretSalt = NSData(contentsOfURL: SecurityManager.SecretSaltLocation) else {
+			guard let encryptedSecretSalt = try? Data(contentsOf: SecurityManager.SecretSaltLocation) else {
 				print("Could not load secret salt from \(SecurityManager.SecretSaltLocation)")
 				return nil
 			}
 			// Unfortunately we can not use `decryptData()` here, as not all
 			// constants were initialized.
-			guard let secretSalt = sodium.secretBox.open(encryptedSecretSalt, secretKey: self.secretKey) else {
+			guard let secretSalt = sodium.secretBox.open(nonceAndAuthenticatedCipherText: encryptedSecretSalt, secretKey: self.secretKey) else {
 				print("Failed to decrypt secret salt")
 				return nil
 			}
 			self.secretSalt = secretSalt
-			assert(self.secretSalt == decryptData(EncryptedData(blob: encryptedSecretSalt)), "Implementation of decryptData() has changed, please decrypt secret salt accordingly!")
+			assert(
+				self.secretSalt == decrypt(ciphertext: EncryptedData(blob: encryptedSecretSalt)),
+				"Implementation of decrypt(ciphertext:_) has changed, please decrypt secret salt accordingly!"
+			)
 		} else {
 			// Create and persist new secret salt
-			guard let secretSalt = sodium.randomBytes.buf(sodium.pwHash.SaltBytes) else {
+			guard let secretSalt = sodium.randomBytes.buf(length: sodium.pwHash.SaltBytes) else {
 				print("Could not generate secret salt")
 				return nil
 			}
 			self.secretSalt = secretSalt
-			guard let encryptedSalt = encryptData(secretSalt) else {
+			guard let encryptedSalt = encrypt(plaintext: secretSalt) else {
 				print("Failed to encrypt secret salt in order to persist it securely")
 				return nil
 			}
-			persistData(encryptedSalt.blob, toLocation: SecurityManager.SecretSaltLocation)
+			guard persist(data: encryptedSalt.blob, toLocation: SecurityManager.SecretSaltLocation) else {
+				print("Coult not persist secret salt")
+				return nil
+			}
 		}
 	}
 }
@@ -257,20 +265,20 @@ class SecurityManager {
 	- parameter data:
 		The data that should be persisted.
 	
-	- parameter location:
+	- parameter toLocation:
 		The location at which the `data` should be persisted.
 
 	- returns:
 		`true` if persisting succeeded, `false` otherwise.
 */
-func persistData(data: NSData, toLocation location: NSURL) -> Bool {
-	let writingOptions: NSDataWritingOptions = [
-		.DataWritingFileProtectionComplete,
-		.DataWritingWithoutOverwriting
+func persist(data: Data, toLocation location: URL) -> Bool {
+	let writingOptions: Data.WritingOptions = [
+		.completeFileProtection,
+		.withoutOverwriting
 	]
 	do {
-		try data.writeToURL(location, options: writingOptions)
-	} catch let error as NSError {
+		try data.write(to: location, options: writingOptions)
+	} catch let error {
 		print("Failed to persist \(location): \(error)")
 		return false
 	}

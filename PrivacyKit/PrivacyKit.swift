@@ -28,8 +28,8 @@ class PrivacyKit {
 		- returns:
 			The bundle for the `PrivacyKit` framework.
 	*/
-	static func bundle() -> NSBundle {
-		return NSBundle(identifier: PrivacyKit.bundleId)!
+	static func bundle() -> Bundle {
+		return Bundle(identifier: PrivacyKit.bundleId)!
 	}
 
 }

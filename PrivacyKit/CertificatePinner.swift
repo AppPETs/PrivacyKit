@@ -20,12 +20,12 @@ import Foundation
 
 	```swift
 	let certificatePinner = CertificatePinner(forHost: "www.example.com")!
-	let session = NSURLSession(
-	    configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+	let session = URLSession(
+	    configuration: URLSessionConfiguration.defaultSessionConfiguration(),
 	    delegate:      certificatePinner,
 	    delegateQueue: nil
 	)
-	// Continue like you would with NSURLSession
+	// Continue like you would with URLSession
 	```
 
 	- see:
@@ -34,13 +34,14 @@ import Foundation
 		- [iOS certificate pinning with Swift and NSURLSession][2]
 
 	- todo:
-		Maybe consider [TrustKit][3]?
+		- Maybe consider [TrustKit][3]?
+		- Maybe enable to use TOFU?
 	
 	[1]: https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#iOS
 	[2]: http://stackoverflow.com/a/34223292/5082444
 	[3]: https://datatheorem.github.io/TrustKit/
 */
-class CertificatePinner : NSObject, NSURLSessionDelegate {
+class CertificatePinner : NSObject, URLSessionDelegate {
 
 	// MARK: Initializers
 	
@@ -77,16 +78,16 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 		self.pinnedServerCertificate = pinnedServerCertificate
 	}
 
-	// MARK: NSURLSessionDelegate
+	// MARK: URLSessionDelegate
 
 	/**
-		`NSURLSessionDelegate` implementation that validates the certificate
+		`URLSessionDelegate` implementation that validates the certificate
 		used by the server and compares it to the pinned certificate. Connection
 		will be refused if the certificates do not match.
 
 		- see:
 			Official documentation:
-			- [`NSURLSessionDelegate`][1]
+			- [`URLSessionDelegate`][1]
 			- [`URLSession` delegate][2] (Parameters are quoted from there.)
 
 		- parameter session:
@@ -105,14 +106,14 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 			  authentication if disposition is
 			  `NSURLSessionAuthChallengeUseCredential`, otherwise `nil`.
 
-		[1]: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionDelegate_protocol/index.html
-		[2]: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionDelegate_protocol/index.html#//apple_ref/occ/intfm/NSURLSessionDelegate/URLSession:didReceiveChallenge:completionHandler:
+		[1]: https://developer.apple.com/reference/foundation/urlsessiondelegate
+		[2]: https://developer.apple.com/reference/foundation/urlsessiondelegate/1409308-urlsession
 	*/
-	func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+	func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
 
 		guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust else {
 			// Don't handle other challenges, such as client certificates
-			completionHandler(.PerformDefaultHandling, nil)
+			completionHandler(.performDefaultHandling, nil)
 			return
 		}
 
@@ -121,7 +122,7 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 			return
 		}
 
-		var trustResult = SecTrustResultType(kSecTrustResultInvalid)
+		var trustResult: SecTrustResultType = .invalid
 		let trustStatus = SecTrustEvaluate(serverTrust, &trustResult)
 
 		guard trustStatus == errSecSuccess else {
@@ -135,14 +136,14 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 		}
 
 		let serverCertificateDataRef = SecCertificateCopyData(serverCertificate)
-		let serverCertificateData = NSData(bytes: CFDataGetBytePtr(serverCertificateDataRef), length: CFDataGetLength(serverCertificateDataRef))
+		let serverCertificateData = Data(bytes: CFDataGetBytePtr(serverCertificateDataRef), count: CFDataGetLength(serverCertificateDataRef))
 
-		if !serverCertificateData.isEqualToData(pinnedServerCertificate) {
+		if !serverCertificateData.elementsEqual(pinnedServerCertificate) {
 			pinningFailed(completionHandler)
 			return
 		}
 
-		pinningSucceededForServerTrust(serverTrust, completionHandler)
+		pinningSucceeded(withServerTrust: serverTrust, completionHandler)
 	}
 
 	// MARK: - Private
@@ -152,19 +153,19 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 	/**
 		Contains the binary server certificate in DER format.
 	*/
-	private let pinnedServerCertificate: NSData
+	private let pinnedServerCertificate: Data
 
 	// MARK: Methods
 
 	/**
 		Convenience method to signal that pinning has failed, by canceling the
 		authentication challenge with the `completionHandler` passed to
-		`URLSession(_:didReceiveChallenge:completionHandler:)`. This will drop
-		the session and cancel the request.
+		`URLSession(_:didReceive:completionHandler:)`. This will drop the
+		session and cancel the request.
 
 		- see:
 			Official Documentation:
-			- [`NSURLSessionDelegate`][1]
+			- [`URLSessionDelegate`][1]
 			- [`URLSession` delegate][2] (The `completionHandler` parameter is
 			  quoted from there.)
 
@@ -178,26 +179,25 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 			  authentication if disposition is
 			  `NSURLSessionAuthChallengeUseCredential`, otherwise `nil`.
 
-		[1]: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionDelegate_protocol/index.html
-		[2]: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionDelegate_protocol/index.html#//apple_ref/occ/intfm/NSURLSessionDelegate/URLSession:didReceiveChallenge:completionHandler:
+		[1]: https://developer.apple.com/reference/foundation/urlsessiondelegate
+		[2]: https://developer.apple.com/reference/foundation/urlsessiondelegate/1409308-urlsession
 
 	*/
-	private func pinningFailed(completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
-		completionHandler(.CancelAuthenticationChallenge, nil)
+	private func pinningFailed(_ completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+		completionHandler(.cancelAuthenticationChallenge, nil)
 	}
 
 	/**
 		Convenience method to signal that pinning has succeeded and continue by
 		passing the explicit `serverTrust` to the `completionHandler`, which is
-		originally passed to
-		`URLSession(_:didReceiveChallenge:completionHandler:)`.
+		originally passed to `URLSession(_:didReceive:completionHandler:)`.
 
 		- see:
 			Official Documentation:
-			- [`NSURLSessionDelegate`][1]
+			- [`URLSessionDelegate`][1]
 			- [`URLSession` delegate][2] (The `completionHandler` parameter is
 			  quoted from there.)
-			- [`NSURLCredential`][3] (The `serverTrust` parameter is quoted from
+			- [`URLCredential`][3] (The `serverTrust` parameter is quoted from
 			  there.)
 
 		- parameter serverTrust: The accepted trust.
@@ -212,12 +212,12 @@ class CertificatePinner : NSObject, NSURLSessionDelegate {
 			  authentication if disposition is
 			  `NSURLSessionAuthChallengeUseCredential`, otherwise `nil`.
 
-		[1]: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionDelegate_protocol/index.html
-		[2]: https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSessionDelegate_protocol/index.html#//apple_ref/occ/intfm/NSURLSessionDelegate/URLSession:didReceiveChallenge:completionHandler:
-		[3]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSURLCredential_Class/index.html#//apple_ref/occ/clm/NSURLCredential/credentialForTrust:
+		[1]: https://developer.apple.com/reference/foundation/urlsessiondelegate
+		[2]: https://developer.apple.com/reference/foundation/urlsessiondelegate/1409308-urlsession
+		[3]: https://developer.apple.com/reference/foundation/urlcredential/1413935-init
 	*/
-	private func pinningSucceededForServerTrust(serverTrust: SecTrust, _ completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
-		completionHandler(.UseCredential, NSURLCredential(forTrust: serverTrust))
+	private func pinningSucceeded(withServerTrust serverTrust: SecTrust, _ completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+		completionHandler(.useCredential, URLCredential(trust: serverTrust))
 	}
 
 }

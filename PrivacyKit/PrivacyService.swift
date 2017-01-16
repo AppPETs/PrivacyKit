@@ -11,12 +11,6 @@ import UIKit
 
 /**
 	Internal class that acts as an interface to the web service API.
-
-	- requires:
-		[`Foundation`][1] for [`NSURL`][2]
-
-	[1]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/ObjC_classic/index.html
-	[2]: https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/index.html
 */
 class PrivacyService {
 
@@ -82,7 +76,7 @@ class PrivacyService {
 
 		#### Example
 		```swift
-		privacyService.storeRecord(record) {
+		privacyService.store(record: record) {
 		    optionalError in
 		    if let error = optionalError {
 		        // TODO Handle error
@@ -97,40 +91,40 @@ class PrivacyService {
 			Singals that storing is finished. If an error occurred than `error`
 			will contain a descriptive reason, otherwise it will be `nil`.
 	*/
-	func storeRecord(record: Record, finishedWithOptionalError: (error: String?) -> Void) {
-		let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-		let session = NSURLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
-		let request = NSMutableURLRequest(URL: storageUrlForRecord(record.id))
+	func store(record: Record, finishedWithOptionalError: @escaping (_ error: String?) -> Void) {
+		let sessionConfiguration = URLSessionConfiguration()
+		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
+		var request = URLRequest(url: storageUrl(forRecord: record))
 
-		request.HTTPMethod = PrivacyService.HttpMethods.HttpMethodForStore.rawValue
+		request.httpMethod = PrivacyService.HttpMethods.HttpMethodForStore.rawValue
 
 		// Set HTTP headers
 		request.addValue(PrivacyService.DefaultContentTypeHttpHeaderVaulue, forHTTPHeaderField: PrivacyService.HttpHeaders.ContentTypeHeader.rawValue)
 
 		showNetworkActivityIndicator()
 
-		let task = session.uploadTaskWithRequest(request, fromData: record.encryptedData.blob) {
+		let task = session.uploadTask(with: request, from: record.encryptedData.blob) {
 			optionalData, optionalResponse, optionalError in
 
 			hideNetworkActivityIndicator()
 
 			if let error = optionalError {
-				finishedWithOptionalError(error: "Error: \(error.localizedDescription)\nResponse: \(optionalResponse.debugDescription)")
+				finishedWithOptionalError("Error: \(error.localizedDescription)\nResponse: \(optionalResponse.debugDescription)")
 				return
 			}
 
-			guard let response = optionalResponse as? NSHTTPURLResponse else {
-				finishedWithOptionalError(error: "Response is not HTTP")
+			guard let response = optionalResponse as? HTTPURLResponse else {
+				finishedWithOptionalError("Response is not HTTP")
 				return
 			}
 
 			if response.statusCode != PrivacyService.HttpStatus.HttpStatusOk.rawValue {
-				finishedWithOptionalError(error: "HTTP Error \(response.statusCode): \(response.description)")
+				finishedWithOptionalError("HTTP Error \(response.statusCode): \(response.description)")
 				return
 			}
 
 			// Successfully uploaded encrypted asset
-			finishedWithOptionalError(error: nil)
+			finishedWithOptionalError(nil)
 		}
 		task.resume()
 	}
@@ -140,25 +134,25 @@ class PrivacyService {
 
 		#### Example
 		```swift
-		privacyService.retrieveRecordWithId(recordId) {
+		privacyService.retrieveRecord(withId: recordId) {
 		    optionalRecord, optionalError in
 		    // Assert postcondition
 		    assert((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
 		    if let error = optionalError {
 		        // Delegate error and back out
-		        valueAvailable(value: nil, error: error)
+		        valueAvailable(nil, error)
 		        return
 		    }
 		    // Successfully downloaded encrypted value
 		    let record = optionalRecord!
 		    // TODO Decrypt data and signal success
-		    valueAvailable(value: decryptedValue, error: nil)
+		    valueAvailable(decryptedValue, nil)
 		}
 		```
 
 		- warning:
 			The closure `finishedWithRecord` is called asynchronously. Therefore
-			if multiple calls to `retrieveRecordWithId(_:finishedWithRecord:)`
+			if multiple calls to `retrieveRecord(withId:finishedWithRecord:)`
 			are made, the callbacks made to the closure might be performed in a
 			different order.
 
@@ -170,44 +164,45 @@ class PrivacyService {
 			 assert((record == nil) != (error == nil), "Postcondition failed")
 			```
 	*/
-	func retrieveRecordWithId(recordId: RecordId, finishedWithRecord: (record: Record?, error: String?) -> Void) {
-		let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-		let session = NSURLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
-		let request = NSMutableURLRequest(URL: storageUrlForRecord(recordId))
-		request.HTTPMethod = PrivacyService.HttpMethods.HttpMethodForRetrieve.rawValue
+	func retrieveRecord(withId recordId: RecordId, finishedWithRecord: @escaping (_ record: Record?, _ error: String?) -> Void) {
+		let sessionConfiguration = URLSessionConfiguration()
+		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
+		var request = URLRequest(url: storageUrl(forRecordId: recordId))
+
+		request.httpMethod = PrivacyService.HttpMethods.HttpMethodForRetrieve.rawValue
 
 		showNetworkActivityIndicator()
 
-		let task = session.dataTaskWithRequest(request) {
+		let task = session.dataTask(with: request) {
 			optionalData, optionalResponse, optionalError in
 
 			hideNetworkActivityIndicator()
 
 			if let error = optionalError {
-				finishedWithRecord(record: nil, error: "Error: \(error.localizedDescription)\nResponse: \(optionalResponse.debugDescription)")
+				finishedWithRecord(nil, "Error: \(error.localizedDescription)\nResponse: \(optionalResponse.debugDescription)")
 				return
 			}
 
-			guard let response = optionalResponse as? NSHTTPURLResponse else {
-				finishedWithRecord(record: nil, error: "Resonse is not HTTP")
+			guard let response = optionalResponse as? HTTPURLResponse else {
+				finishedWithRecord(nil, "Resonse is not HTTP")
 				return
 			}
 
 			if response.statusCode != PrivacyService.HttpStatus.HttpStatusOk.rawValue {
-				finishedWithRecord(record: nil, error: "HTTP Error \(response.statusCode): \(response.description)")
+				finishedWithRecord(nil, "HTTP Error \(response.statusCode): \(response.description)")
 				return
 			}
 
 			// Successfully downloaded asset
 
 			guard let retrievedData = optionalData else {
-				finishedWithRecord(record: nil, error: "Response contains no content")
+				finishedWithRecord(nil, "Response contains no content")
 				return
 			}
 
 			let encryptedData = SecurityManager.EncryptedData(blob: retrievedData)
 			let record = Record(id: recordId, encryptedData: encryptedData)
-			finishedWithRecord(record: record, error: nil)
+			finishedWithRecord(record, nil)
 
 		}
 		task.resume()
@@ -256,7 +251,7 @@ class PrivacyService {
 		- todo:
 			Use real URL if a real Privacy-Service is established.
 	*/
-	private let baseUrl = NSURL(string: "https://privacyservice.test:8080")!
+	private let baseUrl = URL(string: "https://privacyservice.test:8080")!
 
 	/// The certificate pinner for the Privacy-Service in use.
 	private let certificatePinner: CertificatePinner
@@ -269,15 +264,17 @@ class PrivacyService {
 		- returns:
 			The URL which is used as entry point for storage operations.
 	*/
-	private func storageUrl() -> NSURL {
-		return baseUrl.URLByAppendingPathComponent("storage", isDirectory: true)
+	private func storageUrl() -> URL {
+		return baseUrl
+			.appendingPathComponent("storage", isDirectory: true)
+			.appendingPathComponent("v1", isDirectory: true)
 	}
 
 	/**
 		Returns a URL for the API entry point for storage operations of a
 		specified `record`.
 
-		- parameter record:
+		- parameter forRecordId:
 			The ID of the record, for which storage operations should be
 			performed.
 
@@ -285,8 +282,23 @@ class PrivacyService {
 			The url which is used as entry point for storage operations for a
 			specific record.
 	*/
-	private func storageUrlForRecord(recordId: RecordId) -> NSURL {
-		return storageUrl().URLByAppendingPathComponent(recordId.value, isDirectory: false)
+	private func storageUrl(forRecordId recordId: RecordId) -> URL {
+		return storageUrl().appendingPathComponent(recordId.value, isDirectory: false)
+	}
+
+	/**
+		Returns a URL for the API entry point for storage operations of a
+		specified `record`.
+
+		- parameter forRecord:
+			The record, for which storage operations should be performed.
+
+		- returns:
+			The url which is used as entry point for storage operations for a
+			specific record.
+	*/
+	private func storageUrl(forRecord record: Record) -> URL {
+		return storageUrl(forRecordId: record.id)
 	}
 
 }
@@ -305,11 +317,11 @@ class PrivacyService {
 		Use a callback/delegate so that the security related functions can be
 		offered to command line utilities or on macOS as well.
 
-	[1]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html
+	[1]: https://developer.apple.com/reference/uikit
 */
 func showNetworkActivityIndicator() {
-	dispatch_async(dispatch_get_main_queue()) {
-		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+	DispatchQueue.main.async {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 	}
 }
 
@@ -325,10 +337,10 @@ func showNetworkActivityIndicator() {
 		Use a callback/delegate so that the security related functions can be
 		offered to command line utilities or on macOS as well.
 
-	[1]: https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html
+	[1]: https://developer.apple.com/reference/uikit
 */
 func hideNetworkActivityIndicator() {
-	dispatch_async(dispatch_get_main_queue()) {
-		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+	DispatchQueue.main.async {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = false
 	}
 }

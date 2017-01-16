@@ -8,7 +8,7 @@
 
 import Foundation
 
-infix operator =~ {}
+infix operator =~
 
 /**
 	Infix operator for testing if a string matches a regular expression.
@@ -56,7 +56,7 @@ class RegularExpression {
 	*/
 	init?(_ pattern: String) {
 		do {
-			self.internalExpression = try NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+			self.internalExpression = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
 		} catch {
 			return nil
 		}
@@ -71,8 +71,8 @@ class RegularExpression {
 		- returns:
 			`true` if the expression matches the string, `false` otherwise.
 	*/
-	func test(input: String) -> Bool {
-		let matches = self.internalExpression.matchesInString(input, options: NSMatchingOptions.ReportCompletion, range:NSMakeRange(0, input.characters.count))
+	func test(_ input: String) -> Bool {
+		let matches = self.internalExpression.matches(in: input, options: .reportCompletion, range: NSMakeRange(0, input.characters.count))
 		return matches.count > 0
 	}
 

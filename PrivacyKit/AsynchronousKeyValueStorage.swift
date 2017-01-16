@@ -14,30 +14,30 @@
 	```swift
 	class MyKeyValueStorage : AsynchronousKeyValueStorage {
 	    typealias KeyType   = String
-	    typealias ValueType = NSData
+	    typealias ValueType = Data
 	    typealias ErrorType = String
-	    func storeValue(
+	    func store(
 	        value:             ValueType,
 	        forKey key:        KeyType,
-	        finishedWithError: (error: ErrorType?) -> Void
+	        finishedWithError: (_ error: ErrorType?) -> Void
 	    ) {
 	        // TODO Store the value
 	        // If an error occurs, report and back out early
-	        finishedWithError(error: "Error description")
+	        finishedWithError("Error description")
 	        return
 	        // If everything goes smoothly, signal success
-	        finishedWithError(error: nil)
+	        finishedWithError(nil)
 	    }
-	    func retrieveValueForKey(
-	        key:            KeyType,
-	        valueAvailable: (value: ValueType?, error: ErrorType?) -> Void
+	    func retrieveValue(
+	        forKey key:     KeyType,
+	        valueAvailable: (_ value: ValueType?, _ error: ErrorType?) -> Void
 	    ) {
 	        // TODO Retrieve the value
 	        // If an error occurs, report and back out early
-	        valueAvailable(value: nil, error: "Error description")
+	        valueAvailable(nil, "Error description")
 	        return
 	        // If everything goes smoothly, return value and signal success
-	        valueAvailable(value: value: error: nil)
+	        valueAvailable(value, nil)
 	    }
 	}
 	```
@@ -64,7 +64,7 @@ public protocol AsynchronousKeyValueStorage {
 
 		#### Example
 		```swift
-		storage.storeValue(value, forKey: key) {
+		storage.store(value: value, forKey: key) {
 		    optionalError in
 		    if let error = optionalError {
 		        // TODO Handle error
@@ -83,15 +83,15 @@ public protocol AsynchronousKeyValueStorage {
 			`error` is `nil` and if the asset could not be stored, `error`
 			then contains a desriptive error message explaining the reason.
 	*/
-	func storeValue(value: ValueType, forKey key: KeyType, finishedWithError: (error: ErrorType?) -> Void)
+	func store(value: ValueType, forKey key: KeyType, finishedWithError: @escaping (_ error: ErrorType?) -> Void)
 
 
 	/**
-		Retrieves data for key `key` asynchronously.
+		Retrieves data for key `forKey` asynchronously.
 
 		#### Example
 		```swift
-		storage.retrieveValueForKey(key) {
+		storage.retrieveValue(forKey: key) {
 		    optionalValue, optionalError in
 		    // Assert postcondition
 		    assert((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
@@ -112,8 +112,8 @@ public protocol AsynchronousKeyValueStorage {
 			assert((value == nil) != (error == nil), "Postcondition failed")
 			```
 
-		- parameter key:
-			The key that identifies the data value that should be retrieved.
+		- parameter forKey:
+			The key that identifies the value that should be retrieved.
 
 		- parameter valueAvailable:
 			A function that is called when the asset for the identifier `key`
@@ -122,6 +122,6 @@ public protocol AsynchronousKeyValueStorage {
 			An explanatory reason is then provided through the parameter `error`
 			which is `nil` upon success respectively.
 	*/
-	func retrieveValueForKey(key: KeyType, valueAvailable: (value: ValueType?, error: ErrorType?) -> Void)
+	func retrieveValue(forKey key: KeyType, valueAvailable: @escaping (_ value: ValueType?, _ error: ErrorType?) -> Void)
 
 }

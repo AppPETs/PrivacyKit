@@ -119,7 +119,7 @@ jazzy \
 	--clean \
 	--theme="fullwidth" \
 	--author="Maximilian Blochberger" \
-	--author_url="mailto:9blochbe@informatik.uni-hamburg.de" \
+	--author_url="mailto:blochberger@informatik.uni-hamburg.de" \
 	--abstract="README.md" \
 	--module="PrivacyKit" \
 	--module-version="0.0.1" \

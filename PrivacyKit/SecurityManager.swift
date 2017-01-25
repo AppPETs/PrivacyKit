@@ -58,9 +58,9 @@ class SecurityManager {
 		Generates a deterministic secure hash of a given `key`. This means that
 		if the given key is equal, the result will be equal as well.
 
-		The hashing function used is the password hashing function provided by
+		The hashing function used is the generic hashing function provided by
 		the [`Sodium`](https://github.com/jedisct1/swift-sodium) framework. It
-		is implemented by the **Argon2i** algorithm.
+		is implemented by the **Blake2b** algorithm.
 
 		- parameter ofKey:
 			The key that should be hashed.
@@ -72,9 +72,9 @@ class SecurityManager {
 			The hash as a hexadecimal string representation.
 	*/
 	func hash(ofKey key: Data, withOutputLengthInBytes outputLengthInBytes: Int) -> String? {
-		guard let hashedKeyAsData = sodium.pwHash.hash(outputLength: outputLengthInBytes, passwd: key, salt: self.secretSalt, opsLimit: sodium.pwHash.OpsLimitInteractive, memLimit: sodium.pwHash.MemLimitInteractive) else {
-				print("Failed to hash key \(key)")
-				return nil
+		guard let hashedKeyAsData = sodium.genericHash.hash(message: key, key: self.hashKey, outputLength: outputLengthInBytes) else {
+			print("Failed to hash key \(key)")
+			return nil
 		}
 
 		let hashedKey = sodium.utils.bin2hex(hashedKeyAsData)
@@ -101,7 +101,7 @@ class SecurityManager {
 			An encrypted data object or `nil` if the encryption failed.
 	*/
 	func encrypt(plaintext: Data) -> EncryptedData? {
-		let optionalCiphertext: Data? = sodium.secretBox.seal(message: plaintext, secretKey: self.secretKey)
+		let optionalCiphertext: Data? = sodium.secretBox.seal(message: plaintext, secretKey: self.encryptionKey)
 		guard let ciphertext = optionalCiphertext else {
 			return nil
 		}
@@ -122,7 +122,7 @@ class SecurityManager {
 			validation failed.
 	*/
 	func decrypt(ciphertext: EncryptedData) -> Data? {
-		let plaintext = sodium.secretBox.open(nonceAndAuthenticatedCipherText: ciphertext.blob, secretKey: self.secretKey)
+		let plaintext = sodium.secretBox.open(nonceAndAuthenticatedCipherText: ciphertext.blob, secretKey: self.encryptionKey)
 		return plaintext
 	}
 
@@ -130,29 +130,26 @@ class SecurityManager {
 
 	// MARK: Constants
 
-	/// The name of file, which is used to persist the secret encryption key.
-	private static let SecretKeyFileName  = "secret.key"
+	/// The name of file, which is used to persist the encryption key.
+	private static let EncryptionKeyFileName  = "encryption.key"
 
 	/**
-		The name of the file, which is used to persist the secret salt, which in
+		The name of the file, which is used to persist the hash key, which in
 		turn is used for hashing asset keys.
 	*/
-	private static let SecretSaltFileName = "secret.salt"
+	private static let HashKeyFileName = "hash.key"
 
 	/// The directory for storing documents
 	private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
 
-	/**
-		The location of the file, which is used to persist the secret encryption
-		key.
-	*/
-	private static let SecretKeyLocation = DocumentsDirectory.appendingPathComponent(SecretKeyFileName, isDirectory: false)
+	/// The location of the file, which is used to persist the encryption key.
+	private static let EncryptionKeyLocation = DocumentsDirectory.appendingPathComponent(EncryptionKeyFileName, isDirectory: false)
 
 	/**
-		The location of the file, which is used to persist the secret salt,
+		The location of the file, which is used to persist the hash key,
 		which in turn is used for hashing asset keys.
 	*/
-	private static let SecretSaltLocation = DocumentsDirectory.appendingPathComponent(SecretSaltFileName, isDirectory: false)
+	private static let HashKeyLocation = DocumentsDirectory.appendingPathComponent(HashKeyFileName, isDirectory: false)
 
 	/**
 		An instance of [`Sodium`](https://github.com/jedisct1/swift-sodium),
@@ -160,17 +157,17 @@ class SecurityManager {
 	*/
 	private let sodium: Sodium
 
-	/// The secret encryption key.
-	private let secretKey: Box.SecretKey
+	/// The encryption key.
+	private let encryptionKey: Box.SecretKey
 
-	/// The secret salt, which is used for hashing asset keys.
-	private let secretSalt: Data
+	/// The hash key, which is used for hashing asset keys.
+	private let hashKey: Data
 
 	// MARK: Initializers
 
 	/**
 		Initializes a `SecurityManager` instance. Upon first start this will
-		generate the required encryption key and the secret salt used for
+		generate the required encryption key and the hash key used for
 		hashing asset keys and persist them on disk. If they were already
 		persisted they will be loaded instead.
 
@@ -180,10 +177,10 @@ class SecurityManager {
 			could not be read if they were persisted.
 
 		- todo:
-			Store secret encyrption key and salt in Keychain.
+			Store encryption and hash keys in Keychain.
 
 		- todo:
-			Password protect secret encryption key.
+			Password protect encryption key.
 	*/
 	private init?() {
 
@@ -196,60 +193,60 @@ class SecurityManager {
 
 		let fileManager = FileManager()
 
-		// Init key
-		let secretKeyExists = fileManager.fileExists(atPath: SecurityManager.SecretKeyLocation.path)
-		if secretKeyExists {
-			// Load existing key
-			guard let secretKey = try? Data(contentsOf: SecurityManager.SecretKeyLocation) else {
-				print("Could not load secret key from \(SecurityManager.SecretKeyLocation)")
+		// Init encryption key
+		let encryptionKeyExists = fileManager.fileExists(atPath: SecurityManager.EncryptionKeyLocation.path)
+		if encryptionKeyExists {
+			// Load existing encryption key
+			guard let encryptionKey = try? Data(contentsOf: SecurityManager.EncryptionKeyLocation) else {
+				print("Could not load encryption key from \(SecurityManager.EncryptionKeyLocation)")
 				return nil
 			}
-			self.secretKey = secretKey
+			self.encryptionKey = encryptionKey
 		} else {
-			// Create and persist a new secret key
-			guard let secretKey = sodium.secretBox.key() else {
-				print("Failed to create new secret key!")
+			// Create and persist a new encryption key
+			guard let encryptionKey = sodium.secretBox.key() else {
+				print("Failed to create new encryption key!")
 				return nil
 			}
-			self.secretKey = secretKey
-			guard persist(data: secretKey, toLocation: SecurityManager.SecretKeyLocation) else {
-				print("Could not persist secret key")
+			self.encryptionKey = encryptionKey
+			guard persist(data: encryptionKey, toLocation: SecurityManager.EncryptionKeyLocation) else {
+				print("Could not persist encryption key")
 				return nil
 			}
 		}
 
-		// Init salt
-		let secretSaltExists = fileManager.fileExists(atPath: SecurityManager.SecretSaltLocation.path)
-		if secretSaltExists {
-			// Load existing salt
-			guard let encryptedSecretSalt = try? Data(contentsOf: SecurityManager.SecretSaltLocation) else {
-				print("Could not load secret salt from \(SecurityManager.SecretSaltLocation)")
+		// Init hash key
+		let hashKeyExists = fileManager.fileExists(atPath: SecurityManager.HashKeyLocation.path)
+		if hashKeyExists {
+			// Load existing hash key
+			guard let encryptedHashKey = try? Data(contentsOf: SecurityManager.HashKeyLocation) else {
+				print("Could not load hash key from \(SecurityManager.HashKeyLocation)")
 				return nil
 			}
 			// Unfortunately we can not use `decryptData()` here, as not all
 			// constants were initialized.
-			guard let secretSalt = sodium.secretBox.open(nonceAndAuthenticatedCipherText: encryptedSecretSalt, secretKey: self.secretKey) else {
-				print("Failed to decrypt secret salt")
+			guard let hashKey = sodium.secretBox.open(nonceAndAuthenticatedCipherText: encryptedHashKey, secretKey: self.encryptionKey) else {
+				print("Failed to decrypt hash key")
 				return nil
 			}
-			self.secretSalt = secretSalt
+			self.hashKey = hashKey
 			assert(
-				self.secretSalt == decrypt(ciphertext: EncryptedData(blob: encryptedSecretSalt)),
-				"Implementation of decrypt(ciphertext:_) has changed, please decrypt secret salt accordingly!"
+				self.hashKey == decrypt(ciphertext: EncryptedData(blob: encryptedHashKey)),
+				"Implementation of decrypt(ciphertext:_) has changed, please decrypt hash key accordingly!"
 			)
 		} else {
-			// Create and persist new secret salt
-			guard let secretSalt = sodium.randomBytes.buf(length: sodium.pwHash.SaltBytes) else {
-				print("Could not generate secret salt")
+			// Create and persist new hash key
+			guard let hashKey = sodium.randomBytes.buf(length: sodium.genericHash.Keybytes) else {
+				print("Could not generate hash key")
 				return nil
 			}
-			self.secretSalt = secretSalt
-			guard let encryptedSalt = encrypt(plaintext: secretSalt) else {
-				print("Failed to encrypt secret salt in order to persist it securely")
+			self.hashKey = hashKey
+			guard let encryptedHashKey = encrypt(plaintext: hashKey) else {
+				print("Failed to encrypt hash key in order to persist it securely")
 				return nil
 			}
-			guard persist(data: encryptedSalt.blob, toLocation: SecurityManager.SecretSaltLocation) else {
-				print("Coult not persist secret salt")
+			guard persist(data: encryptedHashKey.blob, toLocation: SecurityManager.HashKeyLocation) else {
+				print("Coult not persist hash key")
 				return nil
 			}
 		}

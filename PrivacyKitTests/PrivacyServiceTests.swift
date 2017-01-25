@@ -12,15 +12,14 @@ import XCTest
 class PrivacyServiceTests: XCTestCase {
 
 	func testRecordId() {
-		XCTAssertEqual(PrivacyService.RecordId.lengthInBytes, 512/8)
+		XCTAssertEqual(PrivacyService.RecordId.lengthInBytes, 256/8)
 
-		// sha512("deadbeef")
-		let sha512_deadbeef = "113a3bc783d851fc0373214b19ea7be9fa3de541ecb9fe026d52c603e8ea19c174cc0e9705f8b90d312212c0c3a6d8453ddfb3e3141409cf4bedc8ef033590b4"
+		let validRecordId = "fcb6471961829d28270462a2d5cba7fd141d80c608d6df074f8e2e213c187471"
 
-		let potentialRecordId = PrivacyService.RecordId(sha512_deadbeef)
+		let potentialRecordId = PrivacyService.RecordId(validRecordId)
 		XCTAssertNotNil(potentialRecordId, "Valid record ID rejected unexpectedly")
 
-		let upperCaseRecordId = PrivacyService.RecordId(sha512_deadbeef.uppercased())
+		let upperCaseRecordId = PrivacyService.RecordId(validRecordId.uppercased())
 		XCTAssertNotNil(upperCaseRecordId, "Valid record ID with upperase hex rejected unexpectedly")
 
 		let emptyRecordId = PrivacyService.RecordId("")
@@ -29,10 +28,10 @@ class PrivacyServiceTests: XCTestCase {
 		let shortRecordId = PrivacyService.RecordId("deadbeef")
 		XCTAssertNil(shortRecordId, "Short record ID accepted unexpectedly")
 
-		let longRecordId = PrivacyService.RecordId(sha512_deadbeef + "ff")
+		let longRecordId = PrivacyService.RecordId(validRecordId + "ff")
 		XCTAssertNil(longRecordId, "Long record ID accepted unexpectedly")
 
-		let nonHex512BitString = "X13a3bc783d851fc0373214b19ea7be9fa3de541ecb9fe026d52c603e8ea19c174cc0e9705f8b90d312212c0c3a6d8453ddfb3e3141409cf4bedc8ef033590b4"
+		let nonHex512BitString = "xcb6471961829d28270462a2d5cba7fd141d80c608d6df074f8e2e213c187471"
 		let nonHexRecordId = PrivacyService.RecordId(nonHex512BitString)
 		XCTAssertNil(nonHexRecordId, "Non-hex record ID accepted unexpectedly")
 	}

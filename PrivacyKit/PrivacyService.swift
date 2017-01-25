@@ -23,7 +23,7 @@ class PrivacyService {
 	struct RecordId {
 
 		/// Length of the record ID in bytes.
-		static let lengthInBytes = 512 / 8
+		static let lengthInBytes = 256 / 8
 
 		/// The actual string representation of the record ID.
 		let value: String

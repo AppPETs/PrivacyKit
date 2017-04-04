@@ -16,6 +16,10 @@
 		606012121D3664CE0076A6AA /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606012051D3663F60076A6AA /* Sodium.framework */; };
 		606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012151D3680B40076A6AA /* SecureRemoteStorage.swift */; };
 		606012221D36C6190076A6AA /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012211D36C6190076A6AA /* RegularExpression.swift */; };
+		609CB8481E93BEFD00929F6E /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8471E93BEFD00929F6E /* Http.swift */; };
+		609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB84E1E93BF1F00929F6E /* HttpTests.swift */; };
+		609CB8511E93C09300929F6E /* Shalon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8501E93C09300929F6E /* Shalon.swift */; };
+		609CB8531E93C15E00929F6E /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
 		60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
 		60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
 		60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB81D38F529009E2906 /* PrivacyKit.swift */; };
@@ -79,6 +83,10 @@
 		606011FA1D3663F60076A6AA /* Sodium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sodium.xcodeproj; path = Sodium/Sodium.xcodeproj; sourceTree = "<group>"; };
 		606012151D3680B40076A6AA /* SecureRemoteStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureRemoteStorage.swift; sourceTree = "<group>"; };
 		606012211D36C6190076A6AA /* RegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
+		609CB8471E93BEFD00929F6E /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		609CB84E1E93BF1F00929F6E /* HttpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTests.swift; sourceTree = "<group>"; };
+		609CB8501E93C09300929F6E /* Shalon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shalon.swift; sourceTree = "<group>"; };
+		609CB8521E93C15E00929F6E /* Tls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tls.swift; sourceTree = "<group>"; };
 		60DA8CB41D38CEEA009E2906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		60DA8CB61D38D592009E2906 /* CertificatePinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinner.swift; sourceTree = "<group>"; };
 		60DA8CB81D38F529009E2906 /* PrivacyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyKit.swift; sourceTree = "<group>"; };
@@ -140,8 +148,9 @@
 		606011E51D36381C0076A6AA /* PrivacyKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
 				606011E81D36381C0076A6AA /* Info.plist */,
+				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
+				609CB84E1E93BF1F00929F6E /* HttpTests.swift */,
 			);
 			path = PrivacyKitTests;
 			sourceTree = "<group>";
@@ -163,6 +172,8 @@
 			children = (
 				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
 				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
+				609CB8471E93BEFD00929F6E /* Http.swift */,
+				609CB8501E93C09300929F6E /* Shalon.swift */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -175,6 +186,7 @@
 				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				60DA8CB61D38D592009E2906 /* CertificatePinner.swift */,
 				60DA8CB81D38F529009E2906 /* PrivacyKit.swift */,
+				609CB8521E93C15E00929F6E /* Tls.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -337,7 +349,10 @@
 				606011F71D3644B30076A6AA /* SecurityManager.swift in Sources */,
 				60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
+				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,
 				606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */,
+				609CB8531E93C15E00929F6E /* Tls.swift in Sources */,
+				609CB8511E93C09300929F6E /* Shalon.swift in Sources */,
 				60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */,
+				609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -449,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

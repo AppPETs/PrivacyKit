@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
 	This class is used to pin certificates to a specific hosts. Certificate

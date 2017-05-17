@@ -26,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6012BC121EBD205200E47DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 606011FA1D3663F60076A6AA /* Sodium.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 09A943C61A4EB5F500C8A04F;
+			remoteInfo = Sodium_iOS;
+		};
 		606011E31D36381C0076A6AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 606011CE1D36381C0076A6AA /* Project object */;
@@ -233,6 +240,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6012BC131EBD205200E47DB8 /* PBXTargetDependency */,
 			);
 			name = PrivacyKit;
 			productName = PrivacyKit;
@@ -385,6 +393,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6012BC131EBD205200E47DB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Sodium_iOS;
+			targetProxy = 6012BC121EBD205200E47DB8 /* PBXContainerItemProxy */;
+		};
 		606011E41D36381C0076A6AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 606011D61D36381C0076A6AA /* PrivacyKit */;

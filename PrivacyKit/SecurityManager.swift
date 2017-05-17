@@ -236,7 +236,7 @@ class SecurityManager {
 			)
 		} else {
 			// Create and persist new hash key
-			guard let hashKey = sodium.randomBytes.buf(length: sodium.genericHash.Keybytes) else {
+			guard let hashKey = sodium.randomBytes.buf(length: sodium.genericHash.KeyBytes) else {
 				print("Could not generate hash key")
 				return nil
 			}

@@ -20,6 +20,7 @@
 		609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB84E1E93BF1F00929F6E /* HttpTests.swift */; };
 		609CB8511E93C09300929F6E /* Shalon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8501E93C09300929F6E /* Shalon.swift */; };
 		609CB8531E93C15E00929F6E /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
+		60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */; };
 		60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
 		60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
 		60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB81D38F529009E2906 /* PrivacyKit.swift */; };
@@ -94,6 +95,7 @@
 		609CB84E1E93BF1F00929F6E /* HttpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTests.swift; sourceTree = "<group>"; };
 		609CB8501E93C09300929F6E /* Shalon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shalon.swift; sourceTree = "<group>"; };
 		609CB8521E93C15E00929F6E /* Tls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tls.swift; sourceTree = "<group>"; };
+		60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShalonTest.swift; sourceTree = "<group>"; };
 		60DA8CB41D38CEEA009E2906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		60DA8CB61D38D592009E2906 /* CertificatePinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinner.swift; sourceTree = "<group>"; };
 		60DA8CB81D38F529009E2906 /* PrivacyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyKit.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				603BECE61ECC389100D3350C /* Supporting Files */,
 				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
 				609CB84E1E93BF1F00929F6E /* HttpTests.swift */,
+				60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */,
 			);
 			path = PrivacyKitTests;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */,
 				606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */,
 				609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */,
 			);

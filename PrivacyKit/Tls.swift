@@ -514,7 +514,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegte {
 
 				totalBytesProcessed += bytesProcessed
 				buffer.append(chunk.subdata(in: 0..<bytesProcessed))
-			} while stream.hasBytesAvailable && sslStatus == errSSLWouldBlock
+			} while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock
 		}
 
 		let bytesProcessed = min(buffer.count, maxLength)

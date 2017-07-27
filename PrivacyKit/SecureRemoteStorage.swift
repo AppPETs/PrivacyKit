@@ -202,7 +202,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			generation consumes energy and takes time. There is no need to
 			repeat it. The device's memory is trusted. Persisting the cache on
 			disk should be done with additional encryption and is should be
-			measued which operation has higher performance/energy impact before
+			measured which operation has higher performance/energy impact before
 			taking action.
 	*/
 	private func recordId(forKey key: KeyType) -> PrivacyService.RecordId? {

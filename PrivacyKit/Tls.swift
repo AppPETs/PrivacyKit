@@ -9,7 +9,7 @@
 import Foundation
 import Security
 
-let CHUNK_SIZE = 4096
+let CHUNK_SIZE = 1024 * 1024
 
 enum TlsStreamError: Error {
 	case readingFailed(OSStatus, Int)
@@ -18,7 +18,7 @@ enum TlsStreamError: Error {
 	case handshakeFailed(OSStatus)
 }
 
-protocol TlsSessionDelegte {
+protocol TlsSessionDelegate {
 	func finishOpen()
 	func setError(_ error: TlsStreamError)
 }
@@ -117,7 +117,7 @@ class PairedStream {
 class TlsSession {
 	let context: SSLContext
 
-	var delegates: [TlsSessionDelegte] = []
+	var delegates: [TlsSessionDelegate] = []
 
 	private var interrupted = false
 
@@ -296,6 +296,8 @@ class WrappedInputStream: InputStream, StreamDelegate {
 		stream.remove(from: runLoop, forMode: mode)
 	}
 
+    // TODO: This cannot possibly work, can it?
+    // Seems to be infinite loop
 	override func property(forKey key: Stream.PropertyKey) -> Any? {
 		return property(forKey: key)
 	}
@@ -427,10 +429,14 @@ class WrappedOutputStream: OutputStream, StreamDelegate {
 	}
 }
 
-class TLSInputStream: WrappedInputStream, TlsSessionDelegte {
+class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	let session: TlsSession
 
 	var buffer = Data()
+    // See comments in read() function. This was necessary to
+    // fix a performance issue.
+    // TODO: More elegant fix wanted.
+    var bufferIdx : Int = 0
 
 	var status: Stream.Status = .notOpen
 	var error: Error? = nil
@@ -517,12 +523,35 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegte {
 			} while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock
 		}
 
-		let bytesProcessed = min(buffer.count, maxLength)
+        func bufferCapacity() -> Int {
+            return buffer.count - bufferIdx
+        }
+        
+		let bytesProcessed = min(bufferCapacity(), maxLength)
+        
+        func copyNumBytes(toPtr : UnsafeMutablePointer<UInt8>, numBytes: Int) {
+            /*  Simple function that wraps index calculations and copies the requested
+                number of bytes from the buffer into the provided storage.
+    
+                The previous approach used the .removeFirst method of Data, which has
+                runtime O(n) in the size of the Data container. Because for larger
+                downloads the buffer is quite large, and there is a number of calls
+                to this method requesting just a couple of bytes, this proved to be
+                very inefficient and resulted in various errors.
+            */
+            // Make sure we don't read past the end of the buffer
+            assert(bufferIdx + numBytes <= buffer.count)
+            
+            buffer.copyBytes(to: toPtr, from: Range(bufferIdx..<bufferIdx + numBytes))
+            bufferIdx += numBytes
+            // Clear the buffer once all the contents have been read.
+            if bufferIdx == buffer.count {
+                buffer.removeAll()
+                bufferIdx = 0
+            }
+        }
 
-		// Serve the requested bytes or as much as possible at this point
-		buffer.copyBytes(to: dataPtr, count: bytesProcessed)
-		buffer.removeFirst(bytesProcessed)
-
+        copyNumBytes(toPtr: dataPtr, numBytes: bytesProcessed)
 		assert(bytesProcessed <= maxLength, "More bytes processed than allowed!")
 
 		guard sslStatus == noErr else {
@@ -587,7 +616,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegte {
 	}
 }
 
-class TLSOutputStream: WrappedOutputStream, TlsSessionDelegte {
+class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 	let session: TlsSession
 
 	var status: Stream.Status = .notOpen

@@ -17,7 +17,7 @@ class PrivacyService {
 	// MARK: Types
 
 	/**
-		Struct that holds a valid record ID which is basically a 128 character
+		Struct that holds a valid record ID which is basically a 64 character
 		string containing only hexadecimal characters.
 	*/
 	struct RecordId {
@@ -88,7 +88,7 @@ class PrivacyService {
 			The record that should be stored.
 
 		- parameter finishedWithOptionalError:
-			Singals that storing is finished. If an error occurred than `error`
+			Signals that storing is finished. If an error occurred then `error`
 			will contain a descriptive reason, otherwise it will be `nil`.
 	*/
 	func store(record: Record, finishedWithOptionalError: @escaping (_ error: String?) -> Void) {
@@ -99,7 +99,7 @@ class PrivacyService {
 		request.httpMethod = PrivacyService.HttpMethods.HttpMethodForStore.rawValue
 
 		// Set HTTP headers
-		request.addValue(PrivacyService.DefaultContentTypeHttpHeaderVaulue, forHTTPHeaderField: PrivacyService.HttpHeaders.ContentTypeHeader.rawValue)
+		request.addValue(PrivacyService.DefaultContentTypeHttpHeaderValue, forHTTPHeaderField: PrivacyService.HttpHeaders.ContentTypeHeader.rawValue)
 
 		showNetworkActivityIndicator()
 
@@ -241,7 +241,7 @@ class PrivacyService {
 		- todo:
 			The value should be compressed to save bandwith.
 	*/
-	private static let DefaultContentTypeHttpHeaderVaulue = "application/octet-stream"
+	private static let DefaultContentTypeHttpHeaderValue = "application/octet-stream"
 
 	// MARK: Constants
 

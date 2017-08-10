@@ -1,11 +1,3 @@
-//
-//  Http.swift
-//  PrivacyKit
-//
-//  Created by Maximilian Blochberger on 2017-04-04.
-//  Copyright © 2017 Universität Hamburg. All rights reserved.
-//
-
 import CoreFoundation
 import Foundation
 

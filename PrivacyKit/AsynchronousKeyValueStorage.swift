@@ -1,11 +1,3 @@
-//
-//  AsynchronousKeyValueStorage.swift
-//  PrivacyKit
-//
-//  Created by Maximilian Blochberger on 2016-07-13.
-//  Copyright © 2016 Universität Hamburg. All rights reserved.
-//
-
 /**
 	A key-value store that supports asynchronous requests. Two basic functions
 	are offered which can be used to store and retrieve values for a given key.

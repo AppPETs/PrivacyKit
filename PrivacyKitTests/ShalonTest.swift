@@ -1,11 +1,3 @@
-//
-//  ShalonTest.swift
-//  PrivacyKit
-//
-//  Created by Maximilian Blochberger on 2017-06-13.
-//  Copyright © 2017 Universität Hamburg. All rights reserved.
-//
-
 import XCTest
 @testable import PrivacyKit
 

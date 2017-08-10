@@ -1,11 +1,3 @@
-//
-//  PrivacyServiceTests.swift
-//  PrivacyServiceTests
-//
-//  Created by Maximilian Blochberger on 2016-07-13.
-//  Copyright © 2016 Universität Hamburg. All rights reserved.
-//
-
 import XCTest
 @testable import PrivacyKit
 

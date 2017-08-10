@@ -296,8 +296,7 @@ class WrappedInputStream: InputStream, StreamDelegate {
 		stream.remove(from: runLoop, forMode: mode)
 	}
 
-    // TODO: This cannot possibly work, can it?
-    // Seems to be infinite loop
+	// <#TODO#> This cannot possibly work, can it? Seems to be infinite loop
 	override func property(forKey key: Stream.PropertyKey) -> Any? {
 		return property(forKey: key)
 	}
@@ -433,10 +432,10 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	let session: TlsSession
 
 	var buffer = Data()
-    // See comments in read() function. This was necessary to
-    // fix a performance issue.
-    // TODO: More elegant fix wanted.
-    var bufferIdx : Int = 0
+	// See comments in read() function. This was necessary to fix a performance
+	// issue.
+	// <#TODO#> More elegant fix wanted.
+	var bufferIdx : Int = 0
 
 	var status: Stream.Status = .notOpen
 	var error: Error? = nil
@@ -523,35 +522,39 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 			} while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock
 		}
 
-        func bufferCapacity() -> Int {
-            return buffer.count - bufferIdx
-        }
-        
-		let bytesProcessed = min(bufferCapacity(), maxLength)
-        
-        func copyNumBytes(toPtr : UnsafeMutablePointer<UInt8>, numBytes: Int) {
-            /*  Simple function that wraps index calculations and copies the requested
-                number of bytes from the buffer into the provided storage.
-    
-                The previous approach used the .removeFirst method of Data, which has
-                runtime O(n) in the size of the Data container. Because for larger
-                downloads the buffer is quite large, and there is a number of calls
-                to this method requesting just a couple of bytes, this proved to be
-                very inefficient and resulted in various errors.
-            */
-            // Make sure we don't read past the end of the buffer
-            assert(bufferIdx + numBytes <= buffer.count)
-            
-            buffer.copyBytes(to: toPtr, from: Range(bufferIdx..<bufferIdx + numBytes))
-            bufferIdx += numBytes
-            // Clear the buffer once all the contents have been read.
-            if bufferIdx == buffer.count {
-                buffer.removeAll()
-                bufferIdx = 0
-            }
-        }
+		func bufferCapacity() -> Int {
+			return buffer.count - bufferIdx
+		}
 
-        copyNumBytes(toPtr: dataPtr, numBytes: bytesProcessed)
+		let bytesProcessed = min(bufferCapacity(), maxLength)
+
+		func copyNumBytes(toPtr : UnsafeMutablePointer<UInt8>, numBytes: Int) {
+			/* 
+				Simple function that wraps index calculations and copies the
+				requested number of bytes from the buffer into the provided
+				storage.
+
+				The previous approach used the .removeFirst method of Data,
+				which has runtime O(n) in the size of the Data container.
+				Because for larger downloads the buffer is quite large, and
+				there is a number of calls to this method requesting just a
+				couple of bytes, this proved to be very inefficient and resulted
+				in various errors.
+			*/
+
+			// Make sure we don't read past the end of the buffer
+			assert(bufferIdx + numBytes <= buffer.count)
+
+			buffer.copyBytes(to: toPtr, from: Range(bufferIdx..<bufferIdx + numBytes))
+			bufferIdx += numBytes
+			// Clear the buffer once all the contents have been read.
+			if bufferIdx == buffer.count {
+				buffer.removeAll()
+				bufferIdx = 0
+			}
+		}
+
+		copyNumBytes(toPtr: dataPtr, numBytes: bytesProcessed)
 		assert(bytesProcessed <= maxLength, "More bytes processed than allowed!")
 
 		guard sslStatus == noErr else {
@@ -813,8 +816,8 @@ func tlsWrite(connectionPtr: SSLConnectionRef, dataPtr: UnsafeRawPointer, dataLe
 				return errSecIO
 		}
 	}
-	
+
 	dataLengthPtr.pointee = bytesWritten
-	
+
 	return (bytesWritten < maxLength) ? errSSLWouldBlock : noErr
 }

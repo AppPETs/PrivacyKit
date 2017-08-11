@@ -5,13 +5,25 @@ import Foundation
 */
 class PrivacyKit {
 
-	/**
-		The bundle ID of the framework.
+	#if os(iOS)
+		/**
+			The bundle ID of the framework.
 
-		- todo:
-			Find the bundle ID programmatically.
-	*/
-	static let bundleId = "de.uni-hamburg.informatik.PrivacyKit"
+			- todo:
+				Find the bundle ID programmatically.
+		*/
+		static let bundleId = "de.uni-hamburg.informatik.PrivacyKit.iOS"
+	#endif // iOS
+
+	#if os(OSX)
+		/**
+			The bundle ID of the framework.
+
+			- todo:
+				Find the bundle ID programmatically.
+		*/
+		static let bundleId = "de.uni-hamburg.informatik.PrivacyKit.macOS"
+	#endif // macOS
 
 	/**
 		Returns the framework's bundle. This is required to access asset

@@ -1,5 +1,7 @@
 import Foundation
 
+import Tafelsalz
+
 /**
 	This class can be used to store files securely in the Cloud. The files are
 	encrypted on the device and then stored on a Privacy-Service.
@@ -26,13 +28,10 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			`nil` if the SecurityManager could not be initialized, i.e. if the
 			encryption keys could not be generated or read from disk.
 	*/
-	public init?() {
-		// Initialize security manager
-		guard let securityManager = SecurityManager.instance else {
-			print("Failed to initalize the SecurityManager")
-			return nil
-		}
-		self.securityManager = securityManager
+	public init?(persona: Persona = Persona(uniqueName: "default")) {
+		guard let secretBox = SecretBox(persona: persona) else { return nil }
+		self.persona = persona
+		self.secretBox = secretBox
 	}
 
 	// MARK: AsynchronousKeyValueStorage
@@ -76,7 +75,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			return
 		}
 
-		guard let encryptedData = securityManager.encrypt(plaintext: value) else {
+		guard let encryptedData = secretBox.encrypt(data: value) else {
 			finishedWithError("Failed to encrypt data")
 			return
 		}
@@ -151,9 +150,8 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			// Successfully downloaded encrypted asset
 
 			let record = optionalRecord!
-			let encryptedData = record.encryptedData
 
-			guard let data = self.securityManager.decrypt(ciphertext: encryptedData) else {
+			guard let data = self.secretBox.decrypt(data: record.encryptedData) else {
 				valueAvailable(nil, "Failed to decrypt data")
 				return
 			}
@@ -167,8 +165,15 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	// MARK: Constants
 
-	/// The security manager that handles encryption and key derivation.
-	private let securityManager: SecurityManager
+	/**
+		The persona to which this secret storage belongs.
+	*/
+	private let persona: Persona
+
+	/**
+		The security manager that handles encryption and key derivation.
+	*/
+	private let secretBox: SecretBox
 
 	// MARK: Methods
 
@@ -203,13 +208,15 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			return nil
 		}
 
-		guard let hashedKey = self.securityManager.hash(ofKey: keyAsData, withOutputLengthInBytes: PrivacyService.RecordId.lengthInBytes) else {
+		guard let hashedKey = GenericHash(bytes: keyAsData, for: persona, outputSizeInBytes: PrivacyService.RecordId.lengthInBytes) else {
 			return nil
 		}
 
-		let recordId = PrivacyService.RecordId(hashedKey)
+		guard let recordId = hashedKey.hex else {
+			return nil
+		}
 
-		return recordId
+		return PrivacyService.RecordId(recordId)
 	}
 
 }

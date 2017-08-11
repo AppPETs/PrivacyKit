@@ -1,3 +1,3 @@
-[submodule "Sodium"]
-	path = Sodium
-	url = git@github.com:blochberger/swift-sodium.git
+[submodule "Dependencies/Tafelsalz"]
+	path = Dependencies/Tafelsalz
+	url = https://github.com/blochberger/Tafelsalz.git

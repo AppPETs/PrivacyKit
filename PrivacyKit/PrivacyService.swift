@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+import Tafelsalz
+
 /**
 	Internal class that acts as an interface to the web service API.
 */
@@ -15,7 +17,7 @@ class PrivacyService {
 	struct RecordId {
 
 		/// Length of the record ID in bytes.
-		static let lengthInBytes = 256 / 8
+		static let lengthInBytes: PInt = 256 / 8
 
 		/// The actual string representation of the record ID.
 		let value: String
@@ -49,7 +51,7 @@ class PrivacyService {
 		let id: RecordId
 
 		/// The encrypted value
-		let encryptedData: SecurityManager.EncryptedData
+		let encryptedData: SecretBox.AuthenticatedCiphertext
 	}
 
 	// MARK: Initializers
@@ -95,7 +97,7 @@ class PrivacyService {
 
 		showNetworkActivityIndicator()
 
-		let task = session.uploadTask(with: request, from: record.encryptedData.blob) {
+		let task = session.uploadTask(with: request, from: record.encryptedData.bytes) {
 			optionalData, optionalResponse, optionalError in
 
 			hideNetworkActivityIndicator()
@@ -192,7 +194,11 @@ class PrivacyService {
 				return
 			}
 
-			let encryptedData = SecurityManager.EncryptedData(blob: retrievedData)
+			guard let encryptedData = SecretBox.AuthenticatedCiphertext(bytes: retrievedData) else {
+				finishedWithRecord(nil, "Response has unexpected format")
+				return
+			}
+
 			let record = Record(id: recordId, encryptedData: encryptedData)
 			finishedWithRecord(record, nil)
 

@@ -806,6 +806,7 @@
 				601833AF1F3DEC56003AE3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		601833B01F3DEC56003AE3D8 /* Build configuration list for PBXNativeTarget "PrivacyKitTests_macOS" */ = {
 			isa = XCConfigurationList;
@@ -814,6 +815,7 @@
 				601833B21F3DEC56003AE3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		606011D11D36381C0076A6AA /* Build configuration list for PBXProject "PrivacyKit" */ = {
 			isa = XCConfigurationList;

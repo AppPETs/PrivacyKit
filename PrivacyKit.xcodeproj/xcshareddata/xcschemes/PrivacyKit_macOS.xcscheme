@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
-               BuildableName = "PrivacyKit_macOS.framework"
+               BuildableName = "PrivacyKit.framework"
                BlueprintName = "PrivacyKit_macOS"
                ReferencedContainer = "container:PrivacyKit.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "601833A31F3DEC56003AE3D8"
-               BuildableName = "PrivacyKitTests_macOS.xctest"
+               BuildableName = "PrivacyKitTests.xctest"
                BlueprintName = "PrivacyKitTests_macOS"
                ReferencedContainer = "container:PrivacyKit.xcodeproj">
             </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
-            BuildableName = "PrivacyKit_macOS.framework"
+            BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_macOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
-            BuildableName = "PrivacyKit_macOS.framework"
+            BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_macOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
          </BuildableReference>
@@ -104,7 +104,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
-            BuildableName = "PrivacyKit_macOS.framework"
+            BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_macOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
          </BuildableReference>

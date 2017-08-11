@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "606011D61D36381C0076A6AA"
-               BuildableName = "PrivacyKit_iOS.framework"
+               BuildableName = "PrivacyKit.framework"
                BlueprintName = "PrivacyKit_iOS"
                ReferencedContainer = "container:PrivacyKit.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "606011E01D36381C0076A6AA"
-               BuildableName = "PrivacyKitTests_iOS.xctest"
+               BuildableName = "PrivacyKitTests.xctest"
                BlueprintName = "PrivacyKitTests_iOS"
                ReferencedContainer = "container:PrivacyKit.xcodeproj">
             </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "606011D61D36381C0076A6AA"
-            BuildableName = "PrivacyKit_iOS.framework"
+            BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_iOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "606011D61D36381C0076A6AA"
-            BuildableName = "PrivacyKit_iOS.framework"
+            BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_iOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
          </BuildableReference>
@@ -104,7 +104,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "606011D61D36381C0076A6AA"
-            BuildableName = "PrivacyKit_iOS.framework"
+            BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_iOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
          </BuildableReference>

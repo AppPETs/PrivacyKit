@@ -184,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				603BECE61ECC389100D3350C /* Supporting Files */,
-				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
 				609CB84E1E93BF1F00929F6E /* HttpTests.swift */,
+				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
 				60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */,
 			);
 			path = PrivacyKitTests;
@@ -195,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
-				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
 				609CB8471E93BEFD00929F6E /* Http.swift */,
+				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
 				609CB8501E93C09300929F6E /* Shalon.swift */,
 			);
 			name = Public;
@@ -205,10 +205,10 @@
 		606012201D36AF3F0076A6AA /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				606011F41D36418D0076A6AA /* PrivacyService.swift */,
-				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				60DA8CB61D38D592009E2906 /* CertificatePinner.swift */,
 				60DA8CB81D38F529009E2906 /* PrivacyKit.swift */,
+				606011F41D36418D0076A6AA /* PrivacyService.swift */,
+				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				609CB8521E93C15E00929F6E /* Tls.swift */,
 			);
 			name = Internal;

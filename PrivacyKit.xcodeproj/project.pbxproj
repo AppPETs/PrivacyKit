@@ -135,8 +135,9 @@
 		603BECE11ECC386000D3350C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				606011DA1D36381C0076A6AA /* PrivacyKit.h */,
+				60DA8CB41D38CEEA009E2906 /* Assets.xcassets */,
 				606011DC1D36381C0076A6AA /* Info.plist */,
+				606011DA1D36381C0076A6AA /* PrivacyKit.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -173,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				603BECE11ECC386000D3350C /* Supporting Files */,
-				60DA8CB41D38CEEA009E2906 /* Assets.xcassets */,
 				6060121F1D36AF2A0076A6AA /* Public */,
 				606012201D36AF3F0076A6AA /* Internal */,
 			);

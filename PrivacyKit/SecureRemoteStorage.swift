@@ -60,7 +60,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			The value that should be stored, such as a file.
 	
 		- parameter forKey:
-			THe key that is used to identify the value.
+			The key that is used to identify the value.
 
 		- parameter finishedWithError:
 			This closure signals that storing has finished. If an error

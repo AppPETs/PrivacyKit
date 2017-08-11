@@ -1,5 +1,8 @@
 import Foundation
-import UIKit
+
+#if os(iOS)
+	import UIKit
+#endif // iOS
 
 import Tafelsalz
 
@@ -318,9 +321,11 @@ class PrivacyService {
 	[1]: https://developer.apple.com/reference/uikit
 */
 func showNetworkActivityIndicator() {
-	DispatchQueue.main.async {
-		UIApplication.shared.isNetworkActivityIndicatorVisible = true
-	}
+	#if os(iOS)
+		DispatchQueue.main.async {
+			UIApplication.shared.isNetworkActivityIndicatorVisible = true
+		}
+	#endif // iOS
 }
 
 /**
@@ -338,7 +343,9 @@ func showNetworkActivityIndicator() {
 	[1]: https://developer.apple.com/reference/uikit
 */
 func hideNetworkActivityIndicator() {
-	DispatchQueue.main.async {
-		UIApplication.shared.isNetworkActivityIndicatorVisible = false
-	}
+	#if os(iOS)
+		DispatchQueue.main.async {
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+		}
+	#endif // iOS
 }

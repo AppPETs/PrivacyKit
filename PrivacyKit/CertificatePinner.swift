@@ -1,5 +1,12 @@
 import Foundation
-import UIKit
+
+#if os(iOS)
+	import UIKit
+#endif // iOS
+
+#if os(OSX)
+	import AppKit
+#endif // macOS
 
 /**
 	This class is used to pin certificates to a specific hosts. Certificate

@@ -2,7 +2,8 @@
 	A key-value store that supports asynchronous requests. Two basic functions
 	are offered which can be used to store and retrieve values for a given key.
 
-	#### Example
+	## Example
+
 	```swift
 	class MyKeyValueStorage : AsynchronousKeyValueStorage {
 	    typealias KeyType   = String
@@ -11,23 +12,23 @@
 	    func store(
 	        value:             ValueType,
 	        forKey key:        KeyType,
-	        finishedWithError: (_ error: ErrorType?) -> Void
+	        finishedWithError: @escaping (_ error: ErrorType?) -> Void
 	    ) {
 	        // TODO Store the value
 	        // If an error occurs, report and back out early
-	        finishedWithError("Error description")
-	        return
+			finishedWithError("Error description")
+			return
 	        // If everything goes smoothly, signal success
 	        finishedWithError(nil)
 	    }
 	    func retrieveValue(
 	        forKey key:     KeyType,
-	        valueAvailable: (_ value: ValueType?, _ error: ErrorType?) -> Void
+	        valueAvailable: @escaping (_ value: ValueType?, _ error: ErrorType?) -> Void
 	    ) {
 	        // TODO Retrieve the value
 	        // If an error occurs, report and back out early
-	        valueAvailable(nil, "Error description")
-	        return
+			valueAvailable(nil, "Error description")
+			return
 	        // If everything goes smoothly, return value and signal success
 	        valueAvailable(value, nil)
 	    }
@@ -54,7 +55,8 @@ public protocol AsynchronousKeyValueStorage {
 	/**
 		Stores an asset `value` for an identifier `forKey` asynchronously.
 
-		#### Example
+		## Example
+
 		```swift
 		storage.store(value: value, forKey: key) {
 		    optionalError in
@@ -77,11 +79,11 @@ public protocol AsynchronousKeyValueStorage {
 	*/
 	func store(value: ValueType, forKey key: KeyType, finishedWithError: @escaping (_ error: ErrorType?) -> Void)
 
-
 	/**
 		Retrieves data for key `forKey` asynchronously.
 
-		#### Example
+		## Example
+
 		```swift
 		storage.retrieveValue(forKey: key) {
 		    optionalValue, optionalError in

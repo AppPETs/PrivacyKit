@@ -15,7 +15,8 @@ import Foundation
 	compromised certificate authority or by a self-signed certificate marked as
 	trusted.
 
-	#### Example
+	## Example
+
 	Assuming the host is `www.example.com`:
 
 	```swift

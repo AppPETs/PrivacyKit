@@ -13,20 +13,20 @@ enum GenericError: Error {
 }
 
 /**
-	Example usage:
+	## Example:
 
 	```swift
-	    let target = Target(withHostname: "www.example.com", andPort: 443)!
-	    let shalon = Shalon(withTarget: target)
+	let target = Target(withHostname: "www.example.com", andPort: 443)!
+	let shalon = Shalon(withTarget: target)
 
-	    shalon.addLayer(Target(withHostname: "proxy1.example.com", andPort: 8443)!)
-	    shalon.addLayer(Target(withHostname: "proxy2.example.com", andPort: 8442)!)
-	    shalon.addLayer(Target(withHostname: "proxy3.example.com", andPort: 8441)!)
+	shalon.addLayer(Target(withHostname: "proxy1.example.com", andPort: 8443)!)
+	shalon.addLayer(Target(withHostname: "proxy2.example.com", andPort: 8442)!)
+	shalon.addLayer(Target(withHostname: "proxy3.example.com", andPort: 8441)!)
 
-	    shalon.issue(request: Request(withMethod: .head, andUrl: url)!) {
+	shalon.issue(request: Request(withMethod: .head, andUrl: url)!) {
 	    optionalResponse, optionalError in
-	        // TODO Do something
-	    }
+	    // TODO Do something
+	}
 	```
 **/
 class Shalon: NSObject, StreamDelegate {

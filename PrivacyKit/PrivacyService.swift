@@ -71,7 +71,8 @@ class PrivacyService {
 	/**
 		Function to store a record or key-value pair asynchronously.
 
-		#### Example
+		## Example
+
 		```swift
 		privacyService.store(record: record) {
 		    optionalError in
@@ -129,7 +130,8 @@ class PrivacyService {
 	/**
 		Function to retrieve a record or key-value pair asynchronously.
 
-		#### Example
+		## Example
+
 		```swift
 		privacyService.retrieveRecord(withId: recordId) {
 		    optionalRecord, optionalError in
@@ -311,14 +313,9 @@ class PrivacyService {
 
 	This function is thread safe.
 
-	- requires:
-		[`UIKit`][1]
-
 	- todo:
 		Use a callback/delegate so that the security related functions can be
 		offered to command line utilities or on macOS as well.
-
-	[1]: https://developer.apple.com/reference/uikit
 */
 func showNetworkActivityIndicator() {
 	#if os(iOS)
@@ -333,14 +330,9 @@ func showNetworkActivityIndicator() {
 
 	This function is thread safe.
 
-	- Requires:
-		[`UIKit`][1]
-
 	- todo:
 		Use a callback/delegate so that the security related functions can be
 		offered to command line utilities or on macOS as well.
-
-	[1]: https://developer.apple.com/reference/uikit
 */
 func hideNetworkActivityIndicator() {
 	#if os(iOS)

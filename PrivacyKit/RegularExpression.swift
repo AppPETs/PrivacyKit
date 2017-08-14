@@ -5,7 +5,8 @@ infix operator =~
 /**
 	Infix operator for testing if a string matches a regular expression.
 
-	#### Example
+	## Example
+
 	```swift
 	let sentence = "The world is flat."
 	if sentence =~ "^The" {

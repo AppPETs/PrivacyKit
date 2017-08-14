@@ -22,7 +22,11 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 	// MARK: Initializers
 
 	/**
-		Initializes a SecureRemoteStorage.
+		Initializes a personalized SecureRemoteStorage.
+	
+		- parameters:
+			- persona: The persona that is able to decrypt the files stored by
+				the secure storage.
 
 		- returns:
 			`nil` if the SecurityManager could not be initialized, i.e. if the
@@ -36,15 +40,27 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	// MARK: AsynchronousKeyValueStorage
 
+	/**
+		The type of key (in sense of key-value).
+	*/
 	public typealias KeyType   = String
+
+	/**
+		The type of the value.
+	*/
 	public typealias ValueType = Data
+
+	/**
+		The type of errors that might occur.
+	*/
 	public typealias ErrorType = String
 
 	/**
 		Stores a value `value` for a given key `forKey` securely. Neither the
 		key nor the value will be known to the server.
 
-		#### Example
+		## Example
+
 		```swift
 		let key = "My PIN"
 		let value = "1234".data(using: .utf8)!
@@ -92,7 +108,8 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 	/**
 		Retrieves a value for a given key `key` securely.
 
-		#### Example
+		## Example
+
 		```swift
 		let key = "My PIN"
 		storage.retrieveValueForKey(key) {
@@ -193,14 +210,6 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 		- returns:
 			A valid record ID or `nil` if it could not be derived.
-
-		- todo:
-			Cache record IDs as they are generated deterministically and the
-			generation consumes energy and takes time. There is no need to
-			repeat it. The device's memory is trusted. Persisting the cache on
-			disk should be done with additional encryption and is should be
-			measured which operation has higher performance/energy impact before
-			taking action.
 	*/
 	private func recordId(forKey key: KeyType) -> PrivacyService.RecordId? {
 

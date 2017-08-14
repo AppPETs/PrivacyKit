@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
+               BlueprintIdentifier = "601834071F418B96003AE3D8"
                BuildableName = "PrivacyKit.framework"
                BlueprintName = "PrivacyKit_macOS"
                ReferencedContainer = "container:PrivacyKit.xcodeproj">
@@ -53,7 +53,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "601833A31F3DEC56003AE3D8"
+               BlueprintIdentifier = "6018340F1F418B96003AE3D8"
                BuildableName = "PrivacyKitTests.xctest"
                BlueprintName = "PrivacyKitTests_macOS"
                ReferencedContainer = "container:PrivacyKit.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
+            BlueprintIdentifier = "601834071F418B96003AE3D8"
             BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_macOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
@@ -85,7 +85,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
+            BlueprintIdentifier = "601834071F418B96003AE3D8"
             BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_macOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">
@@ -103,7 +103,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6018339B1F3DEC55003AE3D8"
+            BlueprintIdentifier = "601834071F418B96003AE3D8"
             BuildableName = "PrivacyKit.framework"
             BlueprintName = "PrivacyKit_macOS"
             ReferencedContainer = "container:PrivacyKit.xcodeproj">

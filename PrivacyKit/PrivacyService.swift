@@ -136,7 +136,7 @@ class PrivacyService {
 		privacyService.retrieveRecord(withId: recordId) {
 		    optionalRecord, optionalError in
 		    // Assert postcondition
-		    assert((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
+		    precondition((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
 		    if let error = optionalError {
 		        // Delegate error and back out
 		        valueAvailable(nil, error)
@@ -160,7 +160,7 @@ class PrivacyService {
 			but not both at the same time.
 
 			```swift
-			 assert((record == nil) != (error == nil), "Postcondition failed")
+			 precondition((record == nil) != (error == nil), "Postcondition failed")
 			```
 	*/
 	func retrieveRecord(withId recordId: RecordId, finishedWithRecord: @escaping (_ record: Record?, _ error: String?) -> Void) {

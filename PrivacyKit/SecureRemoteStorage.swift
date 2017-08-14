@@ -115,12 +115,11 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 		storage.retrieveValueForKey(key) {
 		    optionalValue, optionalError in
 		    // Assert postcondition
-		    assert((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
-		    if let error = optionalError {
-		        print(error)
+		    precondition((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
+		    guard let retrievedValue = optionalValue else {
+		        print(error!)
 		        return
 		    }
-		    let retrievedValue = optionalValue!
 		    // Do something with the retrieved Value
 		    print(retrievedValue) // Will print "1234" if example from above was used
 		}
@@ -157,7 +156,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			optionalRecord, optionalError in
 
 			// Assert postcondition
-			assert((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
+			precondition((optionalRecord == nil) != (optionalError == nil), "Postcondition failed")
 
 			if let error = optionalError {
 				valueAvailable(nil, error)

@@ -88,12 +88,11 @@ public protocol AsynchronousKeyValueStorage {
 		storage.retrieveValue(forKey: key) {
 		    optionalValue, optionalError in
 		    // Assert postcondition
-		    assert((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
-		    if let error = optionalError {
+		    precondition((optionalValue == nil) != (optionalError == nil), "Postcondition failed")
+		    guard let value = optionalValue else {
 		        // TODO Handle error
 		        return
 		    }
-		    let value = optionalValue!
 		    // Do something with the retrieved value
 		}
 		```
@@ -103,7 +102,7 @@ public protocol AsynchronousKeyValueStorage {
 			not both at the same time.
 
 			```swift
-			assert((value == nil) != (error == nil), "Postcondition failed")
+			postcondition((value == nil) != (error == nil), "Postcondition failed")
 			```
 
 		- parameter forKey:

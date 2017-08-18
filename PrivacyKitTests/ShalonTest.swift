@@ -34,4 +34,28 @@ class ShalonTest: XCTestCase {
 		}
     }
 
+    func testShalonProtocol() {
+        URLProtocol.registerClass(ShalonURLProtocol.self)
+
+        // Shalon Test
+        let shalonReceivedExpectation = expectation(description: "shalonResponseReceived")
+
+        var shalonResponse: URLResponse? = nil
+
+        let sharedSession = URLSession.shared
+        let shalonTask = sharedSession.downloadTask(with: URL(string: "httpss://example.com/")!) {
+            (potentialUrl, potentialResponse, potentialError) in
+
+            shalonResponse = potentialResponse
+            shalonReceivedExpectation.fulfill()
+        }
+        shalonTask.resume()
+
+        waitForExpectations(timeout: 10/*seconds*/) {
+            optionalExpectationError in
+
+            XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
+            XCTAssertNotNil(shalonResponse)
+        }
+    }
 }

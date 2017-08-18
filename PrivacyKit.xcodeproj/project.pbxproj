@@ -37,6 +37,8 @@
 		60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
 		60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
 		60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB81D38F529009E2906 /* PrivacyKit.swift */; };
+		754D74F11F47197100C603AB /* ShalonURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D74F01F47197100C603AB /* ShalonURLProtocol.swift */; };
+		754D74F21F47197100C603AB /* ShalonURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D74F01F47197100C603AB /* ShalonURLProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,7 @@
 		60DA8CB61D38D592009E2906 /* CertificatePinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinner.swift; sourceTree = "<group>"; };
 		60DA8CB81D38F529009E2906 /* PrivacyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyKit.swift; sourceTree = "<group>"; };
 		60DA8CBA1D391250009E2906 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		754D74F01F47197100C603AB /* ShalonURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShalonURLProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +249,7 @@
 				609CB8471E93BEFD00929F6E /* Http.swift */,
 				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
 				609CB8501E93C09300929F6E /* Shalon.swift */,
+				754D74F01F47197100C603AB /* ShalonURLProtocol.swift */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -479,6 +483,7 @@
 			files = (
 				601833B61F3DECDD003AE3D8 /* Shalon.swift in Sources */,
 				601833B71F3DECE1003AE3D8 /* CertificatePinner.swift in Sources */,
+				754D74F21F47197100C603AB /* ShalonURLProtocol.swift in Sources */,
 				601833B31F3DECD3003AE3D8 /* AsynchronousKeyValueStorage.swift in Sources */,
 				601833B91F3DECE7003AE3D8 /* PrivacyService.swift in Sources */,
 				601833BA1F3DECEA003AE3D8 /* RegularExpression.swift in Sources */,
@@ -505,6 +510,7 @@
 			files = (
 				606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */,
 				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
+				754D74F11F47197100C603AB /* ShalonURLProtocol.swift in Sources */,
 				60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,

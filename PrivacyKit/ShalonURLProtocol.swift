@@ -5,7 +5,7 @@ class ShalonURLProtocol : URLProtocol {
 
     override class func canInit(with request: URLRequest) -> Bool {
         if let url = request.url {
-            let url_scheme = url.scheme
+            let url_scheme = url.scheme?.lowercased()
             if     url_scheme == "httpss"
                 || url_scheme == "httpsss"
                 || url_scheme == "httpssss" {
@@ -36,6 +36,8 @@ class ShalonURLProtocol : URLProtocol {
     }
 
     override func startLoading() {
+        assert(request.url!.absoluteString =~ "^httpss{1,3}://.*$")
+
         if let url_scheme = request.url?.scheme {
             if url_scheme == "httpsss" || url_scheme == "httpssss" {
                 print("Loading failed, not yet implemented.")
@@ -45,23 +47,10 @@ class ShalonURLProtocol : URLProtocol {
             }
         }
 
+        // Strip excess 's' characters from url scheme (httpsss -> https)
         let urlString = request.url!.absoluteString
-
-        // Remove leading httpssss and simply replace with a single https
-        var url : URL? = nil
-        if urlString.hasPrefix("httpss://") {
-            let index = urlString.index(urlString.startIndex, offsetBy: "httpss://".characters.count)
-            url = URL(string: "https://" + urlString.substring(from: index))
-            print(url!)
-        } else if urlString.hasPrefix("httpsss://") {
-            let index = urlString.index(urlString.startIndex, offsetBy: "httpsss://".characters.count)
-            url = URL(string: "https://" + urlString.substring(from: index))
-            print(url!)
-        } else /* if urlString.hasPrefix("httpssss://") */ {
-            let index = urlString.index(urlString.startIndex, offsetBy: "httpssss://".characters.count)
-            url = URL(string: "https://" + urlString.substring(from: index))
-            print(url!)
-        }
+        let url = URL(string: "https://" + urlString.substring(from: urlString.range(of: "://")!.upperBound))
+        print(url!)
 
         let target = Target(withHostname: url!.host!, andPort: 443)!
         let shalon = Shalon(withTarget: target)
@@ -90,8 +79,12 @@ class ShalonURLProtocol : URLProtocol {
 
             // Handle a correct response
             if let response = receivedOptionalResponse {
-                let url_response = URLResponse(url: self.request.url!, mimeType: nil, expectedContentLength: response.body.count, textEncodingName: nil)
-                self.client!.urlProtocol(self, didReceive: url_response, cacheStoragePolicy: .allowed)
+                // Convert internal response type to URLResponse
+                let url_response = HTTPURLResponse(url: self.request.url!,
+                                                   statusCode: Int(response.status.rawValue),
+                                                   httpVersion: "HTTP/1.1",
+                                                   headerFields: response.headers)
+                self.client!.urlProtocol(self, didReceive: url_response!, cacheStoragePolicy: .allowed)
                 self.client!.urlProtocol(self, didLoad: response.body)
                 self.client!.urlProtocolDidFinishLoading(self)
                 return

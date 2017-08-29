@@ -79,13 +79,13 @@ class Shalon: NSObject, StreamDelegate {
 		let stream = PairedStream(input: wrappedInputStream, output: wrappedOutputStream)
 		streams.append(stream)
 
-		wrapCurrentLayerWithTls()
-
 		/*
 			The established TCP connection should be TLS secured, as soon as
 			bytes can be written to the output stream.
-		*/
+		 */
 		state = determineNextAction()
+
+		wrapCurrentLayerWithTls()
 	}
 
 	func wrapCurrentLayerWithTls() {
@@ -110,6 +110,10 @@ class Shalon: NSObject, StreamDelegate {
 		wrappedStream.delegate = self
 		wrappedStream.schedule(in: RunLoop.current, forMode: .defaultRunLoopMode)
 		wrappedStream.open()
+
+		if RunLoop.main != RunLoop.current {
+			RunLoop.current.run()
+		}
 	}
 
 	// MARK: StreamDelegate

@@ -2,7 +2,7 @@ import XCTest
 @testable import PrivacyKit
 
 class HttpTests: XCTestCase {
-    
+
 	func testHeadRequest() {
 		let optionalRequest = Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])
 
@@ -64,5 +64,5 @@ class HttpTests: XCTestCase {
 		XCTAssertEqual(actualResponse.body, Data())
 	}
 
-    
+
 }

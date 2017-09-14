@@ -23,7 +23,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 	/**
 		Initializes a personalized SecureRemoteStorage.
-	
+
 		- parameters:
 			- persona: The persona that is able to decrypt the files stored by
 				the secure storage.
@@ -74,7 +74,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 		- parameter value:
 			The value that should be stored, such as a file.
-	
+
 		- parameter forKey:
 			The key that is used to identify the value.
 
@@ -131,7 +131,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			UI thread. Additionally if multiple calls to
 			`retrieveValueForKey(_:valueAvailable:)` are made, the callbacks
 			made to the closure might be performed in a different order.
-	
+
 		- parameter key:
 			The key that is used to identify the value.
 

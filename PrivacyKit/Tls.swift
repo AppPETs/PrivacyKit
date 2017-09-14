@@ -521,7 +521,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		let bytesProcessed = min(bufferCapacity(), maxLength)
 
 		func copyNumBytes(toPtr : UnsafeMutablePointer<UInt8>, numBytes: Int) {
-			/* 
+			/*
 				Simple function that wraps index calculations and copies the
 				requested number of bytes from the buffer into the provided
 				storage.

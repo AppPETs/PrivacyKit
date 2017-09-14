@@ -6,7 +6,7 @@ personal information appropriately.
 - Repository: https://gitlab.prae.me/apppets/PrivacyKit
 - Issues: https://gitlab.prae.me/apppets/PrivacyKit/issues
 
-The `PrivacyKit` API includes the API of other libraries that can be used if more specific functionality is required: 
+The `PrivacyKit` API includes the API of other libraries that can be used if more specific functionality is required:
 - Cryptography: [Tafelsalz](https://blochberger.github.io/Tafelsalz)
 - Keychain Services: [Keychain](https://blochberger.github.io/Keychain)
 

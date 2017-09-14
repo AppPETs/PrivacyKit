@@ -295,7 +295,7 @@ class Shalon: NSObject, StreamDelegate {
 	var currentStream: PairedStream {
 		get {
 			assert((0..<streams.count).contains(currentLayer))
-			
+
 			return streams[currentLayer]
 		}
 	}

@@ -37,7 +37,7 @@ import Foundation
 	- todo:
 		- Maybe consider [TrustKit][3]?
 		- Maybe enable to use TOFU?
-	
+
 	[1]: https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#iOS
 	[2]: http://stackoverflow.com/a/34223292/5082444
 	[3]: https://datatheorem.github.io/TrustKit/
@@ -45,7 +45,7 @@ import Foundation
 class CertificatePinner : NSObject, URLSessionDelegate {
 
 	// MARK: Initializers
-	
+
 	/**
 		Initialize a `CertificatePinner` instance for a given host `forHost`.
 

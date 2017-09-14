@@ -91,10 +91,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 			return
 		}
 
-		guard let encryptedData = secretBox.encrypt(data: value) else {
-			finishedWithError("Failed to encrypt data")
-			return
-		}
+		let encryptedData = secretBox.encrypt(data: value)
 
 		let record = PrivacyService.Record(id: recordId, encryptedData: encryptedData)
 

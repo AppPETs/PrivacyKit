@@ -63,7 +63,7 @@ public class SecureRemoteStorage : AsynchronousKeyValueStorage {
 
 		```swift
 		let key = "My PIN"
-		let value = "1234".data(using: .utf8)!
+		let value = Data("1234".utf8)
 		storage.store(value: value, forKey: key) {
 		    optionalError in
 		    if let error = optionalError {

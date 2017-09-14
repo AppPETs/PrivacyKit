@@ -228,11 +228,11 @@ class Request: Message {
 	func compose() -> Data? {
 		let args = (options == nil) ? url.path : options!
 
-		var rawRequest = "\(method.rawValue) \(args) \(kCFHTTPVersion1_1 as NSString)\r\n".data(using: .utf8)!
+		var rawRequest = Data("\(method.rawValue) \(args) \(kCFHTTPVersion1_1 as NSString)\r\n".utf8)
 		for (key, value) in headers {
-			rawRequest.append("\(key): \(value)\r\n".data(using: .utf8)!)
+			rawRequest.append(Data("\(key): \(value)\r\n".utf8))
 		}
-		rawRequest.append("\r\n".data(using: .utf8)!)
+		rawRequest.append(Data("\r\n".utf8))
 		rawRequest.append(body)
 
 		return rawRequest

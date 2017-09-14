@@ -33,7 +33,7 @@ class HttpTests: XCTestCase {
 	}
 
 	func testPServiceUploadResponse() {
-		let rawResponse = "HTTP/1.0 200 OK\r\nServer: BaseHTTP/0.6 Python/3.6.0\r\nDate: Wed, 25 Jan 2017 13:00:00 GMT\r\n\r\n".data(using: .utf8)!
+		let rawResponse = Data("HTTP/1.0 200 OK\r\nServer: BaseHTTP/0.6 Python/3.6.0\r\nDate: Wed, 25 Jan 2017 13:00:00 GMT\r\n\r\n".utf8)
 
 		let expectedHeaders: Headers = [
 			"Server": "BaseHTTP/0.6 Python/3.6.0",
@@ -52,7 +52,7 @@ class HttpTests: XCTestCase {
 	}
 
 	func testConnectResponse() {
-		let rawResponse = "HTTP/1.0 200 Connection Established\r\nProxy-agent: Apache\r\n\r\n".data(using: .utf8)!
+		let rawResponse = Data("HTTP/1.0 200 Connection Established\r\nProxy-agent: Apache\r\n\r\n".utf8)
 
 		let optionalResponse = Response(withRawData: rawResponse)
 

@@ -177,7 +177,7 @@
 				6018337D1F3CC796003AE3D8 /* Tafelsalz.framework */,
 				6018337F1F3CC796003AE3D8 /* Tafelsalz.framework */,
 				601833811F3CC796003AE3D8 /* TafelsalzTests.xctest */,
-				601833831F3CC796003AE3D8 /* TafelsalzTests_iOS.xctest */,
+				601833831F3CC796003AE3D8 /* TafelsalzTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -446,10 +446,10 @@
 			remoteRef = 601833801F3CC796003AE3D8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		601833831F3CC796003AE3D8 /* TafelsalzTests_iOS.xctest */ = {
+		601833831F3CC796003AE3D8 /* TafelsalzTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = TafelsalzTests_iOS.xctest;
+			path = TafelsalzTests.xctest;
 			remoteRef = 601833821F3CC796003AE3D8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

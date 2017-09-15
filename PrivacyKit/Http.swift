@@ -3,6 +3,11 @@ import Foundation
 
 class Http {
 
+	enum Error: Swift.Error {
+		case invalidResponse
+		case unexpectedResponse(Http.Status, String)
+	}
+
 	enum Method: String {
 		case connect = "CONNECT"
 		case delete  = "DELETE"
@@ -263,6 +268,21 @@ extension URLRequest {
 
 	mutating func set(method: Http.Method) {
 		httpMethod = method.rawValue
+	}
+}
+
+extension HTTPURLResponse {
+	var status: Http.Status {
+		get {
+			assert(0 <= statusCode)
+			return Http.Status(rawValue: UInt16(statusCode))!
+		}
+	}
+
+	var unexpected: Http.Error {
+		get {
+			return .unexpectedResponse(status, description)
+		}
 	}
 }
 

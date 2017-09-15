@@ -10,9 +10,7 @@
 		601833841F3CC7B1003AE3D8 /* Tafelsalz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018337F1F3CC796003AE3D8 /* Tafelsalz.framework */; };
 		601834111F418B96003AE3D8 /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601834081F418B96003AE3D8 /* PrivacyKit.framework */; };
 		6018341F1F418BDB003AE3D8 /* Tafelsalz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018337D1F3CC796003AE3D8 /* Tafelsalz.framework */; };
-		601834221F418C69003AE3D8 /* AsynchronousKeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */; };
 		601834231F418C6C003AE3D8 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8471E93BEFD00929F6E /* Http.swift */; };
-		601834241F418C70003AE3D8 /* SecureRemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012151D3680B40076A6AA /* SecureRemoteStorage.swift */; };
 		601834251F418C73003AE3D8 /* Shalon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8501E93C09300929F6E /* Shalon.swift */; };
 		601834261F418C77003AE3D8 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
 		601834271F418C7E003AE3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
@@ -22,18 +20,20 @@
 		6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012211D36C6190076A6AA /* RegularExpression.swift */; };
 		6018342C1F418C9F003AE3D8 /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
 		6018342D1F418CA8003AE3D8 /* HttpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB84E1E93BF1F00929F6E /* HttpTests.swift */; };
-		6018342E1F418CAB003AE3D8 /* PrivacyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */; };
 		6018342F1F418CAE003AE3D8 /* ShalonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */; };
 		6025C2211F6BF4D700471957 /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2201F6BF4D700471957 /* Indicators.swift */; };
 		6025C2221F6BF4D700471957 /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2201F6BF4D700471957 /* Indicators.swift */; };
 		6025C22A1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */; };
 		6025C22B1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */; };
+		6025C23E1F6C172900471957 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C23D1F6C172900471957 /* KeyValueStorage.swift */; };
+		6025C23F1F6C172900471957 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C23D1F6C172900471957 /* KeyValueStorage.swift */; };
+		6025C24D1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */; };
+		6025C24E1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */; };
+		6025C2511F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */; };
+		6025C2521F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */; };
 		606011DB1D36381C0076A6AA /* PrivacyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 606011DA1D36381C0076A6AA /* PrivacyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		606011E21D36381C0076A6AA /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606011D71D36381C0076A6AA /* PrivacyKit.framework */; };
-		606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */; };
-		606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */; };
 		606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F41D36418D0076A6AA /* PrivacyService.swift */; };
-		606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012151D3680B40076A6AA /* SecureRemoteStorage.swift */; };
 		606012221D36C6190076A6AA /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012211D36C6190076A6AA /* RegularExpression.swift */; };
 		609CB8481E93BEFD00929F6E /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8471E93BEFD00929F6E /* Http.swift */; };
 		609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB84E1E93BF1F00929F6E /* HttpTests.swift */; };
@@ -112,15 +112,15 @@
 		601834101F418B96003AE3D8 /* PrivacyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6025C2201F6BF4D700471957 /* Indicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicators.swift; sourceTree = "<group>"; };
 		6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpressionTest.swift; sourceTree = "<group>"; };
+		6025C23D1F6C172900471957 /* KeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
+		6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorageTests.swift; sourceTree = "<group>"; };
+		6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeKeyValueStorageBackend.swift; sourceTree = "<group>"; };
 		606011D71D36381C0076A6AA /* PrivacyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrivacyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		606011DA1D36381C0076A6AA /* PrivacyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivacyKit.h; sourceTree = "<group>"; };
 		606011DC1D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606011E11D36381C0076A6AA /* PrivacyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyServiceTests.swift; sourceTree = "<group>"; };
 		606011E81D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousKeyValueStorage.swift; sourceTree = "<group>"; };
 		606011F41D36418D0076A6AA /* PrivacyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyService.swift; sourceTree = "<group>"; };
-		606012151D3680B40076A6AA /* SecureRemoteStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureRemoteStorage.swift; sourceTree = "<group>"; };
 		606012211D36C6190076A6AA /* RegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 		609CB8471E93BEFD00929F6E /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		609CB84E1E93BF1F00929F6E /* HttpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTests.swift; sourceTree = "<group>"; };
@@ -197,6 +197,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6025C24F1F6C27DE00471957 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */,
+			);
+			path = Fakes;
+			sourceTree = "<group>";
+		};
 		603BECE11ECC386000D3350C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,8 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				603BECE61ECC389100D3350C /* Supporting Files */,
+				6025C24F1F6C27DE00471957 /* Fakes */,
 				609CB84E1E93BF1F00929F6E /* HttpTests.swift */,
-				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
+				6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */,
 				6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */,
 				60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */,
 			);
@@ -263,11 +272,11 @@
 		6060121F1D36AF2A0076A6AA /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
 				609CB8471E93BEFD00929F6E /* Http.swift */,
 				6025C2201F6BF4D700471957 /* Indicators.swift */,
+				6025C23D1F6C172900471957 /* KeyValueStorage.swift */,
+				606011F41D36418D0076A6AA /* PrivacyService.swift */,
 				606012211D36C6190076A6AA /* RegularExpression.swift */,
-				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
 				609CB8501E93C09300929F6E /* Shalon.swift */,
 			);
 			name = Public;
@@ -278,7 +287,6 @@
 			children = (
 				60DA8CB61D38D592009E2906 /* CertificatePinner.swift */,
 				60DA8CB81D38F529009E2906 /* PrivacyKit.swift */,
-				606011F41D36418D0076A6AA /* PrivacyService.swift */,
 				609CB8521E93C15E00929F6E /* Tls.swift */,
 			);
 			name = Internal;
@@ -503,14 +511,13 @@
 			files = (
 				601834251F418C73003AE3D8 /* Shalon.swift in Sources */,
 				601834261F418C77003AE3D8 /* CertificatePinner.swift in Sources */,
-				601834221F418C69003AE3D8 /* AsynchronousKeyValueStorage.swift in Sources */,
 				6025C2221F6BF4D700471957 /* Indicators.swift in Sources */,
 				6018342A1F418C99003AE3D8 /* PrivacyService.swift in Sources */,
 				6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */,
 				601834291F418C96003AE3D8 /* PrivacyKit.swift in Sources */,
 				6018342C1F418C9F003AE3D8 /* Tls.swift in Sources */,
-				601834241F418C70003AE3D8 /* SecureRemoteStorage.swift in Sources */,
 				601834231F418C6C003AE3D8 /* Http.swift in Sources */,
+				6025C23F1F6C172900471957 /* KeyValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,9 +526,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6025C22B1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */,
+				6025C2521F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */,
 				6018342F1F418CAE003AE3D8 /* ShalonTest.swift in Sources */,
-				6018342E1F418CAB003AE3D8 /* PrivacyServiceTests.swift in Sources */,
 				6018342D1F418CA8003AE3D8 /* HttpTests.swift in Sources */,
+				6025C24E1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,16 +537,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606012161D3680B40076A6AA /* SecureRemoteStorage.swift in Sources */,
 				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
 				60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */,
 				6025C2211F6BF4D700471957 /* Indicators.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,
-				606011F21D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift in Sources */,
 				609CB8531E93C15E00929F6E /* Tls.swift in Sources */,
 				609CB8511E93C09300929F6E /* Shalon.swift in Sources */,
 				60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */,
+				6025C23E1F6C172900471957 /* KeyValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,9 +554,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6025C22A1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */,
+				6025C2511F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */,
 				60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */,
-				606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */,
 				609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */,
+				6025C24D1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

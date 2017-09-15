@@ -112,6 +112,11 @@ class Http {
 	enum Header: String {
 		case host = "Host"
 		case contentLength = "Content-Length"
+		case contentType = "Content-Type"
+	}
+
+	enum ContentType: String {
+		case octetStream = "application/octet-stream"
 	}
 
 	typealias Headers = [String: String]
@@ -244,6 +249,20 @@ class Http {
 
 			super.init(withHeaders: headers, andBody: body)
 		}
+	}
+}
+
+extension URLRequest {
+	mutating func add(value: String, for header: Http.Header) {
+		addValue(value, forHTTPHeaderField: header.rawValue)
+	}
+
+	mutating func set(contentType: Http.ContentType) {
+		add(value: contentType.rawValue, for: .contentType)
+	}
+
+	mutating func set(method: Http.Method) {
+		httpMethod = method.rawValue
 	}
 }
 

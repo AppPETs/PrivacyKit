@@ -94,10 +94,10 @@ class PrivacyService {
 		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
 		var request = URLRequest(url: storageUrl(forRecord: record))
 
-		request.httpMethod = PrivacyService.HttpMethods.HttpMethodForStore.rawValue
+		request.set(method: .post)
 
 		// Set HTTP headers
-		request.addValue(PrivacyService.DefaultContentTypeHttpHeaderValue, forHTTPHeaderField: PrivacyService.HttpHeaders.ContentTypeHeader.rawValue)
+		request.set(contentType: .octetStream)
 
 		showNetworkActivityIndicator()
 
@@ -116,7 +116,10 @@ class PrivacyService {
 				return
 			}
 
-			if response.statusCode != PrivacyService.HttpStatus.HttpStatusOk.rawValue {
+			assert(0 <= response.statusCode)
+			let status = Http.Status(rawValue: UInt16(response.statusCode))!
+
+			if status != .ok {
 				finishedWithOptionalError("HTTP Error \(response.statusCode): \(response.description)")
 				return
 			}
@@ -168,7 +171,7 @@ class PrivacyService {
 		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
 		var request = URLRequest(url: storageUrl(forRecordId: recordId))
 
-		request.httpMethod = PrivacyService.HttpMethods.HttpMethodForRetrieve.rawValue
+		request.set(method: .get)
 
 		showNetworkActivityIndicator()
 
@@ -187,7 +190,10 @@ class PrivacyService {
 				return
 			}
 
-			if response.statusCode != PrivacyService.HttpStatus.HttpStatusOk.rawValue {
+			assert(0 <= response.statusCode)
+			let status = Http.Status(rawValue: UInt16(response.statusCode))!
+
+			if status != .ok {
 				finishedWithRecord(nil, "HTTP Error \(response.statusCode): \(response.description)")
 				return
 			}
@@ -212,39 +218,6 @@ class PrivacyService {
 	}
 
 	// MARK: - Private
-
-	// MARK: Enums
-
-	/// This enum is used to avoid hard-coded HTTP headers.
-	private enum HttpHeaders: String {
-		/// The HTTP "Content-Type" header.
-		case ContentTypeHeader = "Content-Type"
-	}
-
-	/// This enum is used to avoid hard-coded HTTP methods.
-	private enum HttpMethods: String {
-		/// The HTTP method used to store records.
-		case HttpMethodForStore    = "POST"
-		/// The HTTP method used to retrieve records.
-		case HttpMethodForRetrieve = "GET"
-	}
-
-	/// This enum is used to avoid hard-coded HTTP status codes.
-	private enum HttpStatus: Int {
-		/// The HTTP status code that signals success.
-		case HttpStatusOk = 200
-	}
-
-	// MARK: Class constants
-
-	/**
-		The default content type of the encrypted value of an record. The value
-		is transmitted in binary form.
-
-		- todo:
-			The value should be compressed to save bandwith.
-	*/
-	private static let DefaultContentTypeHttpHeaderValue = "application/octet-stream"
 
 	// MARK: Constants
 

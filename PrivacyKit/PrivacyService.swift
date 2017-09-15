@@ -1,9 +1,5 @@
 import Foundation
 
-#if os(iOS)
-	import UIKit
-#endif // iOS
-
 import Tafelsalz
 
 /**
@@ -99,12 +95,12 @@ class PrivacyService {
 		// Set HTTP headers
 		request.set(contentType: .octetStream)
 
-		showNetworkActivityIndicator()
+		Indicators.showNetworkActivity()
 
 		let task = session.uploadTask(with: request, from: record.encryptedData.bytes) {
 			optionalData, optionalResponse, optionalError in
 
-			hideNetworkActivityIndicator()
+			Indicators.hideNetworkActivity()
 
 			if let error = optionalError {
 				finishedWithOptionalError("Error: \(error.localizedDescription)\nResponse: \(optionalResponse.debugDescription)")
@@ -173,12 +169,12 @@ class PrivacyService {
 
 		request.set(method: .get)
 
-		showNetworkActivityIndicator()
+		Indicators.showNetworkActivity()
 
 		let task = session.dataTask(with: request) {
 			optionalData, optionalResponse, optionalError in
 
-			hideNetworkActivityIndicator()
+			Indicators.hideNetworkActivity()
 
 			if let error = optionalError {
 				finishedWithRecord(nil, "Error: \(error.localizedDescription)\nResponse: \(optionalResponse.debugDescription)")
@@ -277,40 +273,4 @@ class PrivacyService {
 		return storageUrl(forRecordId: record.id)
 	}
 
-}
-
-// MARK: - Helpers
-
-/**
-	Shows the network activity indicator in the status bar.
-
-	This function is thread safe.
-
-	- todo:
-		Use a callback/delegate so that the security related functions can be
-		offered to command line utilities or on macOS as well.
-*/
-func showNetworkActivityIndicator() {
-	#if os(iOS)
-		DispatchQueue.main.async {
-			UIApplication.shared.isNetworkActivityIndicatorVisible = true
-		}
-	#endif // iOS
-}
-
-/**
-	Hides the network activity indicator in the status bar.
-
-	This function is thread safe.
-
-	- todo:
-		Use a callback/delegate so that the security related functions can be
-		offered to command line utilities or on macOS as well.
-*/
-func hideNetworkActivityIndicator() {
-	#if os(iOS)
-		DispatchQueue.main.async {
-			UIApplication.shared.isNetworkActivityIndicatorVisible = false
-		}
-	#endif // iOS
 }

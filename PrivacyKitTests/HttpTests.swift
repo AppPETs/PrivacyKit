@@ -4,7 +4,7 @@ import XCTest
 class HttpTests: XCTestCase {
 
 	func testHeadRequest() {
-		let optionalRequest = Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])
+		let optionalRequest = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])
 
 		XCTAssertNotNil(optionalRequest, "Failed to create request")
 		let actualRequest = optionalRequest!
@@ -16,7 +16,7 @@ class HttpTests: XCTestCase {
 	}
 
 	func testConnectRequest() {
-		let optionalRequest = Request.connect(
+		let optionalRequest = Http.Request.connect(
 			toHost: "example.com",
 			withPort: 80,
 			viaProxy: URL(string: "https://localhost:8888")!,
@@ -35,13 +35,13 @@ class HttpTests: XCTestCase {
 	func testPServiceUploadResponse() {
 		let rawResponse = Data("HTTP/1.0 200 OK\r\nServer: BaseHTTP/0.6 Python/3.6.0\r\nDate: Wed, 25 Jan 2017 13:00:00 GMT\r\n\r\n".utf8)
 
-		let expectedHeaders: Headers = [
+		let expectedHeaders: Http.Headers = [
 			"Server": "BaseHTTP/0.6 Python/3.6.0",
 			"Date": "Wed, 25 Jan 2017 13:00:00 GMT",
 		]
 
 
-		let optionalResponse = Response(withRawData: rawResponse)
+		let optionalResponse = Http.Response(withRawData: rawResponse)
 
 		XCTAssertNotNil(optionalResponse, "Failed to parse response.")
 		let actualResponse = optionalResponse!
@@ -54,7 +54,7 @@ class HttpTests: XCTestCase {
 	func testConnectResponse() {
 		let rawResponse = Data("HTTP/1.0 200 Connection Established\r\nProxy-agent: Apache\r\n\r\n".utf8)
 
-		let optionalResponse = Response(withRawData: rawResponse)
+		let optionalResponse = Http.Response(withRawData: rawResponse)
 
 		XCTAssertNotNil(optionalResponse, "Failed to parse response.")
 		let actualResponse = optionalResponse!

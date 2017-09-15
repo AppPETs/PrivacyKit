@@ -31,14 +31,14 @@ enum GenericError: Error {
 **/
 class Shalon: NSObject, StreamDelegate {
 
-	typealias CompletionHandler = (Response?, Error?) -> Void
+	typealias CompletionHandler = (Http.Response?, Error?) -> Void
 
 	var state: State = .inactive
 	var targets: [Target] = []
 	var streams: [PairedStream] = []
 	var currentLayer = 0
 
-	var request: Request! = nil
+	var request: Http.Request! = nil
 	var completionHandler: CompletionHandler! = nil
 
 	init(withTarget target: Target) {
@@ -51,7 +51,7 @@ class Shalon: NSObject, StreamDelegate {
 		targets.insert(target, at: 0)
 	}
 
-	func issue(request: Request, completionHandler: @escaping CompletionHandler) {
+	func issue(request: Http.Request, completionHandler: @escaping CompletionHandler) {
 		assert(!targets.isEmpty)
 		assert(streams.isEmpty)
 		assert(self.request == nil)
@@ -148,7 +148,7 @@ class Shalon: NSObject, StreamDelegate {
 				case .expectTunnelConnectionEstablished:
 					// Read HTTP response and check if it indicates success.
 					state = determineNextAction()
-					guard let response: Response = expectHttpResponse(fromStream: stream) else {
+					guard let response: Http.Response = expectHttpResponse(fromStream: stream) else {
 						print("Failed to parse response")
 						return
 					}
@@ -184,7 +184,7 @@ class Shalon: NSObject, StreamDelegate {
 
 					// Send HTTP CONNECT request to the next target
 					state = .expectTunnelConnectionEstablished
-					send(request: Request.connect(toTarget: nextTarget, viaProxy: currentTarget)!, toStream: stream)
+					send(request: Http.Request.connect(toTarget: nextTarget, viaProxy: currentTarget)!, toStream: stream)
 				case .shouldSendHttpRequest:
 					assert(nextTargetIdx == targets.count)
 
@@ -225,16 +225,16 @@ class Shalon: NSObject, StreamDelegate {
 		state = .inactive
 	}
 
-	func expectHttpResponse(fromStream stream: InputStream) -> Response? {
+	func expectHttpResponse(fromStream stream: InputStream) -> Http.Response? {
 		assert(stream.hasBytesAvailable)
 
 		guard let rawResponse = stream.readAll() else {
 			return nil
 		}
-		return Response(withRawData: rawResponse)
+		return Http.Response(withRawData: rawResponse)
 	}
 
-	func send(request: Request, toStream stream: OutputStream) {
+	func send(request: Http.Request, toStream stream: OutputStream) {
 		assert(stream.hasSpaceAvailable)
 
 		guard let rawRequest = request.compose() else {

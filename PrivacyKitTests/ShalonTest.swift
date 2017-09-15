@@ -8,14 +8,14 @@ class ShalonTest: XCTestCase {
 		let target = Target(withHostname: url.host!, andPort: 443)!
 		let shalon = Shalon(withTarget: target)
 
-		var optionalResponse: Response? = nil
+		var optionalResponse: Http.Response? = nil
 		var optionalError: Error? = nil
 
 		shalon.addLayer(Target(withHostname: "shalon1.jondonym.net", andPort: 443)!)
 
 		let responseReceivedExpectation = expectation(description: "responseReceived")
 
-		shalon.issue(request: Request(withMethod: .head, andUrl: url)!) {
+		shalon.issue(request: Http.Request(withMethod: .head, andUrl: url)!) {
 			receivedOptionalResponse, receivedOptionalError in
 
 			optionalResponse = receivedOptionalResponse

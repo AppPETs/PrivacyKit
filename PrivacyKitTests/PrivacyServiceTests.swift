@@ -1,31 +1,24 @@
 import XCTest
+
+import Tafelsalz
+
 @testable import PrivacyKit
 
 class PrivacyServiceTests: XCTestCase {
 
 	func testRecordId() {
-		XCTAssertEqual(PrivacyService.RecordId.lengthInBytes, 256/8)
+		typealias RecordId = PrivacyService.RecordId
 
-		let validRecordId = "fcb6471961829d28270462a2d5cba7fd141d80c608d6df074f8e2e213c187471"
+		let validRecordId = Random.bytes(count: RecordId.lengthInBytes).hex
 
-		let potentialRecordId = PrivacyService.RecordId(validRecordId)
-		XCTAssertNotNil(potentialRecordId, "Valid record ID rejected unexpectedly")
+		XCTAssertNotNil(RecordId(validRecordId))
+		XCTAssertNotNil(RecordId(validRecordId.uppercased()))
 
-		let upperCaseRecordId = PrivacyService.RecordId(validRecordId.uppercased())
-		XCTAssertNotNil(upperCaseRecordId, "Valid record ID with upperase hex rejected unexpectedly")
+		XCTAssertNil(RecordId(""))
+		XCTAssertNil(RecordId(Random.bytes(count: RecordId.lengthInBytes - 1).hex))
+		XCTAssertNil(RecordId(Random.bytes(count: RecordId.lengthInBytes + 1).hex))
 
-		let emptyRecordId = PrivacyService.RecordId("")
-		XCTAssertNil(emptyRecordId, "Empty record ID accepted unexpectedly")
-
-		let shortRecordId = PrivacyService.RecordId("deadbeef")
-		XCTAssertNil(shortRecordId, "Short record ID accepted unexpectedly")
-
-		let longRecordId = PrivacyService.RecordId(validRecordId + "ff")
-		XCTAssertNil(longRecordId, "Long record ID accepted unexpectedly")
-
-		let nonHex512BitString = "xcb6471961829d28270462a2d5cba7fd141d80c608d6df074f8e2e213c187471"
-		let nonHexRecordId = PrivacyService.RecordId(nonHex512BitString)
-		XCTAssertNil(nonHexRecordId, "Non-hex record ID accepted unexpectedly")
+		XCTAssertNil(RecordId(validRecordId.replacingCharacters(in: validRecordId.startIndex..<validRecordId.endIndex, with: "x")))
 	}
 
 }

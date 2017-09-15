@@ -4,29 +4,23 @@ import XCTest
 class HttpTests: XCTestCase {
 
 	func testHeadRequest() {
-		let optionalRequest = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])
+		let request = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 
-		XCTAssertNotNil(optionalRequest, "Failed to create request")
-		let actualRequest = optionalRequest!
-
-		let actual = String(data: actualRequest.compose()!, encoding: .utf8)!
+		let actual = String(data: request.compose()!, encoding: .utf8)!
 		let expected = "HEAD / HTTP/1.1\r\nX-Test: foobar\r\nHost: example.com\r\nX-Foo: Bar\r\n\r\n"
 
 		XCTAssertEqual(actual, expected)
 	}
 
 	func testConnectRequest() {
-		let optionalRequest = Http.Request.connect(
+		let request = Http.Request.connect(
 			toHost: "example.com",
 			withPort: 80,
 			viaProxy: URL(string: "https://localhost:8888")!,
 			withHeaders: ["X-Test": "foobar", "X-Foo": "Bar"]
-		)
+		)!
 
-		XCTAssertNotNil(optionalRequest, "Failed to create request")
-		let actualRequest = optionalRequest!
-
-		let actual = String(data: actualRequest.compose()!, encoding: .utf8)!
+		let actual = String(data: request.compose()!, encoding: .utf8)!
 		let expected = "CONNECT example.com:80 HTTP/1.1\r\nX-Test: foobar\r\nHost: localhost\r\nX-Foo: Bar\r\n\r\n"
 
 		XCTAssertEqual(actual, expected)
@@ -40,28 +34,21 @@ class HttpTests: XCTestCase {
 			"Date": "Wed, 25 Jan 2017 13:00:00 GMT",
 		]
 
+		let response = Http.Response(withRawData: rawResponse)!
 
-		let optionalResponse = Http.Response(withRawData: rawResponse)
-
-		XCTAssertNotNil(optionalResponse, "Failed to parse response.")
-		let actualResponse = optionalResponse!
-
-		XCTAssertEqual(actualResponse.status, .ok)
-		XCTAssertEqual(actualResponse.headers, expectedHeaders)
-		XCTAssertEqual(actualResponse.body, Data())
+		XCTAssertEqual(response.status, .ok)
+		XCTAssertEqual(response.headers, expectedHeaders)
+		XCTAssertEqual(response.body, Data())
 	}
 
 	func testConnectResponse() {
 		let rawResponse = Data("HTTP/1.0 200 Connection Established\r\nProxy-agent: Apache\r\n\r\n".utf8)
 
-		let optionalResponse = Http.Response(withRawData: rawResponse)
+		let response = Http.Response(withRawData: rawResponse)!
 
-		XCTAssertNotNil(optionalResponse, "Failed to parse response.")
-		let actualResponse = optionalResponse!
-
-		XCTAssertEqual(actualResponse.status, .ok)
-		XCTAssertEqual(actualResponse.headers, ["Proxy-agent": "Apache"])
-		XCTAssertEqual(actualResponse.body, Data())
+		XCTAssertEqual(response.status, .ok)
+		XCTAssertEqual(response.headers, ["Proxy-agent": "Apache"])
+		XCTAssertEqual(response.body, Data())
 	}
 
 

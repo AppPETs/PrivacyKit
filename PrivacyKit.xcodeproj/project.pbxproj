@@ -26,6 +26,8 @@
 		6018342F1F418CAE003AE3D8 /* ShalonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */; };
 		6025C2211F6BF4D700471957 /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2201F6BF4D700471957 /* Indicators.swift */; };
 		6025C2221F6BF4D700471957 /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2201F6BF4D700471957 /* Indicators.swift */; };
+		6025C22A1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */; };
+		6025C22B1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */; };
 		606011DB1D36381C0076A6AA /* PrivacyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 606011DA1D36381C0076A6AA /* PrivacyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		606011E21D36381C0076A6AA /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606011D71D36381C0076A6AA /* PrivacyKit.framework */; };
 		606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */; };
@@ -109,6 +111,7 @@
 		601834081F418B96003AE3D8 /* PrivacyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrivacyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		601834101F418B96003AE3D8 /* PrivacyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6025C2201F6BF4D700471957 /* Indicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicators.swift; sourceTree = "<group>"; };
+		6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpressionTest.swift; sourceTree = "<group>"; };
 		606011D71D36381C0076A6AA /* PrivacyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrivacyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		606011DA1D36381C0076A6AA /* PrivacyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivacyKit.h; sourceTree = "<group>"; };
 		606011DC1D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 				603BECE61ECC389100D3350C /* Supporting Files */,
 				609CB84E1E93BF1F00929F6E /* HttpTests.swift */,
 				606011E61D36381C0076A6AA /* PrivacyServiceTests.swift */,
+				6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */,
 				60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */,
 			);
 			path = PrivacyKitTests;
@@ -262,6 +266,7 @@
 				606011F11D363A8C0076A6AA /* AsynchronousKeyValueStorage.swift */,
 				609CB8471E93BEFD00929F6E /* Http.swift */,
 				6025C2201F6BF4D700471957 /* Indicators.swift */,
+				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				606012151D3680B40076A6AA /* SecureRemoteStorage.swift */,
 				609CB8501E93C09300929F6E /* Shalon.swift */,
 			);
@@ -274,7 +279,6 @@
 				60DA8CB61D38D592009E2906 /* CertificatePinner.swift */,
 				60DA8CB81D38F529009E2906 /* PrivacyKit.swift */,
 				606011F41D36418D0076A6AA /* PrivacyService.swift */,
-				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				609CB8521E93C15E00929F6E /* Tls.swift */,
 			);
 			name = Internal;
@@ -514,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6025C22B1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */,
 				6018342F1F418CAE003AE3D8 /* ShalonTest.swift in Sources */,
 				6018342E1F418CAB003AE3D8 /* PrivacyServiceTests.swift in Sources */,
 				6018342D1F418CA8003AE3D8 /* HttpTests.swift in Sources */,
@@ -541,6 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6025C22A1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */,
 				60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */,
 				606011E71D36381C0076A6AA /* PrivacyServiceTests.swift in Sources */,
 				609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */,

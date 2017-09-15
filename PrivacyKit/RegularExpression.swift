@@ -1,6 +1,6 @@
 import Foundation
 
-infix operator =~
+infix operator =~: ComparisonPrecedence
 
 /**
 	Infix operator for testing if a string matches a regular expression.
@@ -10,21 +10,43 @@ infix operator =~
 	```swift
 	let sentence = "The world is flat."
 	if sentence =~ "^The" {
-	    // The sentence starts with "The"
+		// The sentence starts with "The"
 	}
 	```
 
 	- see:
 		`RegularExpression`
 
-	- parameter input:
-		The string that should be tested.
-
-	- parameter pattern:
-		The regular expression that should be used for testing.
+	- parameters:
+		- input: The string that should be tested.
+		- pattern: The regular expression that should be used for testing.
 */
-func =~ (input: String, pattern: String) -> Bool {
-	return RegularExpression(pattern)!.test(input)
+public func =~(input: String, pattern: String) -> Bool {
+	return input =~ RegularExpression(pattern)!
+}
+
+/**
+	Infix operator for testing if a string matches a regular expression.
+
+	## Example
+
+	```swift
+	let pattern = RegularExpression("^The")!
+	let sentence = "The world is flat."
+	if sentence =~ pattern {
+		// The sentence starts with "The"
+	}
+	```
+
+	- see:
+		`RegularExpression`
+
+	- parameters:
+		- input: The string that should be tested.
+		- pattern: The regular expression that should be used for testing.
+*/
+public func =~(input: String, pattern: RegularExpression) -> Bool {
+	return pattern.matches(input)
 }
 
 /**
@@ -33,7 +55,7 @@ func =~ (input: String, pattern: String) -> Bool {
 	- see:
 		Taken from http://benscheirman.com/2014/06/regex-in-swift/
 */
-class RegularExpression {
+public class RegularExpression {
 
 	/// The internal representation of the regular expression
 	private let internalExpression: NSRegularExpression
@@ -47,7 +69,7 @@ class RegularExpression {
 		- returns:
 			`nil` if the expression cannot be compiled, i.e. if it is invalid.
 	*/
-	init?(_ pattern: String) {
+	public init?(_ pattern: String) {
 		do {
 			self.internalExpression = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
 		} catch {
@@ -58,13 +80,13 @@ class RegularExpression {
 	/**
 		Tests if the regular expression matches a given string `input`.
 
-		- parameter input:
-			The string that shall be tested.
+		- parameters:
+			- input: The string that shall be tested.
 
 		- returns:
 			`true` if the expression matches the string, `false` otherwise.
 	*/
-	func test(_ input: String) -> Bool {
+	public func matches(_ input: String) -> Bool {
 		let matches = self.internalExpression.matches(in: input, options: .reportCompletion, range: NSMakeRange(0, input.characters.count))
 		return matches.count > 0
 	}

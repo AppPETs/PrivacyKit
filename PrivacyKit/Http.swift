@@ -128,9 +128,9 @@ class Http {
 
 	class Message {
 		let headers: Headers
-		let	body: Data
+		let	body: Data?
 
-		init(withHeaders headers: Headers = [:], andBody body: Data = Data()) {
+		init(withHeaders headers: Headers = [:], andBody body: Data? = nil) {
 			self.headers = headers
 			self.body = body
 		}
@@ -204,7 +204,9 @@ class Http {
 				rawRequest.append(Data("\(key): \(value)\r\n".utf8))
 			}
 			rawRequest.append(Data("\r\n".utf8))
-			rawRequest.append(body)
+			if let body = body {
+				rawRequest.append(body)
+			}
 
 			return rawRequest
 		}
@@ -246,11 +248,8 @@ class Http {
 			let headers = cfHeaders as! Headers
 
 			// Parse body
-			guard let cfBody = CFHTTPMessageCopyBody(cfResponse)?.takeRetainedValue() else {
-				return nil
-			}
-
-			let body = cfBody as Data
+			let cfBody = CFHTTPMessageCopyBody(cfResponse)?.takeRetainedValue()
+			let body = cfBody as Data?
 
 			super.init(withHeaders: headers, andBody: body)
 		}

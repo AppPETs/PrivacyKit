@@ -38,7 +38,7 @@ class HttpTests: XCTestCase {
 
 		XCTAssertEqual(response.status, .ok)
 		XCTAssertEqual(response.headers, expectedHeaders)
-		XCTAssertEqual(response.body, Data())
+		XCTAssertNil(response.body)
 	}
 
 	func testConnectResponse() {
@@ -48,7 +48,7 @@ class HttpTests: XCTestCase {
 
 		XCTAssertEqual(response.status, .ok)
 		XCTAssertEqual(response.headers, ["Proxy-agent": "Apache"])
-		XCTAssertEqual(response.body, Data())
+		XCTAssertNil(response.body)
 	}
 
 

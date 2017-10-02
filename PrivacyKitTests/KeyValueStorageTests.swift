@@ -19,7 +19,8 @@ class KeyValueStorageTests: XCTestCase {
 	func testSecureKeyValueStorage() {
 		let backend = FakeKeyValueStorageBackend()
 		let masterKey = MasterKey()
-		let storage = SecureKeyValueStorage(with: backend, and: masterKey)
+		let context = SecureKeyValueStorage.Context("TESTTEST")!
+		let storage = SecureKeyValueStorage(with: backend, and: masterKey, context: context)
 
 		let storeExpectation = expectation(description: "valueStored")
 

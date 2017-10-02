@@ -59,11 +59,12 @@ protocol KeyValueStorageService {
 
 class SecureKeyValueStorage {
 
+	typealias Context = MasterKey.Context
+
 	enum Error: Swift.Error {
 		case failedToDecrypt
 	}
 
-	private static let Context = MasterKey.Context("PLib-KVS")!
 	private static let SecretKeyId: UInt64 = 0
 	private static let HashKeyId: UInt64 = 1
 
@@ -71,19 +72,19 @@ class SecureKeyValueStorage {
 	let secretBox: SecretBox
 	let hashKey: GenericHash.Key
 
-	init(with backend: KeyValueStorageBackend, and masterKey: MasterKey) {
+	init(with backend: KeyValueStorageBackend, and masterKey: MasterKey, context: Context) {
 		self.backend = backend
-		self.secretBox = SecretBox(secretKey: masterKey.derive(with: SecureKeyValueStorage.SecretKeyId, and: SecureKeyValueStorage.Context))
-		self.hashKey = masterKey.derive(with: SecureKeyValueStorage.HashKeyId, and: SecureKeyValueStorage.Context)!
+		self.secretBox = SecretBox(secretKey: masterKey.derive(with: SecureKeyValueStorage.SecretKeyId, and: context))
+		self.hashKey = masterKey.derive(with: SecureKeyValueStorage.HashKeyId, and: context)!
 	}
 
-	convenience init?(with backend: KeyValueStorageBackend, for persona: Persona) {
+	convenience init?(with backend: KeyValueStorageBackend, for persona: Persona, context: Context) {
 		guard let masterKey = try? persona.masterKey() else { return nil }
-		self.init(with: backend, and: masterKey)
+		self.init(with: backend, and: masterKey, context: context)
 	}
 
-	convenience init?(with service: KeyValueStorageService, for persona: Persona) {
-		self.init(with: service.keyValueStorageBackend, for: persona)
+	convenience init?(with service: KeyValueStorageService, for persona: Persona, context: Context) {
+		self.init(with: service.keyValueStorageBackend, for: persona, context: context)
 	}
 
 	func encrypt(_ key: Key) -> EncryptedKey {

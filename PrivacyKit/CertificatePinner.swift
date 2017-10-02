@@ -71,7 +71,7 @@ class CertificatePinner : NSObject, URLSessionDelegate {
 	*/
 	init?(forHost host: String) {
 
-		guard let pinnedServerCertificate = NSDataAsset(name: host, bundle: PrivacyKit.bundle())?.data else {
+		guard let pinnedServerCertificate = NSDataAsset(name: NSDataAsset.Name(rawValue: host), bundle: PrivacyKit.bundle())?.data else {
 			print("No pinned certificate for host in resources: \(host)")
 			return nil
 		}

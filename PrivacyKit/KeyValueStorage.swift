@@ -60,7 +60,6 @@ protocol KeyValueStorageService {
 class SecureKeyValueStorage {
 
 	enum Error: Swift.Error {
-		case keychainError // <#TODO#> Use error triggered by `Keychain` instead.
 		case failedToDecrypt
 	}
 

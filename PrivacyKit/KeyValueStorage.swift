@@ -147,12 +147,6 @@ extension PrivacyService {
 			self.baseUrl = baseUrl
 		}
 
-		var certificatePinner: CertificatePinner? {
-			get {
-				return CertificatePinner(forHost: baseUrl.host!)
-			}
-		}
-
 		var entryPoint: URL {
 			get {
 				return baseUrl
@@ -171,7 +165,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Swift.Error?) -> Void) {
 		let sessionConfiguration = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
+		let session = URLSession(configuration: sessionConfiguration)
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .post)
@@ -207,7 +201,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 
 	func retrieve(for key: EncryptedKey, callback: @escaping (EncryptedValue?, Swift.Error?) -> Void) {
 		let sessionConfiguration = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfiguration, delegate: certificatePinner, delegateQueue: nil)
+		let session = URLSession(configuration: sessionConfiguration)
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .get)

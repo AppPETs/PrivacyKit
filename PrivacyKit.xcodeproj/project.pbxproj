@@ -12,10 +12,8 @@
 		6018341F1F418BDB003AE3D8 /* Tafelsalz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018337D1F3CC796003AE3D8 /* Tafelsalz.framework */; };
 		601834231F418C6C003AE3D8 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8471E93BEFD00929F6E /* Http.swift */; };
 		601834251F418C73003AE3D8 /* Shalon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8501E93C09300929F6E /* Shalon.swift */; };
-		601834261F418C77003AE3D8 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
 		601834271F418C7E003AE3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
 		601834281F418C86003AE3D8 /* PrivacyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 606011DA1D36381C0076A6AA /* PrivacyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		601834291F418C96003AE3D8 /* PrivacyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB81D38F529009E2906 /* PrivacyKit.swift */; };
 		6018342A1F418C99003AE3D8 /* PrivacyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F41D36418D0076A6AA /* PrivacyService.swift */; };
 		6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606012211D36C6190076A6AA /* RegularExpression.swift */; };
 		6018342C1F418C9F003AE3D8 /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
@@ -41,8 +39,6 @@
 		609CB8531E93C15E00929F6E /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
 		60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */; };
 		60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
-		60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB61D38D592009E2906 /* CertificatePinner.swift */; };
-		60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA8CB81D38F529009E2906 /* PrivacyKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,8 +124,6 @@
 		609CB8521E93C15E00929F6E /* Tls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tls.swift; sourceTree = "<group>"; };
 		60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShalonTest.swift; sourceTree = "<group>"; };
 		60DA8CB41D38CEEA009E2906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		60DA8CB61D38D592009E2906 /* CertificatePinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinner.swift; sourceTree = "<group>"; };
-		60DA8CB81D38F529009E2906 /* PrivacyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyKit.swift; sourceTree = "<group>"; };
 		60DA8CBA1D391250009E2906 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,8 +279,6 @@
 		606012201D36AF3F0076A6AA /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				60DA8CB61D38D592009E2906 /* CertificatePinner.swift */,
-				60DA8CB81D38F529009E2906 /* PrivacyKit.swift */,
 				609CB8521E93C15E00929F6E /* Tls.swift */,
 			);
 			name = Internal;
@@ -510,11 +502,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				601834251F418C73003AE3D8 /* Shalon.swift in Sources */,
-				601834261F418C77003AE3D8 /* CertificatePinner.swift in Sources */,
 				6025C2221F6BF4D700471957 /* Indicators.swift in Sources */,
 				6018342A1F418C99003AE3D8 /* PrivacyService.swift in Sources */,
 				6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */,
-				601834291F418C96003AE3D8 /* PrivacyKit.swift in Sources */,
 				6018342C1F418C9F003AE3D8 /* Tls.swift in Sources */,
 				601834231F418C6C003AE3D8 /* Http.swift in Sources */,
 				6025C23F1F6C172900471957 /* KeyValueStorage.swift in Sources */,
@@ -538,13 +528,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
-				60DA8CB71D38D592009E2906 /* CertificatePinner.swift in Sources */,
 				6025C2211F6BF4D700471957 /* Indicators.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,
 				609CB8531E93C15E00929F6E /* Tls.swift in Sources */,
 				609CB8511E93C09300929F6E /* Shalon.swift in Sources */,
-				60DA8CB91D38F529009E2906 /* PrivacyKit.swift in Sources */,
 				6025C23E1F6C172900471957 /* KeyValueStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

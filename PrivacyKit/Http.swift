@@ -97,19 +97,19 @@ class Http {
 	}
 
 	static func category(for status: Status) -> StatusCategory {
-		if (100..<200).contains(status.rawValue) {
-			return .informal
-		} else if (200..<300).contains(status.rawValue) {
-			return .success
-		} else if (300..<400).contains(status.rawValue) {
-			return .redirection
-		} else if (400..<500).contains(status.rawValue) {
-			return .clientError
-		} else if (500..<600).contains(status.rawValue) {
-			return .serverError
-		} else {
-			assert(false, "Invalid status")
-			return .clientError // Needed to compile for profiling
+		switch status.rawValue {
+			case 100..<200:
+				return .informal
+			case 200..<300:
+				return .success
+			case 300..<400:
+				return .redirection
+			case 400..<500:
+				return .clientError
+			case 500..<600:
+				return .serverError
+			default:
+				fatalError("Invalid status!")
 		}
 	}
 

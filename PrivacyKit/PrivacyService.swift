@@ -14,7 +14,7 @@ public class PrivacyService {
 		- parameters:
 			- baseUrl: The base URL of the P-Service.
 	*/
-	init(baseUrl: URL) {
+	public init(baseUrl: URL) {
 		self.baseUrl = baseUrl
 	}
 

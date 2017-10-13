@@ -13,9 +13,9 @@ public protocol KeyValueStorage {
 
 // MARK: - Backend
 
-public typealias EncryptedValue = SecretBox.AuthenticatedCiphertext
+typealias EncryptedValue = SecretBox.AuthenticatedCiphertext
 
-public struct EncryptedKey {
+struct EncryptedKey {
 	public static let SizeInBytes: PInt = 256 / 8
 
 	let value: GenericHash
@@ -47,14 +47,10 @@ extension EncryptedKey: CustomStringConvertible {
 	}
 }
 
-public protocol KeyValueStorageBackend {
+protocol KeyValueStorageBackend {
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Error?) -> Void)
 	func retrieve(for key: EncryptedKey, callback: @escaping (EncryptedValue?, Error?) -> Void)
 	func remove(for key: EncryptedKey, callback: @escaping (Error?) -> Void)
-}
-
-public protocol KeyValueStorageService {
-	var keyValueStorageBackend: KeyValueStorageBackend { get }
 }
 
 // MARK: - Encryption
@@ -64,6 +60,9 @@ public class SecureKeyValueStorage {
 	public typealias Context = MasterKey.Context
 
 	public enum Error: Swift.Error {
+		case valueDoesNotExist
+		case noContent
+		case responseTooSmall
 		case failedToDecrypt
 	}
 
@@ -80,7 +79,7 @@ public class SecureKeyValueStorage {
 		self.hashKey = masterKey.derive(with: SecureKeyValueStorage.HashKeyId, and: context)!
 	}
 
-	public convenience init(with service: KeyValueStorageService, and masterKey: MasterKey, context: Context) {
+	public convenience init(with service: PrivacyService, and masterKey: MasterKey, context: Context) {
 		self.init(with: service.keyValueStorageBackend, and: masterKey, context: context)
 	}
 
@@ -89,7 +88,7 @@ public class SecureKeyValueStorage {
 		self.init(with: backend, and: masterKey, context: context)
 	}
 
-	public convenience init?(with service: KeyValueStorageService, for persona: Persona, context: Context) {
+	public convenience init?(with service: PrivacyService, for persona: Persona, context: Context) {
 		self.init(with: service.keyValueStorageBackend, for: persona, context: context)
 	}
 
@@ -145,13 +144,14 @@ extension SecureKeyValueStorage: KeyValueStorage {
 // MARK: - P-Service API
 
 extension PrivacyService {
-	class KeyValueStorage {
 
-		enum Error: Swift.Error {
-			case valueDoesNotExist
-			case noContent
-			case responseTooSmall
+	var keyValueStorageBackend: KeyValueStorageBackend {
+		get {
+			return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
 		}
+	}
+
+	class KeyValueStorage {
 
 		let baseUrl: URL
 
@@ -236,7 +236,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 			}
 
 			guard response.status != .notFound else {
-				callback(nil, Error.valueDoesNotExist)
+				callback(nil, SecureKeyValueStorage.Error.valueDoesNotExist)
 				return
 			}
 
@@ -248,12 +248,12 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 			// Successfully downloaded
 
 			guard let data = optionalData else {
-				callback(nil, Error.noContent)
+				callback(nil, SecureKeyValueStorage.Error.noContent)
 				return
 			}
 
 			guard let ciphertext = EncryptedValue(bytes: data) else {
-				callback(nil, Error.responseTooSmall)
+				callback(nil, SecureKeyValueStorage.Error.responseTooSmall)
 				return
 			}
 
@@ -298,12 +298,4 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 		task.resume()
 	}
 
-}
-
-extension PrivacyService: KeyValueStorageService {
-	public var keyValueStorageBackend: KeyValueStorageBackend {
-		get {
-			return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
-		}
-	}
 }

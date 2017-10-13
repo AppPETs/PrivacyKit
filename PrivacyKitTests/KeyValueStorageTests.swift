@@ -161,7 +161,7 @@ class KeyValueStorageTests: XCTestCase {
 		metaTestRetrieve(storage: storage, key: "task_1", expectedValue: expectedTask1)
 		metaTestRetrieve(storage: storage, key: "task_3", expectedValue: expectedTask3)
 
-		metaTestRetrieve(storage: storage, key: "task_2", expectedError: PrivacyService.KeyValueStorage.Error.valueDoesNotExist)
+		metaTestRetrieve(storage: storage, key: "task_2", expectedError: SecureKeyValueStorage.Error.valueDoesNotExist)
 	}
 
 	func testRemote() {
@@ -175,7 +175,7 @@ class KeyValueStorageTests: XCTestCase {
 		let value2 = Data("baz".utf8)
 
 		// Test retrieving invalid value
-		metaTestRetrieve(storage: storage, key: key, expectedError: PrivacyService.KeyValueStorage.Error.valueDoesNotExist)
+		metaTestRetrieve(storage: storage, key: key, expectedError: SecureKeyValueStorage.Error.valueDoesNotExist)
 
 		// Test storing a value
 		metaTestStore(storage: storage, key: key, value: value1)
@@ -187,7 +187,7 @@ class KeyValueStorageTests: XCTestCase {
 
 		// Test removing a value
 		metaTestRemove(storage: storage, key: key)
-		metaTestRetrieve(storage: storage, key: key, expectedError: PrivacyService.KeyValueStorage.Error.valueDoesNotExist)
+		metaTestRetrieve(storage: storage, key: key, expectedError: SecureKeyValueStorage.Error.valueDoesNotExist)
 	}
 	
 }

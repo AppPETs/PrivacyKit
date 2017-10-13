@@ -65,8 +65,8 @@ class SecureKeyValueStorage {
 		case failedToDecrypt
 	}
 
-	private static let SecretKeyId: UInt64 = 0
 	private static let HashKeyId: UInt64 = 1
+	private static let SecretKeyId: UInt64 = 2
 
 	let backend: KeyValueStorageBackend
 	let secretBox: SecretBox

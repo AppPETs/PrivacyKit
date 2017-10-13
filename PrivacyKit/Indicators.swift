@@ -8,11 +8,6 @@
 public class Indicators {
 
 	/**
-		Disabled initializer.
-	*/
-	private init() {}
-
-	/**
 		Shows the network activity indicator in the status bar.
 
 		This function is thread safe.

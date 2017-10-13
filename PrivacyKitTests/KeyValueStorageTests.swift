@@ -86,6 +86,28 @@ class KeyValueStorageTests: XCTestCase {
 		}
 	}
 
+	func metaTestRemove(storage: SecureKeyValueStorage, key: SecureKeyValueStorage.Key) {
+		var optionalError: Error? = nil
+
+		let removedExpectation = expectation(description: "removed '\(key)'")
+
+		storage.remove(for: key) {
+			receivedError in
+
+			optionalError = receivedError
+
+			removedExpectation.fulfill()
+		}
+
+		waitForExpectations(timeout: tenSeconds) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError)
+
+			XCTAssertNil(optionalError)
+		}
+	}
+
 	// MARK: Tests
 
 	func testEncryptedKey() {
@@ -103,11 +125,23 @@ class KeyValueStorageTests: XCTestCase {
 		let storage = SecureKeyValueStorage(with: backend, and: masterKey, context: context)
 
 		let key = "foo"
-		let value = Data("bar".utf8)
+		let value1 = Data("bar".utf8)
+		let value2 = Data("baz".utf8)
 
+		// Test retrieving invalid value
 		metaTestRetrieve(storage: storage, key: key, expectedError: FakeKeyValueStorageBackend.Error.valueDoesNotExist)
-		metaTestStore(storage: storage, key: key, value: value)
-		metaTestRetrieve(storage: storage, key: key, expectedValue: value)
+
+		// Test storing a value
+		metaTestStore(storage: storage, key: key, value: value1)
+		metaTestRetrieve(storage: storage, key: key, expectedValue: value1)
+
+		// Test overwriting a value
+		metaTestStore(storage: storage, key: key, value: value2)
+		metaTestRetrieve(storage: storage, key: key, expectedValue: value2)
+
+		// Test removing a value
+		metaTestRemove(storage: storage, key: key)
+		metaTestRetrieve(storage: storage, key: key, expectedError: FakeKeyValueStorageBackend.Error.valueDoesNotExist)
 	}
 
 	func testTodolistVectors() {
@@ -137,11 +171,23 @@ class KeyValueStorageTests: XCTestCase {
 		let storage = SecureKeyValueStorage(with: service, and: masterKey, context: context)
 
 		let key = "foo"
-		let value = Data("bar".utf8)
+		let value1 = Data("bar".utf8)
+		let value2 = Data("baz".utf8)
 
+		// Test retrieving invalid value
 		metaTestRetrieve(storage: storage, key: key, expectedError: PrivacyService.KeyValueStorage.Error.valueDoesNotExist)
-		metaTestStore(storage: storage, key: key, value: value)
-		metaTestRetrieve(storage: storage, key: key, expectedValue: value)
+
+		// Test storing a value
+		metaTestStore(storage: storage, key: key, value: value1)
+		metaTestRetrieve(storage: storage, key: key, expectedValue: value1)
+
+		// Test overwriting a value
+		metaTestStore(storage: storage, key: key, value: value2)
+		metaTestRetrieve(storage: storage, key: key, expectedValue: value2)
+
+		// Test removing a value
+		metaTestRemove(storage: storage, key: key)
+		metaTestRetrieve(storage: storage, key: key, expectedError: PrivacyService.KeyValueStorage.Error.valueDoesNotExist)
 	}
 	
 }

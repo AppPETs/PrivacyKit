@@ -12,6 +12,7 @@ class FakeKeyValueStorageBackend {
 }
 
 extension FakeKeyValueStorageBackend: KeyValueStorageBackend {
+
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Swift.Error?) -> Void) {
 		storage[key] = value
 		callback(nil)
@@ -24,4 +25,10 @@ extension FakeKeyValueStorageBackend: KeyValueStorageBackend {
 		}
 		callback(storage[key], nil)
 	}
+
+	func remove(for key: EncryptedKey, callback: @escaping (Swift.Error?) -> Void) {
+		storage.removeValue(forKey: key)
+		callback(nil)
+	}
+
 }

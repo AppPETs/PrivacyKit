@@ -8,6 +8,7 @@ public protocol KeyValueStorage {
 
 	func store(value: Value, for key: Key, finished: @escaping (Error?) -> Void)
 	func retrieve(for key: Key, finished: @escaping (Value?, Error?) -> Void)
+	func remove(for key: Key, finished: @escaping (Error?) -> Void)
 }
 
 // MARK: - Backend
@@ -49,6 +50,7 @@ extension EncryptedKey: CustomStringConvertible {
 public protocol KeyValueStorageBackend {
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Error?) -> Void)
 	func retrieve(for key: EncryptedKey, callback: @escaping (EncryptedValue?, Error?) -> Void)
+	func remove(for key: EncryptedKey, callback: @escaping (Error?) -> Void)
 }
 
 public protocol KeyValueStorageService {
@@ -133,6 +135,11 @@ extension SecureKeyValueStorage: KeyValueStorage {
 			}
 		}
 	}
+
+	public func remove(for key: KeyValueStorage.Key, finished: @escaping (Swift.Error?) -> Void) {
+		backend.remove(for: encrypt(key), callback: finished)
+	}
+
 }
 
 // MARK: - P-Service API
@@ -255,6 +262,42 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 		}
 		task.resume()
 	}
+
+	func remove(for key: EncryptedKey, callback: @escaping (Swift.Error?) -> Void) {
+		let sessionConfiguration = URLSessionConfiguration.default
+		let session = URLSession(configuration: sessionConfiguration)
+		var request = URLRequest(url: url(for: key))
+
+		request.set(method: .delete)
+
+		Indicators.showNetworkActivity()
+
+		let task = session.dataTask(with: request) {
+			optionalData, optionalResponse, optionalError in
+
+			Indicators.hideNetworkActivity()
+
+			guard optionalError == nil else {
+				callback(optionalError)
+				return
+			}
+
+			guard let response = optionalResponse as? HTTPURLResponse else {
+				callback(Http.Error.invalidResponse)
+				return
+			}
+
+			guard response.status == .ok else {
+				callback(response.unexpected)
+				return
+			}
+
+			// Successfully removed
+			callback(nil)
+		}
+		task.resume()
+	}
+
 }
 
 extension PrivacyService: KeyValueStorageService {

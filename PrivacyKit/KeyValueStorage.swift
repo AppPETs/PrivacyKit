@@ -72,7 +72,7 @@ public class SecureKeyValueStorage {
 	let secretBox: SecretBox
 	let hashKey: GenericHash.Key
 
-	public init(with backend: KeyValueStorageBackend, and masterKey: MasterKey, context: Context) {
+	init(with backend: KeyValueStorageBackend, and masterKey: MasterKey, context: Context) {
 		self.backend = backend
 		self.secretBox = SecretBox(secretKey: masterKey.derive(with: SecureKeyValueStorage.SecretKeyId, and: context))
 		self.hashKey = masterKey.derive(with: SecureKeyValueStorage.HashKeyId, and: context)!
@@ -82,7 +82,7 @@ public class SecureKeyValueStorage {
 		self.init(with: service.keyValueStorageBackend, and: masterKey, context: context)
 	}
 
-	public convenience init?(with backend: KeyValueStorageBackend, for persona: Persona, context: Context) {
+	convenience init?(with backend: KeyValueStorageBackend, for persona: Persona, context: Context) {
 		guard let masterKey = try? persona.masterKey() else { return nil }
 		self.init(with: backend, and: masterKey, context: context)
 	}

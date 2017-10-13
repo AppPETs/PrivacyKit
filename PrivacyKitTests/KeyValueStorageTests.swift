@@ -8,26 +8,12 @@ let tenSeconds: TimeInterval = 10
 
 class KeyValueStorageTests: XCTestCase {
 
-	func testEncryptedKey() {
-		let hash: (PInt) -> GenericHash = { GenericHash(bytes: Data("foo".utf8), outputSizeInBytes: $0)! }
+	// MARK: Meta tests
 
-		XCTAssertNotNil(EncryptedKey(hash(EncryptedKey.SizeInBytes)))
-		XCTAssertNil(EncryptedKey(hash(EncryptedKey.SizeInBytes - 1)))
-		XCTAssertNil(EncryptedKey(hash(EncryptedKey.SizeInBytes + 1)))
-	}
-
-	func testSecureKeyValueStorage() {
-		let backend = FakeKeyValueStorageBackend()
-		let masterKey = MasterKey()
-		let context = SecureKeyValueStorage.Context("TESTTEST")!
-		let storage = SecureKeyValueStorage(with: backend, and: masterKey, context: context)
-
-		let storeExpectation = expectation(description: "valueStored")
-
-		let key = "foo"
-		let value = Data("bar".utf8)
-
+	func metaTestStore(storage: SecureKeyValueStorage, key: SecureKeyValueStorage.Key, value: SecureKeyValueStorage.Value) {
 		var optionalError: Error? = nil
+
+		let storeExpectation = expectation(description: "stored '\(key)'")
 
 		storage.store(value: value, for: key) {
 			receivedError in
@@ -44,11 +30,13 @@ class KeyValueStorageTests: XCTestCase {
 
 			XCTAssertNil(optionalError)
 		}
+	}
 
-		let retrieveExpectation = expectation(description: "retrievedValue")
-
-		optionalError = nil
+	func metaTestRetrieve(storage: SecureKeyValueStorage, key: SecureKeyValueStorage.Key, expectedValue: SecureKeyValueStorage.Value) {
+		var optionalError: Error? = nil
 		var optionalValue: Data? = nil
+
+		let retrieveExpectation = expectation(description: "retrieved '\(key)'")
 
 		storage.retrieve(for: key) {
 			(receivedValue, receivedError) in
@@ -67,8 +55,31 @@ class KeyValueStorageTests: XCTestCase {
 			XCTAssertNil(optionalError)
 			XCTAssertNotNil(optionalValue)
 
-			XCTAssertEqual(optionalValue!, Data("bar".utf8))
+			XCTAssertEqual(optionalValue!, expectedValue)
 		}
+	}
+
+	// MARK: Tests
+
+	func testEncryptedKey() {
+		let hash: (PInt) -> GenericHash = { GenericHash(bytes: Data("foo".utf8), outputSizeInBytes: $0)! }
+
+		XCTAssertNotNil(EncryptedKey(hash(EncryptedKey.SizeInBytes)))
+		XCTAssertNil(EncryptedKey(hash(EncryptedKey.SizeInBytes - 1)))
+		XCTAssertNil(EncryptedKey(hash(EncryptedKey.SizeInBytes + 1)))
+	}
+
+	func testSecureKeyValueStorage() {
+		let backend = FakeKeyValueStorageBackend()
+		let masterKey = MasterKey()
+		let context = SecureKeyValueStorage.Context("TESTTEST")!
+		let storage = SecureKeyValueStorage(with: backend, and: masterKey, context: context)
+
+		let key = "foo"
+		let value = Data("bar".utf8)
+
+		metaTestStore(storage: storage, key: key, value: value)
+		metaTestRetrieve(storage: storage, key: key, expectedValue: value)
 	}
 	
 }

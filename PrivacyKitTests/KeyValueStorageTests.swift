@@ -59,6 +59,33 @@ class KeyValueStorageTests: XCTestCase {
 		}
 	}
 
+	func metaTestRetrieve<ErrorType: Error & Equatable>(storage: SecureKeyValueStorage, key: SecureKeyValueStorage.Key, expectedError: ErrorType) {
+		var optionalError: Error? = nil
+		var optionalValue: Data? = nil
+
+		let retrieveExpectation = expectation(description: "retrieved '\(key)'")
+
+		storage.retrieve(for: key) {
+			(receivedValue, receivedError) in
+
+			optionalValue = receivedValue
+			optionalError = receivedError
+
+			retrieveExpectation.fulfill()
+		}
+
+		waitForExpectations(timeout: tenSeconds) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError)
+
+			XCTAssertNotNil(optionalError)
+			XCTAssertNil(optionalValue)
+
+			XCTAssertEqual(optionalError! as! ErrorType, expectedError)
+		}
+	}
+
 	// MARK: Tests
 
 	func testEncryptedKey() {
@@ -78,6 +105,7 @@ class KeyValueStorageTests: XCTestCase {
 		let key = "foo"
 		let value = Data("bar".utf8)
 
+		metaTestRetrieve(storage: storage, key: key, expectedError: FakeKeyValueStorageBackend.Error.valueDoesNotExist)
 		metaTestStore(storage: storage, key: key, value: value)
 		metaTestRetrieve(storage: storage, key: key, expectedValue: value)
 	}

@@ -137,6 +137,7 @@ extension PrivacyService {
 	class KeyValueStorage {
 
 		enum Error: Swift.Error {
+			case valueDoesNotExist
 			case noContent
 			case responseTooSmall
 		}
@@ -220,6 +221,11 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 
 			guard let response = optionalResponse as? HTTPURLResponse else {
 				callback(nil, Http.Error.invalidResponse)
+				return
+			}
+
+			guard response.status != .notFound else {
+				callback(nil, Error.valueDoesNotExist)
 				return
 			}
 

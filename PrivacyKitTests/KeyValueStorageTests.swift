@@ -115,7 +115,7 @@ class KeyValueStorageTests: XCTestCase {
 		var masterKeyBytes = Data(base64Encoded: "Lw2Qx8q5ub9T3Sw8QkwxH9bIMkdpZUFJo/+kz5FND5g=")!
 		let masterKey = MasterKey(bytes: &masterKeyBytes)!
 		let context = SecureKeyValueStorage.Context("TODOLIST")!
-		let storage = SecureKeyValueStorage(with: service.keyValueStorageBackend, and: masterKey, context: context)
+		let storage = SecureKeyValueStorage(with: service, and: masterKey, context: context)
 
 		let expectedTaskMax = Data(base64Encoded: "AAQ=")!
 		let expectedTask0 = Data(base64Encoded: "eyJkZXNjcmlwdGlvbiI6IjAiLCJpc0NvbXBsZXRlZCI6ZmFsc2V9")!
@@ -134,7 +134,7 @@ class KeyValueStorageTests: XCTestCase {
 		let service = PrivacyService(baseUrl: URL(string: "https://privacyservice.test:8080")!)
 		let masterKey = MasterKey()
 		let context = SecureKeyValueStorage.Context("TESTTEST")!
-		let storage = SecureKeyValueStorage(with: service.keyValueStorageBackend, and: masterKey, context: context)
+		let storage = SecureKeyValueStorage(with: service, and: masterKey, context: context)
 
 		let key = "foo"
 		let value = Data("bar".utf8)

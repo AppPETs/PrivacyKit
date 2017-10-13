@@ -78,6 +78,10 @@ public class SecureKeyValueStorage {
 		self.hashKey = masterKey.derive(with: SecureKeyValueStorage.HashKeyId, and: context)!
 	}
 
+	public convenience init(with service: KeyValueStorageService, and masterKey: MasterKey, context: Context) {
+		self.init(with: service.keyValueStorageBackend, and: masterKey, context: context)
+	}
+
 	public convenience init?(with backend: KeyValueStorageBackend, for persona: Persona, context: Context) {
 		guard let masterKey = try? persona.masterKey() else { return nil }
 		self.init(with: backend, and: masterKey, context: context)

@@ -2,7 +2,7 @@ import Tafelsalz
 
 // MARK: - Frontend
 
-protocol KeyValueStorage {
+public protocol KeyValueStorage {
 	typealias Key = String
 	typealias Value = Data
 
@@ -12,10 +12,10 @@ protocol KeyValueStorage {
 
 // MARK: - Backend
 
-typealias EncryptedValue = SecretBox.AuthenticatedCiphertext
+public typealias EncryptedValue = SecretBox.AuthenticatedCiphertext
 
-struct EncryptedKey {
-	static let SizeInBytes: PInt = 256 / 8
+public struct EncryptedKey {
+	public static let SizeInBytes: PInt = 256 / 8
 
 	let value: GenericHash
 
@@ -26,42 +26,42 @@ struct EncryptedKey {
 }
 
 extension EncryptedKey: Equatable {
-	static func ==(lhs: EncryptedKey, rhs: EncryptedKey) -> Bool {
+	public static func ==(lhs: EncryptedKey, rhs: EncryptedKey) -> Bool {
 		return lhs.value == rhs.value
 	}
 }
 
 extension EncryptedKey: Hashable {
-	var hashValue: Int { get { return value.hashValue } }
+	public var hashValue: Int { get { return value.hashValue } }
 }
 
 extension EncryptedKey: CustomStringConvertible {
 	/**
-	A textual representation of an encrypted key.
+		A textual representation of an encrypted key.
 	*/
-	var description: String {
+	public var description: String {
 		get {
 			return value.hex!
 		}
 	}
 }
 
-protocol KeyValueStorageBackend {
+public protocol KeyValueStorageBackend {
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Error?) -> Void)
 	func retrieve(for key: EncryptedKey, callback: @escaping (EncryptedValue?, Error?) -> Void)
 }
 
-protocol KeyValueStorageService {
+public protocol KeyValueStorageService {
 	var keyValueStorageBackend: KeyValueStorageBackend { get }
 }
 
 // MARK: - Encryption
 
-class SecureKeyValueStorage {
+public class SecureKeyValueStorage {
 
-	typealias Context = MasterKey.Context
+	public typealias Context = MasterKey.Context
 
-	enum Error: Swift.Error {
+	public enum Error: Swift.Error {
 		case failedToDecrypt
 	}
 
@@ -72,18 +72,18 @@ class SecureKeyValueStorage {
 	let secretBox: SecretBox
 	let hashKey: GenericHash.Key
 
-	init(with backend: KeyValueStorageBackend, and masterKey: MasterKey, context: Context) {
+	public init(with backend: KeyValueStorageBackend, and masterKey: MasterKey, context: Context) {
 		self.backend = backend
 		self.secretBox = SecretBox(secretKey: masterKey.derive(with: SecureKeyValueStorage.SecretKeyId, and: context))
 		self.hashKey = masterKey.derive(with: SecureKeyValueStorage.HashKeyId, and: context)!
 	}
 
-	convenience init?(with backend: KeyValueStorageBackend, for persona: Persona, context: Context) {
+	public convenience init?(with backend: KeyValueStorageBackend, for persona: Persona, context: Context) {
 		guard let masterKey = try? persona.masterKey() else { return nil }
 		self.init(with: backend, and: masterKey, context: context)
 	}
 
-	convenience init?(with service: KeyValueStorageService, for persona: Persona, context: Context) {
+	public convenience init?(with service: KeyValueStorageService, for persona: Persona, context: Context) {
 		self.init(with: service.keyValueStorageBackend, for: persona, context: context)
 	}
 
@@ -106,11 +106,11 @@ class SecureKeyValueStorage {
 
 extension SecureKeyValueStorage: KeyValueStorage {
 
-	func store(value: Value, for key: Key, finished: @escaping (Swift.Error?) -> Void) {
+	public func store(value: Value, for key: Key, finished: @escaping (Swift.Error?) -> Void) {
 		backend.store(value: encrypt(value), for: encrypt(key), callback: finished)
 	}
 
-	func retrieve(for key: Key, finished: @escaping (Value?, Swift.Error?) -> Void) {
+	public func retrieve(for key: Key, finished: @escaping (Value?, Swift.Error?) -> Void) {
 		let preparedKey = encrypt(key)
 		backend.retrieve(for: preparedKey) {
 			(optionalValue, optionalError) in
@@ -254,7 +254,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 }
 
 extension PrivacyService: KeyValueStorageService {
-	var keyValueStorageBackend: KeyValueStorageBackend {
+	public var keyValueStorageBackend: KeyValueStorageBackend {
 		get {
 			return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
 		}

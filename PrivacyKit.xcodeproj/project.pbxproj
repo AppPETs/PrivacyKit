@@ -98,6 +98,13 @@
 			remoteGlobalIDString = 606011D61D36381C0076A6AA;
 			remoteInfo = PrivacyKit;
 		};
+		60E7759C1F90E7FB00AE069C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 601833741F3CC796003AE3D8 /* Tafelsalz.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 607EFC4F1F8D018B0084692A;
+			remoteInfo = TafelsalzTestHost;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +185,7 @@
 				6018337F1F3CC796003AE3D8 /* Tafelsalz.framework */,
 				601833811F3CC796003AE3D8 /* TafelsalzTests.xctest */,
 				601833831F3CC796003AE3D8 /* TafelsalzTests.xctest */,
+				60E7759D1F90E7FB00AE069C /* TafelsalzTestHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -459,6 +467,13 @@
 			fileType = wrapper.cfbundle;
 			path = TafelsalzTests.xctest;
 			remoteRef = 601833821F3CC796003AE3D8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		60E7759D1F90E7FB00AE069C /* TafelsalzTestHost.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TafelsalzTestHost.app;
+			remoteRef = 60E7759C1F90E7FB00AE069C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

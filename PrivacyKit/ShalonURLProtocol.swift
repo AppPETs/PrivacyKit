@@ -8,7 +8,11 @@ class ShalonURLProtocol : URLProtocol {
 		let requestUrl : URL
 	}
 
-	class func parseShalonParams(from url: URL) -> ShalonParams? {
+	enum ShalonParseError : Error {
+		case tooFewProxies
+		case incorrectProxySpecification
+	}
+	class func parseShalonParams(from url: URL) throws -> ShalonParams?{
 		var numProxies : Int
 		var shalonProxies : [Target] = []
 
@@ -29,14 +33,17 @@ class ShalonURLProtocol : URLProtocol {
 		//   httpss://proxy:port/destination:port/index.html
 		//   httpsss://proxy1:port/proxy2:port/destination:port/test.txt
 		let components = baseString.components(separatedBy: "/")
-		assert(components.count >= numProxies, "Too few proxies specified!")
+		guard components.count >= numProxies else {
+			throw ShalonParseError.tooFewProxies
+		}
 
 		for i in 0..<numProxies {
 			let ithProxy : String = components[i]
-			assert(ithProxy =~ "^[a-zA-Z0-9\\.]*\\:\\d+$", "Incorrect format for proxy specification")
+			guard ithProxy =~ "^[a-zA-Z0-9\\.]*\\:\\d+$" else {
+				throw ShalonParseError.incorrectProxySpecification
+			}
 
 			let proxyInfo = ithProxy.components(separatedBy: ":")
-			assert(proxyInfo.count == 2, "Extracted proxy information incomplete")
 
 			let shalonProxy = Target(withHostname: proxyInfo[0], andPort: UInt16(proxyInfo[1])!)
 			shalonProxies.append(shalonProxy!)
@@ -54,7 +61,7 @@ class ShalonURLProtocol : URLProtocol {
 
 	override class func canInit(with request: URLRequest) -> Bool {
 		if let url = request.url {
-			let shalonParameters = parseShalonParams(from: url)
+			let shalonParameters = try? parseShalonParams(from: url)
 			if shalonParameters != nil {
 				print("Shalon will handle request")
 				return true
@@ -81,7 +88,7 @@ class ShalonURLProtocol : URLProtocol {
 		// ShalonParameters is only ever called if canInit returned true,
 		// meaning that this function successfully executed and does not
 		// return nil
-		let shalonParameters = ShalonURLProtocol.parseShalonParams(from: request.url!)!
+		let shalonParameters = try! ShalonURLProtocol.parseShalonParams(from: request.url!)!
 
 		print(shalonParameters.requestUrl)
 

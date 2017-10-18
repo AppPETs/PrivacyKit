@@ -39,6 +39,8 @@
 		609CB8531E93C15E00929F6E /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
 		60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */; };
 		60DA8CB51D38CEEA009E2906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60DA8CB41D38CEEA009E2906 /* Assets.xcassets */; };
+		7566751E1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566751D1F97E5150016FED4 /* ShalonURLProtocol.swift */; };
+		7566751F1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7566751D1F97E5150016FED4 /* ShalonURLProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,7 @@
 		60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShalonTest.swift; sourceTree = "<group>"; };
 		60DA8CB41D38CEEA009E2906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		60DA8CBA1D391250009E2906 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7566751D1F97E5150016FED4 /* ShalonURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShalonURLProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +283,7 @@
 				606011F41D36418D0076A6AA /* PrivacyService.swift */,
 				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				609CB8501E93C09300929F6E /* Shalon.swift */,
+				7566751D1F97E5150016FED4 /* ShalonURLProtocol.swift */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -520,6 +524,7 @@
 				6025C2221F6BF4D700471957 /* Indicators.swift in Sources */,
 				6018342A1F418C99003AE3D8 /* PrivacyService.swift in Sources */,
 				6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */,
+				7566751F1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */,
 				6018342C1F418C9F003AE3D8 /* Tls.swift in Sources */,
 				601834231F418C6C003AE3D8 /* Http.swift in Sources */,
 				6025C23F1F6C172900471957 /* KeyValueStorage.swift in Sources */,
@@ -546,6 +551,7 @@
 				6025C2211F6BF4D700471957 /* Indicators.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,
+				7566751E1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */,
 				609CB8531E93C15E00929F6E /* Tls.swift in Sources */,
 				609CB8511E93C09300929F6E /* Shalon.swift in Sources */,
 				6025C23E1F6C172900471957 /* KeyValueStorage.swift in Sources */,

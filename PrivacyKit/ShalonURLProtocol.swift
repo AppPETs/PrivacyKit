@@ -3,16 +3,68 @@ import Foundation
 class ShalonURLProtocol : URLProtocol {
     var loadingShouldStop: Bool = false
 
+    struct ShalonProxy {
+        let hostname : String
+        let port : UInt16
+    }
+
+    struct ShalonParams {
+        let proxies : [ShalonProxy]
+        let requestUrl : URL
+    }
+
+    class func parseShalonParams(from url: URL) -> ShalonParams? {
+        var numProxies : Int
+        var shalonProxies : [ShalonProxy] = []
+
+        let urlScheme = url.scheme!.lowercased()
+        let sCount = urlScheme.substring(from: urlScheme.range(of: "http")!.upperBound).characters.count
+
+        // 1 to 3 proxies (httpss:// to httpssss://) supported
+        guard (2...4).contains(sCount) else {
+            return nil
+        }
+
+        numProxies = sCount - 1
+
+        let urlString = url.absoluteString
+        // The URL string, withouth the scheme part!
+        let baseString = urlString.substring(from: urlString.range(of: "://")!.upperBound)
+        // httpss://proxy:port/destination:port/index.html
+        let components = baseString.components(separatedBy: "/")
+        assert(components.count >= numProxies, "Too few proxies specified!")
+
+        for i in 0..<numProxies {
+            let ithProxy : String = components[i]
+            assert(ithProxy =~ "^[a-zA-Z0-9\\.]*\\:\\d+$", "Incorrect format for proxy specification")
+
+            let proxyInfo = ithProxy.components(separatedBy: ":")
+            assert(proxyInfo.count == 2, "Extracted proxy information incomplete")
+
+            let shalonProxy = ShalonProxy(hostname: proxyInfo[0], port: UInt16(proxyInfo[1])!)
+            shalonProxies.append(shalonProxy)
+        }
+
+        // The requestUrl is now simply those components that were not used before,
+        // along with the https:// scheme
+        let requestUrl = URL(string: "https://" + components[numProxies..<components.count].joined(separator: "/"))
+        if let actualUrl = requestUrl {
+            print(shalonProxies)
+            print(actualUrl)
+            return ShalonParams(proxies: shalonProxies, requestUrl: actualUrl)
+        }
+
+        return nil
+    }
+
     override class func canInit(with request: URLRequest) -> Bool {
         if let url = request.url {
-            let url_scheme = url.scheme?.lowercased()
-            if     url_scheme == "httpss"
-                || url_scheme == "httpsss"
-                || url_scheme == "httpssss" {
+            let shalonParameters = parseShalonParams(from: url)
+            if shalonParameters != nil {
                 print("Shalon will handle request")
                 return true
             } else {
-                print("Shalon will _not_ handle request")
+                print("Shalon will not handle request")
                 return false
             }
         }
@@ -24,11 +76,6 @@ class ShalonURLProtocol : URLProtocol {
         return request
     }
 
-    //    override class func canInit(with task: URLSessionTask) -> Bool {
-    //        print("Not yet implemented")
-    //        return false
-    //    }
-    //
     enum ShalonErrors : Error {
         case NotImplemented
         case UnknownHTTPMethod
@@ -36,26 +83,18 @@ class ShalonURLProtocol : URLProtocol {
     }
 
     override func startLoading() {
-        assert(request.url!.absoluteString =~ "^httpss{1,3}://.*$")
+        let shalonParameters = ShalonURLProtocol.parseShalonParams(from: request.url!)
+        assert(shalonParameters != nil)
 
-        if let url_scheme = request.url?.scheme {
-            if url_scheme == "httpsss" || url_scheme == "httpssss" {
-                print("Loading failed, not yet implemented.")
-                client!.urlProtocol(self, didFailWithError: ShalonErrors.NotImplemented)
-                client!.urlProtocolDidFinishLoading(self)
-                return
-            }
-        }
+        print(shalonParameters!.requestUrl)
 
-        // Strip excess 's' characters from url scheme (httpsss -> https)
-        let urlString = request.url!.absoluteString
-        let url = URL(string: "https://" + urlString.substring(from: urlString.range(of: "://")!.upperBound))
-        print(url!)
-
-        let target = Target(withHostname: url!.host!, andPort: 443)!
+        let target = Target(withHostname: shalonParameters!.requestUrl.host!, andPort: 443)!
         let shalon = Shalon(withTarget: target)
 
-        shalon.addLayer(Target(withHostname: "shalon1.jondonym.net", andPort: 443)!)
+        // Add Shalon layers from parameters
+        for proxy in shalonParameters!.proxies {
+            shalon.addLayer(Target(withHostname: proxy.hostname, andPort: proxy.port)!)
+        }
 
         let optionalMethod = Method(rawValue: request.httpMethod!.uppercased())
         guard optionalMethod != nil else {
@@ -63,7 +102,7 @@ class ShalonURLProtocol : URLProtocol {
             return
         }
 
-        shalon.issue(request: Request(withMethod: optionalMethod!, andUrl: url!)!) {
+        shalon.issue(request: Request(withMethod: optionalMethod!, andUrl: shalonParameters!.requestUrl)!) {
             receivedOptionalResponse, receivedOptionalError in
 
             print("Handling response from URLProtocol handler")

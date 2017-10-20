@@ -62,6 +62,16 @@ class ShalonTest: XCTestCase {
 		XCTAssertEqual(shalonParameters1!.proxies[0], Target(withHostname: "shalon1.jondonym.de", andPort: 443))
 		XCTAssertEqual(shalonParameters1!.proxies[1], Target(withHostname: "test.g.de", andPort: 778))
 		XCTAssertEqual(shalonParameters1!.requestUrl, URL(string: "https://www.google.com")!)
+
+		// Testing IPv6
+		let ipv6Params = try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://[2001:db8:85a3::8a2e:370:7334]:443/www.google.com")!)
+		XCTAssertNotNil(ipv6Params)
+		XCTAssertEqual(ipv6Params!.proxies.count, 1)
+		XCTAssertEqual(ipv6Params!.proxies[0], Target(withHostname: "[2001:db8:85a3::8a2e:370:7334]", andPort: 443))
+		XCTAssertEqual(ipv6Params!.requestUrl, URL(string: "https://www.google.com")!)
+
+		// Testing incorrectly specified IPv6 address
+		XCTAssertThrowsError(try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://2001:db8:85a3::8a2e:370:7334:443/www.google.com")!))
 	}
 
 	func testShalonProtocol() {

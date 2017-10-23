@@ -1,3 +1,6 @@
 [submodule "Dependencies/Tafelsalz"]
 	path = Dependencies/Tafelsalz
 	url = https://github.com/blochberger/Tafelsalz.git
+[submodule "Dependencies/QRCode"]
+	path = Dependencies/QRCode
+	url = git@github.com:blochberger/QRCode.git

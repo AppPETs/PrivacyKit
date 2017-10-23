@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600A3EDC1F963B6700B74DB7 /* TafelsalzExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600A3EDB1F963B6700B74DB7 /* TafelsalzExtensions.swift */; };
+		600A3EDD1F963B6700B74DB7 /* TafelsalzExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600A3EDB1F963B6700B74DB7 /* TafelsalzExtensions.swift */; };
+		600A3F0E1F963C0500B74DB7 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600A3F051F963BE500B74DB7 /* QRCode.framework */; };
+		600A3F111F963C1E00B74DB7 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600A3F0B1F963BE500B74DB7 /* QRCode.framework */; };
 		601833841F3CC7B1003AE3D8 /* Tafelsalz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018337F1F3CC796003AE3D8 /* Tafelsalz.framework */; };
 		601834111F418B96003AE3D8 /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601834081F418B96003AE3D8 /* PrivacyKit.framework */; };
 		6018341F1F418BDB003AE3D8 /* Tafelsalz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018337D1F3CC796003AE3D8 /* Tafelsalz.framework */; };
@@ -29,6 +33,8 @@
 		6025C24E1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */; };
 		6025C2511F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */; };
 		6025C2521F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */; };
+		60509C6C1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60509C6B1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift */; };
+		60509C6D1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60509C6B1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift */; };
 		606011DB1D36381C0076A6AA /* PrivacyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 606011DA1D36381C0076A6AA /* PrivacyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		606011E21D36381C0076A6AA /* PrivacyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606011D71D36381C0076A6AA /* PrivacyKit.framework */; };
 		606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606011F41D36418D0076A6AA /* PrivacyService.swift */; };
@@ -44,6 +50,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		600A3F021F963BE500B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D248F071A751C3700E44E6B;
+			remoteInfo = Example_iOS;
+		};
+		600A3F041F963BE500B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D248F311A751C7800E44E6B;
+			remoteInfo = QRCode_iOS;
+		};
+		600A3F061F963BE500B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D248F3B1A751C7800E44E6B;
+			remoteInfo = QRCodeTests_iOS;
+		};
+		600A3F081F963BE500B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60940D021F3B814300725D98;
+			remoteInfo = Example_macOS;
+		};
+		600A3F0A1F963BE500B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60940CE11F3B75AB00725D98;
+			remoteInfo = QRCode_macOS;
+		};
+		600A3F0C1F963BE500B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60940CE91F3B75AB00725D98;
+			remoteInfo = QRCodeTests_macOS;
+		};
+		600A3F0F1F963C0F00B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D248F301A751C7800E44E6B;
+			remoteInfo = QRCode_iOS;
+		};
+		600A3F121F963C2800B74DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60940CE01F3B75AB00725D98;
+			remoteInfo = QRCode_macOS;
+		};
 		6018337C1F3CC796003AE3D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 601833741F3CC796003AE3D8 /* Tafelsalz.xcodeproj */;
@@ -110,6 +172,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		600A3EDB1F963B6700B74DB7 /* TafelsalzExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TafelsalzExtensions.swift; sourceTree = "<group>"; };
+		600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRCode.xcodeproj; path = Dependencies/QRCode/QRCode.xcodeproj; sourceTree = "<group>"; };
 		601833741F3CC796003AE3D8 /* Tafelsalz.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Tafelsalz.xcodeproj; path = Dependencies/Tafelsalz/Tafelsalz.xcodeproj; sourceTree = "<group>"; };
 		601833FD1F4187F0003AE3D8 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = "../../Library/Developer/Xcode/DerivedData/PrivacyKit-flrlauubqfywimheslykvujcmnlj/Build/Products/Debug-iphoneos/Keychain.framework"; sourceTree = "<group>"; };
 		601833FF1F4187F9003AE3D8 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = "../../Library/Developer/Xcode/DerivedData/PrivacyKit-flrlauubqfywimheslykvujcmnlj/Build/Products/Debug/Keychain.framework"; sourceTree = "<group>"; };
@@ -120,6 +184,7 @@
 		6025C23D1F6C172900471957 /* KeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
 		6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorageTests.swift; sourceTree = "<group>"; };
 		6025C2501F6C281D00471957 /* FakeKeyValueStorageBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeKeyValueStorageBackend.swift; sourceTree = "<group>"; };
+		60509C6B1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TafelsalzExtensionsTest.swift; sourceTree = "<group>"; };
 		606011D71D36381C0076A6AA /* PrivacyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrivacyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		606011DA1D36381C0076A6AA /* PrivacyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivacyKit.h; sourceTree = "<group>"; };
 		606011DC1D36381C0076A6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				600A3F111F963C1E00B74DB7 /* QRCode.framework in Frameworks */,
 				6018341F1F418BDB003AE3D8 /* Tafelsalz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				600A3F0E1F963C0500B74DB7 /* QRCode.framework in Frameworks */,
 				601833841F3CC7B1003AE3D8 /* Tafelsalz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,9 +240,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600A3EFA1F963BE500B74DB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				600A3F031F963BE500B74DB7 /* Example.app */,
+				600A3F051F963BE500B74DB7 /* QRCode.framework */,
+				600A3F071F963BE500B74DB7 /* QRCodeTests.xctest */,
+				600A3F091F963BE500B74DB7 /* Example.app */,
+				600A3F0B1F963BE500B74DB7 /* QRCode.framework */,
+				600A3F0D1F963BE500B74DB7 /* QRCodeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		601833731F3CC5E4003AE3D8 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */,
 				601833741F3CC796003AE3D8 /* Tafelsalz.xcodeproj */,
 			);
 			name = Dependencies;
@@ -270,6 +351,7 @@
 				6025C24A1F6C239300471957 /* KeyValueStorageTests.swift */,
 				6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */,
 				60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */,
+				60509C6B1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift */,
 			);
 			path = PrivacyKitTests;
 			sourceTree = "<group>";
@@ -284,6 +366,7 @@
 				606012211D36C6190076A6AA /* RegularExpression.swift */,
 				609CB8501E93C09300929F6E /* Shalon.swift */,
 				7566751D1F97E5150016FED4 /* ShalonURLProtocol.swift */,
+				600A3EDB1F963B6700B74DB7 /* TafelsalzExtensions.swift */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -330,6 +413,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				600A3F131F963C2800B74DB7 /* PBXTargetDependency */,
 				601834211F418BE3003AE3D8 /* PBXTargetDependency */,
 			);
 			name = PrivacyKit_macOS;
@@ -367,6 +451,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				600A3F101F963C0F00B74DB7 /* PBXTargetDependency */,
 				601833861F3CC7BA003AE3D8 /* PBXTargetDependency */,
 			);
 			name = PrivacyKit_iOS;
@@ -430,6 +515,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 600A3EFA1F963BE500B74DB7 /* Products */;
+					ProjectRef = 600A3EF91F963BE500B74DB7 /* QRCode.xcodeproj */;
+				},
+				{
 					ProductGroup = 601833751F3CC796003AE3D8 /* Products */;
 					ProjectRef = 601833741F3CC796003AE3D8 /* Tafelsalz.xcodeproj */;
 				},
@@ -445,6 +534,48 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		600A3F031F963BE500B74DB7 /* Example.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Example.app;
+			remoteRef = 600A3F021F963BE500B74DB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		600A3F051F963BE500B74DB7 /* QRCode.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = QRCode.framework;
+			remoteRef = 600A3F041F963BE500B74DB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		600A3F071F963BE500B74DB7 /* QRCodeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = QRCodeTests.xctest;
+			remoteRef = 600A3F061F963BE500B74DB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		600A3F091F963BE500B74DB7 /* Example.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Example.app;
+			remoteRef = 600A3F081F963BE500B74DB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		600A3F0B1F963BE500B74DB7 /* QRCode.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = QRCode.framework;
+			remoteRef = 600A3F0A1F963BE500B74DB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		600A3F0D1F963BE500B74DB7 /* QRCodeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = QRCodeTests.xctest;
+			remoteRef = 600A3F0C1F963BE500B74DB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6018337D1F3CC796003AE3D8 /* Tafelsalz.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -522,6 +653,7 @@
 			files = (
 				601834251F418C73003AE3D8 /* Shalon.swift in Sources */,
 				6025C2221F6BF4D700471957 /* Indicators.swift in Sources */,
+				600A3EDD1F963B6700B74DB7 /* TafelsalzExtensions.swift in Sources */,
 				6018342A1F418C99003AE3D8 /* PrivacyService.swift in Sources */,
 				6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */,
 				7566751F1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */,
@@ -537,6 +669,7 @@
 			files = (
 				6025C22B1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */,
 				6025C2521F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */,
+				60509C6D1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift in Sources */,
 				6018342F1F418CAE003AE3D8 /* ShalonTest.swift in Sources */,
 				6018342D1F418CA8003AE3D8 /* HttpTests.swift in Sources */,
 				6025C24E1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */,
@@ -549,6 +682,7 @@
 			files = (
 				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
 				6025C2211F6BF4D700471957 /* Indicators.swift in Sources */,
+				600A3EDC1F963B6700B74DB7 /* TafelsalzExtensions.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,
 				7566751E1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */,
@@ -564,6 +698,7 @@
 			files = (
 				6025C22A1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */,
 				6025C2511F6C281D00471957 /* FakeKeyValueStorageBackend.swift in Sources */,
+				60509C6C1F9DD5E000785EE9 /* TafelsalzExtensionsTest.swift in Sources */,
 				60CA38E01EEFE0F300B40CA7 /* ShalonTest.swift in Sources */,
 				609CB84F1E93BF1F00929F6E /* HttpTests.swift in Sources */,
 				6025C24D1F6C23F600471957 /* KeyValueStorageTests.swift in Sources */,
@@ -573,6 +708,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		600A3F101F963C0F00B74DB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QRCode_iOS;
+			targetProxy = 600A3F0F1F963C0F00B74DB7 /* PBXContainerItemProxy */;
+		};
+		600A3F131F963C2800B74DB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QRCode_macOS;
+			targetProxy = 600A3F121F963C2800B74DB7 /* PBXContainerItemProxy */;
+		};
 		601833861F3CC7BA003AE3D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Tafelsalz_iOS;
@@ -611,7 +756,6 @@
 				INFOPLIST_FILE = PrivacyKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.uni-hamburg.informatik.blochberger.PrivacyKit.macOS";
 				PRODUCT_NAME = PrivacyKit;
 				SDKROOT = macosx;
@@ -636,7 +780,6 @@
 				INFOPLIST_FILE = PrivacyKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.uni-hamburg.informatik.blochberger.PrivacyKit.macOS";
 				PRODUCT_NAME = PrivacyKit;
 				SDKROOT = macosx;
@@ -655,7 +798,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PrivacyKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.uni-hamburg.informatik.blochberger.PrivacyKitTests.macOS";
 				PRODUCT_NAME = PrivacyKitTests;
 				SDKROOT = macosx;
@@ -674,7 +816,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PrivacyKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.uni-hamburg.informatik.blochberger.PrivacyKitTests.macOS";
 				PRODUCT_NAME = PrivacyKitTests;
 				SDKROOT = macosx;
@@ -729,7 +870,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -782,7 +924,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

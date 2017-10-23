@@ -71,7 +71,7 @@ class ShalonTest: XCTestCase {
 		XCTAssertEqual(ipv6Params!.requestUrl, URL(string: "https://www.google.com")!)
 
 		// Testing incorrectly specified IPv6 address
-		XCTAssertThrowsError(try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://2001:db8:85a3::8a2e:370:7334:443/www.google.com")!))
+		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://2001:db8:85a3::8a2e:370:7334:443/www.google.com")!))
 	}
 
 	func testShalonProtocol() {

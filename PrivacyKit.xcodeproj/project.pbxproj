@@ -23,6 +23,10 @@
 		6018342C1F418C9F003AE3D8 /* Tls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB8521E93C15E00929F6E /* Tls.swift */; };
 		6018342D1F418CA8003AE3D8 /* HttpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB84E1E93BF1F00929F6E /* HttpTests.swift */; };
 		6018342F1F418CAE003AE3D8 /* ShalonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CA38DF1EEFE0F300B40CA7 /* ShalonTest.swift */; };
+		601FE21E1FA3B69200E81BBE /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601FE21D1FA3B69200E81BBE /* Authentication.swift */; };
+		601FE21F1FA3B69200E81BBE /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601FE21D1FA3B69200E81BBE /* Authentication.swift */; };
+		601FE2291FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601FE2281FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift */; };
+		601FE22A1FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601FE2281FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift */; };
 		6025C2211F6BF4D700471957 /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2201F6BF4D700471957 /* Indicators.swift */; };
 		6025C2221F6BF4D700471957 /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2201F6BF4D700471957 /* Indicators.swift */; };
 		6025C22A1F6BF6FB00471957 /* RegularExpressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */; };
@@ -179,6 +183,8 @@
 		601833FF1F4187F9003AE3D8 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = "../../Library/Developer/Xcode/DerivedData/PrivacyKit-flrlauubqfywimheslykvujcmnlj/Build/Products/Debug/Keychain.framework"; sourceTree = "<group>"; };
 		601834081F418B96003AE3D8 /* PrivacyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrivacyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		601834101F418B96003AE3D8 /* PrivacyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		601FE21D1FA3B69200E81BBE /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		601FE2281FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfidentialQrCodeView.swift; sourceTree = "<group>"; };
 		6025C2201F6BF4D700471957 /* Indicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicators.swift; sourceTree = "<group>"; };
 		6025C2291F6BF6FB00471957 /* RegularExpressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpressionTest.swift; sourceTree = "<group>"; };
 		6025C23D1F6C172900471957 /* KeyValueStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
@@ -283,6 +289,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		601FE2271FA3CC2B00E81BBE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				601FE21D1FA3B69200E81BBE /* Authentication.swift */,
+				601FE2281FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift */,
+				6025C2201F6BF4D700471957 /* Indicators.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		6025C24F1F6C27DE00471957 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				603BECE11ECC386000D3350C /* Supporting Files */,
+				601FE2271FA3CC2B00E81BBE /* UI */,
 				6060121F1D36AF2A0076A6AA /* Public */,
 				606012201D36AF3F0076A6AA /* Internal */,
 			);
@@ -360,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				609CB8471E93BEFD00929F6E /* Http.swift */,
-				6025C2201F6BF4D700471957 /* Indicators.swift */,
 				6025C23D1F6C172900471957 /* KeyValueStorage.swift */,
 				606011F41D36418D0076A6AA /* PrivacyService.swift */,
 				606012211D36C6190076A6AA /* RegularExpression.swift */,
@@ -654,6 +670,8 @@
 				601834251F418C73003AE3D8 /* Shalon.swift in Sources */,
 				6025C2221F6BF4D700471957 /* Indicators.swift in Sources */,
 				600A3EDD1F963B6700B74DB7 /* TafelsalzExtensions.swift in Sources */,
+				601FE22A1FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift in Sources */,
+				601FE21F1FA3B69200E81BBE /* Authentication.swift in Sources */,
 				6018342A1F418C99003AE3D8 /* PrivacyService.swift in Sources */,
 				6018342B1F418C9D003AE3D8 /* RegularExpression.swift in Sources */,
 				7566751F1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */,
@@ -683,6 +701,8 @@
 				606012221D36C6190076A6AA /* RegularExpression.swift in Sources */,
 				6025C2211F6BF4D700471957 /* Indicators.swift in Sources */,
 				600A3EDC1F963B6700B74DB7 /* TafelsalzExtensions.swift in Sources */,
+				601FE2291FA3CC7E00E81BBE /* ConfidentialQrCodeView.swift in Sources */,
+				601FE21E1FA3B69200E81BBE /* Authentication.swift in Sources */,
 				606011F51D36418D0076A6AA /* PrivacyService.swift in Sources */,
 				609CB8481E93BEFD00929F6E /* Http.swift in Sources */,
 				7566751E1F97E5150016FED4 /* ShalonURLProtocol.swift in Sources */,

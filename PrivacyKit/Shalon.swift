@@ -5,7 +5,7 @@ enum GenericError: Error {
 }
 
 /**
-	#### Example:
+	#### Example
 
 	```swift
 	let target = Target(withHostname: "www.example.com", andPort: 443)!

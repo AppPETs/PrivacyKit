@@ -2,13 +2,103 @@ import Tafelsalz
 
 // MARK: - Frontend
 
+/**
+	This protocol describes the interface of a key value storage, where the keys
+	are `String`s and the values are `Data` objects.
+*/
 public protocol KeyValueStorage {
+
+	/**
+		A key is the identifier for a specific value stored in the key-value
+		storage. The key is unique.
+	*/
 	typealias Key = String
+
+	/**
+		A value can contain arbitrary data and is identified by a key.
+	*/
 	typealias Value = Data
 
-	func store(value: Value, for key: Key, finished: @escaping (Error?) -> Void)
-	func retrieve(for key: Key, finished: @escaping (Value?, Error?) -> Void)
-	func remove(for key: Key, finished: @escaping (Error?) -> Void)
+	/**
+		Store a value in the key-value storage for a given key.
+
+		#### Example
+
+		```swift
+		storage.store(key: "name", value: Data("John Doe".utf8)) {
+		    optionalError in
+
+		    if let error = optionalError {
+		        // TODO Handle error
+		    }
+		}
+		```
+
+		- parameters:
+			- value: The value that should be stored.
+			- key: The key that identifies the value.
+			- finished: A closure that is called asynchronuously once the
+				operation is finished.
+			- error: An optional error that might have occurred during storing.
+	*/
+	func store(value: Value, for key: Key, finished: @escaping (_ error: Error?) -> Void)
+
+	/**
+		Retrieve a value from the key-value storage for a given key.
+
+		#### Example
+
+		```swift
+		storage.retrieve(for: "name") {
+		    optionalValue, optionalError in
+
+		    precondition((optionalValue != nil) == (optionalError != nil))
+
+		    guard let value = optionalValue else {
+		        let error = optionalError!
+		        // TODO Handle error
+		        return
+		    }
+
+		    // Success, do something with `value`
+		}
+		```
+
+		- postcondition:
+			(`value` = `nil`) ⊻ (`error` = `nil`)
+
+		- parameters:
+			- key: The key that identifies the value.
+			- finished: A closure that is called asynchronuously once the
+				operation is finished.
+			- value: The value if no error occurred, `nil` else.
+			- error: An optional error that might have occurred during storing.
+	*/
+	func retrieve(for key: Key, finished: @escaping (_ value: Value?, _ error: Error?) -> Void)
+
+	/**
+		Remove the value from the key-value storage for a given key.
+
+		#### Example
+
+		```swift
+		storage.remove(key: "name") {
+		    optionalError in
+
+		    if let error = optionalError {
+		        // TODO Handle error
+		    }
+		}
+		```
+
+		- parameters:
+			- key: The key that identifies the value.
+			- finished: A closure that is called asynchronuously once the
+				operation is finished.
+			- error: An optional error that might have occurred during storing.
+	*/
+	func remove(for key: Key, finished: @escaping (_ error: Error?) -> Void)
+
 }
 
 // MARK: - Backend

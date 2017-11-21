@@ -6,7 +6,7 @@
 #endif // iOS
 
 #if os(macOS)
-	import Cocoa
+	import AppKit
 
 	public typealias Image = NSImage
 	public typealias ImageView = NSImageView

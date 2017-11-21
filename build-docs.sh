@@ -1,8 +1,8 @@
 #!/bin/bash -eux
 
-AUTHOR="Maximilian Blochberger"
-AUTHOR_URL="https://github.com/blochberger"
-GITHUB_URL="https://github.com/blochberger/PrivacyKit"
+AUTHOR="AppPETs"
+AUTHOR_URL="https://github.com/AppPETs"
+GITHUB_URL="https://github.com/AppPETs/PrivacyKit"
 MODULE="PrivacyKit"
 README="README.md"
 VERSION=$(git describe --always)

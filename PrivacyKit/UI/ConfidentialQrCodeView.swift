@@ -60,7 +60,7 @@ public class ConfidentialQrCodeView: ImageView {
 		is hidden. The image could describe the action the user has to perform
 		in order to unhide the confidential value, e.g., "Tap to show secret."
 	*/
-	private var coverImage: Image? = nil
+	public var coverImage: Image? = nil
 
 	/**
 		The authentication context for displaying the confidential value. Once

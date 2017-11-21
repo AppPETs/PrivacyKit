@@ -179,9 +179,7 @@ class Http {
 		}
 
 		class func connect(toTarget target: Target, viaProxy proxy: Target, withHeaders headers: Headers = [:]) -> Request? {
-			guard let proxyUrl = URL(string: "https://\(proxy.formatted())") else {
-				return nil
-			}
+			let proxyUrl = URL(string: "https://\(proxy.formatted())")!
 			return Request(withMethod: .connect, andUrl: proxyUrl, andHeaders: headers, andBody: Data(), andOptions: target.formatted())
 		}
 
@@ -207,9 +205,7 @@ class Http {
 
 		init?(withRawData rawData: Data) {
 			let cfResponse = CFHTTPMessageCreateEmpty(kCFAllocatorDefault, /* isRequest: */ false).takeRetainedValue()
-			let success = rawData.withUnsafeBytes { rawDataPtr in
-				return CFHTTPMessageAppendBytes(cfResponse, rawDataPtr, rawData.count)
-			}
+			let success = rawData.withUnsafeBytes { CFHTTPMessageAppendBytes(cfResponse, $0, rawData.count) }
 
 			guard success && CFHTTPMessageIsHeaderComplete(cfResponse) else {
 				return nil

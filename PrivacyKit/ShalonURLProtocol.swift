@@ -18,7 +18,7 @@ public class ShalonURLProtocol : URLProtocol {
 		var shalonProxies : [Target] = []
 
 		let urlScheme = url.scheme!.lowercased()
-		let sCount = urlScheme[urlScheme.range(of: "http")!.upperBound...].characters.count
+		let sCount = urlScheme[urlScheme.range(of: "http")!.upperBound...].count
 
 		// 1 to 3 proxies (httpss:// to httpssss://) supported
 		guard (2...4).contains(sCount) else {

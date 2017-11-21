@@ -91,7 +91,7 @@ public class RegularExpression {
 			`true` if the expression matches the string, `false` otherwise.
 	*/
 	public func matches(_ input: String) -> Bool {
-		let matches = self.internalExpression.matches(in: input, options: .reportCompletion, range: NSMakeRange(0, input.characters.count))
+		let matches = self.internalExpression.matches(in: input, options: .reportCompletion, range: NSMakeRange(0, input.count))
 		return matches.count > 0
 	}
 

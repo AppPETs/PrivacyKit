@@ -295,11 +295,11 @@ struct Target {
 			return nil
 		}
 
-		guard let url = URL(string: "xxx://\(hostname):\(port)") else {
+		guard 0 < port else {
 			return nil
 		}
 
-		guard let hostname = url.host else {
+		guard let url = URL(string: "xxx://\(hostname):\(port)") else {
 			return nil
 		}
 
@@ -307,12 +307,8 @@ struct Target {
 			return nil
 		}
 
-		guard let port = UInt16(exactly: portAsInt) else {
-			return nil
-		}
-
-		self.hostname = hostname
-		self.port = port
+		self.hostname = url.host!
+		self.port = UInt16(exactly: portAsInt)!
 	}
 
 	func formatted() -> String {

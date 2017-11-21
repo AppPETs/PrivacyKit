@@ -46,6 +46,16 @@ class HttpTests: XCTestCase {
 		XCTAssertEqual(request5.headers[Http.Header.contentLength.rawValue], "\(body.count + 1)")
 	}
 
+	func testHostSanitization() {
+		XCTAssertNil(Target(withHostname: "example.com", andPort: 0))
+		XCTAssertNil(Target(withHostname: "", andPort: 80))
+		XCTAssertNil(Target(withHostname: "😱", andPort: 80))
+		XCTAssertNil(Target(withHostname: "::1", andPort: 80))
+		XCTAssertNotNil(Target(withHostname: "example.com", andPort: 80))
+		XCTAssertNotNil(Target(withHostname: "[::1]", andPort: 80))
+		XCTAssertNotNil(Target(withHostname: "127.0.0.1", andPort: 80))
+	}
+
 	func testHeadRequest() {
 		let request = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 

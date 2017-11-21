@@ -178,16 +178,6 @@ class Http {
 			super.init(withHeaders: patchedHeaders, andBody: body)
 		}
 
-		class func connect(toHost host: String, withPort port: UInt16, viaProxy url: URL, withHeaders headers: Headers = [:]) -> Request? {
-
-			// Sanitize host
-			guard (URL(string: "xxx://\(host):\(port)") != nil) else {
-				return nil
-			}
-
-			return Request(withMethod: .connect, andUrl: url, andHeaders: headers, andBody: Data(), andOptions: "\(host):\(port)")
-		}
-
 		class func connect(toTarget target: Target, viaProxy proxy: Target, withHeaders headers: Headers = [:]) -> Request? {
 			guard let proxyUrl = URL(string: "https://\(proxy.formatted())") else {
 				return nil

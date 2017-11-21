@@ -66,12 +66,9 @@ class HttpTests: XCTestCase {
 	}
 
 	func testConnectRequest() {
-		let request = Http.Request.connect(
-			toHost: "example.com",
-			withPort: 80,
-			viaProxy: URL(string: "https://localhost:8888")!,
-			withHeaders: ["X-Test": "foobar", "X-Foo": "Bar"]
-		)!
+		let target = Target(withHostname: "example.com", andPort: 80)!
+		let proxy = Target(withHostname: "localhost", andPort: 8888)!
+		let request = Http.Request.connect(toTarget: target, viaProxy: proxy, withHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 
 		let actual = String(data: request.compose()!, encoding: .utf8)!
 		let expected = "CONNECT example.com:80 HTTP/1.1\r\nX-Test: foobar\r\nHost: localhost\r\nX-Foo: Bar\r\n\r\n"

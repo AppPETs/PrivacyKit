@@ -3,6 +3,22 @@ import XCTest
 
 class HttpTests: XCTestCase {
 
+	func testInvalidRequest() {
+		// File URLs should not work
+		XCTAssertNil(Http.Request(withMethod: .head, andUrl: URL.init(fileURLWithPath: "/tmp", isDirectory: true)))
+
+		let url = URL(string: "http://example.com")!
+
+		// CONNECT and OPTIONS require additional parameters
+		XCTAssertNil(Http.Request(withMethod: .connect, andUrl: url))
+		XCTAssertNil(Http.Request(withMethod: .options, andUrl: url))
+
+		// CONNECT and HEAD have no body
+		let body = Data("foo".utf8)
+		XCTAssertNil(Http.Request(withMethod: .connect, andUrl: url, andHeaders: [:], andBody: body, andOptions: ""))
+		XCTAssertNil(Http.Request(withMethod: .head, andUrl: url, andHeaders: [:], andBody: body))
+	}
+
 	func testHeadRequest() {
 		let request = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 

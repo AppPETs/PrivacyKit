@@ -1,19 +1,11 @@
 import Foundation
 
-enum State {
-	case inactive
-	case shouldEstablishTunnelConnection
-	case expectTunnelConnectionEstablished
-	case shouldSendHttpRequest
-	case expectHttpResponse
-}
-
 enum GenericError: Error {
 	case generic(String)
 }
 
 /**
-	## Example:
+	#### Example:
 
 	```swift
 	let target = Target(withHostname: "www.example.com", andPort: 443)!
@@ -29,29 +21,37 @@ enum GenericError: Error {
 	}
 	```
 **/
-class Shalon: NSObject, StreamDelegate {
+public class Shalon: NSObject, StreamDelegate {
 
-	typealias CompletionHandler = (Http.Response?, Error?) -> Void
+	private enum State {
+		case inactive
+		case shouldEstablishTunnelConnection
+		case expectTunnelConnectionEstablished
+		case shouldSendHttpRequest
+		case expectHttpResponse
+	}
 
-	var state: State = .inactive
-	var targets: [Target] = []
-	var streams: [PairedStream] = []
-	var currentLayer = 0
+	public typealias CompletionHandler = (Http.Response?, Error?) -> Void
 
-	var request: Http.Request! = nil
-	var completionHandler: CompletionHandler! = nil
+	private var state: State = .inactive
+	private var targets: [Target] = []
+	private var streams: [PairedStream] = []
+	private var currentLayer = 0
 
-	init(withTarget target: Target) {
+	private var request: Http.Request! = nil
+	private var completionHandler: CompletionHandler! = nil
+
+	public init(withTarget target: Target) {
 		super.init()
 
 		addLayer(target)
 	}
 
-	func addLayer(_ target: Target) {
+	public func addLayer(_ target: Target) {
 		targets.insert(target, at: 0)
 	}
 
-	func issue(request: Http.Request, completionHandler: @escaping CompletionHandler) {
+	public func issue(request: Http.Request, completionHandler: @escaping CompletionHandler) {
 		assert(!targets.isEmpty)
 		assert(streams.isEmpty)
 		assert(self.request == nil)
@@ -88,7 +88,7 @@ class Shalon: NSObject, StreamDelegate {
 		wrapCurrentLayerWithTls()
 	}
 
-	func wrapCurrentLayerWithTls() {
+	private func wrapCurrentLayerWithTls() {
 		assert(currentLayer < targets.count, "Cannot have more layers than targets!")
 		assert(currentLayer <= streams.count, "Cannot have more layers than streams!")
 
@@ -118,7 +118,7 @@ class Shalon: NSObject, StreamDelegate {
 
 	// MARK: StreamDelegate
 
-	func stream(_ stream: Stream, handle eventCode: Stream.Event) {
+	public func stream(_ stream: Stream, handle eventCode: Stream.Event) {
 		assert(stream === currentStream.input || stream == currentStream.output, "Should not act as a delegate to another stream!")
 
 		guard !eventCode.contains(.endEncountered) else {
@@ -203,11 +203,11 @@ class Shalon: NSObject, StreamDelegate {
 
 	// MARK: Helpers
 
-	func errorOccurred(_ error: GenericError) {
+	private func errorOccurred(_ error: GenericError) {
 		errorOccurred(error as Error)
 	}
 
-	func errorOccurred(_ error: Error) {
+	private func errorOccurred(_ error: Error) {
 		completionHandler(nil, error)
 		reset()
 	}
@@ -229,7 +229,7 @@ class Shalon: NSObject, StreamDelegate {
 		state = .inactive
 	}
 
-	func expectHttpResponse(fromStream stream: InputStream) -> Http.Response? {
+	private func expectHttpResponse(fromStream stream: InputStream) -> Http.Response? {
 		assert(stream.hasBytesAvailable)
 
 		guard let rawResponse = stream.readAll() else {
@@ -238,7 +238,7 @@ class Shalon: NSObject, StreamDelegate {
 		return Http.Response(withRawData: rawResponse)
 	}
 
-	func send(request: Http.Request, toStream stream: OutputStream) {
+	private func send(request: Http.Request, toStream stream: OutputStream) {
 		assert(stream.hasSpaceAvailable)
 
 		guard let rawRequest = request.compose() else {
@@ -252,24 +252,24 @@ class Shalon: NSObject, StreamDelegate {
 		}
 	}
 
-	func determineNextAction() -> State {
+	private func determineNextAction() -> State {
 		// There is one more layers than targets
 		return (nextTargetIdx < targets.count) ? .shouldEstablishTunnelConnection : .shouldSendHttpRequest
 	}
 
-	var nextLayer: Int {
+	private var nextLayer: Int {
 		get {
 			return currentLayer + 1
 		}
 	}
 
-	var firstHop: Target {
+	private var firstHop: Target {
 		get {
 			return targets.first!
 		}
 	}
 
-	var currentTargetIdx: Int {
+	private var currentTargetIdx: Int {
 		get {
 			assert((0..<streams.count).contains(currentLayer))
 			assert(currentLayer <= targets.count)
@@ -278,25 +278,25 @@ class Shalon: NSObject, StreamDelegate {
 		}
 	}
 
-	var nextTargetIdx: Int {
+	private var nextTargetIdx: Int {
 		get {
 			return currentTargetIdx + 1
 		}
 	}
 
-	var currentTarget: Target {
+	private var currentTarget: Target {
 		get {
 			return targets[currentTargetIdx]
 		}
 	}
 
-	var nextTarget: Target {
+	private var nextTarget: Target {
 		get {
 			return targets[nextTargetIdx]
 		}
 	}
 
-	var currentStream: PairedStream {
+	private var currentStream: PairedStream {
 		get {
 			assert((0..<streams.count).contains(currentLayer))
 

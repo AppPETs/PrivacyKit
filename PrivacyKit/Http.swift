@@ -1,14 +1,14 @@
 import CoreFoundation
 import Foundation
 
-class Http {
+public class Http {
 
-	enum Error: Swift.Error {
+	public enum Error: Swift.Error {
 		case invalidResponse
 		case unexpectedResponse(Http.Status, String)
 	}
 
-	enum Method: String {
+	public enum Method: String {
 		case connect = "CONNECT"
 		case delete  = "DELETE"
 		case get     = "GET"
@@ -19,7 +19,7 @@ class Http {
 		case trace   = "TRACE"
 	}
 
-	enum StatusCategory {
+	public enum StatusCategory {
 		case informal
 		case success
 		case redirection
@@ -27,7 +27,7 @@ class Http {
 		case serverError
 	}
 
-	enum Status: UInt16 {
+	public enum Status: UInt16 {
 		// Informal
 		case Continue                      = 100
 		case switchingProtocols            = 101
@@ -96,7 +96,7 @@ class Http {
 		case networkAuthenticationRequired = 511
 	}
 
-	static func category(for status: Status) -> StatusCategory {
+	public static func category(for status: Status) -> StatusCategory {
 		switch status.rawValue {
 			case 100..<200:
 				return .informal
@@ -114,19 +114,19 @@ class Http {
 	}
 
 	// TODO Define custom class/struct for headers which also handle case-insensitivity
-	enum Header: String {
+	public enum Header: String {
 		case host = "Host"
 		case contentLength = "Content-Length"
 		case contentType = "Content-Type"
 	}
 
-	enum ContentType: String {
+	public enum ContentType: String {
 		case octetStream = "application/octet-stream"
 	}
 
-	typealias Headers = [String: String]
+	public typealias Headers = [String: String]
 
-	class Message {
+	public class Message {
 		let headers: Headers
 		let	body: Data?
 
@@ -136,7 +136,7 @@ class Http {
 		}
 	}
 
-	class Request: Message {
+	public class Request: Message {
 
 		let method: Method
 		let url: URL
@@ -200,7 +200,7 @@ class Http {
 		}
 	}
 
-	class Response: Message {
+	public class Response: Message {
 		let status: Status
 
 		init?(withRawData rawData: Data) {
@@ -241,39 +241,39 @@ class Http {
 }
 
 extension URLRequest {
-	mutating func add(value: String, for header: Http.Header) {
+	public mutating func add(value: String, for header: Http.Header) {
 		addValue(value, forHTTPHeaderField: header.rawValue)
 	}
 
-	mutating func set(contentType: Http.ContentType) {
+	public mutating func set(contentType: Http.ContentType) {
 		add(value: contentType.rawValue, for: .contentType)
 	}
 
-	mutating func set(method: Http.Method) {
+	public mutating func set(method: Http.Method) {
 		httpMethod = method.rawValue
 	}
 }
 
 extension HTTPURLResponse {
-	var status: Http.Status {
+	public var status: Http.Status {
 		get {
 			assert(0 <= statusCode)
 			return Http.Status(rawValue: UInt16(statusCode))!
 		}
 	}
 
-	var unexpected: Http.Error {
+	public var unexpected: Http.Error {
 		get {
 			return .unexpectedResponse(status, description)
 		}
 	}
 }
 
-struct Target {
-	let hostname: String
-	let port: UInt16
+public struct Target {
+	public let hostname: String
+	public let port: UInt16
 
-	init?(withHostname hostname: String, andPort port: UInt16) {
+	public init?(withHostname hostname: String, andPort port: UInt16) {
 
 		guard !hostname.isEmpty else {
 			return nil
@@ -295,13 +295,13 @@ struct Target {
 		self.port = UInt16(exactly: portAsInt)!
 	}
 
-	func formatted() -> String {
+	public func formatted() -> String {
 		return "\(hostname):\(port)"
 	}
 }
 
 extension Target: Equatable {
-	static func == (lhs: Target, rhs: Target) -> Bool {
+	public static func == (lhs: Target, rhs: Target) -> Bool {
 		return lhs.hostname == rhs.hostname && lhs.port == rhs.port
 	}
 }

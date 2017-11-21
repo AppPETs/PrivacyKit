@@ -744,7 +744,11 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 	}
 }
 
-func tlsRead(connectionPtr: SSLConnectionRef, dataPtr: UnsafeMutableRawPointer, dataLengthPtr: UnsafeMutablePointer<Int>) -> OSStatus {
+private func tlsRead(
+	connectionPtr: SSLConnectionRef,
+	dataPtr: UnsafeMutableRawPointer,
+	dataLengthPtr: UnsafeMutablePointer<Int>
+) -> OSStatus {
 	let stream = Unmanaged<PairedStream>.fromOpaque(connectionPtr).takeUnretainedValue()
 
 	guard stream.input.hasBytesAvailable else {
@@ -779,7 +783,11 @@ func tlsRead(connectionPtr: SSLConnectionRef, dataPtr: UnsafeMutableRawPointer, 
 	return (bytesRead < maxLength) ? errSSLWouldBlock : noErr
 }
 
-func tlsWrite(connectionPtr: SSLConnectionRef, dataPtr: UnsafeRawPointer, dataLengthPtr: UnsafeMutablePointer<Int>) -> OSStatus {
+private func tlsWrite(
+	connectionPtr: SSLConnectionRef,
+	dataPtr: UnsafeRawPointer,
+	dataLengthPtr: UnsafeMutablePointer<Int>
+) -> OSStatus {
 	let stream = Unmanaged<PairedStream>.fromOpaque(connectionPtr).takeUnretainedValue()
 
 	guard stream.output.hasSpaceAvailable else {

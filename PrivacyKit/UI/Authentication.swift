@@ -3,9 +3,12 @@ import LocalAuthentication
 /**
 	A context for which the authentication is valid.
 
-	The context should be invalidated by calling `invalidate()` as soon as it is
-	no longer required. All outstanding authentications for this context will be
-	cancelled.
+	The context should be invalidated by calling [`invalidate()`](https://developer.apple.com/documentation/localauthentication/lacontext/1514192-invalidate)
+	as soon as it is no longer required. All outstanding authentications for
+	this context will be cancelled.
+
+	- see:
+		[`LAContext`](https://developer.apple.com/documentation/localauthentication/lacontext)
 */
 public typealias AuthenticationContext = LAContext
 
@@ -57,6 +60,7 @@ public enum AuthenticationError: Error {
 	passcode authentication is used as a fallback.
 
 	#### Example
+
 	```swift
 	context = authenticateDeviceOwner(reason: "Unlock something") {
 	    authenticationError in
@@ -73,8 +77,8 @@ public enum AuthenticationError: Error {
 	```
 
 	- note:
-		In order to use Face ID, add `NSFaceIDUsageDescription` to your
-		`Info.plist`.
+		In order to use Face ID, add [`NSFaceIDUsageDescription`][https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW75]
+		to your [`Info.plist`][https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1].
 
 	- parameters:
 		- reason: The reason describing the purpose of the authentication.
@@ -86,7 +90,10 @@ public enum AuthenticationError: Error {
 	- returns:
 		The authentication context.
 */
-public func authenticateDeviceOwner(reason: String, completion: @escaping (_ authenticationError: AuthenticationError?) -> Void) -> AuthenticationContext {
+public func authenticateDeviceOwner(
+	reason: String,
+	completion: @escaping (_ authenticationError: AuthenticationError?) -> Void
+) -> AuthenticationContext {
 	let context = AuthenticationContext()
 
 	context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {

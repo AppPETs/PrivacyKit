@@ -8,7 +8,7 @@
 public class Indicators {
 
 	/**
-		Shows the network activity indicator in the status bar.
+		Shows the network activity indicator in the status bar (iOS).
 
 		This function is thread safe.
 	

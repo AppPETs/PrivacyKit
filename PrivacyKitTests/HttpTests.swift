@@ -3,6 +3,14 @@ import XCTest
 
 class HttpTests: XCTestCase {
 
+	func testCategoryForStatus() {
+		XCTAssertEqual(Http.category(for: .Continue), Http.StatusCategory.informal)
+		XCTAssertEqual(Http.category(for: .ok), Http.StatusCategory.success)
+		XCTAssertEqual(Http.category(for: .temporaryRedirect), Http.StatusCategory.redirection)
+		XCTAssertEqual(Http.category(for: .notFound), Http.StatusCategory.clientError)
+		XCTAssertEqual(Http.category(for: .internalServerError), Http.StatusCategory.serverError)
+	}
+
 	func testInvalidRequest() {
 		// File URLs should not work
 		XCTAssertNil(Http.Request(withMethod: .head, andUrl: URL.init(fileURLWithPath: "/tmp", isDirectory: true)))
@@ -17,6 +25,25 @@ class HttpTests: XCTestCase {
 		let body = Data("foo".utf8)
 		XCTAssertNil(Http.Request(withMethod: .connect, andUrl: url, andHeaders: [:], andBody: body, andOptions: ""))
 		XCTAssertNil(Http.Request(withMethod: .head, andUrl: url, andHeaders: [:], andBody: body))
+	}
+
+	func testHeaderPatching() {
+		let url = URL(string: "http://example.com")!
+		let body = Data("foo".utf8)
+
+		// Test if Host header is set
+		let request1 = Http.Request(withMethod: .head, andUrl: url)!
+		XCTAssertEqual(request1.headers[Http.Header.host.rawValue], "example.com")
+		let request2 = Http.Request(withMethod: .head, andUrl: url, andHeaders: [Http.Header.host.rawValue: "foobar"])!
+		XCTAssertEqual(request2.headers[Http.Header.host.rawValue], "foobar")
+
+		// Test if Content-Length header is correct
+		let request3 = Http.Request(withMethod: .head, andUrl: url)!
+		XCTAssertFalse(request3.headers.keys.contains(Http.Header.contentLength.rawValue))
+		let request4 = Http.Request(withMethod: .post, andUrl: url, andHeaders: [:], andBody: body)!
+		XCTAssertEqual(request4.headers[Http.Header.contentLength.rawValue], "\(body.count)")
+		let request5 = Http.Request(withMethod: .post, andUrl: url, andHeaders: [Http.Header.contentLength.rawValue: "\(body.count + 1)"], andBody: body)!
+		XCTAssertEqual(request5.headers[Http.Header.contentLength.rawValue], "\(body.count + 1)")
 	}
 
 	func testHeadRequest() {

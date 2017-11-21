@@ -2,8 +2,12 @@ import QRCode
 import Tafelsalz
 
 extension MasterKey {
-	public func qrCode() -> QRCode? {
-		return QRCode(base64EncodedString())
+
+	public func qrCode() -> QRCode {
+		assert(self.sizeInBytes <= QRCode.MaximumSizeInBytes)
+		assert(base64EncodedString().lengthOfBytes(using: .isoLatin1) <= QRCode.MaximumSizeInBytes)
+
+		return QRCode(base64EncodedString())!
 	}
 
 	public func base64EncodedString() -> String {

@@ -8,7 +8,7 @@ class TafelsalzExtensionsTest: XCTestCase {
 
 	func testMasterKeyAsQrCode() {
 		let masterKey = MasterKey()
-		let qr = masterKey.qrCode()!
+		let qr = masterKey.qrCode()
 
 		XCTAssertEqual(String(bytes: qr.data, encoding: .utf8)!, masterKey.base64EncodedString())
 	}

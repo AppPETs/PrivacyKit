@@ -101,5 +101,13 @@ class HttpTests: XCTestCase {
 		XCTAssertNil(response.body)
 	}
 
+	func testInvalidResponse() {
 
+		XCTAssertNil(Http.Response(withRawData: Data("foo".utf8)))
+		XCTAssertNil(Http.Response(withRawData: Data("HTTP/1.0 999 Connection Established\r\n\r\n".utf8)))
+
+		// Looks like the CF HTTP parser falls back to 200 if the status code is not a number...
+		let response = Http.Response(withRawData: Data("HTTP/1.0 foo Connection Established\r\n\r\n".utf8))!
+		XCTAssertEqual(response.status, .ok)
+	}
 }

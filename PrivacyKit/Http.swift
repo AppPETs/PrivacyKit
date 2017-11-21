@@ -214,9 +214,7 @@ class Http {
 			// Parse status code
 			let statusCode = CFHTTPMessageGetResponseStatusCode(cfResponse)
 			guard let status = Status(rawValue: UInt16(statusCode)) else {
-				assert(false, "Unknown status code: \(statusCode)")
-				print("Unknown status code: \(statusCode)")
-				return nil
+				return nil // Unknown status code
 			}
 			self.status = status
 

@@ -158,7 +158,7 @@ class Http {
 			}
 
 			// CONNECT and HEAD requests have no body
-			guard !(![.connect, .head].contains(method) && !body.isEmpty) else {
+			guard ([.connect, .head].contains(method) || body.isEmpty) else {
 				return nil
 			}
 

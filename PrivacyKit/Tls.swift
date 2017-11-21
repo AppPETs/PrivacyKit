@@ -1,7 +1,7 @@
 import Foundation
 import Security
 
-let CHUNK_SIZE = 1024 * 1024
+private let ChunkSizeInBytes = 1024 * 1024
 
 enum TlsStreamError: Error {
 	case readingFailed(OSStatus, Int)
@@ -26,15 +26,15 @@ extension InputStream {
 		var totalBytesRead = 0
 
 		repeat {
-			var chunk = Data(count: CHUNK_SIZE)
+			var chunk = Data(count: ChunkSizeInBytes)
 			bytesRead = chunk.withUnsafeMutableBytes { chunkPtr in
-				return self.read(chunkPtr, maxLength: CHUNK_SIZE)
+				return self.read(chunkPtr, maxLength: ChunkSizeInBytes)
 			}
 			if 0 < bytesRead {
 				totalBytesRead += bytesRead
 				data.append(chunk.subdata(in: 0..<bytesRead))
 			}
-		} while self.hasBytesAvailable && bytesRead == CHUNK_SIZE
+		} while self.hasBytesAvailable && bytesRead == ChunkSizeInBytes
 
 		guard 0 < bytesRead else {
 			return nil
@@ -501,13 +501,13 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		if stream.hasBytesAvailable {
 			// Buffer everything from the wrapped stream
 			repeat {
-				var chunk = Data(count: CHUNK_SIZE)
+				var chunk = Data(count: ChunkSizeInBytes)
 				var bytesProcessed = 0
 				sslStatus = chunk.withUnsafeMutableBytes { chunkPtr in
-					SSLRead(session.context, chunkPtr, CHUNK_SIZE, &bytesProcessed)
+					SSLRead(session.context, chunkPtr, ChunkSizeInBytes, &bytesProcessed)
 				}
 
-				assert(bytesProcessed <= CHUNK_SIZE, "More bytes processed than allowed!")
+				assert(bytesProcessed <= ChunkSizeInBytes, "More bytes processed than allowed!")
 
 				totalBytesProcessed += bytesProcessed
 				buffer.append(chunk.subdata(in: 0..<bytesProcessed))

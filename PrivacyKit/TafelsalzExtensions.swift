@@ -3,6 +3,8 @@ import Tafelsalz
 
 // <#FIXME#> Remove Android workaround (Todo-iOS/#2)
 let MASTER_KEY_PREFIX = "PLIB"
+let MASTER_KEY_PREFIX_BYTES = Data(MASTER_KEY_PREFIX.utf8)
+let MASTER_KEY_PREFIX_SIZE_IN_BYTES = MASTER_KEY_PREFIX_BYTES.count
 
 extension MasterKey {
 
@@ -14,7 +16,7 @@ extension MasterKey {
 	*/
 	public func qrCode() -> QRCode {
 		assert(self.sizeInBytes <= QRCode.MaximumSizeInBytes)
-		assert(base64EncodedString().lengthOfBytes(using: .isoLatin1) <= QRCode.MaximumSizeInBytes)
+		assert(MASTER_KEY_PREFIX_SIZE_IN_BYTES + base64EncodedString().lengthOfBytes(using: .isoLatin1) <= QRCode.MaximumSizeInBytes)
 
 		return QRCode(MASTER_KEY_PREFIX + base64EncodedString())!
 	}
@@ -43,8 +45,8 @@ extension MasterKey {
 			return nil
 		}
 
-		if data.starts(with: Data(MASTER_KEY_PREFIX.utf8)) {
-			data.removeFirst(Data(MASTER_KEY_PREFIX.utf8).count)
+		if data.starts(with: MASTER_KEY_PREFIX_BYTES) {
+			data.removeFirst(MASTER_KEY_PREFIX_SIZE_IN_BYTES)
 		}
 
 		self.init(bytes: &data)

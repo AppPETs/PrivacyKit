@@ -3,7 +3,7 @@ import Tafelsalz
 
 // <#FIXME#> Remove Android workaround (Todo-iOS/#2)
 let MASTER_KEY_PREFIX = "PLIB"
-let MASTER_KEY_PREFIX_SIZE_IN_BYTES = MASTER_KEY_PREFIX_BYTES.count
+let MASTER_KEY_PREFIX_SIZE_IN_BYTES = Data(MASTER_KEY_PREFIX.utf8).count
 
 extension MasterKey {
 

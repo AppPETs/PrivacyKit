@@ -3,7 +3,6 @@ import Tafelsalz
 
 // <#FIXME#> Remove Android workaround (Todo-iOS/#2)
 let MASTER_KEY_PREFIX = "PLIB"
-let MASTER_KEY_PREFIX_BYTES = Data(MASTER_KEY_PREFIX.utf8)
 let MASTER_KEY_PREFIX_SIZE_IN_BYTES = MASTER_KEY_PREFIX_BYTES.count
 
 extension MasterKey {
@@ -41,12 +40,13 @@ extension MasterKey {
 			`nil` if `base64Encoded` is not a valid.
 	*/
 	public convenience init?(base64Encoded encodedString: String) {
-		guard var data = Data(base64Encoded: encodedString) else {
-			return nil
+		var string = encodedString
+		if string.starts(with: MASTER_KEY_PREFIX) {
+			string.removeFirst(MASTER_KEY_PREFIX_SIZE_IN_BYTES)
 		}
 
-		if data.starts(with: MASTER_KEY_PREFIX_BYTES) {
-			data.removeFirst(MASTER_KEY_PREFIX_SIZE_IN_BYTES)
+		guard var data = Data(base64Encoded: string) else {
+			return nil
 		}
 
 		self.init(bytes: &data)

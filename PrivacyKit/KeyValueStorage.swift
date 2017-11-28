@@ -103,13 +103,33 @@ public protocol KeyValueStorage {
 
 // MARK: - Backend
 
+/**
+	Encrypted values that are stored in a storage backend.
+*/
 typealias EncryptedValue = SecretBox.AuthenticatedCiphertext
 
+// <#TODO#> Rename, because it is not really "encrypted"
+/**
+	Encrypted keys that are used to identify values in a storage backend.
+*/
 struct EncryptedKey {
+
+	/**
+		The size of the key in bytes.
+	*/
 	public static let SizeInBytes: PInt = 256 / 8
 
+	/**
+		The personalized hash of the plaintext key.
+	*/
 	let value: GenericHash
 
+	/**
+		Initialize an encrypted key.
+
+		- parameters:
+			- value: The personalized has of the plaintext key.
+	*/
 	init?(_ value: GenericHash) {
 		guard value.sizeInBytes == EncryptedKey.SizeInBytes else { return nil }
 		self.value = value
@@ -117,16 +137,34 @@ struct EncryptedKey {
 }
 
 extension EncryptedKey: Equatable {
+
+	/**
+		Compare two encrypted keys. Keys need to be comparable in order to do
+		lookups.
+
+		- parameters:
+			- lhs: An encrypted key.
+			- rhs: Another encrypted key.
+	*/
 	public static func ==(lhs: EncryptedKey, rhs: EncryptedKey) -> Bool {
 		return lhs.value == rhs.value
 	}
+
 }
 
 extension EncryptedKey: Hashable {
+
+	/**
+		The hash value, for being able to use encrypted keys in dictionaries or
+		sets. This should not be confused with the personalized hash of the
+		plaintext key.
+	*/
 	public var hashValue: Int { get { return value.hashValue } }
+
 }
 
 extension EncryptedKey: CustomStringConvertible {
+
 	/**
 		A textual representation of an encrypted key.
 	*/
@@ -135,8 +173,16 @@ extension EncryptedKey: CustomStringConvertible {
 			return value.hex!
 		}
 	}
+
 }
 
+/**
+	A protocol defining a key-value storage backend. It basically is similar to
+	the `KeyValueStorage` protocol but with encryped keys and encrypted values.
+
+	You can use this to implement a custom protocol for storing a secure
+	key-value storage.
+*/
 protocol KeyValueStorageBackend {
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Error?) -> Void)
 	func retrieve(for key: EncryptedKey, callback: @escaping (EncryptedValue?, Error?) -> Void)

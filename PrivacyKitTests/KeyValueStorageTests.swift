@@ -111,7 +111,7 @@ class KeyValueStorageTests: XCTestCase {
 	// MARK: Tests
 
 	func testEncryptedKey() {
-		let hash: (PInt) -> GenericHash = { GenericHash(bytes: Data("foo".utf8), outputSizeInBytes: $0)! }
+		let hash: (UInt32) -> GenericHash = { GenericHash(bytes: Data("foo".utf8), outputSizeInBytes: $0)! }
 
 		XCTAssertNotNil(EncryptedKey(hash(EncryptedKey.SizeInBytes)))
 		XCTAssertNil(EncryptedKey(hash(EncryptedKey.SizeInBytes - 1)))

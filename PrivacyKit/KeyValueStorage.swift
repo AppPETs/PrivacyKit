@@ -117,7 +117,7 @@ struct EncryptedKey {
 	/**
 		The size of the key in bytes.
 	*/
-	public static let SizeInBytes: PInt = 256 / 8
+	public static let SizeInBytes: UInt32 = 256 / 8
 
 	/**
 		The personalized hash of the plaintext key.

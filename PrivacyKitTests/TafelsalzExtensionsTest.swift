@@ -10,7 +10,8 @@ class TafelsalzExtensionsTest: XCTestCase {
 		let masterKey = MasterKey()
 		let qr = masterKey.qrCode()
 
-		XCTAssertEqual(String(bytes: qr.data, encoding: .utf8)!, masterKey.base64EncodedString())
+		// <#FIXME#> Remove Android workaround (Todo-iOS/#2)
+		XCTAssertEqual(String(bytes: qr.data, encoding: .utf8)!, MASTER_KEY_PREFIX + masterKey.base64EncodedString())
 	}
 
 	func testMasterKeyFromBase64Encoded() {

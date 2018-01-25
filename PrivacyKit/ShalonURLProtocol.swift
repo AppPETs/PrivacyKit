@@ -95,6 +95,13 @@ public class ShalonURLProtocol : URLProtocol {
 		return false
 	}
 
+	override public class func canInit(with task: URLSessionTask) -> Bool {
+		guard let request = task.currentRequest else {
+			return false
+		}
+		return canInit(with: request)
+	}
+
 	override public class func canonicalRequest(for request: URLRequest) -> URLRequest {
 		return request
 	}

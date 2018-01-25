@@ -311,9 +311,14 @@ extension PrivacyService {
 
 extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 
+	func defaultSessionConfiguration() -> URLSessionConfiguration {
+		let configuration = URLSessionConfiguration.ephemeral
+		configuration.protocolClasses?.append(ShalonURLProtocol.self)
+		return configuration
+	}
+
 	func store(value: EncryptedValue, for key: EncryptedKey, callback: @escaping (Swift.Error?) -> Void) {
-		let sessionConfiguration = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfiguration)
+		let session = URLSession(configuration: defaultSessionConfiguration())
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .post)
@@ -348,8 +353,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 	}
 
 	func retrieve(for key: EncryptedKey, callback: @escaping (EncryptedValue?, Swift.Error?) -> Void) {
-		let sessionConfiguration = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfiguration)
+		let session = URLSession(configuration: defaultSessionConfiguration())
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .get)
@@ -400,8 +404,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 	}
 
 	func remove(for key: EncryptedKey, callback: @escaping (Swift.Error?) -> Void) {
-		let sessionConfiguration = URLSessionConfiguration.default
-		let session = URLSession(configuration: sessionConfiguration)
+		let session = URLSession(configuration: defaultSessionConfiguration())
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .delete)

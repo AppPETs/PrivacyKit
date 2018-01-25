@@ -81,7 +81,7 @@ class ShalonTest: XCTestCase {
 		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://2001:db8:85a3::8a2e:370:7334:443/www.google.com")!))
 	}
 
-	func testShalonProtocol() {
+	func testShalonProtocol1() {
 		URLProtocol.registerClass(ShalonURLProtocol.self)
 
 		// Shalon Test
@@ -103,6 +103,34 @@ class ShalonTest: XCTestCase {
 
 			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
 			XCTAssertNotNil(shalonResponse)
+		}
+	}
+
+	func testShalonProtocol2() {
+		let url = URL(string: "httpss://shalon1.jondonym.net:443/example.com/")!
+		let sessionConfiguration = URLSessionConfiguration.ephemeral
+		sessionConfiguration.protocolClasses?.append(ShalonURLProtocol.self)
+		let session = URLSession(configuration: sessionConfiguration)
+		var request = URLRequest(url: url)
+		request.set(method: .head)
+
+		let responseExpectation = expectation(description: "responseExpectation")
+
+		var response: URLResponse? = nil
+
+		let task = session.dataTask(with: request) {
+			(potentialUrl, potentialResponse, potentialError) in
+
+			response = potentialResponse
+			responseExpectation.fulfill()
+		}
+		task.resume()
+
+		waitForExpectations(timeout: 10/*seconds*/) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
+			XCTAssertNotNil(response)
 		}
 	}
 }

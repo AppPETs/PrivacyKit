@@ -72,7 +72,12 @@ public class ShalonURLProtocol : URLProtocol {
 
 		// The requestUrl is now simply those components that were not used before,
 		// along with the https:// scheme
-		let requestUrl = URL(string: "https://" + components[numProxies..<components.count].joined(separator: "/"))
+		var requestUrl = URL(string: "https://" + components[numProxies..<components.count].joined(separator: "/"))
+
+		if requestUrl?.path == "" {
+			requestUrl = URL(string: requestUrl!.absoluteString + "/")
+		}
+
 		if let actualUrl = requestUrl {
 			return ShalonParams(proxies: shalonProxies, requestUrl: actualUrl)
 		}

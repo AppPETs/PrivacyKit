@@ -180,6 +180,15 @@ class TlsSession {
 		}
 	}
 
+	var sessionState: SSLSessionState {
+		get {
+			var sessionState: SSLSessionState = .idle
+			let sslStatus = SSLGetSessionState(context, &sessionState)
+			assert(sslStatus == noErr)
+			return sessionState
+		}
+	}
+
 	// MARK: Triggers
 
 	func spaceAvailableForHandshake() {
@@ -493,7 +502,14 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 
 	override func read(_ dataPtr: UnsafeMutablePointer<UInt8>, maxLength: Int) -> Int {
 		assert(status == .open)
-		assert(session.handshakeDidComplete)
+
+		/*
+		Workaround (part 1): It is possible that we are trying to read data from a session
+		that is already closed, and this read may succeed if there is data cached
+		locally by the framework we are using (Security.framework, which is
+		handling the SSL context)
+		*/
+		assert(session.sessionState == .closed || session.handshakeDidComplete)
 
 		var sslStatus = noErr
 		var totalBytesProcessed = 0
@@ -501,10 +517,43 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		if stream.hasBytesAvailable {
 			// Buffer everything from the wrapped stream
 			repeat {
-				var chunk = Data(count: ChunkSizeInBytes)
+				/*
+				Workaround (part 2): Apple's Security framework has a peculiar behaviour.
+				If data is cached by that framework, but we request more data than is
+				currently cached, the framework will attempt to fetch the remaining data
+				first before returning. Unfortunately, if the connection has already been closed,
+				this attempt will result in an infinite loop (at least using this code).
+
+				Therefore, in the event that the connection has already been closed, we
+				get the size of the currently buffered data and simply request this data.
+				For more information, see [0].
+
+				It is worth noting that in this case, hasBytesAvailable will *still*
+				return true because the underlying input stream returns true for that call,
+				even though no more data is there. (This is the cause for the infinite loop)
+
+				[0]: https://github.com/seanmonstar/reqwest/issues/26#issuecomment-290205986
+				*/
+				let readSize : size_t
+
+				if sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort {
+					var internalBufSize : size_t = 0
+					SSLGetBufferedReadSize(self.session.context, &internalBufSize)
+
+					readSize = min(internalBufSize, ChunkSizeInBytes)
+					// internal buffer is empty, stop trying to read more data.
+					if readSize == 0 {
+						break
+					}
+				} else {
+					readSize = ChunkSizeInBytes
+				}
+
+
+				var chunk = Data(count: readSize)
 				var bytesProcessed = 0
 				sslStatus = chunk.withUnsafeMutableBytes { chunkPtr in
-					SSLRead(session.context, chunkPtr, ChunkSizeInBytes, &bytesProcessed)
+					SSLRead(session.context, chunkPtr, readSize, &bytesProcessed)
 				}
 
 				assert(bytesProcessed <= ChunkSizeInBytes, "More bytes processed than allowed!")
@@ -549,7 +598,14 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		copyNumBytes(toPtr: dataPtr, numBytes: bytesProcessed)
 		assert(bytesProcessed <= maxLength, "More bytes processed than allowed!")
 
-		guard sslStatus == noErr else {
+		/*
+		Workaround (part 3)
+		sslStatus is not noErr, and we still do not want to alert others, because the server
+		closed the connection on us. The errSSLClosedAbort condition should ideally not be
+		treated as no error, but at the moment, this is needed to return a useful result.
+		Further investigating is needed!
+		*/
+		guard sslStatus == noErr || sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort else {
 			setError(.readingFailed(sslStatus, bytesProcessed))
 			return -1
 		}
@@ -653,7 +709,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 	override func close() {
 		let sslStatus = SSLClose(session.context)
-		guard sslStatus == noErr else {
+		guard sslStatus == noErr || sslStatus == errSSLClosedGraceful else {
 			setError(.closingFailed(sslStatus))
 			return
 		}
@@ -679,6 +735,12 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 	override func write(_ dataPtr: UnsafePointer<UInt8>, maxLength: Int) -> Int {
 		assert(status == .open)
+
+		// Do not write if the session has already been closed.
+		if (session.sessionState == .closed) {
+			return 0
+		}
+
 		assert(session.handshakeDidComplete)
 
 		var bytesProcessed = 0

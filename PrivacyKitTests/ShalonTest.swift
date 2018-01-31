@@ -163,4 +163,35 @@ class ShalonTest: XCTestCase {
 			dump(response)
 		}
 	}
+
+	func testShalon() {
+		let url = URL(string: "https://apppets.aot.tu-berlin.de:2235/")!
+		let target = Target(withHostname: url.host!, andPort: UInt16(url.port!))!
+		let shalon = Shalon(withTarget: target)
+
+		var optionalResponse: Http.Response? = nil
+		var optionalError: Error? = nil
+
+		shalon.addLayer(Target(withHostname: "shalon1.jondonym.net", andPort: 443)!)
+
+		let responseReceivedExpectation = expectation(description: "responseReceived")
+
+		shalon.issue(request: Http.Request(withMethod: .head, andUrl: url)!) {
+			receivedOptionalResponse, receivedOptionalError in
+
+			optionalResponse = receivedOptionalResponse
+			optionalError = receivedOptionalError
+
+			responseReceivedExpectation.fulfill()
+		}
+
+		waitForExpectations(timeout: 10/*seconds*/) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
+
+			XCTAssertNotNil(optionalResponse)
+			XCTAssertNil(optionalError)
+		}
+	}
 }

@@ -125,7 +125,14 @@ public class ShalonURLProtocol : URLProtocol {
 
 		print(shalonParameters.requestUrl)
 
-		let target = Target(withHostname: shalonParameters.requestUrl.host!, andPort: 443)!
+		let port: UInt16
+		if let parsedPort = shalonParameters.requestUrl.port {
+			port = UInt16(parsedPort)
+		} else {
+			port = 443
+		}
+
+		let target = Target(withHostname: shalonParameters.requestUrl.host!, andPort: port)!
 		let shalon = Shalon(withTarget: target)
 
 		for proxy in shalonParameters.proxies {

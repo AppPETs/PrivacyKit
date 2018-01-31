@@ -133,4 +133,34 @@ class ShalonTest: XCTestCase {
 			XCTAssertNotNil(response)
 		}
 	}
+
+	func testShalonProtocol3() {
+		let url = URL(string: "httpss://shalon1.jondonym.net:443/apppets.aot.tu-berlin.de:2235/")!
+
+		let sessionConfiguration = URLSessionConfiguration.ephemeral
+		sessionConfiguration.protocolClasses?.append(ShalonURLProtocol.self)
+		let session = URLSession(configuration: sessionConfiguration)
+		var request = URLRequest(url: url)
+		request.set(method: .head)
+
+		let responseExpectation = expectation(description: "responseExpectation")
+
+		var response: URLResponse? = nil
+
+		let task = session.dataTask(with: request) {
+			(potentialUrl, potentialResponse, potentialError) in
+
+			response = potentialResponse
+			responseExpectation.fulfill()
+		}
+		task.resume()
+
+		waitForExpectations(timeout: 25/*seconds*/) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
+			XCTAssertNotNil(response)
+			dump(response)
+		}
+	}
 }

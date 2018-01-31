@@ -53,7 +53,7 @@ class ShalonTest: XCTestCase {
 		XCTAssertNotNil(shalonParameters)
 		XCTAssertEqual(shalonParameters!.proxies.count, 1)
 		XCTAssertEqual(shalonParameters!.proxies[0], Target(withHostname: "shalon1.jondonym.de", andPort: 443))
-		XCTAssertEqual(shalonParameters!.requestUrl, URL(string: "https://www.google.com")!)
+		XCTAssertEqual(shalonParameters!.requestUrl, URL(string: "https://www.google.com/")!)
 
 		// Two proxies
 		let shalonParameters1 = try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:443/test.g.de:778/www.google.com")!)
@@ -61,21 +61,21 @@ class ShalonTest: XCTestCase {
 		XCTAssertEqual(shalonParameters1!.proxies.count, 2)
 		XCTAssertEqual(shalonParameters1!.proxies[0], Target(withHostname: "shalon1.jondonym.de", andPort: 443))
 		XCTAssertEqual(shalonParameters1!.proxies[1], Target(withHostname: "test.g.de", andPort: 778))
-		XCTAssertEqual(shalonParameters1!.requestUrl, URL(string: "https://www.google.com")!)
+		XCTAssertEqual(shalonParameters1!.requestUrl, URL(string: "https://www.google.com/")!)
 
 		// One proxy and real target with port
 		let shalonParameters2 = try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://shalon1.jondonym.net:443/apppets.aot.tu-berlin.de:2235")!)
 		XCTAssertNotNil(shalonParameters2)
 		XCTAssertEqual(shalonParameters2!.proxies.count, 1)
 		XCTAssertEqual(shalonParameters2!.proxies[0], Target(withHostname: "shalon1.jondonym.net", andPort: 443))
-		XCTAssertEqual(shalonParameters2!.requestUrl, URL(string: "https://apppets.aot.tu-berlin.de:2235")!)
+		XCTAssertEqual(shalonParameters2!.requestUrl, URL(string: "https://apppets.aot.tu-berlin.de:2235/")!)
 
 		// Testing IPv6
 		let ipv6Params = try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://[2001:db8:85a3::8a2e:370:7334]:443/www.google.com")!)
 		XCTAssertNotNil(ipv6Params)
 		XCTAssertEqual(ipv6Params!.proxies.count, 1)
 		XCTAssertEqual(ipv6Params!.proxies[0], Target(withHostname: "[2001:db8:85a3::8a2e:370:7334]", andPort: 443))
-		XCTAssertEqual(ipv6Params!.requestUrl, URL(string: "https://www.google.com")!)
+		XCTAssertEqual(ipv6Params!.requestUrl, URL(string: "https://www.google.com/")!)
 
 		// Testing incorrectly specified IPv6 address
 		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://2001:db8:85a3::8a2e:370:7334:443/www.google.com")!))

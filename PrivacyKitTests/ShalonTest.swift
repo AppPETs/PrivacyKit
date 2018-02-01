@@ -194,4 +194,37 @@ class ShalonTest: XCTestCase {
 			XCTAssertNil(optionalError)
 		}
 	}
+
+	func testShalonPost() {
+		let url = URL(string: "httpss://shalon1.jondonym.net:443/httpbin.org/post")!
+
+		let sessionConfiguration = URLSessionConfiguration.ephemeral
+		sessionConfiguration.protocolClasses?.append(ShalonURLProtocol.self)
+		let session = URLSession(configuration: sessionConfiguration)
+		var request = URLRequest(url: url)
+		request.set(method: .post)
+
+		let responseExpectation = expectation(description: "responseExpectation")
+
+		var response: URLResponse? = nil
+		var responseBody : Data? = nil
+
+		let task = session.uploadTask(with: request, from: Data(repeating: 65, count: 100) /* 65 is the ASCII encoding for 'A' */) {
+			(potentialData, potentialResponse, potentialError) in
+
+			response = potentialResponse
+			responseBody = potentialData
+
+			responseExpectation.fulfill()
+		}
+		task.resume()
+
+		waitForExpectations(timeout: 25/*seconds*/) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
+			XCTAssertNotNil(response)
+			XCTAssertNotNil(responseBody)
+		}
+	}
 }

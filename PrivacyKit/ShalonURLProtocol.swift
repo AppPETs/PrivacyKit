@@ -86,6 +86,7 @@ public class ShalonURLProtocol : URLProtocol {
 	}
 
 	override public class func canInit(with request: URLRequest) -> Bool {
+
 		if let url = request.url {
 			let shalonParameters = try? parseShalonParams(from: url)
 			if shalonParameters != nil {
@@ -145,7 +146,17 @@ public class ShalonURLProtocol : URLProtocol {
 			return
 		}
 
-		shalon.issue(request: Http.Request(withMethod: optionalMethod!, andUrl: shalonParameters.requestUrl)!) {
+		// Handle body data
+		var httpBody : Data? = nil
+
+		// HTTP Body data gets transformed into an input by the URL loading system.
+		if let bodyStream = request.httpBodyStream {
+			bodyStream.open()
+			httpBody = bodyStream.readAll()
+			bodyStream.close()
+		}
+
+		shalon.issue(request: Http.Request(withMethod: optionalMethod!, andUrl: shalonParameters.requestUrl, andBody: httpBody ?? Data())!) {
 			receivedOptionalResponse, receivedOptionalError in
 
 			print("Handling response from URLProtocol handler")

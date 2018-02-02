@@ -845,7 +845,7 @@ private func tlsRead(
 		switch errno {
 			case ENOENT:
 				return errSSLClosedGraceful
-			case EAGAIN:
+			case EWOULDBLOCK:
 				return errSSLWouldBlock
 			case ECONNRESET:
 				return errSSLClosedAbort
@@ -884,7 +884,7 @@ private func tlsWrite(
 		switch errno {
 			case ENOENT:
 				return errSSLClosedGraceful
-			case EAGAIN:
+			case EWOULDBLOCK:
 				return errSSLWouldBlock
 			case ECONNRESET:
 				return errSSLClosedAbort

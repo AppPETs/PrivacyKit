@@ -281,9 +281,8 @@ class WrappedInputStream: InputStream, StreamDelegate {
 		stream.remove(from: runLoop, forMode: mode)
 	}
 
-	// <#TODO#> This cannot possibly work, can it? Seems to be infinite loop
 	override func property(forKey key: Stream.PropertyKey) -> Any? {
-		return property(forKey: key)
+		return stream.property(forKey: key)
 	}
 
 	override func setProperty(_ property: Any?, forKey key: Stream.PropertyKey) -> Bool {

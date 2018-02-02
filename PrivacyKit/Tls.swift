@@ -164,23 +164,7 @@ class TlsSession {
 
 	// MARK: States
 
-	var handshakeInitiated: Bool {
-		get {
-			var sessionState: SSLSessionState = .idle
-			let status = SSLGetSessionState(context, &sessionState)
-			return (status == noErr) && (sessionState == .handshake)
-		}
-	}
-
-	var handshakeDidComplete: Bool {
-		get {
-			var sessionState: SSLSessionState = .idle
-			let sslStatus = SSLGetSessionState(context, &sessionState)
-			return (sslStatus == noErr) && (sessionState == .connected)
-		}
-	}
-
-	var sessionState: SSLSessionState {
+	var state: SSLSessionState {
 		get {
 			var sessionState: SSLSessionState = .idle
 			let sslStatus = SSLGetSessionState(context, &sessionState)
@@ -204,7 +188,7 @@ class TlsSession {
 			return
 		}
 
-		guard handshakeInitiated else {
+		guard state == .handshake else {
 			return
 		}
 
@@ -214,7 +198,7 @@ class TlsSession {
 	// MARK: Helpers
 
 	private func shakeHands() -> OSStatus {
-		assert(!handshakeDidComplete)
+		assert(state != .connected, "Already shook hands!")
 
 		var status = errSSLWouldBlock
 
@@ -228,7 +212,7 @@ class TlsSession {
 	private func handleHandshakeResult(status: OSStatus) {
 		switch status {
 			case noErr:
-				assert(handshakeDidComplete)
+				assert(state == .connected)
 
 				for delegate in delegates {
 					delegate.finishOpen()
@@ -433,10 +417,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	let session: TlsSession
 
 	var buffer = Data()
-	// See comments in read() function. This was necessary to fix a performance
-	// issue.
-	// <#TODO#> More elegant fix wanted.
-	var bufferIdx: Int = 0
+	var bufferIdx = 0
 
 	var status: Stream.Status = .notOpen
 	var error: Error? = nil
@@ -453,6 +434,15 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		super.init(stream)
 
 		session.delegates.insert(self, at: 0)
+	}
+
+	var internalTlsBufferSize: Int {
+		get {
+			var result = 0
+			let sslStatus = SSLGetBufferedReadSize(session.context, &result)
+			assert(sslStatus == noErr)
+			return result
+		}
 	}
 
 	// MARK: Stream
@@ -509,13 +499,12 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 			locally by the framework we are using (Security.framework, which is
 			handling the SSL context)
 		*/
-		assert(session.sessionState == .closed || session.handshakeDidComplete)
+		assert(session.state == .connected || session.state == .closed)
 
+		// Buffer everything from the wrapped stream
 		var sslStatus = noErr
-		var totalBytesProcessed = 0
-
 		while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock {
-			// Buffer everything from the wrapped stream
+
 
 			/*
 				Workaround (part 2):
@@ -535,68 +524,39 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 
 				[0]: https://github.com/seanmonstar/reqwest/issues/26#issuecomment-290205986
 			*/
-			let readSize: size_t
-
+			let chunkSize: Int
 			if sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort || sslStatus == errSSLClosedNoNotify {
-				var internalBufSize: size_t = 0
-				SSLGetBufferedReadSize(self.session.context, &internalBufSize)
-
-				readSize = min(internalBufSize, ChunkSizeInBytes)
+				chunkSize = min(internalTlsBufferSize, ChunkSizeInBytes)
 				// internal buffer is empty, stop trying to read more data.
-				if readSize == 0 {
-					break
-				}
+				guard 0 < chunkSize else { break }
 			} else {
-				readSize = ChunkSizeInBytes
+				chunkSize = ChunkSizeInBytes
 			}
 
-			var chunk = Data(count: readSize)
+			var chunk = Data(count: chunkSize)
 			var bytesProcessed = 0
 			sslStatus = chunk.withUnsafeMutableBytes { chunkPtr in
-				SSLRead(session.context, chunkPtr, readSize, &bytesProcessed)
+				SSLRead(session.context, chunkPtr, chunkSize, &bytesProcessed)
 			}
 			assert(0 <= bytesProcessed)
+			assert(bytesProcessed <= chunkSize, "More bytes processed than allowed!")
 
-			assert(bytesProcessed <= ChunkSizeInBytes, "More bytes processed than allowed!")
-
-			totalBytesProcessed += bytesProcessed
 			buffer.append(chunk.subdata(in: 0..<bytesProcessed))
 		}
 
-		func bufferCapacity() -> Int {
-			return buffer.count - bufferIdx
+		// Serve actual data from buffer.
+		let nonConsumedBufferSize = buffer.count - bufferIdx
+		let bytesProcessed = min(nonConsumedBufferSize, maxLength)
+
+		buffer.copyBytes(to: dataPtr, from: bufferIdx..<(bufferIdx + bytesProcessed))
+
+		bufferIdx += bytesProcessed
+
+		// Clear buffer once everything was consumed.
+		if bufferIdx == buffer.count {
+			buffer.removeAll()
+			bufferIdx = 0
 		}
-
-		let bytesProcessed = min(bufferCapacity(), maxLength)
-
-		func copyNumBytes(toPtr: UnsafeMutablePointer<UInt8>, numBytes: Int) {
-			/*
-				Simple function that wraps index calculations and copies the
-				requested number of bytes from the buffer into the provided
-				storage.
-
-				The previous approach used the .removeFirst method of Data,
-				which has runtime O(n) in the size of the Data container.
-				Because for larger downloads the buffer is quite large, and
-				there is a number of calls to this method requesting just a
-				couple of bytes, this proved to be very inefficient and resulted
-				in various errors.
-			*/
-
-			// Make sure we don't read past the end of the buffer
-			assert(bufferIdx + numBytes <= buffer.count)
-
-			buffer.copyBytes(to: toPtr, from: Range(bufferIdx..<bufferIdx + numBytes))
-			bufferIdx += numBytes
-			// Clear the buffer once all the contents have been read.
-			if bufferIdx == buffer.count {
-				buffer.removeAll()
-				bufferIdx = 0
-			}
-		}
-
-		copyNumBytes(toPtr: dataPtr, numBytes: bytesProcessed)
-		assert(bytesProcessed <= maxLength, "More bytes processed than allowed!")
 
 		/*
 			Workaround (part 3)
@@ -626,7 +586,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		if eventCode.contains(.hasBytesAvailable) {
 			switch status {
 				case .opening:
-					if !session.handshakeDidComplete {
+					if [.idle, .handshake].contains(session.state) {
 						session.bytesAvailableForHandshake()
 					} else {
 						assert(false)
@@ -775,11 +735,11 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 		assert(status == .open)
 
 		// Do not write if the session has already been closed.
-		guard session.sessionState != .closed else {
+		guard session.state != .closed else {
 			return 0
 		}
 
-		assert(session.handshakeDidComplete)
+		assert(session.state == .connected)
 
 		buffer.append(dataPtr, count: maxLength)
 		let sslStatus = flushBuffer()
@@ -811,7 +771,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 			} else {
 				switch status {
 					case .opening:
-						if !session.handshakeDidComplete {
+						if [.idle, .handshake].contains(session.state) {
 							session.spaceAvailableForHandshake()
 						} else {
 							assert(false)

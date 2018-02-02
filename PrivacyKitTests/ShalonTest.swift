@@ -1,4 +1,7 @@
 import XCTest
+
+import Tafelsalz
+
 @testable import PrivacyKit
 
 class ShalonTest: XCTestCase {
@@ -209,7 +212,9 @@ class ShalonTest: XCTestCase {
 		var response: URLResponse? = nil
 		var responseBody : Data? = nil
 
-		let task = session.uploadTask(with: request, from: Data(repeating: 65, count: 100) /* 65 is the ASCII encoding for 'A' */) {
+		let data = Random.bytes(count: 1024 * 1)
+
+		let task = session.uploadTask(with: request, from: data) {
 			(potentialData, potentialResponse, potentialError) in
 
 			response = potentialResponse
@@ -225,6 +230,13 @@ class ShalonTest: XCTestCase {
 			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
 			XCTAssertNotNil(response)
 			XCTAssertNotNil(responseBody)
+
+			let json = try! JSONSerialization.jsonObject(with: responseBody!) as! [String: Any]
+			var retrievedEncodedData = json["data"] as! String
+			retrievedEncodedData.removeFirst("data:application/octet-stream;base64,".count)
+			let retrievedData = Data(base64Encoded: retrievedEncodedData)!
+
+			XCTAssertEqual(retrievedData, data)
 		}
 	}
 }

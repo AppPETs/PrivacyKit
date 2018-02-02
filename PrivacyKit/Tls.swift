@@ -156,8 +156,8 @@ class TlsSession {
 		SSLGetConnection(context, &connectionPtr)
 
 		/*
-		Release PairedStream that was passed as context to the SSLReadFunc
-		and SSLWriteFunc callbacks.
+			Release PairedStream that was passed as context to the SSLReadFunc
+			and SSLWriteFunc callbacks.
 		*/
 		let _ = Unmanaged<PairedStream>.fromOpaque(connectionPtr!).takeRetainedValue()
 	}
@@ -436,7 +436,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	// See comments in read() function. This was necessary to fix a performance
 	// issue.
 	// <#TODO#> More elegant fix wanted.
-	var bufferIdx : Int = 0
+	var bufferIdx: Int = 0
 
 	var status: Stream.Status = .notOpen
 	var error: Error? = nil
@@ -535,10 +535,10 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 
 				[0]: https://github.com/seanmonstar/reqwest/issues/26#issuecomment-290205986
 			*/
-			let readSize : size_t
+			let readSize: size_t
 
 			if sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort {
-				var internalBufSize : size_t = 0
+				var internalBufSize: size_t = 0
 				SSLGetBufferedReadSize(self.session.context, &internalBufSize)
 
 				readSize = min(internalBufSize, ChunkSizeInBytes)
@@ -568,7 +568,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 
 		let bytesProcessed = min(bufferCapacity(), maxLength)
 
-		func copyNumBytes(toPtr : UnsafeMutablePointer<UInt8>, numBytes: Int) {
+		func copyNumBytes(toPtr: UnsafeMutablePointer<UInt8>, numBytes: Int) {
 			/*
 				Simple function that wraps index calculations and copies the
 				requested number of bytes from the buffer into the provided

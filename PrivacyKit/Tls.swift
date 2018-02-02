@@ -498,12 +498,11 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 			locally by the framework we are using (Security.framework, which is
 			handling the SSL context)
 		*/
-		assert(session.state == .connected || session.state == .closed)
+		assert(session.state == .connected || session.state == .closed || session.state == .aborted)
 
 		// Buffer everything from the wrapped stream
 		var sslStatus = noErr
 		while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock {
-
 
 			/*
 				Workaround (part 2):
@@ -524,7 +523,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 				[0]: https://github.com/seanmonstar/reqwest/issues/26#issuecomment-290205986
 			*/
 			let chunkSize: Int
-			if sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort || sslStatus == errSSLClosedNoNotify {
+			if [errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) {
 				chunkSize = min(internalTlsBufferSize, ChunkSizeInBytes)
 				// internal buffer is empty, stop trying to read more data.
 				guard 0 < chunkSize else { break }
@@ -564,7 +563,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 			treated as an error, but at the moment, this is needed to return a useful result.
 			Further investigating is needed!
 		*/
-		guard sslStatus == noErr || sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort || sslStatus == errSSLClosedNoNotify else {
+		guard [noErr, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) else {
 			setError(.readingFailed(sslStatus, bytesProcessed))
 			return -1
 		}
@@ -706,7 +705,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 	override func close() {
 		let sslStatus = SSLClose(session.context)
-		guard sslStatus == noErr || sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedNoNotify else {
+		guard [noErr, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) else {
 			setError(.closingFailed(sslStatus))
 			return
 		}
@@ -743,10 +742,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 		buffer.append(dataPtr, count: maxLength)
 		let sslStatus = flushBuffer()
 
-		// <#TODO#> Should an error really be thrown if `sslStatus` is
-		// `errSSLClosedGraceful`, `errSSLClosedAbort`, or `errSSLClosedNoNotify`?
-
-		guard sslStatus == noErr || sslStatus == errSSLWouldBlock else {
+		guard [noErr, errSSLWouldBlock, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) else {
 			setError(.writingFailed(sslStatus, bufferIdx))
 			return -1
 		}
@@ -765,9 +761,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 			if sslStatus == errSSLWouldBlock {
 				{}() // Do nothing and wait until space is available again.
-			} else if sslStatus != noErr {
-				setError(.writingFailed(sslStatus, bufferIdx))
-			} else {
+			} else if [noErr, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) {
 				switch status {
 					case .opening:
 						if [.idle, .handshake].contains(session.state) {
@@ -780,6 +774,8 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 					default:
 						assert(false, "Unexpected state '\(status)'")
 				}
+			} else {
+				setError(.writingFailed(sslStatus, bufferIdx))
 			}
 		}
 
@@ -821,6 +817,10 @@ private func tlsRead(
 	let maxLength = dataLengthPtr.pointee
 	dataLengthPtr.pointee = 0 // No bytes processed, yet
 
+	guard 0 < maxLength else {
+		return noErr
+	}
+
 	guard stream.input.hasBytesAvailable else {
 		return errSSLWouldBlock
 	}
@@ -856,6 +856,10 @@ private func tlsWrite(
 	let stream = Unmanaged<PairedStream>.fromOpaque(connectionPtr).takeUnretainedValue()
 	let maxLength = dataLengthPtr.pointee
 	dataLengthPtr.pointee = 0 // No bytes processed, yet
+
+	guard 0 < maxLength else {
+		return noErr
+	}
 
 	guard stream.output.hasSpaceAvailable else {
 		return errSSLWouldBlock

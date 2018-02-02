@@ -726,7 +726,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 	override var hasSpaceAvailable: Bool {
 		get {
-			return stream.hasSpaceAvailable
+			return buffer.isEmpty && stream.hasSpaceAvailable
 		}
 	}
 

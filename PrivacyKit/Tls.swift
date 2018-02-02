@@ -742,17 +742,32 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 		assert(session.handshakeDidComplete)
 
-		var bytesProcessed = 0
-		let sslStatus = SSLWrite(session.context, dataPtr, maxLength, &bytesProcessed)
+		var sslStatus = noErr
+		var totalBytesProcessed = 0
 
-		assert(bytesProcessed <= maxLength, "More bytes processed than allowed!")
+		while totalBytesProcessed < maxLength && (stream.hasSpaceAvailable || sslStatus == errSSLWouldBlock) {
+			let maxLengthLeft = maxLength - totalBytesProcessed
+			var bytesProcessed = 0
+			sslStatus = SSLWrite(
+				session.context,
+				dataPtr.advanced(by: totalBytesProcessed), // UInt8
+				maxLengthLeft,
+				&bytesProcessed
+			)
+			totalBytesProcessed += bytesProcessed
+
+			assert(bytesProcessed <= maxLengthLeft, "More bytes processed than allowed!")
+			assert(totalBytesProcessed <= maxLength, "More bytes processed than allowed!")
+		}
+
+		// <#TODO#> Should an error really be thrown if `sslStatus` is `errSSLClosedGraceful` or `errSSLClosedAbort`?
 
 		guard sslStatus == noErr else {
-			setError(.writingFailed(sslStatus, bytesProcessed))
+			setError(.writingFailed(sslStatus, totalBytesProcessed))
 			return -1
 		}
 
-		return bytesProcessed
+		return totalBytesProcessed
 	}
 
 	// MARK: StreamDelegate

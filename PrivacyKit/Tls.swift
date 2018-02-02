@@ -752,7 +752,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 			return -1
 		}
 
-		return maxLength
+		return bytesProcessed
 	}
 
 	// MARK: StreamDelegate

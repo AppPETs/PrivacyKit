@@ -163,7 +163,6 @@ class ShalonTest: XCTestCase {
 
 			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
 			XCTAssertNotNil(response)
-			dump(response)
 		}
 	}
 

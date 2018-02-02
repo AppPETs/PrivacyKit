@@ -514,54 +514,52 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 		var sslStatus = noErr
 		var totalBytesProcessed = 0
 
-		if stream.hasBytesAvailable {
+		while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock {
 			// Buffer everything from the wrapped stream
-			repeat {
-				/*
-					Workaround (part 2):
-					Apple's Security framework has a peculiar behaviour.
-					If data is cached by that framework, but we request more data than is
-					currently cached, the framework will attempt to fetch the remaining data
-					first before returning. Unfortunately, if the connection has already been closed,
-					this attempt will result in an infinite loop (at least using this code).
 
-					Therefore, in the event that the connection has already been closed, we
-					get the size of the currently buffered data and simply request this data.
-					For more information, see [0].
+			/*
+				Workaround (part 2):
+				Apple's Security framework has a peculiar behaviour.
+				If data is cached by that framework, but we request more data than is
+				currently cached, the framework will attempt to fetch the remaining data
+				first before returning. Unfortunately, if the connection has already been closed,
+				this attempt will result in an infinite loop (at least using this code).
 
-					It is worth noting that in this case, hasBytesAvailable will *still*
-					return true because the underlying input stream returns true for that call,
-					even though no more data is there. (This is the cause for the infinite loop)
+				Therefore, in the event that the connection has already been closed, we
+				get the size of the currently buffered data and simply request this data.
+				For more information, see [0].
 
-					[0]: https://github.com/seanmonstar/reqwest/issues/26#issuecomment-290205986
-				*/
-				let readSize : size_t
+				It is worth noting that in this case, hasBytesAvailable will *still*
+				return true because the underlying input stream returns true for that call,
+				even though no more data is there. (This is the cause for the infinite loop)
 
-				if sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort {
-					var internalBufSize : size_t = 0
-					SSLGetBufferedReadSize(self.session.context, &internalBufSize)
+				[0]: https://github.com/seanmonstar/reqwest/issues/26#issuecomment-290205986
+			*/
+			let readSize : size_t
 
-					readSize = min(internalBufSize, ChunkSizeInBytes)
-					// internal buffer is empty, stop trying to read more data.
-					if readSize == 0 {
-						break
-					}
-				} else {
-					readSize = ChunkSizeInBytes
+			if sslStatus == errSSLClosedGraceful || sslStatus == errSSLClosedAbort {
+				var internalBufSize : size_t = 0
+				SSLGetBufferedReadSize(self.session.context, &internalBufSize)
+
+				readSize = min(internalBufSize, ChunkSizeInBytes)
+				// internal buffer is empty, stop trying to read more data.
+				if readSize == 0 {
+					break
 				}
+			} else {
+				readSize = ChunkSizeInBytes
+			}
 
+			var chunk = Data(count: readSize)
+			var bytesProcessed = 0
+			sslStatus = chunk.withUnsafeMutableBytes { chunkPtr in
+				SSLRead(session.context, chunkPtr, readSize, &bytesProcessed)
+			}
 
-				var chunk = Data(count: readSize)
-				var bytesProcessed = 0
-				sslStatus = chunk.withUnsafeMutableBytes { chunkPtr in
-					SSLRead(session.context, chunkPtr, readSize, &bytesProcessed)
-				}
+			assert(bytesProcessed <= ChunkSizeInBytes, "More bytes processed than allowed!")
 
-				assert(bytesProcessed <= ChunkSizeInBytes, "More bytes processed than allowed!")
-
-				totalBytesProcessed += bytesProcessed
-				buffer.append(chunk.subdata(in: 0..<bytesProcessed))
-			} while stream.hasBytesAvailable || sslStatus == errSSLWouldBlock
+			totalBytesProcessed += bytesProcessed
+			buffer.append(chunk.subdata(in: 0..<bytesProcessed))
 		}
 
 		func bufferCapacity() -> Int {
@@ -738,7 +736,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 		assert(status == .open)
 
 		// Do not write if the session has already been closed.
-		if (session.sessionState == .closed) {
+		guard session.sessionState != .closed else {
 			return 0
 		}
 

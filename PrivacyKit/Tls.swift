@@ -628,9 +628,6 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 	let session: TlsSession
 
-	var buffer = Data()
-	var bufferIdx = 0
-
 	var status: Stream.Status = .notOpen
 	var error: Error? = nil
 
@@ -640,41 +637,6 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 		super.init(stream, boundTo: inputStream)
 
 		session.delegates.append(self)
-	}
-
-	private func flushBuffer() -> OSStatus {
-		guard !buffer.isEmpty else {
-			return noErr
-		}
-
-		var sslStatus = noErr
-		while stream.hasSpaceAvailable && (sslStatus == errSSLWouldBlock || (sslStatus == noErr && bufferIdx < buffer.count)) {
-			let maxLength = buffer.count - bufferIdx
-			let chunkSize = min(maxLength, ChunkSizeInBytes)
-			var bytesProcessed = 0
-			sslStatus = buffer.withUnsafeBytes { bufferPtr in
-				return SSLWrite(
-					session.context,
-					bufferPtr.advanced(by: bufferIdx), // UInt8
-					chunkSize,
-					&bytesProcessed
-				)
-			}
-			assert(0 <= bytesProcessed)
-
-			bufferIdx += bytesProcessed
-
-			assert(bytesProcessed <= chunkSize, "More bytes processed than allowed!")
-			assert(bufferIdx <= buffer.count, "More bytes processed than allowed!")
-		}
-
-		// Check if the buffer was completely flushed, remove from memory
-		if  bufferIdx == buffer.count {
-			buffer.removeAll()
-			bufferIdx = 0
-		}
-
-		return sslStatus
 	}
 
 	// MARK: Stream
@@ -725,7 +687,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 	override var hasSpaceAvailable: Bool {
 		get {
-			return buffer.isEmpty && stream.hasSpaceAvailable
+			return stream.hasSpaceAvailable
 		}
 	}
 
@@ -739,11 +701,23 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 
 		assert(session.state == .connected)
 
-		buffer.append(dataPtr, count: maxLength)
-		let sslStatus = flushBuffer()
+		var processedBytes = 0
+		var sslStatus = SSLWrite(session.context, dataPtr, maxLength, &processedBytes)
 
-		guard [noErr, errSSLWouldBlock, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) else {
-			setError(.writingFailed(sslStatus, bufferIdx))
+		// Workaround, see https://lists.apple.com/archives/macnetworkprog/2005/Oct/msg00075.html
+		// The Security framework returns errSSLWouldBlock when the request could not be
+		// sent in a single packet. However, the entire data is copied to an internal buffer
+		// (but not automatically sent)
+		// To force this data to be sent, we simply repeatedly SSLWrite with a 0 length
+		// buffer, until a different status is returned.
+		if (processedBytes == maxLength) {
+			while (sslStatus == errSSLWouldBlock) {
+				sslStatus = SSLWrite(session.context, dataPtr, 0, &processedBytes)
+			}
+		}
+
+		guard [noErr, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) else {
+			setError(.writingFailed(sslStatus, processedBytes))
 			return -1
 		}
 
@@ -757,25 +731,17 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 		assert(!eventCode.contains(.hasBytesAvailable), "Event should not occur on OutputStream!")
 
 		if eventCode.contains(.hasSpaceAvailable) {
-			let sslStatus = flushBuffer()
-
-			if sslStatus == errSSLWouldBlock {
-				{}() // Do nothing and wait until space is available again.
-			} else if [noErr, errSSLClosedAbort, errSSLClosedGraceful, errSSLClosedNoNotify].contains(sslStatus) {
-				switch status {
-					case .opening:
-						if [.idle, .handshake].contains(session.state) {
-							session.spaceAvailableForHandshake()
-						} else {
-							assert(false)
-						}
-					case .open:
-						notifyDelegate(handle: .hasSpaceAvailable)
-					default:
-						assert(false, "Unexpected state '\(status)'")
-				}
-			} else {
-				setError(.writingFailed(sslStatus, bufferIdx))
+			switch status {
+				case .opening:
+					if [.idle, .handshake].contains(session.state) {
+						session.spaceAvailableForHandshake()
+					} else {
+						assert(false)
+					}
+				case .open:
+					notifyDelegate(handle: .hasSpaceAvailable)
+				default:
+					assert(false, "Unexpected state '\(status)'")
 			}
 		}
 

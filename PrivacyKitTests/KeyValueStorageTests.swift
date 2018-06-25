@@ -144,28 +144,8 @@ class KeyValueStorageTests: XCTestCase {
 		metaTestRetrieve(storage: storage, key: key, expectedError: FakeKeyValueStorageBackend.Error.valueDoesNotExist)
 	}
 
-	func testTodolistVectors() {
-		let service = PrivacyService(baseUrl: URL(string: "https://privacyservice.test:8080")!)
-		var masterKeyBytes = Data(base64Encoded: "Lw2Qx8q5ub9T3Sw8QkwxH9bIMkdpZUFJo/+kz5FND5g=")!
-		let masterKey = MasterKey(bytes: &masterKeyBytes)!
-		let context = SecureKeyValueStorage.Context("TODOLIST")!
-		let storage = SecureKeyValueStorage(with: service, and: masterKey, context: context)
-
-		let expectedTaskMax = Data(base64Encoded: "AAQ=")!
-		let expectedTask0 = Data(base64Encoded: "eyJkZXNjcmlwdGlvbiI6IjAiLCJpc0NvbXBsZXRlZCI6ZmFsc2V9")!
-		let expectedTask1 = Data(base64Encoded: "eyJkZXNjcmlwdGlvbiI6IjEiLCJpc0NvbXBsZXRlZCI6ZmFsc2V9")!
-		let expectedTask3 = Data(base64Encoded: "eyJkZXNjcmlwdGlvbiI6IjMiLCJpc0NvbXBsZXRlZCI6dHJ1ZX0=")!
-
-		metaTestRetrieve(storage: storage, key: "task_max", expectedValue: expectedTaskMax)
-		metaTestRetrieve(storage: storage, key: "task_0", expectedValue: expectedTask0)
-		metaTestRetrieve(storage: storage, key: "task_1", expectedValue: expectedTask1)
-		metaTestRetrieve(storage: storage, key: "task_3", expectedValue: expectedTask3)
-
-		metaTestRetrieve(storage: storage, key: "task_2", expectedError: SecureKeyValueStorage.Error.valueDoesNotExist)
-	}
-
 	func testRemote() {
-		let service = PrivacyService(baseUrl: URL(string: "https://privacyservice.test:8080")!)
+        let service = PrivacyService(baseUrl: URL(string: "https://services.app-pets.org")!)
 		let masterKey = MasterKey()
 		let context = SecureKeyValueStorage.Context("TESTTEST")!
 		let storage = SecureKeyValueStorage(with: service, and: masterKey, context: context)

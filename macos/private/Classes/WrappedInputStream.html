@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WrappedInputStream Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/WrappedInputStream" class="dashAnchor"></a>
+
+    <a title="WrappedInputStream Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          PrivacyKit Docs
+        </a>
+         (16% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/AppPETs/PrivacyKit">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">PrivacyKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      WrappedInputStream Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ConfidentialQrCodeView.html">ConfidentialQrCodeView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http.html">Http</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Method.html">– Method</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/StatusCategory.html">– StatusCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Header.html">– Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Message.html">– Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Request.html">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Response.html">– Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Indicators.html">Indicators</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PairedStream.html">PairedStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PrivacyService.html">PrivacyService</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PrivacyService/KeyValueStorage.html">– KeyValueStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RegularExpression.html">RegularExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecureKeyValueStorage.html">SecureKeyValueStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecureKeyValueStorage/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Shalon.html">Shalon</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Shalon/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TLSOutputStream.html">TLSOutputStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TlsSession.html">TlsSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WrappedInputStream.html">WrappedInputStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WrappedOutputStream.html">WrappedOutputStream</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Variables.html#/s:10PrivacyKit16ChunkSizeInBytes33_CFF75C00828C0134E7FA8E500ED707D2LLSivp">ChunkSizeInBytes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Variables.html#/s:10PrivacyKit17MASTER_KEY_PREFIXSSvp">MASTER_KEY_PREFIX</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Variables.html#/s:10PrivacyKit31MASTER_KEY_PREFIX_SIZE_IN_BYTESSivp">MASTER_KEY_PREFIX_SIZE_IN_BYTES</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AuthenticationError.html">AuthenticationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/GenericError.html">GenericError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TlsStreamError.html">TlsStreamError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/HTTPURLResponse.html">HTTPURLResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/InputStream.html">InputStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/MasterKey.html">MasterKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/OutputStream.html">OutputStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit2etoiSbSS_AA17RegularExpressionCtF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit2etoiSbSS_SStF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit23authenticateDeviceOwnerSo9LAContextCSS6reason_yAA19AuthenticationErrorOSgc10completiontF">authenticateDeviceOwner(reason:completion:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit7tlsRead33_CFF75C00828C0134E7FA8E500ED707D2LLs5Int32VSV13connectionPtr_Sv04dataO0SpySiG0p6LengthO0tF">tlsRead(connectionPtr:dataPtr:dataLengthPtr:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit8tlsWrite33_CFF75C00828C0134E7FA8E500ED707D2LLs5Int32VSV13connectionPtr_SV04dataO0SpySiG0p6LengthO0tF">tlsWrite(connectionPtr:dataPtr:dataLengthPtr:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/KeyValueStorage.html">KeyValueStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/KeyValueStorageBackend.html">KeyValueStorageBackend</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TlsSessionDelegate.html">TlsSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/EncryptedKey.html">EncryptedKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Target.html">Target</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit21AuthenticationContexta">AuthenticationContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit14EncryptedValuea">EncryptedValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/Image">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit5Imagea">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/ImageView">ImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit9ImageViewa">ImageView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>WrappedInputStream</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">WrappedInputStream</span><span class="p">:</span> <span class="kt">InputStream</span><span class="p">,</span> <span class="kt">StreamDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit18WrappedInputStreamC7_streamSo0dE0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/_stream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit18WrappedInputStreamC7_streamSo0dE0Cvp">_stream</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">_stream</span><span class="p">:</span> <span class="kt">InputStream</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit18WrappedInputStreamC6streamSo0dE0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/stream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit18WrappedInputStreamC6streamSo0dE0Cvp">stream</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">InputStream</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit18WrappedInputStreamC9_delegateSo0E8Delegate_pSgXwvp"></a>
+                    <a name="//apple_ref/swift/Property/_delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit18WrappedInputStreamC9_delegateSo0E8Delegate_pSgXwvp">_delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">_delegate</span><span class="p">:</span> <span class="kt">StreamDelegate</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit18WrappedInputStreamCACSo0dE0Ccfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit18WrappedInputStreamCACSo0dE0Ccfc">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">InputStream</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L243-L251">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Stream"></a>
+                <a name="//apple_ref/swift/Section/Stream" class="dashAnchor"></a>
+                <a href="#/Stream">
+                  <h3 class="section-name">Stream</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)delegate"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)delegate">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">StreamDelegate</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L255-L258">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)streamStatus"></a>
+                    <a name="//apple_ref/swift/Property/streamStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)streamStatus">streamStatus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="k">var</span> <span class="nv">streamStatus</span><span class="p">:</span> <span class="kt">Stream</span><span class="o">.</span><span class="kt">Status</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L260-L262">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)streamError"></a>
+                    <a name="//apple_ref/swift/Property/streamError" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)streamError">streamError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="k">var</span> <span class="nv">streamError</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L264-L266">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)open"></a>
+                    <a name="//apple_ref/swift/Method/open()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)open">open()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">open</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L268-L270">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)close"></a>
+                    <a name="//apple_ref/swift/Method/close()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)close">close()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">close</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L272-L274">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)scheduleInRunLoop:forMode:"></a>
+                    <a name="//apple_ref/swift/Method/schedule(in:forMode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)scheduleInRunLoop:forMode:">schedule(in:forMode:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">schedule</span><span class="p">(</span><span class="k">in</span> <span class="nv">runLoop</span><span class="p">:</span> <span class="kt">RunLoop</span><span class="p">,</span> <span class="n">forMode</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">RunLoopMode</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L276-L278">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)removeFromRunLoop:forMode:"></a>
+                    <a name="//apple_ref/swift/Method/remove(from:forMode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)removeFromRunLoop:forMode:">remove(from:forMode:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="n">from</span> <span class="nv">runLoop</span><span class="p">:</span> <span class="kt">RunLoop</span><span class="p">,</span> <span class="n">forMode</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">RunLoopMode</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L280-L282">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)propertyForKey:"></a>
+                    <a name="//apple_ref/swift/Method/property(forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)propertyForKey:">property(forKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">property</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">Stream</span><span class="o">.</span><span class="kt">PropertyKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Any</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L284-L286">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)setProperty:forKey:"></a>
+                    <a name="//apple_ref/swift/Method/setProperty(_:forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)setProperty:forKey:">setProperty(_:forKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">setProperty</span><span class="p">(</span><span class="n">_</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">Stream</span><span class="o">.</span><span class="kt">PropertyKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L288-L290">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/InputStream"></a>
+                <a name="//apple_ref/swift/Section/InputStream" class="dashAnchor"></a>
+                <a href="#/InputStream">
+                  <h3 class="section-name">InputStream</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)hasBytesAvailable"></a>
+                    <a name="//apple_ref/swift/Property/hasBytesAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(py)hasBytesAvailable">hasBytesAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="k">var</span> <span class="nv">hasBytesAvailable</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L294-L296">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)read:maxLength:"></a>
+                    <a name="//apple_ref/swift/Method/read(_:maxLength:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)read:maxLength:">read(_:maxLength:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">read</span><span class="p">(</span><span class="n">_</span> <span class="nv">dataPtr</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">UInt8</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">maxLength</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L298-L304">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)getBuffer:length:"></a>
+                    <a name="//apple_ref/swift/Method/getBuffer(_:length:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)getBuffer:length:">getBuffer(_:length:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">getBuffer</span><span class="p">(</span><span class="n">_</span> <span class="nv">buffer</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">UInt8</span><span class="o">&gt;</span><span class="p">?</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">length</span> <span class="nv">len</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L306-L308">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/StreamDelegate"></a>
+                <a name="//apple_ref/swift/Section/StreamDelegate" class="dashAnchor"></a>
+                <a href="#/StreamDelegate">
+                  <h3 class="section-name">StreamDelegate</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)stream:handleEvent:"></a>
+                    <a name="//apple_ref/swift/Method/stream(_:handle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)WrappedInputStream(im)stream:handleEvent:">stream(_:handle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stream</span><span class="p">(</span><span class="n">_</span> <span class="nv">aStream</span><span class="p">:</span> <span class="kt">Stream</span><span class="p">,</span> <span class="n">handle</span> <span class="nv">eventCode</span><span class="p">:</span> <span class="kt">Stream</span><span class="o">.</span><span class="kt">Event</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L312-L317">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Helpers"></a>
+                <a name="//apple_ref/swift/Section/Helpers" class="dashAnchor"></a>
+                <a href="#/Helpers">
+                  <h3 class="section-name">Helpers</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit18WrappedInputStreamC14notifyDelegateySo0E0C5EventV6handle_tF"></a>
+                    <a name="//apple_ref/swift/Method/notifyDelegate(handle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit18WrappedInputStreamC14notifyDelegateySo0E0C5EventV6handle_tF">notifyDelegate(handle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">notifyDelegate</span><span class="p">(</span><span class="n">handle</span> <span class="nv">events</span><span class="p">:</span> <span class="kt">Stream</span><span class="o">.</span><span class="kt">Event</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Tls.swift#L321-L323">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-07-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

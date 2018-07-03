@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>KeyValueStorage Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Protocol/KeyValueStorage" class="dashAnchor"></a>
+
+    <a title="KeyValueStorage Protocol Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          PrivacyKit Docs
+        </a>
+         (27% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/AppPETs/PrivacyKit">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">PrivacyKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      KeyValueStorage Protocol Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ConfidentialQrCodeView.html">ConfidentialQrCodeView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http.html">Http</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Method.html">– Method</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/StatusCategory.html">– StatusCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/Header.html">– Header</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http.html#/s:10PrivacyKit4HttpC7MessageC">– Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http.html#/s:10PrivacyKit4HttpC7RequestC">– Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Http.html#/s:10PrivacyKit4HttpC8ResponseC">– Response</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Indicators.html">Indicators</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PrivacyService.html">PrivacyService</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RegularExpression.html">RegularExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecureKeyValueStorage.html">SecureKeyValueStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecureKeyValueStorage/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Shalon.html">Shalon</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AuthenticationError.html">AuthenticationError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/EncryptedKey.html">EncryptedKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/HTTPURLResponse.html">HTTPURLResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/MasterKey.html">MasterKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit2etoiSbSS_AA17RegularExpressionCtF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit2etoiSbSS_SStF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:10PrivacyKit23authenticateDeviceOwnerSo9LAContextCSS6reason_yAA19AuthenticationErrorOSgc10completiontF">authenticateDeviceOwner(reason:completion:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/KeyValueStorage.html">KeyValueStorage</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Target.html">Target</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit21AuthenticationContexta">AuthenticationContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/Image">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit5Imagea">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/ImageView">ImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10PrivacyKit9ImageViewa">ImageView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>KeyValueStorage</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">KeyValueStorage</span></code></pre>
+
+                </div>
+              </div>
+            <p>This protocol describes the interface of a key value storage, where the keys
+are <code>String</code>s and the values are <code>Data</code> objects.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP0C0a"></a>
+                    <a name="//apple_ref/swift/Alias/Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP0C0a">Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A key is the identifier for a specific value stored in the key-value
+storage. The key is unique.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">Key</span> <span class="o">=</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L15">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP0D0a"></a>
+                    <a name="//apple_ref/swift/Alias/Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP0D0a">Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A value can contain arbitrary data and is identified by a key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">Value</span> <span class="o">=</span> <span class="kt">Data</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L20">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP5storey10Foundation4DataV5value_SS3forys5Error_pSgc8finishedtF"></a>
+                    <a name="//apple_ref/swift/Method/store(value:for:finished:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP5storey10Foundation4DataV5value_SS3forys5Error_pSgc8finishedtF">store(value:for:finished:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Store a value in the key-value storage for a given key.</p>
+<h4 id='example' class='heading'>Example</h4>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"name"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="nf">Data</span><span class="p">(</span><span class="s">"John Doe"</span><span class="o">.</span><span class="n">utf8</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">optionalError</span> <span class="k">in</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nf">optionalError</span> <span class="p">{</span>
+        <span class="c1">// TODO Handle error</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">store</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeyValueStorage.html#/s:10PrivacyKit15KeyValueStorageP0D0a">Value</a></span><span class="p">,</span> <span class="k">for</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeyValueStorage.html#/s:10PrivacyKit15KeyValueStorageP0C0a">Key</a></span><span class="p">,</span> <span class="nv">finished</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value that should be stored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that identifies the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>finished</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that is called asynchronuously once the
+operation is finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional error that might have occurred during storing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L44">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_y10Foundation4DataVSg_s5Error_pSgtc8finishedtF"></a>
+                    <a name="//apple_ref/swift/Method/retrieve(for:finished:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_y10Foundation4DataVSg_s5Error_pSgtc8finishedtF">retrieve(for:finished:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve a value from the key-value storage for a given key.</p>
+<h4 id='example' class='heading'>Example</h4>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">retrieve</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"name"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">optionalValue</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
+
+    <span class="nf">precondition</span><span class="p">((</span><span class="n">optionalValue</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">optionalError</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">))</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">optionalValue</span> <span class="nf">else</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span><span class="o">!</span>
+        <span class="c1">// TODO Handle error</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Success, do something with `value`</span>
+<span class="p">}</span>
+</code></pre>
+<div class="aside aside-postcondition">
+    <p class="aside-title">Postcondition</p>
+    <p>(<code>value</code> = <code>nil</code>) ⊻ (<code>error</code> = <code>nil</code>)</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">retrieve</span><span class="p">(</span><span class="k">for</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeyValueStorage.html#/s:10PrivacyKit15KeyValueStorageP0C0a">Key</a></span><span class="p">,</span> <span class="nv">finished</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeyValueStorage.html#/s:10PrivacyKit15KeyValueStorageP0D0a">Value</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that identifies the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>finished</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that is called asynchronuously once the
+operation is finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value if no error occurred, <code>nil</code> else.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional error that might have occurred during storing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L77">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP6removeySS3for_ys5Error_pSgc8finishedtF"></a>
+                    <a name="//apple_ref/swift/Method/remove(for:finished:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP6removeySS3for_ys5Error_pSgc8finishedtF">remove(for:finished:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove the value from the key-value storage for a given key.</p>
+<h4 id='example' class='heading'>Example</h4>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"name"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">optionalError</span> <span class="k">in</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nf">optionalError</span> <span class="p">{</span>
+        <span class="c1">// TODO Handle error</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="k">for</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeyValueStorage.html#/s:10PrivacyKit15KeyValueStorageP0C0a">Key</a></span><span class="p">,</span> <span class="nv">finished</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that identifies the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>finished</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that is called asynchronuously once the
+operation is finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional error that might have occurred during storing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L100">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-07-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

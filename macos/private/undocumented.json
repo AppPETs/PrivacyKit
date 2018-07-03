@@ -1,0 +1,2175 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": null,
+      "symbol": "Target",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 4,
+      "symbol": "Http",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 6,
+      "symbol": "Http.Error",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 7,
+      "symbol": "Http.Error.invalidResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 8,
+      "symbol": "Http.Error.unexpectedResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 11,
+      "symbol": "Http.Method",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 12,
+      "symbol": "Http.Method.connect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 13,
+      "symbol": "Http.Method.delete",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 14,
+      "symbol": "Http.Method.get",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 15,
+      "symbol": "Http.Method.head",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 16,
+      "symbol": "Http.Method.options",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 17,
+      "symbol": "Http.Method.post",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 18,
+      "symbol": "Http.Method.put",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 19,
+      "symbol": "Http.Method.trace",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 22,
+      "symbol": "Http.StatusCategory",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 23,
+      "symbol": "Http.StatusCategory.informal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 24,
+      "symbol": "Http.StatusCategory.success",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 25,
+      "symbol": "Http.StatusCategory.redirection",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 26,
+      "symbol": "Http.StatusCategory.clientError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 27,
+      "symbol": "Http.StatusCategory.serverError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 30,
+      "symbol": "Http.Status",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 32,
+      "symbol": "Http.Status.Continue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 33,
+      "symbol": "Http.Status.switchingProtocols",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 34,
+      "symbol": "Http.Status.processing",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 36,
+      "symbol": "Http.Status.ok",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 37,
+      "symbol": "Http.Status.created",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 38,
+      "symbol": "Http.Status.accepted",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 39,
+      "symbol": "Http.Status.nonAuthoritativeInformation",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 40,
+      "symbol": "Http.Status.noContent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 41,
+      "symbol": "Http.Status.resetContent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 42,
+      "symbol": "Http.Status.partialContent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 43,
+      "symbol": "Http.Status.multiStatus",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 44,
+      "symbol": "Http.Status.alreadyReported",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 45,
+      "symbol": "Http.Status.imUsed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 47,
+      "symbol": "Http.Status.multipleChoices",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 48,
+      "symbol": "Http.Status.movedPermanently",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 49,
+      "symbol": "Http.Status.found",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 50,
+      "symbol": "Http.Status.seeOther",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 51,
+      "symbol": "Http.Status.notModified",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 52,
+      "symbol": "Http.Status.useProxy",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 53,
+      "symbol": "Http.Status.switchProxy",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 54,
+      "symbol": "Http.Status.temporaryRedirect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 55,
+      "symbol": "Http.Status.permanentRedirect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 57,
+      "symbol": "Http.Status.badRequest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 58,
+      "symbol": "Http.Status.unauthorized",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 59,
+      "symbol": "Http.Status.paymentRequired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 60,
+      "symbol": "Http.Status.forbidden",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 61,
+      "symbol": "Http.Status.notFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 62,
+      "symbol": "Http.Status.methodNotAllowed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 63,
+      "symbol": "Http.Status.notAcceptable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 64,
+      "symbol": "Http.Status.proxyAuthenticationRequired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 65,
+      "symbol": "Http.Status.requestTimeout",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 66,
+      "symbol": "Http.Status.conflict",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 67,
+      "symbol": "Http.Status.gone",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 68,
+      "symbol": "Http.Status.lengthRequired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 69,
+      "symbol": "Http.Status.preconditionFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 70,
+      "symbol": "Http.Status.payloadTooLarge",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 71,
+      "symbol": "Http.Status.uriTooLong",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 72,
+      "symbol": "Http.Status.unsupportedMediaType",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 73,
+      "symbol": "Http.Status.rangeNotSatisfiable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 74,
+      "symbol": "Http.Status.expectationFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 75,
+      "symbol": "Http.Status.teapot",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 76,
+      "symbol": "Http.Status.misdirectedRequest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 77,
+      "symbol": "Http.Status.unprocessableEntity",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 78,
+      "symbol": "Http.Status.locked",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 79,
+      "symbol": "Http.Status.failedDependency",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 80,
+      "symbol": "Http.Status.upgradeRequired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 81,
+      "symbol": "Http.Status.preconditionRequired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 82,
+      "symbol": "Http.Status.tooManyRequests",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 83,
+      "symbol": "Http.Status.requestHeaderFieldsTooLarge",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 84,
+      "symbol": "Http.Status.unavailableForLegalReasons",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 86,
+      "symbol": "Http.Status.internalServerError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 87,
+      "symbol": "Http.Status.notImplemented",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 88,
+      "symbol": "Http.Status.badGateway",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 89,
+      "symbol": "Http.Status.serviceUnavailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 90,
+      "symbol": "Http.Status.gatewayTimeout",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 91,
+      "symbol": "Http.Status.httpVersionNotSupported",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 92,
+      "symbol": "Http.Status.variantAlsoNegotiates",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 93,
+      "symbol": "Http.Status.insufficientStorage",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 94,
+      "symbol": "Http.Status.loopDetected",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 95,
+      "symbol": "Http.Status.notExtended",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 96,
+      "symbol": "Http.Status.networkAuthenticationRequired",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 99,
+      "symbol": "Http.category(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 117,
+      "symbol": "Http.Header",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 118,
+      "symbol": "Http.Header.host",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 119,
+      "symbol": "Http.Header.contentLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 120,
+      "symbol": "Http.Header.contentType",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 123,
+      "symbol": "Http.ContentType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 124,
+      "symbol": "Http.ContentType.octetStream",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 127,
+      "symbol": "Http.Headers",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 129,
+      "symbol": "Http.Message",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 130,
+      "symbol": "Http.Message.headers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 131,
+      "symbol": "Http.Message.body",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 133,
+      "symbol": "Http.Message.init(withHeaders:andBody:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 139,
+      "symbol": "Http.Request",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 141,
+      "symbol": "Http.Request.method",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 142,
+      "symbol": "Http.Request.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 143,
+      "symbol": "Http.Request.options",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 146,
+      "symbol": "Http.Request.init(withMethod:andUrl:andHeaders:andBody:andOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 181,
+      "symbol": "Http.Request.connect(toTarget:viaProxy:withHeaders:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 187,
+      "symbol": "Http.Request.compose()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 203,
+      "symbol": "Http.Response",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 204,
+      "symbol": "Http.Response.status",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 206,
+      "symbol": "Http.Response.init(withRawData:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 244,
+      "symbol": "URLRequest.add(value:for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 248,
+      "symbol": "URLRequest.set(contentType:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 252,
+      "symbol": "URLRequest.set(method:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 258,
+      "symbol": "HTTPURLResponse.status",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 265,
+      "symbol": "HTTPURLResponse.unexpected",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 272,
+      "symbol": "Target",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 273,
+      "symbol": "Target.hostname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 274,
+      "symbol": "Target.port",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 276,
+      "symbol": "Target.init(withHostname:andPort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
+      "line": 298,
+      "symbol": "Target.formatted()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": null,
+      "symbol": "PrivacyService.KeyValueStorage",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": null,
+      "symbol": "SecureKeyValueStorage",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 187,
+      "symbol": "KeyValueStorageBackend.store(value:for:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 188,
+      "symbol": "KeyValueStorageBackend.retrieve(for:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 189,
+      "symbol": "KeyValueStorageBackend.remove(for:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 194,
+      "symbol": "SecureKeyValueStorage",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 196,
+      "symbol": "SecureKeyValueStorage.Context",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 198,
+      "symbol": "SecureKeyValueStorage.Error",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 199,
+      "symbol": "SecureKeyValueStorage.Error.valueDoesNotExist",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 200,
+      "symbol": "SecureKeyValueStorage.Error.noContent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 201,
+      "symbol": "SecureKeyValueStorage.Error.responseTooSmall",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 202,
+      "symbol": "SecureKeyValueStorage.Error.failedToDecrypt",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 205,
+      "symbol": "SecureKeyValueStorage.HashKeyId",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 206,
+      "symbol": "SecureKeyValueStorage.SecretKeyId",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 208,
+      "symbol": "SecureKeyValueStorage.backend",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 209,
+      "symbol": "SecureKeyValueStorage.secretBox",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 210,
+      "symbol": "SecureKeyValueStorage.hashKey",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 212,
+      "symbol": "SecureKeyValueStorage.init(with:and:context:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 218,
+      "symbol": "SecureKeyValueStorage.init(with:and:context:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 222,
+      "symbol": "SecureKeyValueStorage.init(with:for:context:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 227,
+      "symbol": "SecureKeyValueStorage.init(with:for:context:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 231,
+      "symbol": "SecureKeyValueStorage.encrypt(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 236,
+      "symbol": "SecureKeyValueStorage.encrypt(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 240,
+      "symbol": "SecureKeyValueStorage.decrypt(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 284,
+      "symbol": "PrivacyService.keyValueStorageBackend",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 290,
+      "symbol": "PrivacyService.KeyValueStorage",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 292,
+      "symbol": "PrivacyService.KeyValueStorage.baseUrl",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 294,
+      "symbol": "PrivacyService.KeyValueStorage.init(baseUrl:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 298,
+      "symbol": "PrivacyService.KeyValueStorage.entryPoint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 306,
+      "symbol": "PrivacyService.KeyValueStorage.url(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 314,
+      "symbol": "PrivacyService.KeyValueStorage.defaultSessionConfiguration()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 320,
+      "symbol": "PrivacyService.KeyValueStorage.store(value:for:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 355,
+      "symbol": "PrivacyService.KeyValueStorage.retrieve(for:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 406,
+      "symbol": "PrivacyService.KeyValueStorage.remove(for:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 3,
+      "symbol": "GenericError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 4,
+      "symbol": "GenericError.generic",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 26,
+      "symbol": "Shalon.State",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 27,
+      "symbol": "Shalon.State.inactive",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 28,
+      "symbol": "Shalon.State.shouldEstablishTunnelConnection",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 29,
+      "symbol": "Shalon.State.expectTunnelConnectionEstablished",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 30,
+      "symbol": "Shalon.State.shouldSendHttpRequest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 31,
+      "symbol": "Shalon.State.expectHttpResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 34,
+      "symbol": "Shalon.CompletionHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 36,
+      "symbol": "Shalon.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 37,
+      "symbol": "Shalon.targets",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 38,
+      "symbol": "Shalon.streams",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 39,
+      "symbol": "Shalon.currentLayer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 41,
+      "symbol": "Shalon.request",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 42,
+      "symbol": "Shalon.completionHandler",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 44,
+      "symbol": "Shalon.init(withTarget:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 50,
+      "symbol": "Shalon.addLayer(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 54,
+      "symbol": "Shalon.issue(request:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 91,
+      "symbol": "Shalon.wrapCurrentLayerWithTls()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 121,
+      "symbol": "Shalon.stream(_:handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 141,
+      "symbol": "Shalon.inputStream(handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 179,
+      "symbol": "Shalon.outputStream(handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 206,
+      "symbol": "Shalon.errorOccurred(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 210,
+      "symbol": "Shalon.errorOccurred(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 215,
+      "symbol": "Shalon.reset()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 232,
+      "symbol": "Shalon.expectHttpResponse(fromStream:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 241,
+      "symbol": "Shalon.send(request:toStream:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 255,
+      "symbol": "Shalon.determineNextAction()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 260,
+      "symbol": "Shalon.nextLayer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 266,
+      "symbol": "Shalon.firstHop",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 272,
+      "symbol": "Shalon.currentTargetIdx",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 281,
+      "symbol": "Shalon.nextTargetIdx",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 287,
+      "symbol": "Shalon.currentTarget",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 293,
+      "symbol": "Shalon.nextTarget",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Shalon.swift",
+      "line": 299,
+      "symbol": "Shalon.currentStream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 3,
+      "symbol": "ShalonURLProtocol",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 4,
+      "symbol": "ShalonURLProtocol.loadingShouldStop",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 6,
+      "symbol": "ShalonURLProtocol.ShalonParams",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 7,
+      "symbol": "ShalonURLProtocol.ShalonParams.proxies",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 8,
+      "symbol": "ShalonURLProtocol.ShalonParams.requestUrl",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 11,
+      "symbol": "ShalonURLProtocol.ShalonParseError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 12,
+      "symbol": "ShalonURLProtocol.ShalonParseError.tooFewProxies",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 13,
+      "symbol": "ShalonURLProtocol.ShalonParseError.incorrectProxySpecification",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 16,
+      "symbol": "ShalonURLProtocol.parseShalonParams(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 88,
+      "symbol": "ShalonURLProtocol.canInit(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 104,
+      "symbol": "ShalonURLProtocol.canInit(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 111,
+      "symbol": "ShalonURLProtocol.canonicalRequest(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 115,
+      "symbol": "ShalonURLProtocol.ShalonErrors",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 116,
+      "symbol": "ShalonURLProtocol.ShalonErrors.NotImplemented",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 117,
+      "symbol": "ShalonURLProtocol.ShalonErrors.UnknownHTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 118,
+      "symbol": "ShalonURLProtocol.ShalonErrors.NoContents",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 121,
+      "symbol": "ShalonURLProtocol.startLoading()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/ShalonURLProtocol.swift",
+      "line": 192,
+      "symbol": "ShalonURLProtocol.stopLoading()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/TafelsalzExtensions.swift",
+      "line": 5,
+      "symbol": "MASTER_KEY_PREFIX",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/TafelsalzExtensions.swift",
+      "line": 6,
+      "symbol": "MASTER_KEY_PREFIX_SIZE_IN_BYTES",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 4,
+      "symbol": "ChunkSizeInBytes",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 6,
+      "symbol": "TlsStreamError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 7,
+      "symbol": "TlsStreamError.readingFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 8,
+      "symbol": "TlsStreamError.writingFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 9,
+      "symbol": "TlsStreamError.closingFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 10,
+      "symbol": "TlsStreamError.handshakeFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 13,
+      "symbol": "TlsSessionDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 14,
+      "symbol": "TlsSessionDelegate.finishOpen()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 15,
+      "symbol": "TlsSessionDelegate.setError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 19,
+      "symbol": "InputStream.readAll()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 48,
+      "symbol": "OutputStream.write(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 74,
+      "symbol": "PairedStream",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 75,
+      "symbol": "PairedStream.input",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 76,
+      "symbol": "PairedStream.output",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 78,
+      "symbol": "PairedStream.init(input:output:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 83,
+      "symbol": "PairedStream.open()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 88,
+      "symbol": "PairedStream.close()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 93,
+      "symbol": "PairedStream.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 103,
+      "symbol": "PairedStream.schedule(in:forMode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 109,
+      "symbol": "TlsSession",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 110,
+      "symbol": "TlsSession.context",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 112,
+      "symbol": "TlsSession.delegates",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 114,
+      "symbol": "TlsSession.interrupted",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 116,
+      "symbol": "TlsSession.init(forTarget:withStream:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 154,
+      "symbol": "TlsSession.deinit",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 167,
+      "symbol": "TlsSession.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 178,
+      "symbol": "TlsSession.spaceAvailableForHandshake()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 186,
+      "symbol": "TlsSession.bytesAvailableForHandshake()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 200,
+      "symbol": "TlsSession.shakeHands()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 212,
+      "symbol": "TlsSession.handleHandshakeResult(status:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 237,
+      "symbol": "WrappedInputStream",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 238,
+      "symbol": "WrappedInputStream._stream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 239,
+      "symbol": "WrappedInputStream.stream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 241,
+      "symbol": "WrappedInputStream._delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 243,
+      "symbol": "WrappedInputStream.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 255,
+      "symbol": "WrappedInputStream.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 260,
+      "symbol": "WrappedInputStream.streamStatus",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 264,
+      "symbol": "WrappedInputStream.streamError",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 268,
+      "symbol": "WrappedInputStream.open()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 272,
+      "symbol": "WrappedInputStream.close()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 276,
+      "symbol": "WrappedInputStream.schedule(in:forMode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 280,
+      "symbol": "WrappedInputStream.remove(from:forMode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 284,
+      "symbol": "WrappedInputStream.property(forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 288,
+      "symbol": "WrappedInputStream.setProperty(_:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 294,
+      "symbol": "WrappedInputStream.hasBytesAvailable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 298,
+      "symbol": "WrappedInputStream.read(_:maxLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 306,
+      "symbol": "WrappedInputStream.getBuffer(_:length:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 312,
+      "symbol": "WrappedInputStream.stream(_:handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 321,
+      "symbol": "WrappedInputStream.notifyDelegate(handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 326,
+      "symbol": "WrappedOutputStream",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 327,
+      "symbol": "WrappedOutputStream._stream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 328,
+      "symbol": "WrappedOutputStream.stream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 329,
+      "symbol": "WrappedOutputStream.inputStream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 331,
+      "symbol": "WrappedOutputStream._delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 333,
+      "symbol": "WrappedOutputStream.init(_:boundTo:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 346,
+      "symbol": "WrappedOutputStream.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 351,
+      "symbol": "WrappedOutputStream.streamStatus",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 355,
+      "symbol": "WrappedOutputStream.streamError",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 359,
+      "symbol": "WrappedOutputStream.open()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 363,
+      "symbol": "WrappedOutputStream.close()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 367,
+      "symbol": "WrappedOutputStream.schedule(in:forMode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 371,
+      "symbol": "WrappedOutputStream.remove(from:forMode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 375,
+      "symbol": "WrappedOutputStream.property(forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 379,
+      "symbol": "WrappedOutputStream.setProperty(_:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 385,
+      "symbol": "WrappedOutputStream.hasSpaceAvailable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 391,
+      "symbol": "WrappedOutputStream.write(_:maxLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 401,
+      "symbol": "WrappedOutputStream.stream(_:handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 410,
+      "symbol": "WrappedOutputStream.notifyDelegate(handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 415,
+      "symbol": "TLSInputStream",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 416,
+      "symbol": "TLSInputStream.session",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 418,
+      "symbol": "TLSInputStream.buffer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 419,
+      "symbol": "TLSInputStream.bufferIdx",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 421,
+      "symbol": "TLSInputStream.status",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 422,
+      "symbol": "TLSInputStream.error",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 424,
+      "symbol": "TLSInputStream.stream",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 430,
+      "symbol": "TLSInputStream.init(_:withSession:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 438,
+      "symbol": "TLSInputStream.internalTlsBufferSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 449,
+      "symbol": "TLSInputStream.streamStatus",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 453,
+      "symbol": "TLSInputStream.streamError",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 457,
+      "symbol": "TLSInputStream.open()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 473,
+      "symbol": "TLSInputStream.close()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 478,
+      "symbol": "TLSInputStream.property(forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 482,
+      "symbol": "TLSInputStream.setProperty(_:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 488,
+      "symbol": "TLSInputStream.hasBytesAvailable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 492,
+      "symbol": "TLSInputStream.read(_:maxLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 574,
+      "symbol": "TLSInputStream.getBuffer(_:length:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 580,
+      "symbol": "TLSInputStream.stream(_:handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 613,
+      "symbol": "TLSInputStream.finishOpen()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 621,
+      "symbol": "TLSInputStream.setError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 628,
+      "symbol": "TLSOutputStream",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 629,
+      "symbol": "TLSOutputStream.session",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 631,
+      "symbol": "TLSOutputStream.status",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 632,
+      "symbol": "TLSOutputStream.error",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 634,
+      "symbol": "TLSOutputStream.init(_:boundTo:withSession:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 644,
+      "symbol": "TLSOutputStream.streamStatus",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 648,
+      "symbol": "TLSOutputStream.streamError",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 652,
+      "symbol": "TLSOutputStream.open()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 668,
+      "symbol": "TLSOutputStream.close()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 678,
+      "symbol": "TLSOutputStream.property(forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 682,
+      "symbol": "TLSOutputStream.setProperty(_:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 688,
+      "symbol": "TLSOutputStream.hasSpaceAvailable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 694,
+      "symbol": "TLSOutputStream.write(_:maxLength:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 729,
+      "symbol": "TLSOutputStream.stream(_:handle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 762,
+      "symbol": "TLSOutputStream.finishOpen()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 770,
+      "symbol": "TLSOutputStream.setError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 777,
+      "symbol": "tlsRead(connectionPtr:dataPtr:dataLengthPtr:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Tls.swift",
+      "line": 817,
+      "symbol": "tlsWrite(connectionPtr:dataPtr:dataLengthPtr:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/blochberger/Development/PrivacyKit"
+}

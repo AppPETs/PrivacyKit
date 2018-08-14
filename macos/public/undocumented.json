@@ -681,42 +681,42 @@
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
-      "line": 265,
+      "line": 263,
       "symbol": "HTTPURLResponse.unexpected",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
-      "line": 272,
+      "line": 268,
       "symbol": "Target",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
-      "line": 273,
+      "line": 269,
       "symbol": "Target.hostname",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
-      "line": 274,
+      "line": 270,
       "symbol": "Target.port",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
-      "line": 276,
+      "line": 272,
       "symbol": "Target.init(withHostname:andPort:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/Http.swift",
-      "line": 298,
+      "line": 294,
       "symbol": "Target.formatted()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -730,63 +730,63 @@
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 194,
+      "line": 192,
       "symbol": "SecureKeyValueStorage",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 196,
+      "line": 194,
       "symbol": "SecureKeyValueStorage.Context",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 198,
+      "line": 196,
       "symbol": "SecureKeyValueStorage.Error",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 199,
+      "line": 197,
       "symbol": "SecureKeyValueStorage.Error.valueDoesNotExist",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 200,
+      "line": 198,
       "symbol": "SecureKeyValueStorage.Error.noContent",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 201,
+      "line": 199,
       "symbol": "SecureKeyValueStorage.Error.responseTooSmall",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 202,
+      "line": 200,
       "symbol": "SecureKeyValueStorage.Error.failedToDecrypt",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 218,
+      "line": 216,
       "symbol": "SecureKeyValueStorage.init(with:and:context:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
-      "line": 227,
+      "line": 225,
       "symbol": "SecureKeyValueStorage.init(with:for:context:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

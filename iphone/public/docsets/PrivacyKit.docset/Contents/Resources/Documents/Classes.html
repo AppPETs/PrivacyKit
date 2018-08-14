@@ -14,6 +14,7 @@
   </head>
   <body>
 
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
 
     <a title="Classes  Reference"></a>
 
@@ -202,9 +203,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@PrivacyKit@objc(cs)Shalon"></a>
-                    <a name="//apple_ref/swift/Class/Shalon" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)Shalon">Shalon</a>
+                    <a name="/s:10PrivacyKit4HttpC"></a>
+                    <a name="//apple_ref/swift/Class/Http" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit4HttpC">Http</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -212,32 +213,62 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <h4 id='example' class='heading'>Example</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
-<span class="k">let</span> <span class="nv">shalon</span> <span class="o">=</span> <span class="nf">Shalon</span><span class="p">(</span><span class="nv">withTarget</span><span class="p">:</span> <span class="n">target</span><span class="p">)</span>
+                        <p>Undocumented</p>
 
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy1.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8443</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy2.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8442</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy3.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8441</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-
-<span class="n">shalon</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="nf">Request</span><span class="p">(</span><span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="nv">andUrl</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">optionalResponse</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
-    <span class="c1">// TODO Do something</span>
-<span class="p">}</span>
-</code></pre>
-
-                        <a href="Classes/Shalon.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/Http.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Shalon</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">StreamDelegate</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Http</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L24-L306">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Http.swift#L4-L241">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Encryption"></a>
+                <a name="//apple_ref/swift/Section/Encryption" class="dashAnchor"></a>
+                <a href="#/Encryption">
+                  <h3 class="section-name">Encryption</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit21SecureKeyValueStorageC"></a>
+                    <a name="//apple_ref/swift/Class/SecureKeyValueStorage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit21SecureKeyValueStorageC">SecureKeyValueStorage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SecureKeyValueStorage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SecureKeyValueStorage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/KeyValueStorage.swift#L192-L244">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -249,9 +280,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit10IndicatorsC"></a>
-                    <a name="//apple_ref/swift/Class/Indicators" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit10IndicatorsC">Indicators</a>
+                    <a name="/s:10PrivacyKit0A7ServiceC"></a>
+                    <a name="//apple_ref/swift/Class/PrivacyService" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit0A7ServiceC">PrivacyService</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -259,20 +290,142 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class that wraps access to indicators, such as network activity.</p>
+                        <p>Class that acts as an interface to the web service API.</p>
 
-                        <a href="Classes/Indicators.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/PrivacyService.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Indicators</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PrivacyService</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/UI/Indicators.swift#L8-L41">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/PrivacyService.swift#L4-L21">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10PrivacyKit17RegularExpressionC"></a>
+                    <a name="//apple_ref/swift/Class/RegularExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit17RegularExpressionC">RegularExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class represents a compiled regular expression.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    Taken from <a href="http://benscheirman.com/2014/06/regex-in-swift/">http://benscheirman.com/2014/06/regex-in-swift/</a>
+
+</div>
+
+                        <a href="Classes/RegularExpression.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RegularExpression</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/RegularExpression.swift#L52-L98">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)Shalon"></a>
+                    <a name="//apple_ref/swift/Class/Shalon" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)Shalon">Shalon</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <h4 id='example' class='heading'>Example</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">shalon</span> <span class="o">=</span> <span class="kt">Shalon</span><span class="p">(</span><span class="nv">withTarget</span><span class="p">:</span> <span class="n">target</span><span class="p">)</span>
+
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy1.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8443</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy2.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8442</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy3.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8441</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+
+<span class="n">shalon</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">(</span><span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="nv">andUrl</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">optionalResponse</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
+    <span class="c1">// TODO Do something</span>
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Classes/Shalon.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Shalon</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">StreamDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L24-L292">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PrivacyKit@objc(cs)ShalonURLProtocol"></a>
+                    <a name="//apple_ref/swift/Class/ShalonURLProtocol" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)ShalonURLProtocol">ShalonURLProtocol</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/ShalonURLProtocol.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ShalonURLProtocol</span> <span class="p">:</span> <span class="kt">URLProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/ShalonURLProtocol.swift#L3-L195">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -316,12 +469,12 @@ value again, the user has to authenticate as the device owner anew.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConfidentialQrCodeView</span><span class="p">:</span> <span class="kt"><a href="Typealiases.html#/ImageView">ImageView</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConfidentialQrCodeView</span> <span class="p">:</span> <span class="kt"><a href="Typealiases.html#/ImageView">ImageView</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/UI/ConfidentialQrCodeView.swift#L56-L187">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/UI/ConfidentialQrCodeView.swift#L56-L187">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -333,9 +486,9 @@ value again, the user has to authenticate as the device owner anew.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit0A7ServiceC"></a>
-                    <a name="//apple_ref/swift/Class/PrivacyService" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit0A7ServiceC">PrivacyService</a>
+                    <a name="/s:10PrivacyKit10IndicatorsC"></a>
+                    <a name="//apple_ref/swift/Class/Indicators" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit10IndicatorsC">Indicators</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -343,172 +496,20 @@ value again, the user has to authenticate as the device owner anew.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Class that acts as an interface to the web service API.</p>
+                        <p>A class that wraps access to indicators, such as network activity.</p>
 
-                        <a href="Classes/PrivacyService.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/Indicators.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PrivacyService</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Indicators</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/PrivacyService.swift#L4-L21">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10PrivacyKit17RegularExpressionC"></a>
-                    <a name="//apple_ref/swift/Class/RegularExpression" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit17RegularExpressionC">RegularExpression</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class represents a compiled regular expression.</p>
-<div class="aside aside-see">
-    <p class="aside-title">See</p>
-    Taken from <a href="http://benscheirman.com/2014/06/regex-in-swift/">http://benscheirman.com/2014/06/regex-in-swift/</a>
-
-</div>
-
-                        <a href="Classes/RegularExpression.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RegularExpression</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/RegularExpression.swift#L52-L98">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@PrivacyKit@objc(cs)ShalonURLProtocol"></a>
-                    <a name="//apple_ref/swift/Class/ShalonURLProtocol" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@PrivacyKit@objc(cs)ShalonURLProtocol">ShalonURLProtocol</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Classes/ShalonURLProtocol.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ShalonURLProtocol</span> <span class="p">:</span> <span class="kt">URLProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/ShalonURLProtocol.swift#L3-L195">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10PrivacyKit4HttpC"></a>
-                    <a name="//apple_ref/swift/Class/Http" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit4HttpC">Http</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Classes/Http.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Http</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Http.swift#L4-L241">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Encryption"></a>
-                <a name="//apple_ref/swift/Section/Encryption" class="dashAnchor"></a>
-                <a href="#/Encryption">
-                  <h3 class="section-name">Encryption</h3>
-                </a>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10PrivacyKit21SecureKeyValueStorageC"></a>
-                    <a name="//apple_ref/swift/Class/SecureKeyValueStorage" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit21SecureKeyValueStorageC">SecureKeyValueStorage</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Classes/SecureKeyValueStorage.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SecureKeyValueStorage</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L194-L246">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/UI/Indicators.swift#L8-L41">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -521,8 +522,8 @@ value again, the user has to authenticate as the device owner anew.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-07-03)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-14)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

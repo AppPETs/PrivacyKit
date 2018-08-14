@@ -267,19 +267,19 @@
             <h1>Shalon</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Shalon</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">StreamDelegate</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Shalon</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">StreamDelegate</span></code></pre>
 
                 </div>
               </div>
             <h4 id='example' class='heading'>Example</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
-<span class="k">let</span> <span class="nv">shalon</span> <span class="o">=</span> <span class="nf">Shalon</span><span class="p">(</span><span class="nv">withTarget</span><span class="p">:</span> <span class="n">target</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">shalon</span> <span class="o">=</span> <span class="kt">Shalon</span><span class="p">(</span><span class="nv">withTarget</span><span class="p">:</span> <span class="n">target</span><span class="p">)</span>
 
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy1.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8443</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy2.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8442</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="nf">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy3.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8441</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy1.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8443</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy2.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8442</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy3.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8441</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
 
-<span class="n">shalon</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="nf">Request</span><span class="p">(</span><span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="nv">andUrl</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">(</span><span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="nv">andUrl</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">optionalResponse</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
     <span class="c1">// TODO Do something</span>
 <span class="p">}</span>
@@ -318,7 +318,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L26-L32">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L26-L32">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -348,7 +348,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -373,12 +373,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Classes/Shalon/State.html">State</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">inactive</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">Shalon</span><span class="o">.</span><span class="kt"><a href="../Classes/Shalon/State.html">State</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -403,12 +403,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Target.html">Target</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Target.html">Target</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -433,12 +433,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">streams</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/PairedStream.html">PairedStream</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">streams</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/PairedStream.html">PairedStream</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -463,12 +463,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentLayer</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentLayer</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -493,12 +493,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Classes/Http.html">Http</a></span><span class="o">.</span><span class="kt">Request</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Classes/Http.html">Http</a></span><span class="o">.</span><span class="kt">Request</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -523,12 +523,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt"><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC17CompletionHandlera">CompletionHandler</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">Shalon</span><span class="o">.</span><span class="kt"><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC17CompletionHandlera">CompletionHandler</a></span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -558,7 +558,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L44-L48">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L44-L48">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -588,7 +588,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L50-L52">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L50-L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -618,7 +618,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L54-L89">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L54-L89">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -648,7 +648,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L91-L117">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L91-L117">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -689,7 +689,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L121-L139">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L121-L139">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -719,7 +719,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L141-L177">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L141-L177">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -749,7 +749,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L179-L202">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L179-L202">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -790,7 +790,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L206-L208">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L206-L208">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -820,7 +820,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L210-L213">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L210-L213">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -850,7 +850,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L215-L230">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L215-L230">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -880,7 +880,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L232-L239">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L232-L239">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -910,7 +910,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L241-L253">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L241-L253">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -940,7 +940,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L255-L258">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L255-L258">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -965,12 +965,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextLayer</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextLayer</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L260-L264">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L260-L262">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -995,12 +995,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">firstHop</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">firstHop</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L266-L270">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L264-L266">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1025,12 +1025,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentTargetIdx</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentTargetIdx</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L272-L279">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L268-L273">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1055,12 +1055,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextTargetIdx</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextTargetIdx</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L281-L285">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L275-L277">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1085,12 +1085,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentTarget</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentTarget</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L287-L291">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L279-L281">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1115,12 +1115,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextTarget</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextTarget</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L293-L297">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L283-L285">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1145,12 +1145,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentStream</span><span class="p">:</span> <span class="kt"><a href="../Classes/PairedStream.html">PairedStream</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentStream</span><span class="p">:</span> <span class="kt"><a href="../Classes/PairedStream.html">PairedStream</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/Shalon.swift#L299-L305">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/Shalon.swift#L287-L291">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1163,8 +1163,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-07-03)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-14)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

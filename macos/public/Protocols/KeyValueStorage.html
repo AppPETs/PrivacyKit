@@ -233,7 +233,7 @@ storage. The key is unique.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L15">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/KeyValueStorage.swift#L15">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -258,12 +258,12 @@ storage. The key is unique.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">Value</span> <span class="o">=</span> <span class="kt">Data</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">Value</span> <span class="o">=</span> <span class="kt">Bytes</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L20">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/KeyValueStorage.swift#L20">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -271,9 +271,9 @@ storage. The key is unique.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit15KeyValueStorageP5storey10Foundation4DataV5value_SS3forys5Error_pSgc8finishedtF"></a>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP5storeySays5UInt8VG5value_SS3forys5Error_pSgc8finishedtF"></a>
                     <a name="//apple_ref/swift/Method/store(value:for:finished:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP5storey10Foundation4DataV5value_SS3forys5Error_pSgc8finishedtF">store(value:for:finished:)</a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP5storeySays5UInt8VG5value_SS3forys5Error_pSgc8finishedtF">store(value:for:finished:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -283,10 +283,10 @@ storage. The key is unique.</p>
                       <div class="abstract">
                         <p>Store a value in the key-value storage for a given key.</p>
 <h4 id='example' class='heading'>Example</h4>
-<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"name"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="nf">Data</span><span class="p">(</span><span class="s">"John Doe"</span><span class="o">.</span><span class="n">utf8</span><span class="p">))</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"name"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Data</span><span class="p">(</span><span class="s">"John Doe"</span><span class="o">.</span><span class="n">utf8</span><span class="p">))</span> <span class="p">{</span>
     <span class="n">optionalError</span> <span class="k">in</span>
 
-    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nf">optionalError</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span> <span class="p">{</span>
         <span class="c1">// TODO Handle error</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -358,7 +358,7 @@ operation is finished.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L44">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/KeyValueStorage.swift#L44">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -366,9 +366,9 @@ operation is finished.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_y10Foundation4DataVSg_s5Error_pSgtc8finishedtF"></a>
+                    <a name="/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_ySays5UInt8VGSg_s5Error_pSgtc8finishedtF"></a>
                     <a name="//apple_ref/swift/Method/retrieve(for:finished:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_y10Foundation4DataVSg_s5Error_pSgtc8finishedtF">retrieve(for:finished:)</a>
+                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_ySays5UInt8VGSg_s5Error_pSgtc8finishedtF">retrieve(for:finished:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -383,7 +383,7 @@ operation is finished.</p>
 
     <span class="nf">precondition</span><span class="p">((</span><span class="n">optionalValue</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">optionalError</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">))</span>
 
-    <span class="k">guard</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">optionalValue</span> <span class="nf">else</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">optionalValue</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span><span class="o">!</span>
         <span class="c1">// TODO Handle error</span>
         <span class="k">return</span>
@@ -464,7 +464,7 @@ operation is finished.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L77">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/KeyValueStorage.swift#L77">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -487,7 +487,7 @@ operation is finished.</p>
 <pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"name"</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">optionalError</span> <span class="k">in</span>
 
-    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nf">optionalError</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span> <span class="p">{</span>
         <span class="c1">// TODO Handle error</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -547,7 +547,7 @@ operation is finished.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/25a154c18da29e7ab6c83e5ba2ad7f3c695d80ee/PrivacyKit/KeyValueStorage.swift#L100">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/ba9224dbf7ab8893820b3a5c7ea35dfa484ad4e1/PrivacyKit/KeyValueStorage.swift#L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -560,8 +560,8 @@ operation is finished.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-07-03)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-14)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

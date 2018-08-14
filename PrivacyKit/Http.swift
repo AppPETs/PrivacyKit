@@ -256,16 +256,12 @@ extension URLRequest {
 
 extension HTTPURLResponse {
 	public var status: Http.Status {
-		get {
-			assert(0 <= statusCode)
-			return Http.Status(rawValue: UInt16(statusCode))!
-		}
+		assert(0 <= statusCode)
+		return Http.Status(rawValue: UInt16(statusCode))!
 	}
 
 	public var unexpected: Http.Error {
-		get {
-			return .unexpectedResponse(status, description)
-		}
+		return .unexpectedResponse(status, description)
 	}
 }
 

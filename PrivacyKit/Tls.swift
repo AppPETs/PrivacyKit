@@ -165,12 +165,10 @@ class TlsSession {
 	// MARK: States
 
 	var state: SSLSessionState {
-		get {
-			var sessionState: SSLSessionState = .idle
-			let sslStatus = SSLGetSessionState(context, &sessionState)
-			assert(sslStatus == noErr)
-			return sessionState
-		}
+		var sessionState: SSLSessionState = .idle
+		let sslStatus = SSLGetSessionState(context, &sessionState)
+		assert(sslStatus == noErr)
+		return sessionState
 	}
 
 	// MARK: Triggers
@@ -258,11 +256,11 @@ class WrappedInputStream: InputStream, StreamDelegate {
 	}
 
 	override var streamStatus: Stream.Status {
-		get { return stream.streamStatus }
+		return stream.streamStatus
 	}
 
 	override var streamError: Error? {
-		get { return stream.streamError }
+		return stream.streamError
 	}
 
 	override func open() {
@@ -292,7 +290,7 @@ class WrappedInputStream: InputStream, StreamDelegate {
 	// MARK: InputStream
 
 	override var hasBytesAvailable: Bool {
-		get { return stream.hasBytesAvailable }
+		return stream.hasBytesAvailable
 	}
 
 	override func read(_ dataPtr: UnsafeMutablePointer<UInt8>, maxLength: Int) -> Int {
@@ -325,7 +323,7 @@ class WrappedInputStream: InputStream, StreamDelegate {
 
 class WrappedOutputStream: OutputStream, StreamDelegate {
 	let _stream: OutputStream
-	var stream: OutputStream { get { return _stream } }
+	var stream: OutputStream { return _stream }
 	let inputStream: WrappedInputStream
 
 	weak var _delegate: StreamDelegate? = nil
@@ -349,11 +347,11 @@ class WrappedOutputStream: OutputStream, StreamDelegate {
 	}
 
 	override var streamStatus: Stream.Status {
-		get { return stream.streamStatus }
+		return stream.streamStatus
 	}
 
 	override var streamError: Error? {
-		get { return stream.streamError }
+		return stream.streamError
 	}
 
 	override func open() {
@@ -383,9 +381,7 @@ class WrappedOutputStream: OutputStream, StreamDelegate {
 	// MARK: InputStream
 
 	override var hasSpaceAvailable: Bool {
-		get {
-			return stream.hasSpaceAvailable
-		}
+		return stream.hasSpaceAvailable
 	}
 
 	override func write(_ dataPtr: UnsafePointer<UInt8>, maxLength: Int) -> Int {
@@ -422,9 +418,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	var error: Error? = nil
 
 	override var stream: WrappedInputStream {
-		get {
-			return super.stream as! WrappedInputStream
-		}
+		return super.stream as! WrappedInputStream
 	}
 
 	init(_ stream: WrappedInputStream, withSession session: TlsSession) {
@@ -436,22 +430,20 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	}
 
 	var internalTlsBufferSize: Int {
-		get {
-			var result = 0
-			let sslStatus = SSLGetBufferedReadSize(session.context, &result)
-			assert(sslStatus == noErr)
-			return result
-		}
+		var result = 0
+		let sslStatus = SSLGetBufferedReadSize(session.context, &result)
+		assert(sslStatus == noErr)
+		return result
 	}
 
 	// MARK: Stream
 
 	override var streamStatus: Stream.Status {
-		get { return status }
+		return status
 	}
 
 	override var streamError: Error? {
-		get { return error }
+		return error
 	}
 
 	override func open() {
@@ -486,7 +478,7 @@ class TLSInputStream: WrappedInputStream, TlsSessionDelegate {
 	// MARK: InputStream
 
 	override var hasBytesAvailable: Bool {
-		get { return !buffer.isEmpty || stream.hasBytesAvailable }
+		return !buffer.isEmpty || stream.hasBytesAvailable
 	}
 
 	override func read(_ dataPtr: UnsafeMutablePointer<UInt8>, maxLength: Int) -> Int {
@@ -642,11 +634,11 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 	// MARK: Stream
 
 	override var streamStatus: Stream.Status {
-		get { return status }
+		return status
 	}
 
 	override var streamError: Error? {
-		get { return error }
+		return error
 	}
 
 	override func open() {
@@ -686,9 +678,7 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 	// MARK: OutputStream
 
 	override var hasSpaceAvailable: Bool {
-		get {
-			return stream.hasSpaceAvailable
-		}
+		return stream.hasSpaceAvailable
 	}
 
 	override func write(_ dataPtr: UnsafePointer<UInt8>, maxLength: Int) -> Int {

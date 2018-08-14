@@ -159,7 +159,7 @@ extension EncryptedKey: Hashable {
 		sets. This should not be confused with the personalized hash of the
 		plaintext key.
 	*/
-	public var hashValue: Int { get { return value.hashValue } }
+	public var hashValue: Int { return value.hashValue }
 
 }
 
@@ -169,9 +169,7 @@ extension EncryptedKey: CustomStringConvertible {
 		A textual representation of an encrypted key.
 	*/
 	public var description: String {
-		get {
-			return value.hexlify
-		}
+		return value.hexlify
 	}
 
 }
@@ -282,9 +280,7 @@ extension SecureKeyValueStorage: KeyValueStorage {
 extension PrivacyService {
 
 	var keyValueStorageBackend: KeyValueStorageBackend {
-		get {
-			return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
-		}
+		return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
 	}
 
 	class KeyValueStorage {
@@ -296,11 +292,9 @@ extension PrivacyService {
 		}
 
 		var entryPoint: URL {
-			get {
-				return baseUrl
-					.appendingPathComponent("storage", isDirectory: true)
-					.appendingPathComponent("v1", isDirectory: true)
-			}
+			return baseUrl
+				.appendingPathComponent("storage", isDirectory: true)
+				.appendingPathComponent("v1", isDirectory: true)
 		}
 
 		func url(for key: EncryptedKey) -> URL {

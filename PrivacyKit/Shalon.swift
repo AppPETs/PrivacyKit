@@ -258,49 +258,35 @@ public class Shalon: NSObject, StreamDelegate {
 	}
 
 	private var nextLayer: Int {
-		get {
-			return currentLayer + 1
-		}
+		return currentLayer + 1
 	}
 
 	private var firstHop: Target {
-		get {
-			return targets.first!
-		}
+		return targets.first!
 	}
 
 	private var currentTargetIdx: Int {
-		get {
-			assert((0..<streams.count).contains(currentLayer))
-			assert(currentLayer <= targets.count)
+		assert((0..<streams.count).contains(currentLayer))
+		assert(currentLayer <= targets.count)
 
-			return (currentLayer < 2) ? 0 : currentLayer - 1
-		}
+		return (currentLayer < 2) ? 0 : currentLayer - 1
 	}
 
 	private var nextTargetIdx: Int {
-		get {
-			return currentTargetIdx + 1
-		}
+		return currentTargetIdx + 1
 	}
 
 	private var currentTarget: Target {
-		get {
-			return targets[currentTargetIdx]
-		}
+		return targets[currentTargetIdx]
 	}
 
 	private var nextTarget: Target {
-		get {
-			return targets[nextTargetIdx]
-		}
+		return targets[nextTargetIdx]
 	}
 
 	private var currentStream: PairedStream {
-		get {
-			assert((0..<streams.count).contains(currentLayer))
+		assert((0..<streams.count).contains(currentLayer))
 
-			return streams[currentLayer]
-		}
+		return streams[currentLayer]
 	}
 }

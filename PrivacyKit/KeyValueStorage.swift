@@ -17,7 +17,7 @@ public protocol KeyValueStorage {
 	/**
 		A value can contain arbitrary data and is identified by a key.
 	*/
-	typealias Value = Data
+	typealias Value = Bytes
 
 	/**
 		Store a value in the key-value storage for a given key.
@@ -170,7 +170,7 @@ extension EncryptedKey: CustomStringConvertible {
 	*/
 	public var description: String {
 		get {
-			return value.hex!
+			return value.hexlify
 		}
 	}
 
@@ -229,16 +229,16 @@ public class SecureKeyValueStorage {
 	}
 
 	func encrypt(_ key: Key) -> EncryptedKey {
-		let hash = GenericHash(bytes: Data(key.utf8), outputSizeInBytes: EncryptedKey.SizeInBytes, with: hashKey)!
+		let hash = GenericHash(bytes: key.utf8Bytes, outputSizeInBytes: EncryptedKey.SizeInBytes, with: hashKey)!
 		return EncryptedKey(hash)!
 	}
 
 	func encrypt(_ value: Value) -> EncryptedValue {
-		return secretBox.encrypt(data: value)
+		return secretBox.encrypt(plaintext: value)
 	}
 
 	func decrypt(_ encrytedValue: EncryptedValue) throws -> Value {
-		guard let value = secretBox.decrypt(data: encrytedValue) else {
+		guard let value = secretBox.decrypt(ciphertext: encrytedValue) else {
 			throw Error.failedToDecrypt
 		}
 		return value
@@ -326,7 +326,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 
 		Indicators.showNetworkActivity()
 
-		let task = session.uploadTask(with: request, from: value.bytes) {
+		let task = session.uploadTask(with: request, from: Data(value.bytes)) {
 			optionalData, optionalResponse, optionalError in
 
 			Indicators.hideNetworkActivity()
@@ -392,7 +392,7 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 				return
 			}
 
-			guard let ciphertext = EncryptedValue(bytes: data) else {
+			guard let ciphertext = EncryptedValue(bytes: Bytes(data)) else {
 				callback(nil, SecureKeyValueStorage.Error.responseTooSmall)
 				return
 			}

@@ -211,7 +211,7 @@ class ShalonTest: XCTestCase {
 		var response: URLResponse? = nil
 		var responseBody : Data? = nil
 
-		let data = Random.bytes(count: 1024 * 1)
+		let data = Data(Random.bytes(count: 1024 * 1))
 
 		let task = session.uploadTask(with: request, from: data) {
 			(potentialData, potentialResponse, potentialError) in

@@ -34,7 +34,7 @@ class KeyValueStorageTests: XCTestCase {
 
 	func metaTestRetrieve(storage: SecureKeyValueStorage, key: SecureKeyValueStorage.Key, expectedValue: SecureKeyValueStorage.Value) {
 		var optionalError: Error? = nil
-		var optionalValue: Data? = nil
+		var optionalValue: Bytes? = nil
 
 		let retrieveExpectation = expectation(description: "retrieved '\(key)'")
 
@@ -61,7 +61,7 @@ class KeyValueStorageTests: XCTestCase {
 
 	func metaTestRetrieve<ErrorType: Error & Equatable>(storage: SecureKeyValueStorage, key: SecureKeyValueStorage.Key, expectedError: ErrorType) {
 		var optionalError: Error? = nil
-		var optionalValue: Data? = nil
+		var optionalValue: Bytes? = nil
 
 		let retrieveExpectation = expectation(description: "retrieved '\(key)'")
 
@@ -111,7 +111,7 @@ class KeyValueStorageTests: XCTestCase {
 	// MARK: Tests
 
 	func testEncryptedKey() {
-		let hash: (UInt32) -> GenericHash = { GenericHash(bytes: Data("foo".utf8), outputSizeInBytes: $0)! }
+		let hash: (UInt32) -> GenericHash = { GenericHash(bytes: "foo".utf8Bytes, outputSizeInBytes: $0)! }
 
 		XCTAssertNotNil(EncryptedKey(hash(EncryptedKey.SizeInBytes)))
 		XCTAssertNil(EncryptedKey(hash(EncryptedKey.SizeInBytes - 1)))
@@ -125,8 +125,8 @@ class KeyValueStorageTests: XCTestCase {
 		let storage = SecureKeyValueStorage(with: backend, and: masterKey, context: context)
 
 		let key = "foo"
-		let value1 = Data("bar".utf8)
-		let value2 = Data("baz".utf8)
+		let value1 = "bar".utf8Bytes
+		let value2 = "baz".utf8Bytes
 
 		// Test retrieving invalid value
 		metaTestRetrieve(storage: storage, key: key, expectedError: FakeKeyValueStorageBackend.Error.valueDoesNotExist)
@@ -151,8 +151,8 @@ class KeyValueStorageTests: XCTestCase {
 		let storage = SecureKeyValueStorage(with: service, and: masterKey, context: context)
 
 		let key = "foo"
-		let value1 = Data("bar".utf8)
-		let value2 = Data("baz".utf8)
+		let value1 = "bar".utf8Bytes
+		let value2 = "baz".utf8Bytes
 
 		// Test retrieving invalid value
 		metaTestRetrieve(storage: storage, key: key, expectedError: SecureKeyValueStorage.Error.valueDoesNotExist)

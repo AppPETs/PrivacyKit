@@ -27,7 +27,7 @@ extension MasterKey {
 			The Base64-encoded representaiton of the master key.
 	*/
 	public func base64EncodedString() -> String {
-		return copyBytes().base64EncodedString()
+		return copyBytes().b64encode()
 	}
 
 	/**
@@ -45,11 +45,11 @@ extension MasterKey {
 			string.removeFirst(MASTER_KEY_PREFIX_SIZE_IN_BYTES)
 		}
 
-		guard var data = Data(base64Encoded: string) else {
+		guard var bytes = string.b64decode() else {
 			return nil
 		}
 
-		self.init(bytes: &data)
+		self.init(bytes: &bytes)
 	}
 
 }

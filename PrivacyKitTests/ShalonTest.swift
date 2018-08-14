@@ -138,7 +138,7 @@ class ShalonTest: XCTestCase {
 	}
 
 	func testShalonProtocol3() {
-		let url = URL(string: "httpss://shalon1.jondonym.net:443/apppets.aot.tu-berlin.de:2235/")!
+		let url = URL(string: "httpss://shalon1.jondonym.net:443/services.app-pets.org/")!
 
 		let sessionConfiguration = URLSessionConfiguration.ephemeral
 		sessionConfiguration.protocolClasses?.append(ShalonURLProtocol.self)
@@ -167,8 +167,8 @@ class ShalonTest: XCTestCase {
 	}
 
 	func testShalon() {
-		let url = URL(string: "https://apppets.aot.tu-berlin.de:2235/")!
-		let target = Target(withHostname: url.host!, andPort: UInt16(url.port!))!
+		let url = URL(string: "https://services.app-pets.org/")!
+		let target = Target(withHostname: url.host!, andPort: 443)!
 		let shalon = Shalon(withTarget: target)
 
 		var optionalResponse: Http.Response? = nil

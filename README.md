@@ -2,8 +2,8 @@
 
 The `PrivacyKit` is a framework for iOS that provides functionality to handle personal information appropriately.
 
-- Repository: https://gitlab.prae.me/apppets/PrivacyKit
-- Issues: https://gitlab.prae.me/apppets/PrivacyKit/issues
+- Repository: https://github.com/AppPETs/PrivacyKit
+- Issues: https://github.com/AppPETs/PrivacyKit/issues
 
 The `PrivacyKit` API includes the API of other libraries that can be used if more specific functionality is required:
 - Cryptography: [Tafelsalz](https://blochberger.github.io/Tafelsalz)
@@ -17,7 +17,7 @@ Assuming you have a Git repository for your project, than you can use the
 `PrivacyKit` framework by adding it as a submodule:
 
 ```sh
-git submodule add https://gitlab.prae.me/blochberger/PrivacyKit.git
+git submodule add https://github.com/AppPETs/PrivacyKit/issues
 git submodule update --init --recursive # This will also fetch dependencies
 ```
 

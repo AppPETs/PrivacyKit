@@ -3,4 +3,4 @@
 	url = https://github.com/blochberger/Tafelsalz.git
 [submodule "Dependencies/QRCode"]
 	path = Dependencies/QRCode
-	url = git@github.com:blochberger/QRCode.git
+	url = https://github.com/blochberger/QRCode.git

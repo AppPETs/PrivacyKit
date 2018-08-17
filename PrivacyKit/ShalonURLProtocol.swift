@@ -8,7 +8,6 @@ public class ShalonURLProtocol : URLProtocol {
 	}
 
 	enum ShalonErrors : Error {
-		case notImplemented
 		case unknownHTTPMethod
 		case noContent
 	}

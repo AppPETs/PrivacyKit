@@ -83,7 +83,7 @@ public class Shalon: NSObject, StreamDelegate {
 			The established TCP connection should be TLS secured, as soon as
 			bytes can be written to the output stream.
 		 */
-		state = determineNextAction()
+		state = nextState
 
 		wrapCurrentLayerWithTls()
 	}
@@ -144,14 +144,14 @@ public class Shalon: NSObject, StreamDelegate {
 		let stream = currentStream.input
 
 		if eventCode.contains(.openCompleted) {
-			state = determineNextAction()
+			state = nextState
 		}
 
 		if eventCode.contains(.hasBytesAvailable) {
 			switch state {
 				case .expectTunnelConnectionEstablished:
 					// Read HTTP response and check if it indicates success.
-					state = determineNextAction()
+					state = nextState
 					guard let response: Http.Response = expectHttpResponse(fromStream: stream) else {
 						print("Failed to parse response")
 						return
@@ -252,7 +252,7 @@ public class Shalon: NSObject, StreamDelegate {
 		}
 	}
 
-	private func determineNextAction() -> State {
+	private var nextState: State {
 		// There is one more layers than targets
 		return (nextTargetIdx < targets.count) ? .shouldEstablishTunnelConnection : .shouldSendHttpRequest
 	}

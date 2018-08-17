@@ -1,14 +1,9 @@
 
 public class ShalonURLProtocol : URLProtocol {
 
-	enum ParseError : Swift.Error {
+	enum ParseError : Error {
 		case tooFewProxies
 		case incorrectProxySpecification
-	}
-
-	enum Error : Swift.Error {
-		case unknownHTTPMethod
-		case noContent
 	}
 
 	struct Parameters {
@@ -135,52 +130,49 @@ public class ShalonURLProtocol : URLProtocol {
 			shalon.addLayer(proxy)
 		}
 
-		let optionalMethod = Http.Method(rawValue: request.httpMethod!.uppercased())
-		guard optionalMethod != nil else {
-			client!.urlProtocol(self, didFailWithError: Error.unknownHTTPMethod)
-			return
+		guard let method = Http.Method(rawValue: request.httpMethod!.uppercased()) else {
+			fatalError("Unhandled HTTP method: \(String(describing: request.httpMethod))")
 		}
 
 		// Handle body data
-		var httpBody: Data? = nil
+		let httpBody: Data
 
 		// HTTP Body data gets transformed into an input by the URL loading system.
 		if let bodyStream = request.httpBodyStream {
 			bodyStream.open()
-			httpBody = bodyStream.readAll()
+			httpBody = bodyStream.readAll() ?? Data()
 			bodyStream.close()
+		} else {
+			httpBody = Data()
 		}
 
-		shalon.issue(request: Http.Request(withMethod: optionalMethod!, andUrl: shalonParameters.requestUrl, andBody: httpBody ?? Data())!) {
-			receivedOptionalResponse, receivedOptionalError in
+		shalon.issue(request: Http.Request(withMethod: method, andUrl: shalonParameters.requestUrl, andBody: httpBody)!) {
+			optionalResponse, optionalError in
+
+			assert((optionalResponse != nil) != (optionalError != nil))
 
 			print("Handling response from URLProtocol handler")
 			guard !self.loadingShouldStop else {
 				return
 			}
 
-			// Handle any errors
-			if let error = receivedOptionalError {
-				self.client!.urlProtocol(self, didFailWithError: error)
+			guard let response = optionalResponse else {
+				self.client!.urlProtocol(self, didFailWithError: optionalError!)
 				return
 			}
 
-			// Handle a correct response
-			if let response = receivedOptionalResponse {
-				// Convert internal response type to URLResponse
-				let urlResponse = HTTPURLResponse(url: self.request.url!,
-												   statusCode: Int(response.status.rawValue),
-												   httpVersion: "HTTP/1.1",
-												   headerFields: response.headers)
-				self.client!.urlProtocol(self, didReceive: urlResponse!, cacheStoragePolicy: .allowed)
-				if let responseBody = response.body {
-					self.client!.urlProtocol(self, didLoad: responseBody)
-				}
-				self.client!.urlProtocolDidFinishLoading(self)
-				return
+			// Convert internal response type to URLResponse
+			let urlResponse = HTTPURLResponse(
+				url: self.request.url!,
+				statusCode: Int(response.status.rawValue),
+				httpVersion: "HTTP/1.1",
+				headerFields: response.headers
+			)
+			self.client!.urlProtocol(self, didReceive: urlResponse!, cacheStoragePolicy: .allowed)
+			if let responseBody = response.body {
+				self.client!.urlProtocol(self, didLoad: responseBody)
 			}
-
-			self.client!.urlProtocol(self, didFailWithError: Error.noContent)
+			self.client!.urlProtocolDidFinishLoading(self)
 		}
 	}
 

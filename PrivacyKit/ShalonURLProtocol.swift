@@ -13,14 +13,14 @@ public class ShalonURLProtocol : URLProtocol {
 	}
 
 	struct ShalonParams {
-		let proxies : [Target]
-		let requestUrl : URL
+		let proxies: [Target]
+		let requestUrl: URL
 	}
 	private var loadingShouldStop: Bool = false
 
-	static func parseShalonParams(from url: URL) throws -> ShalonParams?{
-		var numProxies : Int
-		var shalonProxies : [Target] = []
+	static func parseShalonParams(from url: URL) throws -> ShalonParams? {
+		var numProxies: Int
+		var shalonProxies: [Target] = []
 
 		let urlScheme = url.scheme!.lowercased()
 		let sCount = urlScheme[urlScheme.range(of: "http")!.upperBound...].count
@@ -44,12 +44,12 @@ public class ShalonURLProtocol : URLProtocol {
 		}
 
 		for i in 0..<numProxies {
-			let ithProxy : String = components[i]
+			let ithProxy: String = components[i]
 
 			let proxyInfo = ithProxy.components(separatedBy: ":")
 
-			var proxyHost : String
-			var proxyPort : UInt16 = 0
+			var proxyHost: String
+			var proxyPort: UInt16 = 0
 
 			if proxyInfo.count == 2 && proxyInfo.last! != "" {
 				// Handle IPv4 addresses or domain names
@@ -147,7 +147,7 @@ public class ShalonURLProtocol : URLProtocol {
 		}
 
 		// Handle body data
-		var httpBody : Data? = nil
+		var httpBody: Data? = nil
 
 		// HTTP Body data gets transformed into an input by the URL loading system.
 		if let bodyStream = request.httpBodyStream {

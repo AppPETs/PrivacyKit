@@ -1,17 +1,93 @@
+/**
+	A [`URLProtocol`](https://developer.apple.com/documentation/foundation/urlprotocol)
+	that adds support for Shalon by specifying URLs in the following format:
+	`httpss://proxy:port/target:port/index.html`. To use more than one proxy
+	(up to three), e.g., use `httpssss://proxy1/proxy2/proxy3/target/index.html`
+	for connecting via three proxies.
 
+	In order to support the protocol, it needs to be added to the
+	`URLSessionConfiguration` first:
+
+	```swift
+	let configuration = URLSessionConfiguration.ephemeral
+	configuration.protocolClasses?.append(ShalonURLProtocol.self)
+	```
+
+	## Examples
+
+	```swift
+	let configuration = URLSessionConfiguration.ephemeral
+	configuration.protocolClasses?.append(ShalonURLProtocol.self)
+
+	let session = URLSession(configuration: configuration)
+	let url = URL(string: "httpss://shalon1.jondonym.net/example.com/")!
+	let task = session.dataTask(with: url) {
+	    optionalUrl, optionalResponse, optionalError in
+
+	    // Handle response
+	}
+	```
+*/
 public class ShalonURLProtocol : URLProtocol {
 
+	/**
+		Errors that occur while parsing a Shalon URL.
+	*/
 	enum ParseError : Error {
+
+		/**
+			If this error occurs, too few proxies where specified in a Shalon
+			URL. The URL `httpss://example.com/` will yield such an error, as
+			there is only the target `example.com` given, but no proxy.
+		*/
 		case tooFewProxies
+
+		/**
+			If this error occurs, a proxy specification within an URL is
+			invalid. The URL `httpsss://proxy1/proxy2:/example.com/` will yield
+			such an error, as there is no port after the second proxy. An
+			invalid IPv6 address, e.g., due to missing brackets will also lead
+			to this error.
+		*/
 		case incorrectProxySpecification
 	}
 
+	/**
+		An internal struct that keeps parameters, which will be used for
+		establishing a connection via Shalon proxies.
+	*/
 	struct Parameters {
+
+		/**
+			A list of proxies to be connected to.
+		*/
 		let proxies: [Target]
+
+		/**
+			The request URL, which should be issued through the Shalon tunnel.
+		*/
 		let requestUrl: URL
 	}
+
+	/**
+		This indicates if loading should stop.
+	*/
 	private var loadingShouldStop: Bool = false
 
+	/**
+		Parse a URL and return parameters that can be used for `Shalon`.
+
+		- parameters:
+			- url: The URL.
+
+		- returns: Shalon parameters, `nil` if the URL does not match the
+			specified format.
+
+		- throws:
+			Throws if there are not enough proxies specified. The amount of
+			proxies is determined by the amount of `s`' in the URL schema.
+			Throws also if a proxy is invalid, e.g., with an invalid hostname.
+	*/
 	static func parseShalonParams(from url: URL) throws -> Parameters? {
 		var numProxies: Int
 		var shalonProxies: [Target] = []
@@ -81,6 +157,15 @@ public class ShalonURLProtocol : URLProtocol {
 
 	// MARK: URLProtocol
 
+	/**
+		Implementation of the [`URLProtocol`](https://developer.apple.com/documentation/foundation/urlprotocol).
+
+		- parameters:
+			- request: A request.
+
+		- see:
+			[`canInit(with:)`](https://developer.apple.com/documentation/foundation/urlprotocol/1411389-caninit)
+	*/
 	override public class func canInit(with request: URLRequest) -> Bool {
 
 		if let url = request.url {
@@ -97,6 +182,15 @@ public class ShalonURLProtocol : URLProtocol {
 		return false
 	}
 
+	/**
+		Implementation of the [`URLProtocol`](https://developer.apple.com/documentation/foundation/urlprotocol).
+
+		- parameters:
+			- request: A task.
+
+		- see:
+			[`canInit(with:)`](https://developer.apple.com/documentation/foundation/urlprotocol/1416997-caninit)
+	*/
 	override public class func canInit(with task: URLSessionTask) -> Bool {
 		guard let request = task.currentRequest else {
 			return false
@@ -104,10 +198,25 @@ public class ShalonURLProtocol : URLProtocol {
 		return canInit(with: request)
 	}
 
+	/**
+		Implementation of the [`URLProtocol`](https://developer.apple.com/documentation/foundation/urlprotocol).
+
+		- parameters:
+			- request: A request.
+
+		- see:
+			[`canonicalRequest(for:)`](https://developer.apple.com/documentation/foundation/urlprotocol/1408650-canonicalrequest)
+	*/
 	override public class func canonicalRequest(for request: URLRequest) -> URLRequest {
 		return request
 	}
 
+	/**
+		Implementation of the [`URLProtocol`](https://developer.apple.com/documentation/foundation/urlprotocol).
+
+		- see:
+			[`startLoading()`](https://developer.apple.com/documentation/foundation/urlprotocol/1408989-startloading)
+	*/
 	override public func startLoading() {
 		// ShalonParameters is only ever called if canInit returned true,
 		// meaning that this function successfully executed and does not
@@ -176,6 +285,12 @@ public class ShalonURLProtocol : URLProtocol {
 		}
 	}
 
+	/**
+		Implementation of the [`URLProtocol`](https://developer.apple.com/documentation/foundation/urlprotocol).
+
+		- see:
+			[`stopLoading()`](https://developer.apple.com/documentation/foundation/urlprotocol/1408666-stoploading)
+	*/
 	override public func stopLoading() {
 		loadingShouldStop = true
 	}

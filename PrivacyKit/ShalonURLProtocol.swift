@@ -91,6 +91,8 @@ public class ShalonURLProtocol : URLProtocol {
 		return nil
 	}
 
+	// MARK: URLProtocol
+
 	override public class func canInit(with request: URLRequest) -> Bool {
 
 		if let url = request.url {

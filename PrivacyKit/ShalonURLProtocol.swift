@@ -67,12 +67,11 @@ public class ShalonURLProtocol : URLProtocol {
 				throw ShalonParseError.incorrectProxySpecification
 			}
 
-			let potentialShalonProxy = Target(withHostname: proxyHost, andPort: proxyPort)
-			if let actualShalonProxy = potentialShalonProxy {
-				shalonProxies.append(actualShalonProxy)
-			} else {
+			guard let shalonProxy = Target(withHostname: proxyHost, andPort: proxyPort) else {
 				throw ShalonParseError.incorrectProxySpecification
 			}
+
+			shalonProxies.append(shalonProxy)
 		}
 
 		// The requestUrl is now simply those components that were not used before,
@@ -83,11 +82,11 @@ public class ShalonURLProtocol : URLProtocol {
 			requestUrl = URL(string: requestUrl!.absoluteString + "/")
 		}
 
-		if let actualUrl = requestUrl {
-			return ShalonParams(proxies: shalonProxies, requestUrl: actualUrl)
+		guard let actualUrl = requestUrl else {
+			return nil
 		}
 
-		return nil
+		return ShalonParams(proxies: shalonProxies, requestUrl: actualUrl)
 	}
 
 	// MARK: URLProtocol

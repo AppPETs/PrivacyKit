@@ -8,9 +8,9 @@ public class ShalonURLProtocol : URLProtocol {
 	}
 
 	enum ShalonErrors : Error {
-		case NotImplemented
-		case UnknownHTTPMethod
-		case NoContents
+		case notImplemented
+		case unknownHTTPMethod
+		case noContent
 	}
 
 	struct ShalonParams {
@@ -144,7 +144,7 @@ public class ShalonURLProtocol : URLProtocol {
 
 		let optionalMethod = Http.Method(rawValue: request.httpMethod!.uppercased())
 		guard optionalMethod != nil else {
-			client!.urlProtocol(self, didFailWithError: ShalonErrors.UnknownHTTPMethod)
+			client!.urlProtocol(self, didFailWithError: ShalonErrors.unknownHTTPMethod)
 			return
 		}
 
@@ -187,7 +187,7 @@ public class ShalonURLProtocol : URLProtocol {
 				return
 			}
 
-			self.client!.urlProtocol(self, didFailWithError: ShalonErrors.NoContents)
+			self.client!.urlProtocol(self, didFailWithError: ShalonErrors.noContent)
 		}
 	}
 

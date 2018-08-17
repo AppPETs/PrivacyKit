@@ -14,7 +14,7 @@ The `PrivacyKit` API includes the API of other libraries that can be used if mor
 - Cryptography: [Tafelsalz](https://blochberger.github.io/Tafelsalz)
 - Keychain Services: [Keychain](https://blochberger.github.io/Keychain)
 
-A proof-of-concept Implementation of privacy services can be found at https://gitlab.prae.me/blochberger/PrivacyService
+A proof-of-concept Implementation of privacy services can be found at https://github.com/AppPETs/PrivacyService
 
 ## Usage
 

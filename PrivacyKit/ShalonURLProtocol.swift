@@ -39,35 +39,31 @@ public class ShalonURLProtocol : URLProtocol {
 		//   httpss://proxy:port/destination:port/index.html
 		//   httpsss://proxy1:port/proxy2:port/destination:port/test.txt
 		let components = baseString.components(separatedBy: "/")
-		guard components.count >= numProxies else {
+		guard components.count > numProxies else {
 			throw ShalonParseError.tooFewProxies
 		}
 
 		for i in 0..<numProxies {
 			let ithProxy: String = components[i]
 
-			let proxyInfo = ithProxy.components(separatedBy: ":")
+			var proxyInfo = ithProxy.components(separatedBy: ":")
 
-			var proxyHost: String
-			var proxyPort: UInt16 = 0
+			let proxyPort = UInt16(proxyInfo.last!)
 
-			if proxyInfo.count == 2 && proxyInfo.last! != "" {
-				// Handle IPv4 addresses or domain names
-				proxyHost = proxyInfo.first!
-				proxyPort = UInt16(proxyInfo.last!)!
-			} else if proxyInfo.count > 2 && proxyInfo.last! != "" {
-				// Handle IPv6 addresses
-
-				// Assuming addresses are specified correctly
-				// If they are not, Target(withHostname, andPort) should return nil
-				proxyHost = proxyInfo.prefix(proxyInfo.count - 1).joined(separator: ":")
-				proxyPort = UInt16(proxyInfo.last!)!
-			} else {
-				// Port missing, throw an error
-				throw ShalonParseError.incorrectProxySpecification
+			if proxyPort != nil {
+				proxyInfo.removeLast()
 			}
 
-			guard let shalonProxy = Target(withHostname: proxyHost, andPort: proxyPort) else {
+			/*
+				If it's an IPv4 address or domain name, only one element will be
+				in `proxyInfo`. If it's an IPv6 address, it will insert the
+				colons again. If it's an ivalid IPv6 address, e.g., missing the
+				surrounding brackets, `Target(withHostname:andPort:)` will
+				return `nil`.
+			*/
+			let proxyHost: String = proxyInfo.joined(separator: ":")
+
+			guard let shalonProxy = Target(withHostname: proxyHost, andPort: proxyPort ?? 443) else {
 				throw ShalonParseError.incorrectProxySpecification
 			}
 

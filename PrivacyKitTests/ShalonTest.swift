@@ -43,12 +43,17 @@ class ShalonTest: XCTestCase {
 		XCTAssertNil(try! ShalonURLProtocol.parseShalonParams(from: URL(string: "http://www.example.com")!))
 
 		// Testing incorrectly specified proxies
-		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://shalon1.jondonym.de/www.google.com")!))
-		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:8080/shalon2.jondonym.de:/www.google.com")!))
+		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:8080/shalon2.jondonym.de:/www.google.com")!)) {
+			XCTAssertEqual($0 as? ShalonURLProtocol.ShalonParseError, .incorrectProxySpecification)
+		}
 
 		// Testing too few specified proxies
-		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://www.google.com")!))
-		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:80/www.google.com")!))
+		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://www.google.com")!)) {
+			XCTAssertEqual($0 as? ShalonURLProtocol.ShalonParseError, .tooFewProxies)
+		}
+		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:80/www.google.com")!)) {
+			XCTAssertEqual($0 as? ShalonURLProtocol.ShalonParseError, .tooFewProxies)
+		}
 
 		// Testing correct examples
 		// One proxy only
@@ -72,6 +77,13 @@ class ShalonTest: XCTestCase {
 		XCTAssertEqual(parameters3!.proxies.count, 1)
 		XCTAssertEqual(parameters3!.proxies[0], Target(withHostname: "shalon1.jondonym.net", andPort: 443))
 		XCTAssertEqual(parameters3!.requestUrl, URL(string: "https://apppets.aot.tu-berlin.de:2235/")!)
+
+		// Default proxy ports
+		let parameters4 = try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://proxy1/proxy2/example.com/")!)!
+		XCTAssertEqual(parameters4.proxies.count, 2)
+		XCTAssertEqual(parameters4.proxies[0], Target(withHostname: "proxy1", andPort: 443)!)
+		XCTAssertEqual(parameters4.proxies[1], Target(withHostname: "proxy2", andPort: 443)!)
+		XCTAssertEqual(parameters4.requestUrl, URL(string: "https://example.com/")!)
 
 		// Testing IPv6
 		let ipv6Params = try! ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://[2001:db8:85a3::8a2e:370:7334]:443/www.google.com")!)

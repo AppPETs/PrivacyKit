@@ -24,7 +24,7 @@ extension MasterKey {
 		Export the master key as a Base64-encoded string.
 
 		- returns:
-			The Base64-encoded representaiton of the master key.
+			The Base64-encoded representation of the master key.
 	*/
 	public func base64EncodedString() -> String {
 		return copyBytes().b64encode()

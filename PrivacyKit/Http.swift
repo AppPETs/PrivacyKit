@@ -94,22 +94,22 @@ public class Http {
 		case loopDetected                  = 508
 		case notExtended                   = 510
 		case networkAuthenticationRequired = 511
-	}
 
-	public static func category(for status: Status) -> StatusCategory {
-		switch status.rawValue {
-			case 100..<200:
-				return .informal
-			case 200..<300:
-				return .success
-			case 300..<400:
-				return .redirection
-			case 400..<500:
-				return .clientError
-			case 500..<600:
-				return .serverError
-			default:
-				fatalError("Invalid status!")
+		public var category: StatusCategory {
+			switch self.rawValue {
+				case 100..<200:
+					return .informal
+				case 200..<300:
+					return .success
+				case 300..<400:
+					return .redirection
+				case 400..<500:
+					return .clientError
+				case 500..<600:
+					return .serverError
+				default:
+					fatalError("Invalid status!")
+			}
 		}
 	}
 

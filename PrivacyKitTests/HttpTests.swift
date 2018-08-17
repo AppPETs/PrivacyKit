@@ -4,11 +4,11 @@ import XCTest
 class HttpTests: XCTestCase {
 
 	func testCategoryForStatus() {
-		XCTAssertEqual(Http.category(for: .Continue), Http.StatusCategory.informal)
-		XCTAssertEqual(Http.category(for: .ok), Http.StatusCategory.success)
-		XCTAssertEqual(Http.category(for: .temporaryRedirect), Http.StatusCategory.redirection)
-		XCTAssertEqual(Http.category(for: .notFound), Http.StatusCategory.clientError)
-		XCTAssertEqual(Http.category(for: .internalServerError), Http.StatusCategory.serverError)
+		XCTAssertEqual(Http.Status.Continue.category, Http.StatusCategory.informal)
+		XCTAssertEqual(Http.Status.ok.category, Http.StatusCategory.success)
+		XCTAssertEqual(Http.Status.temporaryRedirect.category, Http.StatusCategory.redirection)
+		XCTAssertEqual(Http.Status.notFound.category, Http.StatusCategory.clientError)
+		XCTAssertEqual(Http.Status.internalServerError.category, Http.StatusCategory.serverError)
 	}
 
 	func testInvalidRequest() {

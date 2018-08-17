@@ -1,23 +1,23 @@
 
 public class ShalonURLProtocol : URLProtocol {
 
-	enum ShalonParseError : Error {
+	enum ParseError : Swift.Error {
 		case tooFewProxies
 		case incorrectProxySpecification
 	}
 
-	enum ShalonErrors : Error {
+	enum Error : Swift.Error {
 		case unknownHTTPMethod
 		case noContent
 	}
 
-	struct ShalonParams {
+	struct Parameters {
 		let proxies: [Target]
 		let requestUrl: URL
 	}
 	private var loadingShouldStop: Bool = false
 
-	static func parseShalonParams(from url: URL) throws -> ShalonParams? {
+	static func parseShalonParams(from url: URL) throws -> Parameters? {
 		var numProxies: Int
 		var shalonProxies: [Target] = []
 
@@ -39,7 +39,7 @@ public class ShalonURLProtocol : URLProtocol {
 		//   httpsss://proxy1:port/proxy2:port/destination:port/test.txt
 		let components = baseString.components(separatedBy: "/")
 		guard components.count > numProxies else {
-			throw ShalonParseError.tooFewProxies
+			throw ParseError.tooFewProxies
 		}
 
 		for i in 0..<numProxies {
@@ -63,7 +63,7 @@ public class ShalonURLProtocol : URLProtocol {
 			let proxyHost: String = proxyInfo.joined(separator: ":")
 
 			guard let shalonProxy = Target(withHostname: proxyHost, andPort: proxyPort ?? 443) else {
-				throw ShalonParseError.incorrectProxySpecification
+				throw ParseError.incorrectProxySpecification
 			}
 
 			shalonProxies.append(shalonProxy)
@@ -81,7 +81,7 @@ public class ShalonURLProtocol : URLProtocol {
 			return nil
 		}
 
-		return ShalonParams(proxies: shalonProxies, requestUrl: actualUrl)
+		return Parameters(proxies: shalonProxies, requestUrl: actualUrl)
 	}
 
 	// MARK: URLProtocol
@@ -137,7 +137,7 @@ public class ShalonURLProtocol : URLProtocol {
 
 		let optionalMethod = Http.Method(rawValue: request.httpMethod!.uppercased())
 		guard optionalMethod != nil else {
-			client!.urlProtocol(self, didFailWithError: ShalonErrors.unknownHTTPMethod)
+			client!.urlProtocol(self, didFailWithError: Error.unknownHTTPMethod)
 			return
 		}
 
@@ -180,11 +180,12 @@ public class ShalonURLProtocol : URLProtocol {
 				return
 			}
 
-			self.client!.urlProtocol(self, didFailWithError: ShalonErrors.noContent)
+			self.client!.urlProtocol(self, didFailWithError: Error.noContent)
 		}
 	}
 
 	override public func stopLoading() {
 		loadingShouldStop = true
 	}
+
 }

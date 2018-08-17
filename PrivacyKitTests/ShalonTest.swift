@@ -44,15 +44,15 @@ class ShalonTest: XCTestCase {
 
 		// Testing incorrectly specified proxies
 		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:8080/shalon2.jondonym.de:/www.google.com")!)) {
-			XCTAssertEqual($0 as? ShalonURLProtocol.ShalonParseError, .incorrectProxySpecification)
+			XCTAssertEqual($0 as? ShalonURLProtocol.ParseError, .incorrectProxySpecification)
 		}
 
 		// Testing too few specified proxies
 		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpss://www.google.com")!)) {
-			XCTAssertEqual($0 as? ShalonURLProtocol.ShalonParseError, .tooFewProxies)
+			XCTAssertEqual($0 as? ShalonURLProtocol.ParseError, .tooFewProxies)
 		}
 		XCTAssertThrowsError(try ShalonURLProtocol.parseShalonParams(from: URL(string: "httpsss://shalon1.jondonym.de:80/www.google.com")!)) {
-			XCTAssertEqual($0 as? ShalonURLProtocol.ShalonParseError, .tooFewProxies)
+			XCTAssertEqual($0 as? ShalonURLProtocol.ParseError, .tooFewProxies)
 		}
 
 		// Testing correct examples

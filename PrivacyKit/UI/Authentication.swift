@@ -59,10 +59,10 @@ public enum AuthenticationError: Error {
 	authentication (Face ID or Touch ID) is tried first if available and
 	passcode authentication is used as a fallback.
 
-	#### Example
+	## Examples
 
 	```swift
-	context = authenticateDeviceOwner(reason: "Unlock something") {
+	var context = authenticateDeviceOwner(reason: "Unlock something") {
 	    authenticationError in
 
 	    guard authenticationError == nil else {
@@ -74,6 +74,9 @@ public enum AuthenticationError: Error {
 	    // Successfully authenticated
 	    unlockSomething()
 	}
+
+	// Invalidate context
+	context.invalidate()
 	```
 
 	- note:

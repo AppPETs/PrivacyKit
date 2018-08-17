@@ -36,7 +36,10 @@ public class Shalon: NSObject, StreamDelegate {
 	private var state: State = .inactive
 	private var targets: [Target] = []
 	private var streams: [PairedStream] = []
-	private var currentLayer = 0
+
+	private var currentLayer: Int {
+		return (streams.count < 2) ? 0 : streams.count - 1
+	}
 
 	private var request: Http.Request! = nil
 	private var completionHandler: CompletionHandler! = nil
@@ -91,7 +94,6 @@ public class Shalon: NSObject, StreamDelegate {
 
 	private func wrapCurrentLayerWithTls() {
 		assert(currentLayer < targets.count, "Cannot have more layers than targets!")
-		assert(currentLayer <= streams.count, "Cannot have more layers than streams!")
 
 		let target = targets[currentLayer]
 		let stream = streams.last!
@@ -105,8 +107,6 @@ public class Shalon: NSObject, StreamDelegate {
 		let wrappedOutputStream = TLSOutputStream(stream.output, boundTo: wrappedInputStream, withSession: session)
 		let wrappedStream = PairedStream(input: wrappedInputStream, output: wrappedOutputStream)
 		streams.append(wrappedStream)
-
-		currentLayer += 1
 
 		wrappedStream.delegate = self
 		wrappedStream.schedule(in: RunLoop.current, forMode: .defaultRunLoopMode)
@@ -222,7 +222,6 @@ public class Shalon: NSObject, StreamDelegate {
 		currentStream.close()
 
 		streams.removeAll()
-		currentLayer = 0
 
 		request = nil
 		completionHandler = nil
@@ -259,7 +258,6 @@ public class Shalon: NSObject, StreamDelegate {
 	}
 
 	private var currentTargetIdx: Int {
-		assert((0..<streams.count).contains(currentLayer))
 		assert(currentLayer <= targets.count)
 
 		return (currentLayer < 2) ? 0 : currentLayer - 1
@@ -278,8 +276,6 @@ public class Shalon: NSObject, StreamDelegate {
 	}
 
 	private var currentStream: PairedStream {
-		assert((0..<streams.count).contains(currentLayer))
-
 		return streams[currentLayer]
 	}
 }

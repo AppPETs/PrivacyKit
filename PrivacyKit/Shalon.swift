@@ -60,6 +60,7 @@ public class Shalon: NSObject, StreamDelegate {
 		self.completionHandler = completionHandler
 
 		// Initialize streams
+		let firstHop = targets.first!
 		var optionalInputStream: InputStream? = nil
 		var optionalOutputStream: OutputStream? = nil
 		Stream.getStreamsToHost(withName: firstHop.hostname, port: Int(firstHop.port), inputStream: &optionalInputStream, outputStream: &optionalOutputStream)
@@ -255,10 +256,6 @@ public class Shalon: NSObject, StreamDelegate {
 	private var nextState: State {
 		// There is one more layers than targets
 		return (nextTargetIdx < targets.count) ? .shouldEstablishTunnelConnection : .shouldSendHttpRequest
-	}
-
-	private var firstHop: Target {
-		return targets.first!
 	}
 
 	private var currentTargetIdx: Int {

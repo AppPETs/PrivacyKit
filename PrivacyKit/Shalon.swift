@@ -215,6 +215,10 @@ public class Shalon: NSObject, StreamDelegate {
 			target will be established. Which means that the IP address of the
 			current device will be visible to the target.
 
+		- postcondition:
+			Either the response or the error parameter of the
+			`completionHandler` is set, the other one is `nil`.
+
 		- parameters:
 			- request: The HTTP request.
 			- completionHandler: A callback function. Its parameters are either

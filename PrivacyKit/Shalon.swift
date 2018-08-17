@@ -105,7 +105,7 @@ public class Shalon: NSObject, StreamDelegate {
 		let wrappedStream = PairedStream(input: wrappedInputStream, output: wrappedOutputStream)
 		streams.append(wrappedStream)
 
-		currentLayer = nextLayer
+		currentLayer += 1
 
 		wrappedStream.delegate = self
 		wrappedStream.schedule(in: RunLoop.current, forMode: .defaultRunLoopMode)
@@ -255,10 +255,6 @@ public class Shalon: NSObject, StreamDelegate {
 	private func determineNextAction() -> State {
 		// There is one more layers than targets
 		return (nextTargetIdx < targets.count) ? .shouldEstablishTunnelConnection : .shouldSendHttpRequest
-	}
-
-	private var nextLayer: Int {
-		return currentLayer + 1
 	}
 
 	private var firstHop: Target {

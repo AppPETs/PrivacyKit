@@ -1,19 +1,25 @@
 import Foundation
 
 public class ShalonURLProtocol : URLProtocol {
-	var loadingShouldStop: Bool = false
-
-	struct ShalonParams {
-		let proxies : [Target]
-		let requestUrl : URL
-	}
 
 	enum ShalonParseError : Error {
 		case tooFewProxies
 		case incorrectProxySpecification
 	}
 
-	class func parseShalonParams(from url: URL) throws -> ShalonParams?{
+	enum ShalonErrors : Error {
+		case NotImplemented
+		case UnknownHTTPMethod
+		case NoContents
+	}
+
+	struct ShalonParams {
+		let proxies : [Target]
+		let requestUrl : URL
+	}
+	private var loadingShouldStop: Bool = false
+
+	static func parseShalonParams(from url: URL) throws -> ShalonParams?{
 		var numProxies : Int
 		var shalonProxies : [Target] = []
 
@@ -110,12 +116,6 @@ public class ShalonURLProtocol : URLProtocol {
 
 	override public class func canonicalRequest(for request: URLRequest) -> URLRequest {
 		return request
-	}
-
-	enum ShalonErrors : Error {
-		case NotImplemented
-		case UnknownHTTPMethod
-		case NoContents
 	}
 
 	override public func startLoading() {

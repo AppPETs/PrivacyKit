@@ -1,13 +1,33 @@
 import CoreFoundation
 import Foundation
 
+/**
+	A class that mainly acts as a namespace for HTTP-related functionality.
+*/
 public class Http {
 
+	/**
+		A type-safe HTTP error.
+	*/
 	public enum Error: Swift.Error {
+
+		/**
+			This error indicates that a response could not be parsed correctly.
+		*/
 		case invalidResponse
+
+		/**
+			This error indicates an unexpected response. Each response can
+			potentially be unexpected, depending on the caller. The arguments of
+			the error are an HTTP status code as well as a description.
+		*/
 		case unexpectedResponse(Http.Status, String)
+
 	}
 
+	/**
+		A type-safe HTTP method.
+	*/
 	public enum Method: String {
 		case connect = "CONNECT"
 		case delete  = "DELETE"
@@ -19,6 +39,9 @@ public class Http {
 		case trace   = "TRACE"
 	}
 
+	/**
+		A type-safe HTTP status category.
+	*/
 	public enum StatusCategory {
 		case informal
 		case success
@@ -27,6 +50,9 @@ public class Http {
 		case serverError
 	}
 
+	/**
+		A type-safe HTTP status.
+	*/
 	public enum Status: UInt16 {
 		// Informal
 		case Continue                      = 100
@@ -95,6 +121,9 @@ public class Http {
 		case notExtended                   = 510
 		case networkAuthenticationRequired = 511
 
+		/**
+			The HTTP status category for an HTTP status.
+		*/
 		public var category: StatusCategory {
 			switch self.rawValue {
 				case 100..<200:
@@ -111,38 +140,90 @@ public class Http {
 					fatalError("Invalid status!")
 			}
 		}
+
 	}
 
 	// TODO Define custom class/struct for headers which also handle case-insensitivity
+	/**
+		Type-safe HTTP header keys.
+	*/
 	public enum Header: String {
 		case host = "Host"
 		case contentLength = "Content-Length"
 		case contentType = "Content-Type"
 	}
 
+	/**
+		Type-safe HTTP content types.
+	*/
 	public enum ContentType: String {
 		case octetStream = "application/octet-stream"
 	}
 
+	/**
+		An alias for HTTP headers.
+	*/
 	public typealias Headers = [String: String]
 
+	/**
+		A class representing HTTP messages.
+	*/
 	public class Message {
+
+		/**
+			The HTTP message's headers.
+		*/
 		let headers: Headers
+
+		/**
+			An optional body.
+		*/
 		let	body: Data?
 
+		/**
+			Initialize a message with headers and an optional body.
+
+			- parameters:
+				- headers: The HTTP message's headers.
+				- body: An optional body.
+		*/
 		init(withHeaders headers: Headers = [:], andBody body: Data? = nil) {
 			self.headers = headers
 			self.body = body
 		}
+
 	}
 
+	/**
+		A class representing an HTTP request.
+	*/
 	public class Request: Message {
 
+		/**
+			The method of the request.
+		*/
 		let method: Method
+
+		/**
+			The requested URL.
+		*/
 		let url: URL
+
+		/**
+			HTTP options.
+		*/
 		let options: String?
 
-		// FIXME Handle different casing for patched headers
+		/**
+			Initialize an HTTP request.
+
+			- parameters:
+				- method: The request's HTTP method.
+				- url: The requested URL.
+				- headers: Headers of the request.
+				- body: An optional body of the request.
+				- options: Optional HTTP options.
+		*/
 		init?(withMethod method: Method, andUrl url: URL, andHeaders headers: Headers = [:], andBody body: Data = Data(), andOptions options: String? = nil) {
 
 			// Sanitize URL
@@ -178,12 +259,31 @@ public class Http {
 			super.init(withHeaders: patchedHeaders, andBody: body)
 		}
 
-		class func connect(toTarget target: Target, viaProxy proxy: Target, withHeaders headers: Headers = [:]) -> Request? {
+		/**
+			Construct a HTTP CONNECT request for establishing TCP tunnels
+			through HTTP proxy server, which supports this.
+
+			- parameters:
+				- target: The target of the request, i.e., the server to which
+					the tunnel should be established.
+				- proxy: The proxy server, through which the tunnel should be
+					established.
+				- headers: The headers of the request.
+
+			- returns:
+				The request, `nil` if arguments are invalid.
+		*/
+		static func connect(toTarget target: Target, viaProxy proxy: Target, withHeaders headers: Headers = [:]) -> Request? {
 			let proxyUrl = URL(string: "https://\(proxy.formatted())")!
 			return Request(withMethod: .connect, andUrl: proxyUrl, andHeaders: headers, andBody: Data(), andOptions: target.formatted())
 		}
 
-		// TODO Encoding
+		/**
+			Compose a request into date that can be sent to the HTTP server.
+
+			- returns:
+				The composed request.
+		*/
 		var composed: Data {
 			let args = (options == nil) ? url.path : options!
 
@@ -198,11 +298,25 @@ public class Http {
 
 			return rawRequest
 		}
+
 	}
 
+	/**
+		A class representing an HTTP response.
+	*/
 	public class Response: Message {
+
+		/**
+			The HTTP status code.
+		*/
 		let status: Status
 
+		/**
+			Construct an HTTP response from raw data.
+
+			- returns:
+				`nil` if the response is invalid.
+		*/
 		init?(withRawData rawData: Data) {
 			let cfResponse = CFHTTPMessageCreateEmpty(kCFAllocatorDefault, /* isRequest: */ false).takeRetainedValue()
 			let success = rawData.withUnsafeBytes { CFHTTPMessageAppendBytes(cfResponse, $0, rawData.count) }
@@ -237,38 +351,92 @@ public class Http {
 
 			super.init(withHeaders: headers, andBody: body)
 		}
+
 	}
+
 }
 
 extension URLRequest {
+
+	/**
+		Add a HTTP header.
+
+		- parameters:
+			- value: The value of the header field.
+			- header: The key of the header field.
+	*/
 	public mutating func add(value: String, for header: Http.Header) {
 		addValue(value, forHTTPHeaderField: header.rawValue)
 	}
 
+	/**
+		Set the content type of the HTTP request's body.
+
+		- parameters:
+			- contentType: The content type.
+	*/
 	public mutating func set(contentType: Http.ContentType) {
 		add(value: contentType.rawValue, for: .contentType)
 	}
 
+	/**
+		Set the HTTP method of the request.
+
+		- parameters:
+			- method: The HTTP method.
+	*/
 	public mutating func set(method: Http.Method) {
 		httpMethod = method.rawValue
 	}
+
 }
 
 extension HTTPURLResponse {
+
+	/**
+		A type-safe HTTP status.
+	*/
 	public var status: Http.Status {
 		assert(0 <= statusCode)
 		return Http.Status(rawValue: UInt16(statusCode))!
 	}
 
+	/**
+		Construct an HTTP error from the current status and the description.
+	*/
 	public var unexpected: Http.Error {
 		return .unexpectedResponse(status, description)
 	}
+
 }
 
+/**
+	A struct that represents a network target. It consists of a hostname or an
+	IP address and a port number.
+*/
 public struct Target {
+
+	/**
+		The hostname or IP address of the target. The IP address can either be
+		IPv4 or IPv6.
+	*/
 	public let hostname: String
+
+	/**
+		The port.
+	*/
 	public let port: UInt16
 
+	/**
+		Initialize a target with a given hostname and port.
+
+		- parameters:
+			- hostname: The hostname or IP address.
+			- port: The port
+
+		- returns:
+			`nil` if `hostname` or `port` is invalid.
+	*/
 	public init?(withHostname hostname: String, andPort port: UInt16) {
 
 		guard !hostname.isEmpty else {
@@ -291,13 +459,33 @@ public struct Target {
 		self.port = UInt16(exactly: portAsInt)!
 	}
 
+	/**
+		A string representation of the target.
+
+		- returns:
+			`example.com:80` if the hostname is `example.com` and the port is 80.
+	*/
 	public func formatted() -> String {
 		return "\(hostname):\(port)"
 	}
+
 }
 
 extension Target: Equatable {
+
+	/**
+		Compare two targets. Two targets are equal if their hostnames and their
+		ports are equal.
+
+		- parameters:
+			- lhs: A target.
+			- rhs: Another target.
+
+		- returns:
+			`true` if and only if `lhs` and `rhs` are equal.
+	*/
 	public static func == (lhs: Target, rhs: Target) -> Bool {
 		return lhs.hostname == rhs.hostname && lhs.port == rhs.port
 	}
+
 }

@@ -5,7 +5,7 @@ infix operator =~: ComparisonPrecedence
 /**
 	Infix operator for testing if a string matches a regular expression.
 
-	#### Example
+	## Example
 
 	```swift
 	let sentence = "The world is flat."
@@ -25,7 +25,7 @@ public func =~(input: String, pattern: String) -> Bool {
 /**
 	Infix operator for testing if a string matches a regular expression.
 
-	#### Example
+	## Example
 
 	```swift
 	let pattern = RegularExpression("^The")!
@@ -74,7 +74,7 @@ public class RegularExpression {
 	/**
 		Tests if the regular expression matches a given string `input`.
 
-		#### Example
+		## Example
 
 		```swift
 		let pattern = RegularExpression("^The")!

@@ -560,6 +560,10 @@ extension PrivacyService {
 		return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
 	}
 
+	/**
+		This class handles the URL construction of the key-value storage API of
+		the P-Service.
+	*/
 	class KeyValueStorage {
 
 		/**

@@ -232,8 +232,11 @@ public class Http {
 		Type-safe HTTP header keys.
 	*/
 	public enum Header: String {
+		/// `Host`
 		case host = "Host"
+		/// `Content-Length`
 		case contentLength = "Content-Length"
+		/// `Content-Type`
 		case contentType = "Content-Type"
 	}
 
@@ -241,6 +244,7 @@ public class Http {
 		Type-safe HTTP content types.
 	*/
 	public enum ContentType: String {
+		/// `application/octet-stream`
 		case octetStream = "application/octet-stream"
 	}
 

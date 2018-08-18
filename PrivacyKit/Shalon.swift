@@ -486,12 +486,7 @@ public class Shalon: NSObject, StreamDelegate {
 	private func send(request: Http.Request, toStream stream: OutputStream) {
 		assert(stream.hasSpaceAvailable)
 
-		guard let rawRequest = request.compose() else {
-			print("Failed to compose request")
-			return
-		}
-
-		guard 0 < stream.write(data: rawRequest) else {
+		guard 0 < stream.write(data: request.composed) else {
 			print("Not everything was sent")
 			return
 		}

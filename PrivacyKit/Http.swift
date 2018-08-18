@@ -184,7 +184,7 @@ public class Http {
 		}
 
 		// TODO Encoding
-		func compose() -> Data? {
+		var composed: Data {
 			let args = (options == nil) ? url.path : options!
 
 			var rawRequest = Data("\(method.rawValue) \(args) \(kCFHTTPVersion1_1 as NSString)\r\n".utf8)

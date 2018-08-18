@@ -59,7 +59,7 @@ class HttpTests: XCTestCase {
 	func testHeadRequest() {
 		let request = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 
-		let actual = String(data: request.compose()!, encoding: .utf8)!
+		let actual = String(data: request.composed, encoding: .utf8)!
 		let expected = "HEAD / HTTP/1.1\r\nX-Test: foobar\r\nHost: example.com\r\nX-Foo: Bar\r\n\r\n"
 
 		XCTAssertEqual(actual, expected)
@@ -70,7 +70,7 @@ class HttpTests: XCTestCase {
 		let proxy = Target(withHostname: "localhost", andPort: 8888)!
 		let request = Http.Request.connect(toTarget: target, viaProxy: proxy, withHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 
-		let actual = String(data: request.compose()!, encoding: .utf8)!
+		let actual = String(data: request.composed, encoding: .utf8)!
 		let expected = "CONNECT example.com:80 HTTP/1.1\r\nX-Test: foobar\r\nHost: localhost\r\nX-Foo: Bar\r\n\r\n"
 
 		XCTAssertEqual(actual, expected)

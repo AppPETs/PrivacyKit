@@ -257,7 +257,7 @@ public class Shalon: NSObject, StreamDelegate {
 		}
 
 		let wrappedInputStream = WrappedInputStream(inputStream)
-		let wrappedOutputStream = WrappedOutputStream(outputStream, boundTo: wrappedInputStream)
+		let wrappedOutputStream = WrappedOutputStream(outputStream)
 		let stream = PairedStream(input: wrappedInputStream, output: wrappedOutputStream)
 
 		/*
@@ -294,7 +294,7 @@ public class Shalon: NSObject, StreamDelegate {
 		}
 
 		let wrappedInputStream = TLSInputStream(stream.input, withSession: session)
-		let wrappedOutputStream = TLSOutputStream(stream.output, boundTo: wrappedInputStream, withSession: session)
+		let wrappedOutputStream = TLSOutputStream(stream.output, withSession: session)
 		let wrappedStream = PairedStream(input: wrappedInputStream, output: wrappedOutputStream)
 		streams.append(wrappedStream)
 

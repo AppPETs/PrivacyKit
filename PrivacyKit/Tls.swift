@@ -324,13 +324,11 @@ class WrappedInputStream: InputStream, StreamDelegate {
 class WrappedOutputStream: OutputStream, StreamDelegate {
 	let _stream: OutputStream
 	var stream: OutputStream { return _stream }
-	let inputStream: WrappedInputStream
 
 	weak var _delegate: StreamDelegate? = nil
 
-	init(_ stream: OutputStream, boundTo inputStream: WrappedInputStream) {
+	init(_ stream: OutputStream) {
 		self._stream = stream
-		self.inputStream = inputStream
 
 		super.init(toMemory: ())
 
@@ -623,10 +621,10 @@ class TLSOutputStream: WrappedOutputStream, TlsSessionDelegate {
 	var status: Stream.Status = .notOpen
 	var error: Error? = nil
 
-	init(_ stream: OutputStream, boundTo inputStream: TLSInputStream, withSession session: TlsSession) {
+	init(_ stream: OutputStream, withSession session: TlsSession) {
 		self.session = session
 
-		super.init(stream, boundTo: inputStream)
+		super.init(stream)
 
 		session.delegates.append(self)
 	}

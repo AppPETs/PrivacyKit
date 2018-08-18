@@ -8,7 +8,7 @@ let MASTER_KEY_PREFIX_SIZE_IN_BYTES = MASTER_KEY_PREFIX.utf8Bytes.count
 extension MasterKey {
 
 	/**
-		Export the master key as a QR Code.
+		Export the master key as a QR Code. The value is Base64-encoded.
 
 		- returns:
 			The QR Code.

@@ -1,7 +1,15 @@
 import Foundation
 
+/**
+	A generic error type.
+*/
 enum GenericError: Error {
+
+	/**
+		A generic error with a custom error message.
+	*/
 	case generic(String)
+
 }
 
 /**

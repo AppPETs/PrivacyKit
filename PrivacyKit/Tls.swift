@@ -234,7 +234,7 @@ class TlsSession {
 
 class WrappedInputStream: InputStream, StreamDelegate {
 	let _stream: InputStream
-	var stream: InputStream { get { return _stream } }
+	var stream: InputStream { return _stream }
 
 	weak var _delegate: StreamDelegate? = nil
 

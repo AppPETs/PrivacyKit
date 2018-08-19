@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -114,13 +114,10 @@
                 <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -259,18 +256,57 @@
 
                 </div>
               </div>
-            <h4 id='example' class='heading'>Example</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+            <p>With this class you can connect to a target through a
+<a href="http://dx.doi.org/10.1109/ICCCN.2009.5235258">Shalon</a> proxy. Connections to
+the proxy and connections to the target will each be encrypted using TLS.
+This means that your ISP or other people in your network cannot observe to
+which target you connect, because they only see connections to the proxy.
+The proxy itself does not see the content of your requests to the target.
+The target will only see the proxy&rsquo;s IP address (except if the IP address is
+otherwise embedded into the request).</p>
+
+<p>This implementation supports multiple hops. Simply add other layers.</p>
+
+<p>In order to use Shalon proxies with your <code>URLSession</code> connections, please
+take look at <code><a href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a></code>.</p>
+<h2 id='examples' class='heading'>Examples</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">proxy1</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"shalon1.jondonym.net"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">proxy2</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"shalon2.jondonym.net"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">proxy3</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"shalon3.jondonym.net"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+
 <span class="k">let</span> <span class="nv">shalon</span> <span class="o">=</span> <span class="kt">Shalon</span><span class="p">(</span><span class="nv">withTarget</span><span class="p">:</span> <span class="n">target</span><span class="p">)</span>
 
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy1.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8443</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy2.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8442</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy3.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8441</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="n">proxy3</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="n">proxy2</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="n">proxy1</span><span class="p">)</span>
 
 <span class="n">shalon</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">(</span><span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="nv">andUrl</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">optionalResponse</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
     <span class="c1">// TODO Do something</span>
 <span class="p">}</span>
+</code></pre>
+
+<p>This will establish a nested tunnel, where <code>proxy1</code> cannot see what the
+<code>client</code> sends to <code>proxy2</code>, as depicted:</p>
+<pre class="highlight swift"><code><span class="n">client</span>           <span class="n">proxy1</span>           <span class="n">proxy2</span>           <span class="n">proxy3</span>          <span class="n">target</span>
+<span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+----------------+</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span> <span class="kt">CONNECT</span> <span class="n">proxy2</span> <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+---------------------------------+</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span>                  <span class="kt">CONNECT</span> <span class="n">proxy3</span> <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>               <span class="o">|</span>
+<span class="o">|</span>                                   <span class="kt">CONNECT</span> <span class="n">proxy4</span> <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+------------------------------------------------------------------+</span>
+<span class="o">|</span>                                                    <span class="kt">HEAD</span> <span class="o">/</span>        <span class="o">|</span>
+<span class="o">+------------------------------------------------------------------+</span>
+<span class="o">|</span>                                                  <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>               <span class="o">|</span>
+<span class="o">|</span>                                 <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+---------------------------------+</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+----------------+</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
 </code></pre>
 
           </div>
@@ -293,7 +329,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A helper type for our callbacks, a function that gets either a HTTP
+response or an error.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +342,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L143">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -323,7 +360,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Construct a Shalon object with a given target. After calling this,
+proxies can be added by calling <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC8addLayeryAA6TargetVF">addLayer(_:)</a></code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>If no layer is added, a direct connection will be made. Which means
+that the IP address of the current device will be visible to the
+target.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -334,8 +379,28 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>target</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The address of the server, to which requests should be
+issued.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L44-L48">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L199-L203">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -353,7 +418,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This adds a proxy, which is connected before each other layer that was
+previously added, i.e., the last layer added will be the layer the
+initial conenction is made to.</p>
 
                       </div>
                       <div class="declaration">
@@ -364,8 +431,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>target</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A proxy address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L50-L52">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L213-L215">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -383,7 +469,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Issue an HTTP request. The request is send through a TLS tunnel via
+proxy servers added with <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC8addLayeryAA6TargetVF">addLayer(_:)</a></code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>If no layer was added with <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC8addLayeryAA6TargetVF">addLayer(_:)</a></code>, a direct connection to the
+target will be established. Which means that the IP address of the
+current device will be visible to the target.</p>
+
+</div>
+<div class="aside aside-postcondition">
+    <p class="aside-title">Postcondition</p>
+    <p>Either the response or the error parameter of the
+<code>completionHandler</code> is set, the other one is <code>nil</code>.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -394,8 +494,40 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The HTTP request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A callback function. Its parameters are either
+an optional HTTP response or an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L54-L89">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L235-L276">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -424,7 +556,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Implementation of the <a href="https://developer.apple.com/documentation/foundation/streamdelegate"><code>StreamDelegate</code></a>
+protocol.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/streamdelegate/1410079-stream"><code>stream(_:handle:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -435,8 +573,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream on which streamEvent occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream event that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L121-L139">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L322-L340">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -449,7 +618,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

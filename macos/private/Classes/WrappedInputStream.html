@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -271,7 +268,18 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>This class wraps an input stream.</p>
+
+<p>This somehow helps handling input streams. Looks like one cannot direcly
+use a sub-classed input stream, so there is a stream kept as an internal
+variable. In addition there is a computed property to return this variable.
+That way it can be overwritten by sub classe. Maybe there is a better way to
+handle this.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/inputstream"><code>InputStream</code></a>
+
+</div>
 
           </div>
         </section>
@@ -293,7 +301,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The internal input stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +313,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L413">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -323,7 +331,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Returns the internal input stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -335,7 +343,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L415">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -353,7 +361,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The internal delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -365,7 +373,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L418">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -383,7 +391,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize a wrapped stream with a given input stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -394,8 +402,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input stream.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L241-L249">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L426-L434">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -424,7 +451,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get or set the delegate for the stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1418423-delegate"><code>Stream.delegate</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -436,7 +468,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L253-L256">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L444-L447">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -454,7 +486,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get the status for the stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1413038-streamstatus"><code>Stream.streamStatus</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -466,7 +503,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L258-L260">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L455-L457">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -484,7 +521,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get the error for the stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1416359-streamerror"><code>Stream.streamError</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -496,7 +538,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L262-L264">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L465-L467">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -514,7 +556,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Open the stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1411963-open"><code>Stream.open()</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -526,7 +573,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L266-L268">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L475-L477">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -544,7 +591,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Close the stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1410399-close"><code>Stream.close()</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -556,7 +608,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L270-L272">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L485-L487">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -574,7 +626,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Schedule the stream in a given run loop for a given mode.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/stream/1417370-schedule"><code>Stream.schedule(in:forMode:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -585,8 +642,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>runLoop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop mode.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L274-L276">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L499-L501">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -604,7 +692,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Remove the stream from a given run loop for a given mode.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/stream/1411285-remove"><code>Stream.schedule(from:forMode:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -615,8 +708,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>runLoop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop mode.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L278-L280">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L513-L515">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -634,7 +758,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get a property for a given key.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/stream/1410226-property"><code>Stream.property(forKey:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -645,8 +774,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L282-L284">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L526-L528">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -664,7 +812,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Set a property for a given key to a given value.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/stream/1412045-setproperty"><code>Stream.setProperty(_:forKey:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -675,8 +828,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>property</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value of the property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L286-L288">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L540-L542">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -705,7 +889,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Indicates whether bytes are available on the wrapped input stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/inputstream/1409410-hasbytesavailable"><code>InputStream.hasBytesAvailable</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -717,7 +906,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L292-L294">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L552-L554">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -735,7 +924,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Read bytes from the wrapped input stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/inputstream/1411544-read"><code>InputStream.read(_:maxLength:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -746,8 +940,44 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to the buffer, to which the bytes should be
+read.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>maxLength</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The maximum lenghts of bytes to be read.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The amount of bytes actually read.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L296-L302">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L570-L576">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -765,7 +995,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get the buffer of the wrapped input stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -776,8 +1006,44 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>buffer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to the buffer.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>length</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to a number, where the length of the buffer will
+be stored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the buffer is available.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L304-L306">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L589-L591">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -806,7 +1072,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Delegate function for the wrapped stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/streamdelegate/1410079-stream"><code>StreamDelegate.stream(_:handle:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -817,8 +1088,40 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>aStream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream calling the delegate. Has to be the wrapped
+input stream.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>eventCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The event that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L310-L315">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L606-L611">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -847,7 +1150,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Notify delegates that events occurred.</p>
 
                       </div>
                       <div class="declaration">
@@ -858,8 +1161,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>events</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The events.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L319-L321">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L621-L623">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -872,7 +1194,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

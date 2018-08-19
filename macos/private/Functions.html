@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/TLSInputStream.html">TLSInputStream</a>
@@ -288,7 +285,7 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Infix operator for testing if a string matches a regular expression.</p>
-<h4 id='example' class='heading'>Example</h4>
+<h2 id='example' class='heading'>Example</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">sentence</span> <span class="o">=</span> <span class="s">"The world is flat."</span>
 <span class="k">if</span> <span class="n">sentence</span> <span class="o">=~</span> <span class="s">"^The"</span> <span class="p">{</span>
     <span class="c1">// The sentence starts with "The"</span>
@@ -336,7 +333,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/RegularExpression.swift#L21-L23">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/RegularExpression.swift#L21-L23">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -355,7 +352,7 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Infix operator for testing if a string matches a regular expression.</p>
-<h4 id='example' class='heading'>Example</h4>
+<h2 id='example' class='heading'>Example</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">pattern</span> <span class="o">=</span> <span class="kt">RegularExpression</span><span class="p">(</span><span class="s">"^The"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">sentence</span> <span class="o">=</span> <span class="s">"The world is flat."</span>
 <span class="k">if</span> <span class="n">sentence</span> <span class="o">=~</span> <span class="n">pattern</span> <span class="p">{</span>
@@ -404,7 +401,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/RegularExpression.swift#L42-L44">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/RegularExpression.swift#L42-L44">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -426,7 +423,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The function that actually handles TLS reading. This has to be a static
+function, therefore a paired stream is stored inside the connection
+reference in order to be able to read data from it.</p>
 
                       </div>
                       <div class="declaration">
@@ -441,8 +440,58 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectionPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to the paired stream, from which data should
+be read and decrypted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to a byte array, where the decrypted data should be
+stored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataLengthPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to an integer, where the amount of read bytes
+is stored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A status, as defined by the secure transport library.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L767-L805">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L1443-L1481">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -460,7 +509,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A function that actually handles TLS writing. This has to be a static
+function, therefore a paired stream is stored inside the connection
+reference in order to be able to write data to it.</p>
 
                       </div>
                       <div class="declaration">
@@ -475,8 +526,59 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectionPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to the paired stream, to which data should be
+encrypted and written.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to the byte array containing the data which should
+be written.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataLengthPtr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to an integer containing the maximum amount
+of bytes, that should be written. The number is replaced with the
+amount of bytes actually written.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A status, as defined by the secure transport library.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L807-L845">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L1500-L1538">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -501,8 +603,8 @@
                         <p>Challenges the user to authenticate as the device owner. Biometric
 authentication (Face ID or Touch ID) is tried first if available and
 passcode authentication is used as a fallback.</p>
-<h4 id='example' class='heading'>Example</h4>
-<pre class="highlight swift"><code><span class="n">context</span> <span class="o">=</span> <span class="nf">authenticateDeviceOwner</span><span class="p">(</span><span class="nv">reason</span><span class="p">:</span> <span class="s">"Unlock something"</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='examples' class='heading'>Examples</h2>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">context</span> <span class="o">=</span> <span class="nf">authenticateDeviceOwner</span><span class="p">(</span><span class="nv">reason</span><span class="p">:</span> <span class="s">"Unlock something"</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">authenticationError</span> <span class="k">in</span>
 
     <span class="k">guard</span> <span class="n">authenticationError</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">else</span> <span class="p">{</span>
@@ -514,6 +616,9 @@ passcode authentication is used as a fallback.</p>
     <span class="c1">// Successfully authenticated</span>
     <span class="nf">unlockSomething</span><span class="p">()</span>
 <span class="p">}</span>
+
+<span class="c1">// Invalidate context</span>
+<span class="n">context</span><span class="o">.</span><span class="nf">invalidate</span><span class="p">()</span>
 </code></pre>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
@@ -584,7 +689,7 @@ it contains the cause for failure.</p>
                         <p>The authentication context.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/UI/Authentication.swift#L93-L124">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/UI/Authentication.swift#L96-L127">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -597,7 +702,7 @@ it contains the cause for failure.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ShalonErrors Enumeration Reference</title>
+    <title>Parameters Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,16 +14,16 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/ShalonErrors" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/Parameters" class="dashAnchor"></a>
 
-    <a title="ShalonErrors Enumeration Reference"></a>
+    <a title="Parameters Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../../index.html">PrivacyKit Reference</a>
       <img class="carat" src="../../img/carat.png" />
-      ShalonErrors Enumeration Reference
+      Parameters Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -264,14 +261,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>ShalonErrors</h1>
+            <h1>Parameters</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ShalonErrors</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Parameters</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>An internal struct that keeps parameters, which will be used for
+establishing a connection via Shalon proxies.</p>
 
           </div>
         </section>
@@ -283,9 +281,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit17ShalonURLProtocolC0C6ErrorsO14NotImplementedA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/NotImplemented" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC0C6ErrorsO14NotImplementedA2EmF">NotImplemented</a>
+                    <a name="/s:10PrivacyKit17ShalonURLProtocolC10ParametersV7proxiesSayAA6TargetVGvp"></a>
+                    <a name="//apple_ref/swift/Property/proxies" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC10ParametersV7proxiesSayAA6TargetVGvp">proxies</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -293,19 +291,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A list of proxies to be connected to.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">NotImplemented</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">proxies</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../../Structs/Target.html">Target</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/ShalonURLProtocol.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/ShalonURLProtocol.swift#L64">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -313,9 +311,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit17ShalonURLProtocolC0C6ErrorsO17UnknownHTTPMethodA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/UnknownHTTPMethod" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC0C6ErrorsO17UnknownHTTPMethodA2EmF">UnknownHTTPMethod</a>
+                    <a name="/s:10PrivacyKit17ShalonURLProtocolC10ParametersV10requestUrl10Foundation3URLVvp"></a>
+                    <a name="//apple_ref/swift/Property/requestUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC10ParametersV10requestUrl10Foundation3URLVvp">requestUrl</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -323,49 +321,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The request URL, which should be issued through the Shalon tunnel.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">UnknownHTTPMethod</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">requestUrl</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/ShalonURLProtocol.swift#L">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10PrivacyKit17ShalonURLProtocolC0C6ErrorsO10NoContentsA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/NoContents" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC0C6ErrorsO10NoContentsA2EmF">NoContents</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">NoContents</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/ShalonURLProtocol.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/ShalonURLProtocol.swift#L69">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -378,7 +346,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

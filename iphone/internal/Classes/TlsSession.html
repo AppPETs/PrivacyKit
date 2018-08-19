@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -114,13 +114,10 @@
                 <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -259,7 +256,8 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>This class represents a TLS session. It manages the context for the session,
+which is used for input as well as output streams.</p>
 
           </div>
         </section>
@@ -281,7 +279,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The TLS context.</p>
 
                       </div>
                       <div class="declaration">
@@ -293,7 +291,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L229">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -311,7 +309,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The session delegates.</p>
 
                       </div>
                       <div class="declaration">
@@ -323,7 +321,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L232">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -341,7 +339,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initializes a TLS session for a given target and stream.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Default App Transport Security (ATS) settings are used. The ATS
+settings cannot be configured in the app&rsquo;s information property list
+(<code>Info.plist</code>).</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -352,8 +357,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>target</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The target for the TLS session.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The TCP stream to the target.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L116-L152">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L249-L285">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -371,7 +407,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Destroys a TLS session.</p>
 
                       </div>
                       <div class="declaration">
@@ -383,7 +419,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L154-L163">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L290-L299">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -412,7 +448,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The state of the TLS session.</p>
 
                       </div>
                       <div class="declaration">
@@ -424,7 +460,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L167-L172">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L306-L311">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -453,7 +489,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function is called when there is space available for the handshake.
+When called it will initiate a TLS handshake or send additional data in
+order to complete the handshake (it is a two-way process).</p>
 
                       </div>
                       <div class="declaration">
@@ -465,7 +503,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L176-L182">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L320-L326">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -483,7 +521,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This function is called when there are bytes available for the
+handshake.</p>
 
                       </div>
                       <div class="declaration">
@@ -495,7 +534,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L184-L194">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L332-L342">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -508,7 +547,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

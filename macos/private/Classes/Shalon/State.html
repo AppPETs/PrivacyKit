@@ -23,7 +23,7 @@
         <a class="header-link" href="../../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -271,7 +268,32 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The state of the HTTP connection.</p>
+<pre class="highlight swift"><code>              <span class="n">inactive</span>
+                  <span class="o">|</span>
+                  <span class="o">|</span>
+                  <span class="n">v</span>
+<span class="o">+---</span> <span class="o">&lt;</span><span class="kt">Another</span> <span class="n">layer</span> <span class="n">available</span><span class="p">?</span><span class="o">&gt;</span> <span class="o">&lt;---+</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="n">v</span>                 <span class="o">|</span>
+<span class="o">|</span>  <span class="n">shouldEstablishTunnelConnection</span>  <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="n">v</span>                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">expectTunnelConnectionEstablished</span> <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">+-----------------+</span>
+<span class="o">|</span>
+<span class="o">+-----------------+</span>
+                  <span class="o">|</span>
+                  <span class="n">v</span>
+        <span class="n">shouldSendHttpRequest</span>
+                  <span class="o">|</span>
+                  <span class="o">|</span>
+                  <span class="n">v</span>
+         <span class="n">expectHttpResponse</span>
+</code></pre>
 
           </div>
         </section>
@@ -293,7 +315,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The connection has not been established.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +327,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L111">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -323,7 +345,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A connection to the proxy server has been established. This state
+indicates that a HTTP CONNECT request to the next hop (the next
+layer or the target) should be made.</p>
 
                       </div>
                       <div class="declaration">
@@ -335,7 +359,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -353,7 +377,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This signal to wait for a HTTP response for a HTTP CONNECT request
+that was already made.</p>
 
                       </div>
                       <div class="declaration">
@@ -365,7 +390,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L124">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -383,7 +408,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The tunnel to the target has been successfully established. This
+signals that we can now make the actual HTTP request.</p>
 
                       </div>
                       <div class="declaration">
@@ -395,7 +421,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L130">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -413,7 +439,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This signals, that we wait for the HTTP response of the actual
+request.</p>
 
                       </div>
                       <div class="declaration">
@@ -425,7 +452,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L136">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -438,7 +465,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

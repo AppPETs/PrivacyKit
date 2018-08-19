@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -271,7 +268,27 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>This class offers a key-value storage, where the values are encrypted and
+the keys are hashed, with a private hashing function. The key-value storage
+backend cannot link keys or values with others, assuming there are multiple
+users, using the same backend. If a network is used, an anonymous
+communication network should be used in order to avoid linkability through
+traffic data.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>The values are not protected by padding, meaning that the backend
+provider could still guess the content based on its size.</p>
+
+</div>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>There is no access protection of the keys. The sole protection is, that
+nobody can get your keys. The values are protected by encryption, so
+confidentiality and integrity are protected, but availability is not.
+The backend provider, who knows which keys are stored in the backend,
+could delete or overwrite them.</p>
+
+</div>
 
           </div>
         </section>
@@ -293,7 +310,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The context that is used for deriving the cryptographic keys from a
+master key.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +323,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L261">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -323,7 +341,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An error that might occur when storing or retrieving values.</p>
 
                         <a href="../Classes/SecureKeyValueStorage/Error.html" class="slightly-smaller">See more</a>
                       </div>
@@ -336,7 +354,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L196-L201">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L266-L298">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -354,7 +372,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The index used for deriving the key for private hashing from the master
+key.</p>
 
                       </div>
                       <div class="declaration">
@@ -366,7 +385,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L304">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -384,7 +403,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The index used for deriving the secret key for encrypting values from
+the master key.</p>
 
                       </div>
                       <div class="declaration">
@@ -396,7 +416,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L310">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -414,7 +434,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The backend used for storing encrypted values.</p>
 
                       </div>
                       <div class="declaration">
@@ -426,7 +446,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L315">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -444,7 +464,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The secret box used for encrypting values.</p>
 
                       </div>
                       <div class="declaration">
@@ -456,7 +476,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L320">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -474,7 +494,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The key used for private hashing.</p>
 
                       </div>
                       <div class="declaration">
@@ -486,7 +506,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L325">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -504,7 +524,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize a secure key-value storage with a given backend.</p>
 
                       </div>
                       <div class="declaration">
@@ -515,8 +535,53 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>backend</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The backend used for storing encrypted values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>masterKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The master key used for deriving they keys for
+encrypting values and the key used for private hashing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context used for deriving the keys from the master
+key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L210-L214">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L337-L341">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -534,7 +599,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize a secure key-value storage with a given P-Service.</p>
 
                       </div>
                       <div class="declaration">
@@ -545,8 +610,53 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>service</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The P-Service used for storing encrypted values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>masterKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The master key used for deriving they keys for
+encrypting values and the key used for private hashing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context used for deriving the keys from the master
+key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L216-L218">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L353-L355">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -564,7 +674,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize a secure key-value storage with a given backend and a given
+persona.</p>
 
                       </div>
                       <div class="declaration">
@@ -575,8 +686,57 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>backend</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The backend used for storing encrypted values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>persona</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The persona, whose keys are used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context used for deriving the keys from the master
+key of the persona.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code> if there is an issue creating or retrieving the persona&rsquo;s keys
+from the Keychain.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L220-L223">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L371-L374">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -594,7 +754,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize a secure key-value storage with a given P-Service and a given
+persona.</p>
 
                       </div>
                       <div class="declaration">
@@ -605,8 +766,57 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>service</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The P-Service used for storing encrypted values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>persona</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The persona, whose keys are used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The context used for deriving the keys from the master
+key of the persona.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code> if there is an issue creating or retrieving the persona&rsquo;s keys
+from the Keychain.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L225-L227">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L390-L392">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -624,7 +834,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Perform private hashing on a key (as in key-value).</p>
 
                       </div>
                       <div class="declaration">
@@ -635,8 +845,31 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key (as in key-value).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A private hash.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L229-L232">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L403-L406">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -654,7 +887,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Encrypt a value.</p>
 
                       </div>
                       <div class="declaration">
@@ -665,8 +898,31 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The plaintext value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The encrypte value.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L234-L236">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L417-L419">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -684,7 +940,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Decrypt a value.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code>failedToDecrypt</code> if the value could not be decrypted.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -695,8 +956,31 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encryptedValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The encrypted value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The plaintext value.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L238-L243">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L433-L438">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -715,9 +999,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit15KeyValueStorageP5storeySays5UInt8VG5value_SS3forys5Error_pSgc8finishedtF"></a>
+                    <a name="/s:10PrivacyKit21SecureKeyValueStorageC5storeySays5UInt8VG5value_SS3forys5Error_pSgc8finishedtF"></a>
                     <a name="//apple_ref/swift/Method/store(value:for:finished:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP5storeySays5UInt8VG5value_SS3forys5Error_pSgc8finishedtF">store(value:for:finished:)</a>
+                    <a class="token" href="#/s:10PrivacyKit21SecureKeyValueStorageC5storeySays5UInt8VG5value_SS3forys5Error_pSgc8finishedtF">store(value:for:finished:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -725,7 +1009,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Store a value in the key-value storage for a given key. The value will
+be encrypted. Both the original key and the plaintext value cannot be
+accessed by the backend.</p>
+<h2 id='example' class='heading'>Example</h2>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"My PIN"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Data</span><span class="p">(</span><span class="s">"1234"</span><span class="o">.</span><span class="n">utf8</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">optionalError</span> <span class="k">in</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span> <span class="p">{</span>
+        <span class="c1">// TODO Handle error</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -735,8 +1031,64 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value that should be stored.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that identifies the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>finished</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that is called asynchronuously once the
+operation is finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional error that might have occurred during storing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L248-L250">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L468-L470">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -744,9 +1096,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_ySays5UInt8VGSg_s5Error_pSgtc8finishedtF"></a>
+                    <a name="/s:10PrivacyKit21SecureKeyValueStorageC8retrieveySS3for_ySays5UInt8VGSg_s5Error_pSgtc8finishedtF"></a>
                     <a name="//apple_ref/swift/Method/retrieve(for:finished:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP8retrieveySS3for_ySays5UInt8VGSg_s5Error_pSgtc8finishedtF">retrieve(for:finished:)</a>
+                    <a class="token" href="#/s:10PrivacyKit21SecureKeyValueStorageC8retrieveySS3for_ySays5UInt8VGSg_s5Error_pSgtc8finishedtF">retrieve(for:finished:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -754,7 +1106,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Retrieve a value from the key-value storage for a given key. The value,
+which is stored encrypted at the backend, will be automatically
+decrypted.</p>
+<h2 id='example' class='heading'>Example</h2>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">retrieve</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"My PIN"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">optionalValue</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
+
+    <span class="nf">precondition</span><span class="p">((</span><span class="n">optionalValue</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">optionalError</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">))</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">optionalValue</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span><span class="o">!</span>
+        <span class="c1">// TODO Handle error</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Success, do something with `value`</span>
+<span class="p">}</span>
+</code></pre>
+<div class="aside aside-postcondition">
+    <p class="aside-title">Postcondition</p>
+    <p>(<code>value</code> = <code>nil</code>) ⊻ (<code>error</code> = <code>nil</code>)</p>
+
+</div>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -764,8 +1139,64 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that identifies the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>finished</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that is called asynchronuously once the
+operation is finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value if no error occurred, <code>nil</code> else.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional error that might have occurred during storing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L252-L270">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L505-L523">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -773,9 +1204,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit15KeyValueStorageP6removeySS3for_ys5Error_pSgc8finishedtF"></a>
+                    <a name="/s:10PrivacyKit21SecureKeyValueStorageC6removeySS3for_ys5Error_pSgc8finishedtF"></a>
                     <a name="//apple_ref/swift/Method/remove(for:finished:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit15KeyValueStorageP6removeySS3for_ys5Error_pSgc8finishedtF">remove(for:finished:)</a>
+                    <a class="token" href="#/s:10PrivacyKit21SecureKeyValueStorageC6removeySS3for_ys5Error_pSgc8finishedtF">remove(for:finished:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -783,7 +1214,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Remove the value from the key-value storage for a given key.</p>
+<h2 id='example' class='heading'>Example</h2>
+<pre class="highlight swift"><code><span class="n">storage</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="s">"name"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">optionalError</span> <span class="k">in</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">optionalError</span> <span class="p">{</span>
+        <span class="c1">// TODO Handle error</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -793,8 +1234,52 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that identifies the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>finished</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that is called asynchronuously once the
+operation is finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional error that might have occurred during storing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L272-L274">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L546-L548">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -807,7 +1292,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

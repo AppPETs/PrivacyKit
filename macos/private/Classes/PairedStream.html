@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -271,7 +268,12 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>This is a convenience class to tie input and output streams together. If a
+tunnel with multiple hops is established, each hop will have separate input
+and output streams.</p>
+
+<p>The API is similar to the <a href="https://developer.apple.com/documentation/foundation/stream"><code>Stream</code></a>
+class.</p>
 
           </div>
         </section>
@@ -293,7 +295,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The input stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +307,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L148">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -323,7 +325,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The output stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -335,7 +337,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L150">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -353,7 +355,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a paired stream from an input and an output stream.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/stream/1411963-open"><code>Stream.open()</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -364,8 +371,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>input</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input stream.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>output</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The output stream.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L78-L81">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L162-L165">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -383,7 +421,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Open both streams.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1411963-open"><code>Stream.open()</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -395,7 +438,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L83-L86">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L173-L176">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -413,7 +456,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Close both streams.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1410399-close"><code>Stream.close()</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -425,7 +473,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L88-L91">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L184-L187">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -443,7 +491,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get or set the delegate for both streams.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://developer.apple.com/documentation/foundation/stream/1418423-delegate"><code>Stream.delegate</code></a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -455,7 +508,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L93-L101">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L195-L203">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -473,7 +526,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Schedule both streams in a given run loop for a given mode.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/stream/1417370-schedule"><code>Stream.schedule(in:forMode:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -484,8 +542,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>runLoop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop mode.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Tls.swift#L103-L106">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Tls.swift#L215-L218">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -498,7 +587,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

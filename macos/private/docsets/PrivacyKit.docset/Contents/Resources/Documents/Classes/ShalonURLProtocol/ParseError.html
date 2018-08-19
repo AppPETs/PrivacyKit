@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ShalonParseError Enumeration Reference</title>
+    <title>ParseError Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,16 +14,16 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/ShalonParseError" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/ParseError" class="dashAnchor"></a>
 
-    <a title="ShalonParseError Enumeration Reference"></a>
+    <a title="ParseError Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../../index.html">PrivacyKit Reference</a>
       <img class="carat" src="../../img/carat.png" />
-      ShalonParseError Enumeration Reference
+      ParseError Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -111,16 +111,16 @@
                 <a class="nav-group-task-link" href="../../Classes/Shalon.html">Shalon</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Shalon/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -142,6 +142,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../../Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Global Variables.html#/s:10PrivacyKit16ChunkSizeInBytes33_CFF75C00828C0134E7FA8E500ED707D2LLSivp">ChunkSizeInBytes</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Global Variables.html#/s:10PrivacyKit17MASTER_KEY_PREFIXSSvp">MASTER_KEY_PREFIX</a>
               </li>
@@ -195,6 +198,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Functions.html#/s:10PrivacyKit23authenticateDeviceOwnerSo9LAContextCSS6reason_yAA19AuthenticationErrorOSgc10completiontF">authenticateDeviceOwner(reason:completion:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Functions.html#/s:10PrivacyKit7tlsRead33_CFF75C00828C0134E7FA8E500ED707D2LLs5Int32VSV13connectionPtr_Sv04dataO0SpySiG0p6LengthO0tF">tlsRead(connectionPtr:dataPtr:dataLengthPtr:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Functions.html#/s:10PrivacyKit8tlsWrite33_CFF75C00828C0134E7FA8E500ED707D2LLs5Int32VSV13connectionPtr_SV04dataO0SpySiG0p6LengthO0tF">tlsWrite(connectionPtr:dataPtr:dataLengthPtr:)</a>
               </li>
             </ul>
           </li>
@@ -252,14 +261,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>ShalonParseError</h1>
+            <h1>ParseError</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ShalonParseError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ParseError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Errors that occur while parsing a Shalon URL.</p>
 
           </div>
         </section>
@@ -271,9 +280,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit17ShalonURLProtocolC0C10ParseErrorO13tooFewProxiesA2EmF"></a>
+                    <a name="/s:10PrivacyKit17ShalonURLProtocolC10ParseErrorO13tooFewProxiesA2EmF"></a>
                     <a name="//apple_ref/swift/Element/tooFewProxies" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC0C10ParseErrorO13tooFewProxiesA2EmF">tooFewProxies</a>
+                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC10ParseErrorO13tooFewProxiesA2EmF">tooFewProxies</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -281,7 +290,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>If this error occurs, too few proxies where specified in a Shalon
+URL. The URL <code>httpss://example.com/</code> will yield such an error, as
+there is only the target <code>example.com</code> given, but no proxy.</p>
 
                       </div>
                       <div class="declaration">
@@ -293,7 +304,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/ShalonURLProtocol.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/ShalonURLProtocol.swift#L43">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -301,9 +312,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit17ShalonURLProtocolC0C10ParseErrorO27incorrectProxySpecificationA2EmF"></a>
+                    <a name="/s:10PrivacyKit17ShalonURLProtocolC10ParseErrorO27incorrectProxySpecificationA2EmF"></a>
                     <a name="//apple_ref/swift/Element/incorrectProxySpecification" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC0C10ParseErrorO27incorrectProxySpecificationA2EmF">incorrectProxySpecification</a>
+                    <a class="token" href="#/s:10PrivacyKit17ShalonURLProtocolC10ParseErrorO27incorrectProxySpecificationA2EmF">incorrectProxySpecification</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,7 +322,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>If this error occurs, a proxy specification within an URL is
+invalid. The URL <code>httpsss://proxy1/proxy2:/example.com/</code> will yield
+such an error, as there is no port after the second proxy. An
+invalid IPv6 address, e.g., due to missing brackets will also lead
+to this error.</p>
 
                       </div>
                       <div class="declaration">
@@ -323,7 +338,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/ShalonURLProtocol.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/ShalonURLProtocol.swift#L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -336,7 +351,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

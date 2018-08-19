@@ -23,7 +23,7 @@
         <a class="header-link" href="../../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -271,7 +268,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>An error that might occur when storing or retrieving values.</p>
 
           </div>
         </section>
@@ -293,7 +290,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This error indicates that a value does not exists if it is tried to
+retrieved or removed.</p>
 
                       </div>
                       <div class="declaration">
@@ -305,7 +303,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L272">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -323,7 +321,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This error indicates that there is no value for a given key.
+Meaning that the value exists (in contrast to <code><a href="../../Classes/SecureKeyValueStorage/Error.html#/s:10PrivacyKit21SecureKeyValueStorageC5ErrorO17valueDoesNotExistA2EmF">valueDoesNotExist</a></code>)
+but that the byte array is empty. This should not happen in normal
+circumstances.</p>
 
                       </div>
                       <div class="declaration">
@@ -335,7 +336,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L280">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -353,7 +354,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This error indicates that the encrypted value is too short. It
+means that there is something of the message authentication code is
+missing, which is used for checking the integrity of the value, or
+something of the nonce is missing. Since the format is erroneous,
+there is no way to decrypt the value. This should not happen in
+normal circumstances.</p>
 
                       </div>
                       <div class="declaration">
@@ -365,7 +371,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L290">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -383,7 +389,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This error indicates that the encrypted value has been tampered
+with and the integrity of the message is violated.</p>
 
                       </div>
                       <div class="declaration">
@@ -395,7 +402,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/KeyValueStorage.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/KeyValueStorage.swift#L296">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -408,7 +415,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

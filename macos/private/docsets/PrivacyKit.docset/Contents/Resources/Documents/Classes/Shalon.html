@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           PrivacyKit Docs
         </a>
-         (16% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -117,13 +117,10 @@
                 <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParams.html">– ShalonParams</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ParseError.html">– ParseError</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonParseError.html">– ShalonParseError</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/ShalonErrors.html">– ShalonErrors</a>
+                <a class="nav-group-task-link" href="../Classes/ShalonURLProtocol/Parameters.html">– Parameters</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TLSInputStream.html">TLSInputStream</a>
@@ -271,18 +268,57 @@
 
                 </div>
               </div>
-            <h4 id='example' class='heading'>Example</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+            <p>With this class you can connect to a target through a
+<a href="http://dx.doi.org/10.1109/ICCCN.2009.5235258">Shalon</a> proxy. Connections to
+the proxy and connections to the target will each be encrypted using TLS.
+This means that your ISP or other people in your network cannot observe to
+which target you connect, because they only see connections to the proxy.
+The proxy itself does not see the content of your requests to the target.
+The target will only see the proxy&rsquo;s IP address (except if the IP address is
+otherwise embedded into the request).</p>
+
+<p>This implementation supports multiple hops. Simply add other layers.</p>
+
+<p>In order to use Shalon proxies with your <code>URLSession</code> connections, please
+take look at <code><a href="../Classes/ShalonURLProtocol.html">ShalonURLProtocol</a></code>.</p>
+<h2 id='examples' class='heading'>Examples</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">proxy1</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"shalon1.jondonym.net"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">proxy2</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"shalon2.jondonym.net"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">proxy3</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"shalon3.jondonym.net"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">target</span> <span class="o">=</span> <span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"www.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">443</span><span class="p">)</span><span class="o">!</span>
+
 <span class="k">let</span> <span class="nv">shalon</span> <span class="o">=</span> <span class="kt">Shalon</span><span class="p">(</span><span class="nv">withTarget</span><span class="p">:</span> <span class="n">target</span><span class="p">)</span>
 
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy1.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8443</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy2.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8442</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="kt">Target</span><span class="p">(</span><span class="nv">withHostname</span><span class="p">:</span> <span class="s">"proxy3.example.com"</span><span class="p">,</span> <span class="nv">andPort</span><span class="p">:</span> <span class="mi">8441</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="n">proxy3</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="n">proxy2</span><span class="p">)</span>
+<span class="n">shalon</span><span class="o">.</span><span class="nf">addLayer</span><span class="p">(</span><span class="n">proxy1</span><span class="p">)</span>
 
 <span class="n">shalon</span><span class="o">.</span><span class="nf">issue</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">(</span><span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="n">head</span><span class="p">,</span> <span class="nv">andUrl</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">optionalResponse</span><span class="p">,</span> <span class="n">optionalError</span> <span class="k">in</span>
     <span class="c1">// TODO Do something</span>
 <span class="p">}</span>
+</code></pre>
+
+<p>This will establish a nested tunnel, where <code>proxy1</code> cannot see what the
+<code>client</code> sends to <code>proxy2</code>, as depicted:</p>
+<pre class="highlight swift"><code><span class="n">client</span>           <span class="n">proxy1</span>           <span class="n">proxy2</span>           <span class="n">proxy3</span>          <span class="n">target</span>
+<span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+----------------+</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span> <span class="kt">CONNECT</span> <span class="n">proxy2</span> <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+---------------------------------+</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span>                  <span class="kt">CONNECT</span> <span class="n">proxy3</span> <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>               <span class="o">|</span>
+<span class="o">|</span>                                   <span class="kt">CONNECT</span> <span class="n">proxy4</span> <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+------------------------------------------------------------------+</span>
+<span class="o">|</span>                                                    <span class="kt">HEAD</span> <span class="o">/</span>        <span class="o">|</span>
+<span class="o">+------------------------------------------------------------------+</span>
+<span class="o">|</span>                                                  <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>               <span class="o">|</span>
+<span class="o">|</span>                                 <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+---------------------------------+</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">+----------------+</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
+<span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>
 </code></pre>
 
           </div>
@@ -305,7 +341,32 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The state of the HTTP connection.</p>
+<pre class="highlight swift"><code>              <span class="n">inactive</span>
+                  <span class="o">|</span>
+                  <span class="o">|</span>
+                  <span class="n">v</span>
+<span class="o">+---</span> <span class="o">&lt;</span><span class="kt">Another</span> <span class="n">layer</span> <span class="n">available</span><span class="p">?</span><span class="o">&gt;</span> <span class="o">&lt;---+</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="n">v</span>                 <span class="o">|</span>
+<span class="o">|</span>  <span class="n">shouldEstablishTunnelConnection</span>  <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="n">v</span>                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">expectTunnelConnectionEstablished</span> <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">|</span>                 <span class="o">|</span>
+<span class="o">|</span>                 <span class="o">+-----------------+</span>
+<span class="o">|</span>
+<span class="o">+-----------------+</span>
+                  <span class="o">|</span>
+                  <span class="n">v</span>
+        <span class="n">shouldSendHttpRequest</span>
+                  <span class="o">|</span>
+                  <span class="o">|</span>
+                  <span class="n">v</span>
+         <span class="n">expectHttpResponse</span>
+</code></pre>
 
                         <a href="../Classes/Shalon/State.html" class="slightly-smaller">See more</a>
                       </div>
@@ -318,7 +379,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L26-L32">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L106-L137">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -336,7 +397,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A helper type for our callbacks, a function that gets either a HTTP
+response or an error.</p>
 
                       </div>
                       <div class="declaration">
@@ -348,7 +410,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L143">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -366,7 +428,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The state of the tunnel connection to the target.</p>
 
                       </div>
                       <div class="declaration">
@@ -378,7 +440,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L148">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -396,7 +458,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A list of hops. The last element is the actual target. All other
+elements are Shalon proxies. The first element is the proxy the user
+actually connects to.</p>
 
                       </div>
                       <div class="declaration">
@@ -408,7 +472,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L155">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -426,7 +490,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A list of streams that are already established. The first element is the
+network stream to the first hop. All other elements are TLS encrypted
+streams to each hop (including the first one), i.e.</p>
+
+<ol>
+<li>TCP stream to first hop</li>
+<li>TLS stream to first hop</li>
+<li>TLS stream to second hop</li>
+<li>TLS stream to third hop…</li>
+</ol>
 
                       </div>
                       <div class="declaration">
@@ -438,7 +511,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L166">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -456,19 +529,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Returns the current layer. A layer is a TLS encrypted stream.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentLayer</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">currentLayer</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L171-L173">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -486,7 +559,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The HTTP request, that should be sent to the target.</p>
 
                       </div>
                       <div class="declaration">
@@ -498,7 +571,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L178">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -516,7 +589,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A callback that is called, once the HTTP response from the target has
+arrived or when an error occurred.</p>
 
                       </div>
                       <div class="declaration">
@@ -528,7 +602,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L184">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -546,7 +620,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Construct a Shalon object with a given target. After calling this,
+proxies can be added by calling <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC8addLayeryAA6TargetVF">addLayer(_:)</a></code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>If no layer is added, a direct connection will be made. Which means
+that the IP address of the current device will be visible to the
+target.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -557,8 +639,28 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>target</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The address of the server, to which requests should be
+issued.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L44-L48">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L199-L203">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -576,7 +678,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This adds a proxy, which is connected before each other layer that was
+previously added, i.e., the last layer added will be the layer the
+initial conenction is made to.</p>
 
                       </div>
                       <div class="declaration">
@@ -587,8 +691,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>target</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A proxy address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L50-L52">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L213-L215">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -606,7 +729,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Issue an HTTP request. The request is send through a TLS tunnel via
+proxy servers added with <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC8addLayeryAA6TargetVF">addLayer(_:)</a></code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>If no layer was added with <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC8addLayeryAA6TargetVF">addLayer(_:)</a></code>, a direct connection to the
+target will be established. Which means that the IP address of the
+current device will be visible to the target.</p>
+
+</div>
+<div class="aside aside-postcondition">
+    <p class="aside-title">Postcondition</p>
+    <p>Either the response or the error parameter of the
+<code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC17completionHandler33_A3642789C2ECC02183173B0C3386A241LLSQyyAA4HttpC8ResponseCSg_s5Error_pSgtcGvp">completionHandler</a></code> is set, the other one is <code>nil</code>.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -617,8 +754,40 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The HTTP request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A callback function. Its parameters are either
+an optional HTTP response or an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L54-L89">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L235-L276">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -636,7 +805,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Helper function that performs a TLS handshake for the current layer.
+This can be the initial TCP connection established by this device,
+i.e. by <code><a href="../Classes/Shalon.html#/s:10PrivacyKit6ShalonC5issueyAA4HttpC7RequestC7request_yAF8ResponseCSg_s5Error_pSgtc17completionHandlertF">issue(request:completionHandler:)</a></code> or a TCP tunnel established
+through a proxy, i.e., if the state is
+<code>expectTunnelConnectionEstablished</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -648,7 +821,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L91-L117">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L285-L308">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -677,7 +850,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Implementation of the <a href="https://developer.apple.com/documentation/foundation/streamdelegate"><code>StreamDelegate</code></a>
+protocol.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/documentation/foundation/streamdelegate/1410079-stream"><code>stream(_:handle:)</code></a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -688,8 +867,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream on which streamEvent occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream event that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L121-L139">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L322-L340">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -707,7 +917,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This is a convenience function, which is called if the stream in
+<code><a href="../Classes/Shalon.html#/c:@M@PrivacyKit@objc(cs)Shalon(im)stream:handleEvent:">stream(_:handle:)</a></code> is an input stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -718,8 +929,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream event that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L141-L177">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L349-L385">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -737,7 +967,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This is a convenience function, which is called if the stream in
+<code><a href="../Classes/Shalon.html#/c:@M@PrivacyKit@objc(cs)Shalon(im)stream:handleEvent:">stream(_:handle:)</a></code> is an output stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -748,8 +979,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stream event that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L179-L202">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L394-L417">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -778,7 +1028,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Helper function that calls the completion handler with a specific error.</p>
 
                       </div>
                       <div class="declaration">
@@ -789,8 +1039,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A generic error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L206-L208">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L427-L429">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -808,7 +1077,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Helper function that calls the completion handler with a specific error.</p>
 
                       </div>
                       <div class="declaration">
@@ -819,8 +1088,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L210-L213">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L437-L440">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -838,7 +1126,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Reset the internal state machine and remove all streams.</p>
 
                       </div>
                       <div class="declaration">
@@ -850,7 +1138,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L215-L230">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L445-L459">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -868,7 +1156,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Parse the input stream and expect an HTTP response.</p>
 
                       </div>
                       <div class="declaration">
@@ -879,8 +1167,31 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input stream.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The HTTP response or <code>nil</code> if the response is invalid.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L232-L239">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L470-L477">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -898,7 +1209,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Send an HTTP request to an output stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -909,8 +1220,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The HTTP request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The output stream.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L241-L253">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L486-L493">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -918,9 +1260,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10PrivacyKit6ShalonC19determineNextAction33_A3642789C2ECC02183173B0C3386A241LLAC5StateAELLOyF"></a>
-                    <a name="//apple_ref/swift/Method/determineNextAction()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit6ShalonC19determineNextAction33_A3642789C2ECC02183173B0C3386A241LLAC5StateAELLOyF">determineNextAction()</a>
+                    <a name="/s:10PrivacyKit6ShalonC9nextState33_A3642789C2ECC02183173B0C3386A241LLAC0E0AELLOvp"></a>
+                    <a name="//apple_ref/swift/Property/nextState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10PrivacyKit6ShalonC9nextState33_A3642789C2ECC02183173B0C3386A241LLAC0E0AELLOvp">nextState</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -928,79 +1270,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The next state, which is determined by the number of proxies, to which a
+connection has not been established.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Only call this, after a new direct or tunnelled connection has been
+established. The returned state might not make much sense, else.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">determineNextAction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Shalon/State.html">State</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextState</span><span class="p">:</span> <span class="kt"><a href="../Classes/Shalon/State.html">State</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L255-L258">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10PrivacyKit6ShalonC9nextLayer33_A3642789C2ECC02183173B0C3386A241LLSivp"></a>
-                    <a name="//apple_ref/swift/Property/nextLayer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit6ShalonC9nextLayer33_A3642789C2ECC02183173B0C3386A241LLSivp">nextLayer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">nextLayer</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L260-L262">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10PrivacyKit6ShalonC8firstHop33_A3642789C2ECC02183173B0C3386A241LLAA6TargetVvp"></a>
-                    <a name="//apple_ref/swift/Property/firstHop" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10PrivacyKit6ShalonC8firstHop33_A3642789C2ECC02183173B0C3386A241LLAA6TargetVvp">firstHop</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">firstHop</span><span class="p">:</span> <span class="kt"><a href="../Structs/Target.html">Target</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L264-L266">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L503-L506">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1018,7 +1307,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The index of the current target to which a tunnel has been established.</p>
 
                       </div>
                       <div class="declaration">
@@ -1030,7 +1319,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L268-L273">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L511-L515">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1048,7 +1337,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The index of the next target.</p>
 
                       </div>
                       <div class="declaration">
@@ -1060,7 +1349,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L275-L277">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L520-L522">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1078,7 +1367,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The current target.</p>
 
                       </div>
                       <div class="declaration">
@@ -1090,7 +1379,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L279-L281">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L527-L529">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1108,7 +1397,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The next target.</p>
 
                       </div>
                       <div class="declaration">
@@ -1120,7 +1409,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L283-L285">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L534-L536">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1138,7 +1427,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The current stream.</p>
 
                       </div>
                       <div class="declaration">
@@ -1150,7 +1439,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AppPETs/PrivacyKit/blob/c35b9e60c025d43c2d3ad8815a2acfbd7fb4c995/PrivacyKit/Shalon.swift#L287-L291">Show on GitHub</a>
+                        <a href="https://github.com/AppPETs/PrivacyKit/blob/1f671f9437ab54673a3f88b4ad321e1cf278bcfd/PrivacyKit/Shalon.swift#L541-L543">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1163,7 +1452,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-15)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/AppPETs" target="_blank" rel="external">AppPETs</a>. All rights reserved. (Last updated: 2018-08-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

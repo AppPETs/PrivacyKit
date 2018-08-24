@@ -502,7 +502,7 @@ extension HTTPURLResponse {
 	A struct that represents a network target. It consists of a hostname or an
 	IP address and a port number.
 */
-public struct Target {
+public struct Target: Hashable {
 
 	/**
 		The hostname or IP address of the target. The IP address can either be
@@ -555,25 +555,6 @@ public struct Target {
 	*/
 	public func formatted() -> String {
 		return "\(hostname):\(port)"
-	}
-
-}
-
-extension Target: Equatable {
-
-	/**
-		Compare two targets. Two targets are equal if their hostnames and their
-		ports are equal.
-
-		- parameters:
-			- lhs: A target.
-			- rhs: Another target.
-
-		- returns:
-			`true` if and only if `lhs` and `rhs` are equal.
-	*/
-	public static func == (lhs: Target, rhs: Target) -> Bool {
-		return lhs.hostname == rhs.hostname && lhs.port == rhs.port
 	}
 
 }

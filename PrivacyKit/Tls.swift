@@ -212,7 +212,7 @@ class PairedStream {
 		- see:
 			[`Stream.schedule(in:forMode:)`](https://developer.apple.com/documentation/foundation/stream/1417370-schedule)
 	*/
-	func schedule(in runLoop: RunLoop, forMode mode: RunLoopMode) {
+	func schedule(in runLoop: RunLoop, forMode mode: RunLoop.Mode) {
 		input.schedule(in: runLoop, forMode: mode)
 		output.schedule(in: runLoop, forMode: mode)
 	}
@@ -496,7 +496,7 @@ class WrappedInputStream: InputStream, StreamDelegate {
 		- see:
 			[`Stream.schedule(in:forMode:)`](https://developer.apple.com/documentation/foundation/stream/1417370-schedule)
 	*/
-	override func schedule(in runLoop: RunLoop, forMode mode: RunLoopMode) {
+	override func schedule(in runLoop: RunLoop, forMode mode: RunLoop.Mode) {
 		stream.schedule(in: runLoop, forMode: mode)
 	}
 
@@ -510,7 +510,7 @@ class WrappedInputStream: InputStream, StreamDelegate {
 		- see:
 			[`Stream.schedule(from:forMode:)`](https://developer.apple.com/documentation/foundation/stream/1411285-remove)
 	*/
-	override func remove(from runLoop: RunLoop, forMode mode: RunLoopMode) {
+	override func remove(from runLoop: RunLoop, forMode mode: RunLoop.Mode) {
 		stream.remove(from: runLoop, forMode: mode)
 	}
 
@@ -724,7 +724,7 @@ class WrappedOutputStream: OutputStream, StreamDelegate {
 		- see:
 			[`Stream.schedule(in:forMode:)`](https://developer.apple.com/documentation/foundation/stream/1417370-schedule)
 	*/
-	override func schedule(in runLoop: RunLoop, forMode mode: RunLoopMode) {
+	override func schedule(in runLoop: RunLoop, forMode mode: RunLoop.Mode) {
 		stream.schedule(in: runLoop, forMode: mode)
 	}
 
@@ -738,7 +738,7 @@ class WrappedOutputStream: OutputStream, StreamDelegate {
 		- see:
 			[`Stream.schedule(from:forMode:)`](https://developer.apple.com/documentation/foundation/stream/1411285-remove)
 	*/
-	override func remove(from runLoop: RunLoop, forMode mode: RunLoopMode) {
+	override func remove(from runLoop: RunLoop, forMode mode: RunLoop.Mode) {
 		stream.remove(from: runLoop, forMode: mode)
 	}
 

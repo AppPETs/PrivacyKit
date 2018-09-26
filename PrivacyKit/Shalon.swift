@@ -299,10 +299,10 @@ public class Shalon: NSObject, StreamDelegate {
 		streams.append(wrappedStream)
 
 		wrappedStream.delegate = self
-		wrappedStream.schedule(in: RunLoop.current, forMode: .defaultRunLoopMode)
+		wrappedStream.schedule(in: .current, forMode: .default)
 		wrappedStream.open()
 
-		if RunLoop.main != RunLoop.current {
+		if RunLoop.main != .current {
 			RunLoop.current.run()
 		}
 	}

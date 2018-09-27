@@ -557,7 +557,7 @@ extension PrivacyService {
 		Key-value storage backend of the P-Service.
 	*/
 	var keyValueStorageBackend: KeyValueStorageBackend {
-		return PrivacyService.KeyValueStorage(baseUrl: baseUrl)
+		return PrivacyService.KeyValueStorage(service: self)
 	}
 
 	/**
@@ -566,26 +566,23 @@ extension PrivacyService {
 	*/
 	class KeyValueStorage {
 
-		/**
-			The base URL of the P-Service.
-		*/
-		let baseUrl: URL
+		weak var service: PrivacyService! = nil
 
 		/**
 			Initialize the key-value storage backend.
 
 			- parameters:
-				- baseUrl: The base URL of the P-Service.
+				- service: The P-Service object.
 		*/
-		init(baseUrl: URL) {
-			self.baseUrl = baseUrl
+		init(service: PrivacyService) {
+			self.service = service
 		}
 
 		/**
 			The entry point of the key-value storage API.
 		*/
 		var entryPoint: URL {
-			return baseUrl
+			return service.baseUrl
 				.appendingPathComponent("storage", isDirectory: true)
 				.appendingPathComponent("v1", isDirectory: true)
 		}
@@ -640,6 +637,10 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 		request.set(method: .post)
 		request.set(contentType: .octetStream)
 
+		if service.options.contains(.activateBadBehavior) {
+			request.add(value: "1", for: .badProvider)
+		}
+
 		Indicators.showNetworkActivity()
 
 		let task = session.uploadTask(with: request, from: Data(value.bytes)) {
@@ -686,6 +687,10 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .get)
+
+		if service.options.contains(.activateBadBehavior) {
+			request.add(value: "1", for: .badProvider)
+		}
 
 		Indicators.showNetworkActivity()
 
@@ -746,6 +751,10 @@ extension PrivacyService.KeyValueStorage: KeyValueStorageBackend {
 		var request = URLRequest(url: url(for: key))
 
 		request.set(method: .delete)
+
+		if service.options.contains(.activateBadBehavior) {
+			request.add(value: "1", for: .badProvider)
+		}
 
 		Indicators.showNetworkActivity()
 

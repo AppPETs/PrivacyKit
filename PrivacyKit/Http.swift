@@ -238,6 +238,15 @@ public class Http {
 		case contentLength = "Content-Length"
 		/// `Content-Type`
 		case contentType = "Content-Type"
+
+		/**
+			A header used to activating bad behaviour of a service provider.
+			This should be used for demonstration purposes only.
+
+			- warning: Do not use this in production systems, as all requests
+				will be logged, if this header is set.
+		*/
+		case badProvider = "X-AppPETs-BadProvider"
 	}
 
 	/**

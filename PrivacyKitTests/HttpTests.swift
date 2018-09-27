@@ -60,9 +60,16 @@ class HttpTests: XCTestCase {
 		let request = Http.Request(withMethod: .head, andUrl: URL(string: "https://example.com/")!, andHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 
 		let actual = String(data: request.composed, encoding: .utf8)!
-		let expected = "HEAD / HTTP/1.1\r\nX-Test: foobar\r\nHost: example.com\r\nX-Foo: Bar\r\n\r\n"
+		let expected: Set = [
+			"HEAD / HTTP/1.1\r\nX-Test: foobar\r\nHost: example.com\r\nX-Foo: Bar\r\n\r\n",
+			"HEAD / HTTP/1.1\r\nX-Test: foobar\r\nX-Foo: Bar\r\nHost: example.com\r\n\r\n",
+			"HEAD / HTTP/1.1\r\nHost: example.com\r\nX-Foo: Bar\r\nX-Test: foobar\r\n\r\n",
+			"HEAD / HTTP/1.1\r\nHost: example.com\r\nX-Test: foobar\r\nX-Foo: Bar\r\n\r\n",
+			"HEAD / HTTP/1.1\r\nX-Foo: Bar\r\nHost: example.com\r\nX-Test: foobar\r\n\r\n",
+			"HEAD / HTTP/1.1\r\nX-Foo: Bar\r\nX-Test: foobar\r\nHost: example.com\r\n\r\n"
+		]
 
-		XCTAssertEqual(actual, expected)
+		XCTAssertTrue(expected.contains(actual))
 	}
 
 	func testConnectRequest() {
@@ -71,9 +78,16 @@ class HttpTests: XCTestCase {
 		let request = Http.Request.connect(toTarget: target, viaProxy: proxy, withHeaders: ["X-Test": "foobar", "X-Foo": "Bar"])!
 
 		let actual = String(data: request.composed, encoding: .utf8)!
-		let expected = "CONNECT example.com:80 HTTP/1.1\r\nX-Test: foobar\r\nHost: localhost\r\nX-Foo: Bar\r\n\r\n"
+		let expected: Set = [
+			"CONNECT example.com:80 HTTP/1.1\r\nX-Test: foobar\r\nHost: localhost\r\nX-Foo: Bar\r\n\r\n",
+			"CONNECT example.com:80 HTTP/1.1\r\nX-Test: foobar\r\nX-Foo: Bar\r\nHost: localhost\r\n\r\n",
+			"CONNECT example.com:80 HTTP/1.1\r\nHost: localhost\r\nX-Foo: Bar\r\nX-Test: foobar\r\n\r\n",
+			"CONNECT example.com:80 HTTP/1.1\r\nHost: localhost\r\nX-Test: foobar\r\nX-Foo: Bar\r\n\r\n",
+			"CONNECT example.com:80 HTTP/1.1\r\nX-Foo: Bar\r\nHost: localhost\r\nX-Test: foobar\r\n\r\n",
+			"CONNECT example.com:80 HTTP/1.1\r\nX-Foo: Bar\r\nX-Test: foobar\r\nHost: localhost\r\n\r\n"
+		]
 
-		XCTAssertEqual(actual, expected)
+		XCTAssertTrue(expected.contains(actual))
 	}
 
 	func testPServiceUploadResponse() {

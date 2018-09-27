@@ -1,6 +1,13 @@
 {
   "warnings": [
     {
+      "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/KeyValueStorage.swift",
+      "line": 569,
+      "symbol": "PrivacyService.KeyValueStorage.service",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/blochberger/Development/PrivacyKit/PrivacyKit/TafelsalzExtensions.swift",
       "line": 5,
       "symbol": "MASTER_KEY_PREFIX",

@@ -255,7 +255,14 @@ public class ShalonURLProtocol : URLProtocol {
 			httpBody = Data()
 		}
 
-		shalon.issue(request: Http.Request(withMethod: method, andUrl: shalonParameters.requestUrl, andBody: httpBody)!) {
+		let actualRequest = Http.Request(
+			withMethod: method,
+			andUrl: shalonParameters.requestUrl,
+			andHeaders: request.allHTTPHeaderFields ?? [:],
+			andBody: httpBody
+		)!
+
+		shalon.issue(request: actualRequest) {
 			optionalResponse, optionalError in
 
 			assert((optionalResponse != nil) != (optionalError != nil))

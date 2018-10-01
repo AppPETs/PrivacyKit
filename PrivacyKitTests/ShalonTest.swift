@@ -252,4 +252,48 @@ class ShalonTest: XCTestCase {
 			XCTAssertEqual(retrievedData, data)
 		}
 	}
+
+	func testShalonHeaders() {
+		let url = URL(string: "httpss://shalon1.jondonym.net:443/httpbin.org/headers")!
+
+		let sessionConfiguration = URLSessionConfiguration.ephemeral
+		sessionConfiguration.protocolClasses?.append(ShalonURLProtocol.self)
+		let session = URLSession(configuration: sessionConfiguration)
+		var request = URLRequest(url: url)
+		request.set(method: .get)
+		request.add(value: "1", for: .badProvider)
+
+		let responseExpectation = expectation(description: "responseExpectation")
+
+		var response: URLResponse? = nil
+		var responseBody : Data? = nil
+
+		let task = session.dataTask(with: request) {
+			(potentialData, potentialResponse, potentialError) in
+
+			response = potentialResponse
+			responseBody = potentialData
+
+			responseExpectation.fulfill()
+		}
+		task.resume()
+
+		waitForExpectations(timeout: 25/*seconds*/) {
+			optionalExpectationError in
+
+			XCTAssertNil(optionalExpectationError, "Expectation handled erroneously")
+			XCTAssertNotNil(response)
+			XCTAssertNotNil(responseBody)
+
+			let json = try! JSONSerialization.jsonObject(with: responseBody!) as! [String: Any]
+			let retrievedHeaders = json["headers"] as! [String: String]
+			var headers: [String: String] = [:]
+			for (key, value) in retrievedHeaders {
+				headers[key.lowercased()] = value
+			}
+
+			XCTAssertEqual(headers[Http.Header.badProvider.rawValue.lowercased()], "1")
+		}
+	}
+
 }

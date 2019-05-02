@@ -169,7 +169,7 @@ public class ShalonURLProtocol : URLProtocol {
 	override public class func canInit(with request: URLRequest) -> Bool {
 
 		if let url = request.url {
-			let shalonParameters = try? parseShalonParams(from: url)
+			let shalonParameters = ((try? parseShalonParams(from: url)) as ShalonURLProtocol.Parameters??)
 			if shalonParameters != nil {
 				print("Shalon will handle request")
 				return true

@@ -166,7 +166,9 @@ extension EncryptedKey: Hashable {
 		sets. This should not be confused with the personalized hash of the
 		plaintext key.
 	*/
-	public var hashValue: Int { return value.hashValue }
+	public func hash(into hasher: inout Hasher) {
+		value.hash(into: &hasher)
+	}
 
 }
 
